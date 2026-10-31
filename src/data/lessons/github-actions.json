@@ -1,0 +1,1336 @@
+{
+  "introduction-to-github-actions": {
+    "track": "github-actions",
+    "slug": "introduction-to-github-actions",
+    "title": "Introduction to GitHub Actions",
+    "subtitle": "Learn what GitHub Actions is and how it runs your build: workflows, jobs, steps and runners, plus a first working pipeline you can commit today.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing Introduction to GitHub Actions must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Learn what GitHub Actions is and how it runs your build: workflows, jobs, steps and runners, plus a first working pipeline you can commit today."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Learn what GitHub Actions is and how it runs your build: workflows, jobs, steps and runners, plus a first working pipeline you can commit today.",
+          "GitHub Actions is the CI/CD system built into GitHub. It runs automated jobs in response to repository events: you commit a YAML file describing what should happen, and GitHub provisions a machine, checks out your code and runs your commands. There is no separate server to install, no runner to register before you can see something work, and no second set of credentials to manage. If your code already lives on GitHub, you are one file away from a working pipeline.",
+          "Verified against GitHub Actions as of September 2026. Action versions in this series are pinned to major tags that are current at that date."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Why It Exists",
+        "paragraphs": [
+          "Before CI became normal, \"does it build\" was answered on a developer's laptop. The laptop had the right Node version, the right environment variables and a node_modules directory that had accumulated over months. The build server, when a team eventually bought one, had none of those things, and the gap between the two is where most release incidents lived.",
+          "CI closes that gap by building on a machine that starts empty every time. GitHub Actions does this with a runner: a fresh virtual machine that exists for the length of one job and is destroyed afterwards. Nothing carries over between runs unless you explicitly cache or upload it, which is inconvenient for about a week and then becomes the reason you trust the result."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "The Four Concepts",
+        "paragraphs": [
+          "Almost everything in GitHub Actions is one of four things, and the rest of this series assumes them.",
+          "A workflow is a YAML file in .github/workflows/. One file, one workflow. A repository can have many, and they run independently.",
+          "An event is what starts a workflow: a push, a pull request, a schedule, a manual click, a release being published. A workflow declares which events it responds to in its on: block.",
+          "A job is a set of steps that run on one runner. Jobs in a workflow run in parallel by default, which is a common surprise. If job B needs job A to finish first, you say so with needs:.",
+          "A step is a single unit of work inside a job. A step either runs a shell command with run:, or invokes a reusable action with uses:."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Your First Workflow",
+        "paragraphs": [
+          "Create .github/workflows/ci.yml:",
+          "Commit that and push. Open the Actions tab and you will see the run.",
+          "Four details in that file are worth understanding rather than copying.",
+          "actions/checkout@v4 is not optional. The runner starts with no copy of your code. Without this step your repository is simply not there, and the first npm ci fails with a missing package.json. This is the single most common first-workflow mistake.",
+          "runs-on: ubuntu-latest picks the runner image. GitHub also provides windows-latest and macos-latest, and macOS minutes are billed at a much higher multiplier than Linux on paid plans, so reach for Linux unless you genuinely need Xcode.",
+          "cache: 'npm' on setup-node is the easiest performance win available. It caches the npm download cache keyed on your lockfile, with no separate cache step to configure.",
+          "npm ci, not npm install. npm ci installs exactly what the lockfile specifies and fails if package.json and the lockfile disagree. npm install will happily resolve something new, which means your CI can pass against dependencies your teammates never had."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "name: CI\n\non:\n  push:\n    branches: [main]\n  pull_request:\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n          cache: 'npm'\n\n      - run: npm ci\n      - run: npm test",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "How This Differs from GitLab CI and Jenkins",
+        "paragraphs": [
+          "If you have used GitLab CI/CD, the mental model transfers directly: GitLab's stages and jobs map onto GitHub's jobs and needs:. The biggest practical difference is that GitLab organises a pipeline into named stages that run in sequence, while GitHub Actions has no stage concept at all. Ordering comes only from dependencies you declare.",
+          "Coming from Jenkins, the difference is ownership. A Jenkinsfile describes work that a server you maintain will perform. A GitHub Actions workflow describes work that GitHub performs on infrastructure you do not see. You trade control for having nothing to patch."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Permissions, Before You Go Further",
+        "paragraphs": [
+          "Every workflow run gets an automatic GITHUB_TOKEN. For repositories created since 2023 its default permission is read-only, which is the right default and also the cause of a lot of confused debugging when a workflow tries to push a tag or publish a package.",
+          "Grant only what a job needs, at the smallest scope:",
+          "A top-level permissions: block sets the default for every job. A job-level block overrides it for that job only. Setting contents: read at the top and widening per job is the pattern worth adopting from the start, because narrowing it later means auditing every workflow you have written."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "permissions:\n  contents: read\n\njobs:\n  publish:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      packages: write\n    steps:\n      - uses: actions/checkout@v4",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Stopping Duplicate Runs",
+        "paragraphs": [
+          "By default, pushing three times in a minute starts three runs, and all three keep going. On a busy pull request that wastes minutes and gives you stale results.",
+          "This groups runs by workflow and branch, and cancels an in-progress run when a newer commit arrives. It is two lines and it is worth adding to almost every workflow."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "concurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "What to Learn Next",
+        "paragraphs": [
+          "The rest of this series builds on this file. Workflow syntax and event filtering come next, then secrets, caching, artifacts, matrix builds, container images and finally deploying to AWS without storing long-lived keys.",
+          "If a workflow of yours is failing right now, the DevOps troubleshooting section covers the specific CI errors that come up most, including workflows that never trigger and OIDC role assumption failures."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "Is GitHub Actions free?",
+          "Public repositories get unlimited free minutes on GitHub-hosted runners. Private repositories get a monthly allowance that depends on your plan, after which minutes are billed. Linux runners consume minutes at the base rate, Windows at twice that and macOS at ten times, so runner choice has a direct cost effect on private repositories.",
+          "Where do workflow files have to live?",
+          "In .github/workflows/ at the root of the repository, with a .yml or .yaml extension. GitHub does not discover workflows anywhere else. A file in .github/ directly, or nested a level deeper, is silently ignored, which is a frequent cause of a workflow that appears to do nothing.",
+          "Do jobs in a workflow run in order?",
+          "No. Jobs run in parallel unless you declare a dependency with needs:. Steps within a single job always run in order, and the job stops at the first failing step unless that step sets continue-on-error: true.",
+          "What is the difference between uses and run?",
+          "run executes a shell command on the runner. uses invokes a packaged action, which is someone else's reusable code, referenced by repository and version, for example actions/checkout@v4. Prefer run for anything simple enough to be one command, and an action where it wraps real complexity such as authentication or caching.",
+          "Can I test a workflow without pushing to main?",
+          "Yes, and you should. Add pull_request: to the on: block and open a draft pull request from a branch. For manual testing add workflow_dispatch:, which puts a \"Run workflow\" button in the Actions tab. Local simulators exist but they approximate the runner environment rather than reproducing it."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "ls -la",
+        "explanation": "Core command for Introduction to GitHub Actions"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  },
+  "github-actions-workflow-syntax": {
+    "track": "github-actions",
+    "slug": "github-actions-workflow-syntax",
+    "title": "GitHub Actions Workflow Syntax",
+    "subtitle": "Understand the YAML behind a GitHub Actions workflow: events and filters, job dependencies with needs, if conditionals, contexts and expressions.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing GitHub Actions Workflow Syntax must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Understand the YAML behind a GitHub Actions workflow: events and filters, job dependencies with needs, if conditionals, contexts and expressions."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Understand the YAML behind a GitHub Actions workflow: events and filters, job dependencies with needs, if conditionals, contexts and expressions.",
+          "A workflow file has a small number of top-level keys, and most confusing behaviour comes from three of them: on, needs and if. This lesson covers the syntax you will actually reach for, and for each piece explains the specific failure it prevents.",
+          "Verified against GitHub Actions as of September 2026."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "The Skeleton",
+        "paragraphs": [
+          "timeout-minutes deserves attention. The default job timeout is 360 minutes, which means a hung job burns six hours of your allowance before anyone notices. Setting a realistic ceiling on every job is one of the highest-value habits in this file."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "name: CI\nrun-name: CI for ${{ github.ref_name }}\n\non:\n  push:\n    branches: [main]\n\npermissions:\n  contents: read\n\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\n\nenv:\n  NODE_ENV: test\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci && npm run build",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Events and Filtering",
+        "paragraphs": [
+          "The on: block decides when a workflow runs. The common events:",
+          "Two filters are worth knowing precisely.",
+          "paths runs the workflow only when matching files changed. This is how you avoid running a full test suite because someone fixed a typo in the README. The inverse, paths-ignore, is also available, but you cannot use both in the same event block.",
+          "branches accepts glob patterns. 'release/**' matches any depth under release/, while 'release/*' matches only one segment. Quote any pattern containing *, because unquoted YAML treats some of these as aliases and will fail to parse.",
+          "A caution about paths and required status checks: if a workflow is a required check for merging and paths prevents it from running, the pull request can wait forever for a check that will never report. The usual answer is a second lightweight workflow with the same job name that runs unconditionally and passes immediately.",
+          "The schedule event uses UTC, always, regardless of repository or account settings. A 0 3 * * 1 schedule is 3am UTC on Monday, not 3am wherever you are. Scheduled runs also only fire from the default branch, and GitHub disables them on repositories with no activity for 60 days.",
+          "For building cron expressions without guessing, the cron expression parser shows the next run times for a given schedule."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "on:\n  push:\n    branches: [main, 'release/**']\n    paths:\n      - 'src/**'\n      - 'package-lock.json'\n  pull_request:\n    types: [opened, synchronize, reopened]\n  schedule:\n    - cron: '0 3 * * 1'\n  workflow_dispatch:\n    inputs:\n      environment:\n        description: Target environment\n        required: true\n        type: choice\n        options: [staging, production]",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Job Dependencies",
+        "paragraphs": [
+          "Jobs are parallel by default. needs: creates the ordering.",
+          "lint and test start at the same time. deploy waits for both, and is skipped entirely if either fails.",
+          "The important and frequently missed point: each job gets a different runner, so nothing produced by lint exists in test. No files, no installed packages, no environment variables set with export. Passing data between jobs requires either artifacts for files or job outputs for values.",
+          "Job outputs look like this:",
+          "Note >> \"$GITHUB_OUTPUT\" rather than the old ::set-output command, which was disabled in 2023. Any tutorial still showing ::set-output predates that change and its examples will not work."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "jobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps: [{ uses: actions/checkout@v4 }, { run: npm run lint }]\n\n  test:\n    runs-on: ubuntu-latest\n    steps: [{ uses: actions/checkout@v4 }, { run: npm test }]\n\n  deploy:\n    needs: [lint, test]\n    runs-on: ubuntu-latest\n    steps:\n      - run: ./deploy.sh",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Conditionals",
+        "paragraphs": [
+          "if: runs on a job or a step. It is evaluated as an expression, so the ${{ }} wrapper is optional here and usually omitted.",
+          "The status functions are the part people miss. A step is skipped by default when an earlier step failed, so a cleanup or notification step needs if: always() or if: failure() to run at all. The four available are success(), failure(), cancelled() and always().",
+          "A subtlety worth internalising: if: always() also runs when the job was cancelled, which can keep a cancelled workflow alive. When you want \"run on pass or fail, but respect cancellation\", use if: !cancelled()."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "- name: Deploy\n        if: github.ref == 'refs/heads/main' && github.event_name == 'push'\n        run: ./deploy.sh\n\n      - name: Notify on failure\n        if: failure()\n        run: ./notify.sh",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Contexts and Expressions",
+        "paragraphs": [
+          "Contexts are the objects available inside ${{ }}. The ones you will use constantly:",
+          "github carries event data. github.ref is the full ref such as refs/heads/main, github.ref_name is just main, github.sha is the commit, github.event_name is what triggered the run, and github.repository is owner/name.",
+          "env, vars and secrets carry configuration, covered in the secrets and variables lesson.",
+          "runner describes the machine. runner.os is Linux, Windows or macOS, and runner.temp is a scratch directory guaranteed to be writable.",
+          "matrix carries the current combination in a matrix build.",
+          "One trap with expressions: github.event shape depends entirely on the triggering event. github.event.pull_request.number exists on a pull_request run and is empty on a push run, so a workflow responding to both events cannot assume either."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Shell Behaviour",
+        "paragraphs": [
+          "On Linux and macOS runners, run steps execute with bash -e, so the step fails at the first failing command. It does not use -o pipefail by default, which means a failure in the middle of a pipe is invisible:",
+          "You can set this once for the whole workflow:",
+          "which uses bash --noprofile --norc -eo pipefail, giving you pipefail everywhere without repeating it."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "# Passes even when the build fails, because tee succeeds.\n      - run: npm run build | tee build.log\n\n      # Fails correctly.\n      - run: set -o pipefail && npm run build | tee build.log",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "Why is my workflow not running at all?",
+          "In order of likelihood: the file is not in .github/workflows/, the YAML is invalid so GitHub cannot parse the on: block, the branch filter does not match the branch you pushed, a paths filter excluded your changes, or the workflow is on a branch other than the default and you are expecting a schedule trigger. Invalid YAML is the quietest of these, because a workflow that cannot be parsed simply never appears.",
+          "Can I use environment variables inside the on: block?",
+          "No. The on:, runs-on and needs keys are evaluated before any context beyond github and inputs exists, so env values and secrets are not available there. This restriction catches people trying to make a schedule or a runner label configurable.",
+          "What is the difference between env, vars and secrets?",
+          "env values are defined in the workflow file and are plain text. vars are non-sensitive values configured in repository or organisation settings. secrets are encrypted values that are masked in logs. Use vars for things like a region name and secrets for anything that grants access.",
+          "How do I run a step only on the default branch?",
+          "if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) is the robust form. Hardcoding refs/heads/main works until someone renames the branch.",
+          "Does needs make jobs share a filesystem?",
+          "No. needs controls order only. Each job runs on a clean runner, so files must move through artifacts and values through job outputs."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "ls -la",
+        "explanation": "Core command for GitHub Actions Workflow Syntax"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  },
+  "github-actions-secrets-and-variables": {
+    "track": "github-actions",
+    "slug": "github-actions-secrets-and-variables",
+    "title": "GitHub Actions Secrets and Variables",
+    "subtitle": "Store workflow credentials without leaking them: repository, environment and organisation scopes, log masking and why fork pull requests get no secrets.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing GitHub Actions Secrets and Variables must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Store workflow credentials without leaking them: repository, environment and organisation scopes, log masking and why fork pull requests get no secrets."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Store workflow credentials without leaking them: repository, environment and organisation scopes, log masking and why fork pull requests get no secrets.",
+          "A workflow that deploys anything needs credentials, and the mechanism you choose decides how much damage a mistake does. GitHub Actions offers three scopes for configuration and two kinds of value, and the differences matter more than the syntax does.",
+          "Verified against GitHub Actions as of September 2026."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Two Kinds of Value",
+        "paragraphs": [
+          "Variables are configuration that is not sensitive: an AWS region, a log level, an image name. They are readable in the settings UI, appear in logs in full, and are available as the vars context.",
+          "Secrets are values that grant access. They are write-only in the UI, meaning nobody including you can read one back after saving. They are masked in logs, and available as the secrets context.",
+          "The rule that keeps this simple: if leaking the value would require you to rotate something, it is a secret. Everything else is a variable, and making it a variable is actively useful because you can see what it is set to when debugging."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Three Scopes",
+        "paragraphs": [
+          "Repository scope applies to every workflow in one repository. This is the default place to put things.",
+          "Organisation scope applies across repositories, with an access policy choosing which ones. Useful for a shared registry credential that a dozen services all need, and the reason to prefer it is rotation: one update instead of twelve.",
+          "Environment scope applies only to jobs that declare that environment, and this is the scope worth understanding properly, because it is the only one that can require human approval.",
+          "With a production environment configured to require reviewers, this job pauses and waits for an approval before it starts. The secret is not available to the job until that approval happens. A workflow on a branch that the environment's protection rules do not allow cannot read the secret at all.",
+          "This is the difference that matters: a repository secret is readable by any workflow in the repository, including one added in a pull request by someone with write access. An environment secret with branch protection is not."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "jobs:\n  deploy:\n    runs-on: ubuntu-latest\n    environment: production\n    steps:\n      - run: ./deploy.sh\n        env:\n          API_TOKEN: ${{ secrets.API_TOKEN }}",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Using Them",
+        "paragraphs": [
+          "Note the pattern of passing secrets through env: on the step rather than interpolating them into the run: script. The reason is concrete: ${{ }} interpolation happens before the shell sees the line, so the secret's literal text is substituted into the command. A secret containing a quote, a backtick or a $ can then break the command or, worse, be interpreted by the shell. Passing through env: hands the value to the process as an environment variable and the shell never parses it.",
+          "This is the same class of problem as SQL injection, and it applies to any untrusted or unpredictable value, including github.event.pull_request.title."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "env:\n  # Workflow-level, plain text, visible in logs.\n  AWS_REGION: eu-west-1\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    env:\n      # Job-level, from a repository or organisation variable.\n      IMAGE_NAME: ${{ vars.IMAGE_NAME }}\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Publish\n        env:\n          # Step-level, from a secret. Prefer this to inline interpolation.\n          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}\n        run: npm publish",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Masking, and Its Limits",
+        "paragraphs": [
+          "GitHub scans log output for the exact text of every secret and replaces matches with ***. This works and it is not a substitute for care, because it is a literal string match.",
+          "It does not catch a secret that has been transformed. If your workflow base64-encodes a token, or prints only the first eight characters, or embeds it in a URL that then gets percent-encoded, the output no longer matches the stored value and nothing is masked.",
+          "It also does not catch structured secrets well. Storing a whole JSON service-account key as one secret means the individual field values inside it are not separately registered, so a step that parses the JSON and echoes one field prints it in clear text.",
+          "You can register a derived value at runtime:",
+          "::add-mask:: tells the runner to treat that string as a secret for the remainder of the job. Any value you derive from a secret and intend to log should go through it."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "- run: |\n          DERIVED=\"$(compute-something)\"\n          echo \"::add-mask::$DERIVED\"\n          echo \"derived=$DERIVED\" >> \"$GITHUB_ENV\"",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Fork Pull Requests",
+        "paragraphs": [
+          "This is where most security incidents in CI come from, and the behaviour is deliberate.",
+          "On a pull_request run from a fork, secrets are not available and the GITHUB_TOKEN is read-only. If secrets were available, anyone on the internet could open a pull request whose workflow prints them.",
+          "The consequence is that a workflow needing credentials cannot run on external contributions, and the correct response is to split the workflow: a pull_request workflow that lints, builds and tests with no credentials, and a separate push workflow on the default branch that does anything privileged.",
+          "The dangerous escape hatch is pull_request_target, which runs in the context of the base repository and therefore does have secrets. It is safe only if it does not check out or execute the pull request's code. Doing this:",
+          "hands a stranger's code your secrets, because npm ci runs whatever install scripts that fork's package.json declares. If you need pull_request_target, use it only to read metadata such as labels, and never to run the contributor's code."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "# Do not do this.\non: pull_request_target\njobs:\n  build:\n    steps:\n      - uses: actions/checkout@v4\n        with:\n          ref: ${{ github.event.pull_request.head.sha }}\n      - run: npm ci && npm run build",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "What Not to Store as a Secret",
+        "paragraphs": [
+          "Long-lived cloud access keys. If you are putting AWS_SECRET_ACCESS_KEY into GitHub, there is a better option: OpenID Connect lets a workflow exchange a short-lived GitHub-signed token for temporary cloud credentials, with no stored key to leak or rotate. That is covered in the deploying to AWS with OIDC lesson, and it is the single biggest security improvement available to most pipelines.",
+          "If a workflow of yours is failing on role assumption, the OIDC could not assume role page covers the trust-policy mistakes that cause it."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "Can I read a secret back after saving it?",
+          "No. Secrets are write-only through the UI and the API. If you have lost the value, rotate it at the source and store the new one. This is why storing credentials in a password manager as the source of truth, with GitHub as a copy, saves real time.",
+          "Are secrets available to workflows on any branch?",
+          "Repository and organisation secrets are available to any workflow run in that repository, including from a branch. Environment secrets are restricted by the environment's deployment branch rules, which is the mechanism to use when a secret must only be reachable from main.",
+          "Why is my secret empty in the workflow?",
+          "Most often the run is a pull_request from a fork, where secrets are deliberately withheld. Otherwise check the name for case: secret names are case-insensitive when stored but secrets.MY_TOKEN and secrets.my_token both resolve, whereas a typo silently produces an empty string rather than an error. Echoing ${{ secrets.NAME != '' }} tells you whether it is set without revealing it.",
+          "Can I use secrets in the if condition of a job?",
+          "Not directly. The secrets context is unavailable in job-level if. The workaround is a preceding job that reads the secret and emits a boolean job output, which the dependent job's if can then use.",
+          "Should each environment have its own secret, or one secret with the environment in the name?",
+          "Use environment scope with the same secret name in each. A single API_TOKEN defined separately under staging and production keeps the workflow file identical for both and means a deploy job cannot accidentally reach the wrong one."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "ls -la",
+        "explanation": "Core command for GitHub Actions Secrets and Variables"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  },
+  "github-actions-caching-dependencies": {
+    "track": "github-actions",
+    "slug": "github-actions-caching-dependencies",
+    "title": "Caching Dependencies in GitHub Actions",
+    "subtitle": "Speed up GitHub Actions with actions/cache: write a key that hits, use restore-keys and built-in setup caching, and see why a cache can slow a build.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing Caching Dependencies in GitHub Actions must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Speed up GitHub Actions with actions/cache: write a key that hits, use restore-keys and built-in setup caching, and see why a cache can slow a build."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Speed up GitHub Actions with actions/cache: write a key that hits, use restore-keys and built-in setup caching, and see why a cache can slow a build.",
+          "Every job starts on an empty machine, so every job downloads its dependencies again. Caching stores a directory after a successful job and restores it on the next run, keyed on a string you choose, and almost all the difficulty is in choosing that string.",
+          "Verified against actions/cache@v4 as of September 2026."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Use the Built-In Caching First",
+        "paragraphs": [
+          "Before reaching for actions/cache directly, check whether your setup action already does it. Several do, and their configuration is one line:",
+          "These handle the key, the path and the restore logic correctly for their ecosystem. For a straightforward Node, Python or Java project this is the whole answer, and writing a manual cache step instead is a common way to make things slower."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "- uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n          cache: 'npm'          # also 'yarn' or 'pnpm'\n\n      - uses: actions/setup-python@v5\n        with:\n          python-version: '3.12'\n          cache: 'pip'\n\n      - uses: actions/setup-java@v4\n        with:\n          distribution: temurin\n          java-version: '21'\n          cache: maven",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "The Manual Form",
+        "paragraphs": [
+          "When you need to cache something the setup actions do not cover, such as a build output directory or a Go module cache:",
+          "Three things are happening.",
+          "key is the exact identity of this cache. If a cache with this key exists, it is restored and the step reports a hit.",
+          "restore-keys is an ordered list of prefixes tried when the exact key misses. The newest cache whose key starts with the prefix is restored. This is what turns a total miss into a partial hit: you get last week's module cache and download only what changed, instead of downloading everything.",
+          "hashFiles('**/go.sum') produces a hash of the matched files. Including it means the key changes exactly when the dependencies change, which is the property you want."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "- uses: actions/cache@v4\n        with:\n          path: |\n            ~/.cache/go-build\n            ~/go/pkg/mod\n          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}\n          restore-keys: |\n            ${{ runner.os }}-go-",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Writing a Key That Works",
+        "paragraphs": [
+          "The key needs to change when the cached content should change, and not otherwise. Two failure modes come from getting this wrong.",
+          "A key that never changes gives you a cache that is restored forever and never updated, because actions/cache only saves when the key missed. A stale dependency cache then silently pins you to old packages. This is the more dangerous of the two because the build keeps passing.",
+          "A key that changes on every run, for example one including github.sha, means every run misses, saves a fresh cache and gains nothing but upload time. You will see a cache step taking 40 seconds with a 100% miss rate.",
+          "Include the OS. A cache built on ubuntu-latest is not valid on windows-latest, and runner.os in the key prevents restoring a Linux cache onto a Windows runner. Where a job uses a matrix of language versions, include that too, or the Node 18 cache will be restored into the Node 22 job."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "key: ${{ runner.os }}-node${{ matrix.node }}-${{ hashFiles('package-lock.json') }}",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Do Not Cache node_modules",
+        "paragraphs": [
+          "This is the most common caching mistake in the Node ecosystem. Caching node_modules directly appears to work and then produces builds that cannot be reproduced.",
+          "The reason is that node_modules contains compiled native modules built against the exact Node version and platform of the job that created it, and npm's install step performs work beyond unpacking files: linking binaries, running lifecycle scripts, pruning. Restoring the directory skips all of that.",
+          "Cache the npm download cache instead, which is what cache: 'npm' on setup-node does, and let npm ci run every time. The install is fast because nothing needs downloading, and the result is correct."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Cache Behaviour Worth Knowing",
+        "paragraphs": [
+          "Caches are saved only on success. If the job fails after the cache step, nothing is stored. A job that always fails therefore never populates its cache, which can look like the cache being broken.",
+          "Saving happens in a post-step. actions/cache registers a post-job hook, so the upload appears at the very end of the job log, not where the step sits in your file.",
+          "Branch scoping is asymmetric. A cache created on a branch is visible to that branch and to child branches. A cache created on the default branch is visible to all branches. A cache created on a feature branch is not visible to other feature branches. This is a security boundary, and it means the first run on a new branch usually only hits caches from main.",
+          "There is a 10 GB limit per repository, with least-recently-used eviction. A workflow caching several large directories across a wide matrix can evict its own caches between runs, producing a confusing pattern of intermittent misses. The Actions caches page in repository settings shows what is stored and its size.",
+          "Individual entries expire after 7 days without access."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Restore Without Saving",
+        "paragraphs": [
+          "Sometimes you want to read a cache but never write it, for example in a job that only needs to look something up:",
+          "The matching actions/cache/save@v4 does the reverse. Splitting them is also how you save a cache even when a later step fails, by putting the save step under if: always()."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "- uses: actions/cache/restore@v4\n        with:\n          path: ~/.cache/pip\n          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Measuring Whether It Helped",
+        "paragraphs": [
+          "Add up the numbers rather than assuming. The cache step logs both the restore time and whether it hit, and the install step shows its own duration. A cache is worth keeping when restore time plus install-with-cache is meaningfully less than install-without-cache.",
+          "For a small project with few dependencies, that difference can be negative: restoring a 200 MB cache over the network takes longer than downloading the handful of packages you actually need. Caching is a tool for large dependency trees, not a default.",
+          "If CI is running out of disk rather than time, the no space left on runner page covers the causes, and large restored caches are one of them."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "Why does my cache always miss?",
+          "Print the key. The usual cause is hashFiles matching nothing, which yields an empty hash and a key that looks valid but never corresponds to a saved cache. hashFiles('**/package-lock.json') returns an empty string if no lockfile is committed. The second most common cause is a key containing github.sha or a timestamp.",
+          "Can I share a cache between jobs in the same workflow?",
+          "Yes. Caches are scoped to the repository and branch, not to a job, so a cache saved by job A is restorable by job B in the same run provided A finished first. Use needs: to guarantee the order, otherwise the parallel job may start before the cache exists.",
+          "Does caching work on self-hosted runners?",
+          "Yes, and the trade-off changes. A self-hosted runner often keeps its working directory between jobs, so dependencies may already be present and a network cache restore is pure overhead. Measure before adding it.",
+          "How do I clear a cache?",
+          "Delete it from the Actions caches page in repository settings, or via the REST API. You cannot overwrite a cache: a given key is immutable once saved, which is why changing the cached content requires changing the key.",
+          "Should I cache Docker layers this way?",
+          "Not with actions/cache. Docker Buildx has purpose-built cache backends that are faster and handle layer semantics correctly, covered in the Docker build and push lesson."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "ls -la",
+        "explanation": "Core command for Caching Dependencies in GitHub Actions"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  },
+  "github-actions-artifacts": {
+    "track": "github-actions",
+    "slug": "github-actions-artifacts",
+    "title": "GitHub Actions Artifacts",
+    "subtitle": "Move files between GitHub Actions jobs and keep build output: upload-artifact v4 behaviour, retention, the immutability change and when a cache fits better.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing GitHub Actions Artifacts must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Move files between GitHub Actions jobs and keep build output: upload-artifact v4 behaviour, retention, the immutability change and when a cache fits better."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Move files between GitHub Actions jobs and keep build output: upload-artifact v4 behaviour, retention, the immutability change and when a cache fits better.",
+          "Each job runs on its own runner, so a file produced in one job does not exist in the next. Artifacts are the mechanism for moving files between jobs and for keeping build output after the run finishes.",
+          "Verified against actions/upload-artifact@v4 and actions/download-artifact@v4 as of September 2026."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Upload and Download",
+        "paragraphs": [
+          "needs: build is required. Without it the deploy job starts immediately, the artifact does not exist yet, and the download fails."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "jobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci && npm run build\n\n      - uses: actions/upload-artifact@v4\n        with:\n          name: dist\n          path: dist/\n          retention-days: 7\n\n  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/download-artifact@v4\n        with:\n          name: dist\n          path: dist/\n\n      - run: ./deploy.sh dist/",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "The v4 Change That Breaks Old Workflows",
+        "paragraphs": [
+          "Version 4 changed artifact behaviour in a way that silently breaks patterns which worked in v3, and this is the single most important thing to know about artifacts today.",
+          "Artifacts are immutable. In v3, several jobs could upload to the same artifact name and the contents merged. In v4 the first upload creates the artifact and any subsequent upload with the same name fails. This breaks the common matrix pattern:",
+          "The fix is a unique name per job, then a merge if you want one download:",
+          "and in a later job, either download them all at once with a pattern:",
+          "or combine them into a single artifact with actions/upload-artifact/merge@v4.",
+          "v3 and v4 cannot see each other's artifacts. A v4 download cannot find an artifact uploaded by v3 and vice versa. Upgrade upload and download together, or you get a confusing \"artifact not found\" on an artifact you can see in the UI.",
+          "If you are hitting that error now, the artifact not found page walks through the causes in order."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "# Fails on the second matrix job in v4.\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest]\n    steps:\n      - uses: actions/upload-artifact@v4\n        with:\n          name: build\n          path: dist/",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Paths",
+        "paragraphs": [
+          "path accepts globs and multiple lines:",
+          "The directory structure inside the artifact is relative to the least common ancestor of everything matched. This catches people out: uploading both coverage/ and junit.xml produces an archive with coverage/ and junit.xml at the root, but uploading only coverage/lcov.info produces an archive containing just lcov.info, with the coverage/ directory gone. If you need the structure preserved, upload the parent directory.",
+          "An upload that matches nothing succeeds with a warning by default, which means a typo in the path produces a green build and an empty artifact. Set if-no-files-found: error on anything you depend on later."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "with:\n          name: reports\n          path: |\n            coverage/\n            junit.xml\n            !coverage/tmp/**",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Retention and Cost",
+        "paragraphs": [
+          "retention-days defaults to 90 for public repositories and follows the repository or organisation setting otherwise, with a maximum of 90 (400 for enterprise). Artifact storage is billed on private repositories, and the bill is a function of size multiplied by days.",
+          "The practical consequence is that a workflow uploading a 500 MB build on every push to every branch, kept for the default period, is the most likely source of an unexpected Actions bill. Two habits prevent it:",
+          "Set a short retention for anything that is only needed within the run. A dist/ artifact whose only consumer is the next job needs retention-days: 1, not 90.",
+          "Upload only what you need. Uploading node_modules or a whole workspace directory happens more often than you would expect, usually from a path: . that was never narrowed.",
+          "Artifacts are also zipped during upload, so a directory of many small files compresses well while an already-compressed archive does not."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Artifacts or Cache?",
+        "paragraphs": [
+          "They look similar and solve different problems.",
+          "Use a cache for inputs that speed up a job and can be regenerated: dependency downloads, compiler caches. A cache miss is a slow build, not a broken one. Caches are keyed and shared across runs.",
+          "Use an artifact for outputs you need to keep or hand to another job: a compiled bundle, a test report, a container image tarball. An artifact is scoped to one workflow run and is retrievable from the run's page in the UI.",
+          "The distinguishing question is whether losing it breaks correctness or only speed. If a missing copy means the next job cannot proceed, it is an artifact."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Downloading Outside the Workflow",
+        "paragraphs": [
+          "Every run's page has an Artifacts section with download links, which is how a colleague gets the built binary without running anything. Artifacts are also reachable through the REST API, which is the supported way for an external system to collect build output.",
+          "One limitation to plan around: artifacts from a run cannot be downloaded through the UI until the whole run completes. A long-running workflow does not let you grab an early job's output while later jobs are still going."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "Why does my download say the artifact does not exist?",
+          "Four causes, in order of frequency: the producing job has not finished because needs: is missing, the names do not match exactly including case, the upload matched no files and produced nothing, or the upload used v3 while the download uses v4. The run's Artifacts section tells you whether it was created at all, which separates the upload problem from the download problem.",
+          "Can I upload an artifact from a failed job?",
+          "Yes, with if: always() on the upload step. This is the normal way to keep test reports and screenshots from a failing run, and without it the artifact is skipped along with everything else after the failure.",
+          "Do artifacts work across workflows?",
+          "Not with download-artifact directly, which is scoped to the current run. Fetching an artifact produced by a different workflow run requires the REST API, or a third-party action that wraps it.",
+          "How large can an artifact be?",
+          "Individual artifacts can be very large, but you are constrained by the repository's storage allowance and by upload time. In practice anything over a few hundred megabytes on every push is worth questioning.",
+          "Is an artifact a good way to pass a small value between jobs?",
+          "No. Use a job output for values, which is covered in the workflow syntax lesson. An artifact for a single string means an upload, a download and an unzip to move a few bytes."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "ls -la",
+        "explanation": "Core command for GitHub Actions Artifacts"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  },
+  "github-actions-matrix-builds": {
+    "track": "github-actions",
+    "slug": "github-actions-matrix-builds",
+    "title": "GitHub Actions Matrix Builds",
+    "subtitle": "Run one GitHub Actions job across many versions and platforms: matrix syntax, include and exclude, fail-fast, max-parallel and avoiding a runaway matrix.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing GitHub Actions Matrix Builds must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Run one GitHub Actions job across many versions and platforms: matrix syntax, include and exclude, fail-fast, max-parallel and avoiding a runaway matrix."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Run one GitHub Actions job across many versions and platforms: matrix syntax, include and exclude, fail-fast, max-parallel and avoiding a runaway matrix.",
+          "A matrix runs the same job many times with different inputs. It is how you test across language versions and operating systems without writing the job out repeatedly, and its main hazard is that the number of runs multiplies faster than people expect.",
+          "Verified against GitHub Actions as of September 2026."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "The Basic Form",
+        "paragraphs": [
+          "That is 3 operating systems times 3 Node versions, so 9 jobs. Each consumes minutes, and on a private repository the Windows jobs bill at twice the Linux rate while macOS bills at ten times. This matrix costs roughly 3 + 6 + 30, or 39 Linux-equivalent minutes per run, for what reads as a three-line configuration.",
+          "Note that runs-on reads from the matrix. Any key in strategy.matrix becomes available as matrix.<key> throughout the job, including in runs-on, if conditions and step inputs."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "jobs:\n  test:\n    runs-on: ${{ matrix.os }}\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest, macos-latest]\n        node: [18, 20, 22]\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node }}\n          cache: 'npm'\n      - run: npm ci\n      - run: npm test",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Trimming the Combinations",
+        "paragraphs": [
+          "The full cross product is rarely what you want. exclude removes specific combinations:",
+          "include adds a combination, or adds extra variables to an existing one:",
+          "The two behaviours of include are worth separating, because they surprise people. An include entry whose keys all match an existing combination adds variables to it: the node: 22 entry above does not create a tenth job, it gives the existing Node 22 job an experimental variable. An include entry introducing a new value, like node: 23, appends a new job.",
+          "A common pattern built on this is marking some combinations as allowed to fail:"
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest, macos-latest]\n        node: [18, 20, 22]\n        exclude:\n          # Only test the oldest Node on Linux.\n          - os: windows-latest\n            node: 18\n          - os: macos-latest\n            node: 18",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "fail-fast",
+        "paragraphs": [
+          "By default, fail-fast is true: the moment one matrix job fails, all the others are cancelled.",
+          "This is the right default for a pull-request gate, because you already know the answer is no and there is no reason to spend nine jobs' worth of minutes confirming it.",
+          "It is the wrong default when you want the full picture, for example on a nightly compatibility run where \"which versions broke\" is the actual question:",
+          "With fail-fast: false every combination runs to completion and you get a complete pass/fail grid."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "strategy:\n      fail-fast: false\n      matrix:\n        node: [18, 20, 22]",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "max-parallel",
+        "paragraphs": [
+          "max-parallel limits how many matrix jobs run at once:",
+          "Two reasons to use it. First, your account has a concurrency limit, and a wide matrix can consume the whole allowance so that other workflows queue behind it. Second, the jobs may contend over a shared external resource: three jobs writing to one test database will produce flakiness that looks like a code problem."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "strategy:\n      max-parallel: 2\n      matrix:\n        node: [18, 20, 22]",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Matrices from a File",
+        "paragraphs": [
+          "Hardcoding the matrix means editing the workflow to change what is tested. For anything that changes often, generate it:",
+          "fromJSON is what makes this work: the matrix must be an object, and a job output is always a string, so the string has to be parsed. The JSON needs to be compact, hence jq -c, because a multi-line value does not survive $GITHUB_OUTPUT without the heredoc delimiter syntax."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "jobs:\n  setup:\n    runs-on: ubuntu-latest\n    outputs:\n      matrix: ${{ steps.build.outputs.matrix }}\n    steps:\n      - uses: actions/checkout@v4\n      - id: build\n        run: echo \"matrix=$(jq -c . .github/versions.json)\" >> \"$GITHUB_OUTPUT\"\n\n  test:\n    needs: setup\n    strategy:\n      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo \"Testing ${{ matrix.node }}\"",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Naming the Jobs",
+        "paragraphs": [
+          "By default a matrix job is named after its combination, which becomes unreadable with several dimensions. name accepts expressions:",
+          "This matters beyond tidiness: required status checks are matched by job name, so a matrix whose names change when you add a dimension will break branch protection rules that referenced the old names."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "name: test (node ${{ matrix.node }}, ${{ matrix.os }})",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Keeping It Under Control",
+        "paragraphs": [
+          "Three questions worth asking of any matrix.",
+          "Does every combination tell you something different? Testing Node 18, 20 and 22 on three operating systems assumes platform-specific breakage is likely. For most pure-JavaScript libraries it is not, and Linux across three Node versions plus one Windows job at the current version catches nearly everything for a third of the cost.",
+          "Is this running on every push? A wide compatibility matrix belongs on a schedule or on release branches. The pull-request gate wants to be fast.",
+          "Are the slow combinations the ones you need? macOS runners are both the most expensive and usually the slowest to start. If the macOS job exists to catch a class of bug that has never occurred in your project, it is costing time for reassurance rather than information."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "How many matrix jobs can one workflow run?",
+          "The limit is 256 jobs per workflow run from a matrix. Hitting it usually means the matrix is generated and the generator is producing more combinations than intended.",
+          "Why did my other matrix jobs get cancelled?",
+          "fail-fast defaults to true, so one failure cancels the rest. Set fail-fast: false when you want every combination to report.",
+          "Can matrix jobs share state?",
+          "No more than any other jobs. Each matrix combination is a separate job on a separate runner. Passing results out means artifacts for files or job outputs for values, and a matrix job's outputs are awkward to consume because there are several of them; uploading per-combination artifacts and merging afterwards is usually cleaner.",
+          "How do I run a step only for one matrix combination?",
+          "An if on the step, for example if: matrix.os == 'ubuntu-latest'. This is the normal way to upload coverage exactly once rather than from every combination.",
+          "Does the cache work correctly across a matrix?",
+          "Only if the cache key includes the matrix dimensions. A key without matrix.node in it will restore the wrong version's dependencies into every job, which is covered in the caching lesson."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "ls -la",
+        "explanation": "Core command for GitHub Actions Matrix Builds"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  },
+  "github-actions-docker-build-push": {
+    "track": "github-actions",
+    "slug": "github-actions-docker-build-push",
+    "title": "Build and Push Docker Images with GitHub Actions",
+    "subtitle": "Build and push Docker images with GitHub Actions: set up Buildx, log in to GHCR or ECR, use layer caching that works, tag sensibly and build multi-arch.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing Build and Push Docker Images with GitHub Actions must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Build and push Docker images with GitHub Actions: set up Buildx, log in to GHCR or ECR, use layer caching that works, tag sensibly and build multi-arch."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Build and push Docker images with GitHub Actions: set up Buildx, log in to GHCR or ECR, use layer caching that works, tag sensibly and build multi-arch.",
+          "Building a container image is the most common non-trivial thing a pipeline does. The runner already has Docker installed, so a build is one command, and the parts worth getting right are caching, tagging and authentication.",
+          "Verified against docker/build-push-action@v6, docker/setup-buildx-action@v3 and docker/login-action@v3 as of September 2026."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Pushing to GitHub Container Registry",
+        "paragraphs": [
+          "GHCR is the path of least resistance from Actions, because authentication uses the token the workflow already has.",
+          "permissions: packages: write is not optional. Without it the push fails with a permission error even though login succeeded, because GITHUB_TOKEN defaults to read-only and login does not grant write.",
+          "secrets.GITHUB_TOKEN needs no configuration. It is injected automatically, scoped to this repository, and expires when the run ends. There is no reason to create a personal access token for GHCR pushes from the same repository."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "name: Image\n\non:\n  push:\n    branches: [main]\n\njobs:\n  image:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      packages: write\n\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: docker/setup-buildx-action@v3\n\n      - uses: docker/login-action@v3\n        with:\n          registry: ghcr.io\n          username: ${{ github.actor }}\n          password: ${{ secrets.GITHUB_TOKEN }}\n\n      - uses: docker/metadata-action@v5\n        id: meta\n        with:\n          images: ghcr.io/${{ github.repository }}\n          tags: |\n            type=sha,format=long\n            type=ref,event=branch\n            type=semver,pattern={{version}}\n\n      - uses: docker/build-push-action@v6\n        with:\n          context: .\n          push: true\n          tags: ${{ steps.meta.outputs.tags }}\n          labels: ${{ steps.meta.outputs.labels }}\n          cache-from: type=gha\n          cache-to: type=gha,mode=max",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Layer Caching",
+        "paragraphs": [
+          "A fresh runner has no image layers, so an uncached build rebuilds everything every time. type=gha uses the GitHub Actions cache backend, which is purpose-built for this:",
+          "mode=max caches intermediate layers as well as the final ones. The default, mode=min, caches only layers in the final image, which means a multi-stage build's expensive dependency-installation stage is not cached at all. For almost any multi-stage Dockerfile, mode=max is what you want.",
+          "This cache shares the repository's 10 GB allowance with every other cache, and image layers are large. A workflow caching several images across a matrix can evict its own entries, so watch the Actions caches page if you see erratic cache misses.",
+          "Do not use actions/cache with a /tmp/.buildx-cache directory, a pattern that circulates widely. It predates the gha backend, requires a manual cache-rotation dance to avoid unbounded growth, and is slower."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "cache-from: type=gha\n          cache-to: type=gha,mode=max",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Tagging",
+        "paragraphs": [
+          "docker/metadata-action generates tags from the event so you do not hand-roll expressions. The three rules above give you:",
+          "type=sha,format=long tags every build with the full commit SHA. This is the tag deployments should reference, because it is immutable and traceable to exactly one commit.",
+          "type=ref,event=branch gives you a moving main tag, useful for \"the current build\" without pinning.",
+          "type=semver,pattern={{version}} produces 1.2.3 when the run was triggered by a v1.2.3 tag, and produces nothing otherwise.",
+          "What is deliberately absent is latest. A latest tag that moves on every merge means a deployment cannot be reproduced, and rolling back requires finding which image latest used to point at. If you want it, metadata-action adds it with type=raw,value=latest,enable={{is_default_branch}}, which at least confines it to the default branch."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Multi-Architecture Builds",
+        "paragraphs": [
+          "If your images run on both x86 and ARM, for example on Graviton instances or Apple Silicon laptops:",
+          "QEMU emulation makes the non-native architecture build slowly, sometimes several times slower. For a heavy build the faster approach is one job per native runner architecture pushing by digest, then a final job combining them into a manifest list, at the cost of a more complex workflow.",
+          "Architecture mismatches are also a leading cause of a container that builds fine and then refuses to start. The exec format error page covers that specific failure."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "- uses: docker/setup-qemu-action@v3\n\n      - uses: docker/build-push-action@v6\n        with:\n          context: .\n          push: true\n          platforms: linux/amd64,linux/arm64\n          tags: ${{ steps.meta.outputs.tags }}",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Pushing to Amazon ECR",
+        "paragraphs": [
+          "ECR needs cloud credentials, and the right way to get them is OIDC rather than stored keys:",
+          "The trust relationship that makes role-to-assume work without a stored secret is the subject of the deploying to AWS with OIDC lesson.",
+          "Unlike Docker Hub and GHCR, an ECR repository must exist before you push: ECR does not create one on first push, and the resulting error names the repository rather than explaining that."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "permissions:\n      contents: read\n      id-token: write\n\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: aws-actions/configure-aws-credentials@v4\n        with:\n          role-to-assume: arn:aws:iam::111122223333:role/github-actions-ecr\n          aws-region: eu-west-1\n\n      - uses: aws-actions/amazon-ecr-login@v2\n        id: ecr\n\n      - uses: docker/build-push-action@v6\n        with:\n          context: .\n          push: true\n          tags: ${{ steps.ecr.outputs.registry }}/my-app:${{ github.sha }}",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Build Only on Pull Requests",
+        "paragraphs": [
+          "A pull request should verify the image builds without publishing it:",
+          "This matters more than it looks, because a pull_request run from a fork has no write access and no secrets, so a workflow that always pushes will fail on every external contribution."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "- uses: docker/build-push-action@v6\n        with:\n          context: .\n          push: ${{ github.event_name != 'pull_request' }}\n          tags: ${{ steps.meta.outputs.tags }}\n          cache-from: type=gha\n          cache-to: type=gha,mode=max",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "Do I need setup-buildx-action?",
+          "For cache-from and cache-to, yes. The default Docker builder does not support the cache exporters, so the cache options are silently ignored without Buildx. It is also required for platforms.",
+          "Why is my push denied when login succeeded?",
+          "For GHCR, almost always a missing permissions: packages: write. Login authenticates with a read-scoped token happily and the failure only appears at push time. For ECR, check that the IAM role has ecr:PutImage alongside the ecr:GetAuthorizationToken that login needs.",
+          "Should I build with docker build in a run step instead?",
+          "It works and you lose the cache exporters, multi-platform support and the metadata integration. A plain run: docker build is reasonable for a throwaway check and not for a publish pipeline.",
+          "How do I stop the registry filling up with commit-tagged images?",
+          "Configure a retention policy at the registry: an ECR lifecycle policy, or GHCR's package retention settings. Do not solve it by tagging less, because losing the immutable SHA tag costs you reproducible deployments.",
+          "Can I scan the image for vulnerabilities in the same workflow?",
+          "Yes, and the ordering matters: build with push: false and load: true so the image is available to the local daemon, scan it, then push in a later step conditional on the scan passing. Pushing first and scanning afterwards means the vulnerable image was publishable for the duration."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "ls -la",
+        "explanation": "Core command for Build and Push Docker Images with GitHub Actions"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  },
+  "github-actions-deploy-aws-oidc": {
+    "track": "github-actions",
+    "slug": "github-actions-deploy-aws-oidc",
+    "title": "Deploy to AWS from GitHub Actions with OIDC",
+    "subtitle": "Deploy to AWS from GitHub Actions without stored keys: create the OIDC provider, write the IAM trust policy claim by claim, scope sub and fix common errors.",
+    "duration": "10 min read",
+    "difficulty": "Beginner",
+    "playgroundSlug": "docker",
+    "verifiedFacts": [
+      "Production workloads utilizing Deploy to AWS from GitHub Actions with OIDC must follow least-privilege security boundaries and declarative state.",
+      "Verified against standard cloud-native specifications and official Github-Actions documentation.",
+      "Hands-on commands can be executed immediately in our Github-Actions in-browser playground."
+    ],
+    "keyConcepts": [
+      {
+        "term": "Architecture Foundation",
+        "explanation": "Deploy to AWS from GitHub Actions without stored keys: create the OIDC provider, write the IAM trust policy claim by claim, scope sub and fix common errors."
+      },
+      {
+        "term": "Operational Standard",
+        "explanation": "Ensure declarative state, idempotent changes, and version control when deploying Github-Actions."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Introduction & Overview",
+        "paragraphs": [
+          "Deploy to AWS from GitHub Actions without stored keys: create the OIDC provider, write the IAM trust policy claim by claim, scope sub and fix common errors.",
+          "Storing AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as repository secrets works, and it means a long-lived credential to your AWS account exists in a system outside AWS, never expires on its own, and is readable by any workflow in the repository. OpenID Connect removes the stored key entirely: the workflow presents a short-lived token that GitHub signs, AWS verifies it against GitHub's public keys, and returns temporary credentials.",
+          "There is nothing to rotate and nothing to leak. This is the single biggest security improvement available to most pipelines.",
+          "Verified against aws-actions/configure-aws-credentials@v4 as of September 2026."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "How the Exchange Works",
+        "paragraphs": [
+          "Four steps, and understanding them makes every error message legible.",
+          "The workflow requests a JSON Web Token from GitHub's OIDC endpoint. This requires permissions: id-token: write, which is what allows a job to mint one.",
+          "The token contains claims describing the run: iss is https://token.actions.githubusercontent.com, aud is the intended audience, and sub identifies the repository and context, for example repo:my-org/my-repo:ref:refs/heads/main.",
+          "The action calls sts:AssumeRoleWithWebIdentity, presenting the token.",
+          "AWS validates the signature against GitHub's published keys, checks the token's claims against the role's trust policy, and if they match returns credentials valid for one hour by default.",
+          "The security property comes from the sub claim: because GitHub controls it and it names your repository and ref, a token from a different repository cannot satisfy a trust policy scoped to yours."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Creating the Identity Provider",
+        "paragraphs": [
+          "Once per AWS account:",
+          "Older guides include a --thumbprint-list with a certificate fingerprint. AWS stopped requiring that for this provider in 2023 and now validates against trusted root CAs, so a hardcoded thumbprint is at best redundant and at worst a future outage when the certificate rotates. If you have one in Terraform, it is safe to drop.",
+          "Check whether the provider already exists before creating a second one:"
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "aws iam create-open-id-connect-provider \\\n  --url https://token.actions.githubusercontent.com \\\n  --client-id-list sts.amazonaws.com",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "The Trust Policy",
+        "paragraphs": [
+          "This is where nearly all the difficulty lives.",
+          "Every element earns its place.",
+          "The aud condition must be present. Without it, any GitHub Actions token from any repository on GitHub satisfies the principal, and the only thing standing between your account and the world is the sub condition. Both conditions, always.",
+          "The sub condition is what scopes the role. The format is repo:OWNER/REPO: followed by a context specifier:",
+          "Being precise here is the whole point. repo:my-org/my-repo:* permits any branch, any tag and any pull request in that repository, which means anyone who can push a branch can assume your deployment role. That is a materially weaker posture than the stored key you were trying to improve on.",
+          "Scope to a branch for a deploy role, and prefer environment:production when you have a protected environment, because that adds the approval gate to the credential itself.",
+          "For a role used by several branches, StringLike with a narrow pattern:",
+          "Note that StringEquals does not expand wildcards. A * in a StringEquals value is a literal asterisk, and the resulting policy matches nothing at all while looking correct."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Federated\": \"arn:aws:iam::111122223333:oidc-provider/token.actions.githubusercontent.com\"\n      },\n      \"Action\": \"sts:AssumeRoleWithWebIdentity\",\n      \"Condition\": {\n        \"StringEquals\": {\n          \"token.actions.githubusercontent.com:aud\": \"sts.amazonaws.com\"\n        },\n        \"StringLike\": {\n          \"token.actions.githubusercontent.com:sub\": \"repo:my-org/my-repo:ref:refs/heads/main\"\n        }\n      }\n    }\n  ]\n}",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "The Workflow",
+        "paragraphs": [
+          "id-token: write at the top level, or on the job. Omitting it is the most common cause of failure, and the error is unhelpful because the action cannot request a token at all.",
+          "role-session-name is worth setting. It appears in CloudTrail, so gha-12345678 tells you which run performed an action months later. The default is generic and makes audit trails harder to read.",
+          "aws-region is required even for global services, because STS needs an endpoint."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "name: Deploy\n\non:\n  push:\n    branches: [main]\n\npermissions:\n  contents: read\n  id-token: write\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    environment: production\n    steps:\n      - uses: actions/checkout@v4\n\n      - uses: aws-actions/configure-aws-credentials@v4\n        with:\n          role-to-assume: arn:aws:iam::111122223333:role/github-actions-deploy\n          role-session-name: gha-${{ github.run_id }}\n          aws-region: eu-west-1\n\n      - run: aws sts get-caller-identity\n      - run: aws s3 sync ./dist s3://my-bucket --delete",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "The Role's Permissions",
+        "paragraphs": [
+          "The trust policy says who may assume the role. A separate permissions policy says what the role can do, and it should be minimal:",
+          "Both ARN forms are needed: the bucket ARN for ListBucket, and the object ARN with /* for object operations. A policy with only the /* form produces an access-denied on the list call that s3 sync performs first, which reads as a credentials problem and is not one.",
+          "If you are debugging an access denial, the AWS access denied page covers how to work out which policy said no, and the IAM roles and policies tutorial covers the evaluation order."
+        ],
+        "codeBlock": {
+          "language": "bash",
+          "code": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\"s3:PutObject\", \"s3:DeleteObject\", \"s3:ListBucket\"],\n      \"Resource\": [\n        \"arn:aws:s3:::my-bucket\",\n        \"arn:aws:s3:::my-bucket/*\"\n      ]\n    }\n  ]\n}",
+          "description": "Architecture specification"
+        }
+      },
+      {
+        "title": "Reading the Errors",
+        "paragraphs": [
+          "Not authorized to perform sts:AssumeRoleWithWebIdentity means the token reached AWS and the trust policy rejected it. The claims did not match. Print the intended subject and compare it character by character against the policy, including the branch name and the repo: prefix. The OIDC could not assume role page lists the specific mismatches in order of likelihood.",
+          "Credentials could not be loaded means no token was requested, which is id-token: write missing.",
+          "No OpenIDConnect provider found means the provider does not exist in that account, or the ARN in the trust policy names a different account.",
+          "Access denied on the AWS command, not on the assume-role, means the exchange succeeded and the role's permissions policy is too narrow. aws sts get-caller-identity as a first step separates these two cases immediately, which is why it is in the workflow above."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Session Duration",
+        "paragraphs": [
+          "Credentials last one hour by default. For a longer deployment, role-duration-seconds raises it up to the role's MaxSessionDuration, which itself defaults to one hour and must be raised on the role before the action can request more.",
+          "Prefer keeping it short. A deployment needing more than an hour of continuously valid credentials is usually a deployment that should be broken into stages."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Frequently Asked Questions",
+        "paragraphs": [
+          "Does this work for pull requests from forks?",
+          "No, and that is correct. A fork pull request gets no id-token write permission, so no token can be minted. Deployment belongs on a push to a protected branch, not on a pull request.",
+          "Can one role serve several repositories?",
+          "Yes, with multiple values in the sub condition, and think about whether you want to. A role assumable by several repositories means a compromise of the least protected one grants everything the role can do. Separate roles per repository cost nothing and contain the blast radius.",
+          "Do I still need an IAM user anywhere?",
+          "Not for GitHub Actions. Once OIDC is in place, delete the access keys you were using and the IAM user if it exists only for CI. Leaving them active means the weaker path still works.",
+          "Is this specific to AWS?",
+          "No. The same GitHub token works with Google Cloud Workload Identity Federation and with Azure federated credentials. The token and the claims are identical; only the verifying side differs.",
+          "How do I test the trust policy without deploying?",
+          "Make the first job do nothing but aws sts get-caller-identity. It fails if the trust relationship is wrong and succeeds cheaply if it is right, and it prints the assumed role ARN so you can confirm you got the role you intended."
+        ],
+        "codeBlock": null
+      },
+      {
+        "title": "Continue Learning",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Explore Related Topics",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Try the Tool",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "When it breaks",
+        "paragraphs": [],
+        "codeBlock": null
+      },
+      {
+        "title": "Related Resources",
+        "paragraphs": [],
+        "codeBlock": null
+      }
+    ],
+    "quickReference": [
+      {
+        "command": "aws iam create-open-id-connect-provider \\",
+        "explanation": "Command: aws iam create-open-id-connect-provider \\"
+      },
+      {
+        "command": "aws iam list-open-id-connect-providers",
+        "explanation": "Command: aws iam list-open-id-connect-providers"
+      }
+    ],
+    "commonPitfalls": [
+      "Deploying changes to production without dry-running or checking execution plans.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
+      "Failing to pin immutable versions or image digests in production manifests."
+    ]
+  }
+}

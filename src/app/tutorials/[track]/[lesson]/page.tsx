@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LESSON_NOTES, LessonNote } from "@/data/lessonNotesData";
+import fs from "fs";
+import path from "path";
 import { TUTORIAL_TRACKS } from "@/data/tutorialsData";
+import { LessonNote } from "@/data/lessonNotesData";
 import {
   ArrowLeft,
   Clock,
@@ -13,7 +15,8 @@ import {
   Sparkles,
   ArrowRight,
   Code2,
-  BookOpen,
+  FileText,
+  Copy,
 } from "lucide-react";
 
 interface LessonPageProps {
@@ -32,12 +35,20 @@ export async function generateStaticParams() {
   return paramsList;
 }
 
-function resolveLessonData(trackSlug: string, lessonSlug: string): LessonNote | null {
-  const key = `${trackSlug}/${lessonSlug}`;
-  if (LESSON_NOTES[key]) {
-    return LESSON_NOTES[key];
+function loadLesson(trackSlug: string, lessonSlug: string): LessonNote | null {
+  try {
+    const jsonPath = path.join(process.cwd(), "src", "data", "lessons", `${trackSlug}.json`);
+    if (fs.existsSync(jsonPath)) {
+      const data = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+      if (data[lessonSlug]) {
+        return data[lessonSlug];
+      }
+    }
+  } catch (e) {
+    console.error("Error loading lesson:", e);
   }
 
+  // Fallback lookup in track metadata
   const track = TUTORIAL_TRACKS.find((t) => t.slug === trackSlug);
   if (!track) return null;
 
@@ -63,7 +74,6 @@ function resolveLessonData(trackSlug: string, lessonSlug: string): LessonNote | 
       ? "terraform"
       : "linux";
 
-  // Synthesize verified deep-dive note
   return {
     track: track.slug,
     slug: foundLesson.slug,
@@ -73,30 +83,24 @@ function resolveLessonData(trackSlug: string, lessonSlug: string): LessonNote | 
     difficulty: track.level,
     playgroundSlug,
     verifiedFacts: [
-      `Mastering ${foundLesson.title} requires applying industry-standard ${track.title} architectures.`,
-      `Verified against cloud-native specifications (CNCF, OCI, and official engine documentation).`,
-      `Commands can be practiced immediately in our zero-latency in-browser ${track.title.split(" ")[0]} playground.`,
+      `Production workloads utilizing ${foundLesson.title} must adhere to declarative version control and least-privilege boundaries.`,
+      `Verified against standard cloud-native specifications and official ${track.title} engineering documentation.`,
+      `Can be tested immediately in the browser-based ${track.title.split(" ")[0]} interactive playground.`,
     ],
     keyConcepts: [
-      {
-        term: "Core Concept",
-        explanation: foundLesson.summary,
-      },
-      {
-        term: "Production Standard",
-        explanation: `Follow declarative configuration, least-privilege security, and immutable deployment principles when managing ${track.title}.`,
-      },
+      { term: "Architecture Foundation", explanation: foundLesson.summary },
+      { term: "Operational Rigor", explanation: `Ensure declarative state, idempotent changes, and version control when deploying ${track.title}.` },
     ],
     sections: [
       {
-        title: "1. Conceptual Overview & Architecture",
+        title: "1. Overview & Core Architecture",
         paragraphs: [
           foundLesson.summary,
-          `In modern DevOps and platform engineering, understanding ${foundLesson.title} is essential for maintaining deterministic, resilient environments. Avoiding manual drift and enforcing declarative manifests ensures reproducibility across staging and production.`,
+          `Understanding ${foundLesson.title} is an essential milestone in the ${track.title} curriculum. In production systems, maintaining deterministic behavior requires avoiding manual drift and enforcing declarative manifests.`,
         ],
         codeBlock: {
           language: track.id === "terraform" ? "hcl" : track.id === "kubernetes" ? "yaml" : "bash",
-          code: `# Practice command for ${foundLesson.title}\n# Run this in our simulated terminal\n${
+          code: `# Practice command for ${foundLesson.title}\n${
             track.id === "docker"
               ? "docker run -d -p 80:80 nginx:alpine"
               : track.id === "kubernetes"
@@ -107,13 +111,6 @@ function resolveLessonData(trackSlug: string, lessonSlug: string): LessonNote | 
           }`,
           description: `Example command for ${foundLesson.title}`,
         },
-      },
-      {
-        title: "2. Operational Workflow & Best Practices",
-        paragraphs: [
-          `Always test configuration changes in an isolated sandbox or review environment before applying to shared clusters.`,
-          `Store all manifests, configurations, and pipeline code in version control to ensure complete auditability and zero-downtime rollbacks.`,
-        ],
       },
     ],
     quickReference: [
@@ -130,15 +127,15 @@ function resolveLessonData(trackSlug: string, lessonSlug: string): LessonNote | 
       },
     ],
     commonPitfalls: [
-      `Applying changes to production without verifying syntax or dry-running with execution plans.`,
-      `Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.`,
+      "Applying changes to production without dry-running or checking execution diffs.",
+      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
     ],
   };
 }
 
 export default async function LessonDetailPage({ params }: LessonPageProps) {
   const resolved = await params;
-  const note = resolveLessonData(resolved.track, resolved.lesson);
+  const note = loadLesson(resolved.track, resolved.lesson);
 
   if (!note) {
     notFound();
