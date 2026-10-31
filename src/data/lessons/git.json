@@ -56,7 +56,7 @@
       {
         "title": "How Git Stores History",
         "paragraphs": [
-          "Git does not track \u201cthe latest file only.\u201d It stores snapshots of your project over time. When you create a commit, Git records the state of tracked files at that moment.",
+          "Git does not track “the latest file only.” It stores snapshots of your project over time. When you create a commit, Git records the state of tracked files at that moment.",
           "A simple workflow looks like this:",
           "Later, after editing the file again:",
           "Now you have two checkpoints. You can inspect either version whenever needed."
@@ -146,48 +146,28 @@
           "Six carry most of the weight. A repository is the project plus its complete history. A commit is one recorded snapshot with a message and a parent. A branch is a movable pointer to a commit, which is why creating one is instant. HEAD is where you currently are. A remote is another copy of the repository, conventionally named origin. The staging area is the draft of your next commit, and it is the concept that makes the add-then-commit two-step make sense."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git log --oneline",
-        "explanation": "Command: git log --oneline"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git diff HEAD~1 HEAD -- deploy.sh",
-        "explanation": "Command: git diff HEAD~1 HEAD -- deploy.sh"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git init",
-        "explanation": "Command: git init"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git add app.js",
-        "explanation": "Command: git add app.js"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git commit -m \"Add initial app file\"",
-        "explanation": "Command: git commit -m \"Add initial app file\""
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -392,48 +372,28 @@
           "Add a .gitattributes file to the repository with * text=auto so Git normalises text files to LF in history while checking them out natively, plus explicit rules for files that must stay LF, *.sh text eol=lf in particular, since a shell script with CRLF fails inside a Linux container with a baffling \"not found\". Committing .gitattributes is better than relying on each person's core.autocrlf setting, because it makes the behaviour a property of the project rather than of whoever cloned it."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git --version",
-        "explanation": "Command: git --version"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --global user.name \"Vish Patel\"",
-        "explanation": "Command: git config --global user.name \"Vish Patel\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --global user.email \"vish@example.com\"",
-        "explanation": "Command: git config --global user.email \"vish@example.com\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --global --list",
-        "explanation": "Command: git config --global --list"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --global core.editor \"code --wait\"",
-        "explanation": "Command: git config --global core.editor \"code --wait\""
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -487,7 +447,7 @@
         "paragraphs": [
           "Use git init when you want to begin tracking a folder that is not yet a repository.",
           "This creates a hidden .git directory that stores repository metadata and history.",
-          "Check Git\u2019s view of the folder:",
+          "Check Git’s view of the folder:",
           "Git will tell you that README.md is untracked, which means Git sees the file but is not yet including it in history."
         ],
         "codeBlock": {
@@ -500,7 +460,7 @@
         "title": "Copying an Existing Repository with git clone",
         "paragraphs": [
           "Use git clone when a repository already exists somewhere else, such as GitHub.",
-          "A clone downloads the full repository history, not just the latest files. That is one of the strengths of Git\u2019s distributed model."
+          "A clone downloads the full repository history, not just the latest files. That is one of the strengths of Git’s distributed model."
         ],
         "codeBlock": {
           "language": "bash",
@@ -526,7 +486,7 @@
           "The staging area lets you choose what goes into the next commit.",
           "Stage multiple files:",
           "Stage everything changed in the current directory:",
-          "You should now see those files listed under \u201cChanges to be committed.\u201d",
+          "You should now see those files listed under “Changes to be committed.”",
           "Suppose you updated README.md and also changed app.js, but only the documentation is ready. Staging lets you commit the README change alone instead of mixing unrelated work into one commit."
         ],
         "codeBlock": {
@@ -642,48 +602,28 @@
           "Because no message was supplied, so Git asks for one. Passing -m \"your message\" writes it inline and skips the editor, which is what most people use day to day. If the editor opens and you are stuck in Vim, :wq saves and :q! aborts the commit. Set something you know with git config --global core.editor \"code --wait\" for VS Code or \"nano\" for nano. Reserve the editor for commits that deserve a body explaining why, which -m makes awkward."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "mkdir notes-app",
-        "explanation": "Command: mkdir notes-app"
+        "explanation": "CLI execution command for mkdir"
       },
       {
         "command": "git init",
-        "explanation": "Command: git init"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git status",
-        "explanation": "Command: git status"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git clone https://github.com/example/devops-notes.git",
-        "explanation": "Command: git clone https://github.com/example/devops-notes.git"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git add README.md",
-        "explanation": "Command: git add README.md"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -727,7 +667,7 @@
         "title": "What a Branch Really Is",
         "paragraphs": [
           "A branch in Git is a movable pointer to a commit. Instead of copying your whole project into a new folder, Git lets you create a lightweight branch and continue work there.",
-          "This is one of Git\u2019s biggest strengths. You can build a feature, fix a bug, or test an idea without disturbing the main line of development.",
+          "This is one of Git’s biggest strengths. You can build a feature, fix a bug, or test an idea without disturbing the main line of development.",
           "Tip: A branch is not a second copy of the project. It is a label that points to a specific place in commit history."
         ],
         "codeBlock": null
@@ -773,7 +713,7 @@
         "title": "Switching Between Branches",
         "paragraphs": [
           "Move to an existing branch:",
-          "When you switch branches, Git updates your working directory to match the selected branch\u2019s latest commit.",
+          "When you switch branches, Git updates your working directory to match the selected branch’s latest commit.",
           "After switching back to main, that change is no longer visible there because it belongs to the feature branch."
         ],
         "codeBlock": {
@@ -785,7 +725,7 @@
       {
         "title": "Understanding HEAD",
         "paragraphs": [
-          "HEAD is Git\u2019s way of saying \u201cyour current position.\u201d Most of the time, HEAD points to the branch you are currently on.",
+          "HEAD is Git’s way of saying “your current position.” Most of the time, HEAD points to the branch you are currently on.",
           "If you are on main, HEAD points to main, and main points to the latest commit on that branch.",
           "You can inspect recent history with:",
           "You may see output like:",
@@ -815,7 +755,7 @@
         "title": "Detached HEAD Explained",
         "paragraphs": [
           "A detached HEAD happens when HEAD points directly to a commit instead of a branch.",
-          "Now you are no longer \u201con\u201d main or feature/login. You are looking at a specific past commit.",
+          "Now you are no longer “on” main or feature/login. You are looking at a specific past commit.",
           "This can be useful for inspection, testing, or reproducing an old state. But if you make commits here, they are not attached to a branch unless you create one.",
           "If you decide to keep that work, create a branch immediately:",
           "That gives the new commits a proper branch name and keeps them easy to find."
@@ -885,48 +825,28 @@
           "No, and this is why Git branching is fast where older systems were slow. A branch is a 41-byte file containing a commit hash. A pointer, nothing more. Creating one writes that file and does not touch your working directory at all, which is why git switch -c is instant even in a huge repository. Switching branches then updates only the files that actually differ between the two commits."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git branch",
-        "explanation": "Command: git branch"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git branch -a",
-        "explanation": "Command: git branch -a"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git branch feature/login",
-        "explanation": "Command: git branch feature/login"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git switch -c feature/login",
-        "explanation": "Command: git switch -c feature/login"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git switch main",
-        "explanation": "Command: git switch main"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -986,7 +906,7 @@
           "Imagine this sequence:",
           "Merging can look like this:",
           "Git may respond with a fast-forward update because there is no need to create a separate merge commit.",
-          "The histories form a straight line. main can just \u201ccatch up\u201d to the feature branch."
+          "The histories form a straight line. main can just “catch up” to the feature branch."
         ],
         "codeBlock": {
           "language": "bash",
@@ -1053,7 +973,7 @@
           "This helps you confirm whether Git created a fast-forward result or a merge commit.",
           "You can also test the application after resolving conflicts:",
           "Or if it is a shell-based project:",
-          "Validation matters because a \u201cclean\u201d merge is not automatically a correct merge."
+          "Validation matters because a “clean” merge is not automatically a correct merge."
         ],
         "codeBlock": {
           "language": "bash",
@@ -1120,48 +1040,28 @@
           "Squash merges suit most teams: each pull request becomes one commit on main, so history reads as a list of shipped changes and reverting is trivial, at the cost of losing the individual commits. Merge commits preserve everything and keep the branch visible, which matters when you need the full record for audit or bisecting inside a feature. Rebase merges give a linear history with every commit kept, which is tidy but rewrites hashes. Pick one and enforce it in the repository settings rather than leaving it per-developer."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git switch main",
-        "explanation": "Command: git switch main"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git merge feature/login",
-        "explanation": "Command: git merge feature/login"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git merge feature/docs",
-        "explanation": "Command: git merge feature/docs"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git merge --no-ff feature/login",
-        "explanation": "Command: git merge --no-ff feature/login"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git merge feature/config-update",
-        "explanation": "Command: git merge feature/config-update"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -1269,7 +1169,7 @@
       {
         "title": "Squashing Commits",
         "paragraphs": [
-          "Suppose your history contains several tiny \u201cfix typo\u201d commits that belong with the main feature. Interactive rebase can combine them.",
+          "Suppose your history contains several tiny “fix typo” commits that belong with the main feature. Interactive rebase can combine them.",
           "After saving, Git combines the commits and lets you write a final commit message.",
           "This is useful before opening a pull request because reviewers often prefer a clean, logical commit history.",
           "Note: Squashing is best used on your own unpublished work. Avoid rewriting shared history unless your team explicitly agrees on that workflow."
@@ -1338,48 +1238,28 @@
           "It fetches the remote branch and replays your local commits on top of it, instead of creating a merge commit. Without it, a plain git pull on a branch that has moved on both sides produces a \"Merge branch 'main' of ...\" commit, and a busy repository fills with them. Setting git config --global pull.rebase true makes it the default and keeps history linear. It is safe for your own unpushed commits, which is exactly what git pull is dealing with."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git switch feature/login",
-        "explanation": "Command: git switch feature/login"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git rebase main",
-        "explanation": "Command: git rebase main"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git status",
-        "explanation": "Command: git status"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git add app.js",
-        "explanation": "Command: git add app.js"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git rebase --continue",
-        "explanation": "Command: git rebase --continue"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -1574,48 +1454,28 @@
           "git remote set-url origin git@github.com:user/repo.git, then confirm with git remote -v. This is the usual fix when HTTPS pushes start asking for a password that no longer works. GitHub stopped accepting account passwords for Git operations, so HTTPS needs a personal access token while SSH uses your key. Switching to SSH avoids the credential prompt entirely once your key is added to the account."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git remote -v",
-        "explanation": "Command: git remote -v"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git remote add origin https://github.com/example/devops-notes.git",
-        "explanation": "Command: git remote add origin https://github.com/example/devops-notes.git"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git remote remove origin",
-        "explanation": "Command: git remote remove origin"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git remote rename origin upstream",
-        "explanation": "Command: git remote rename origin upstream"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git fetch origin",
-        "explanation": "Command: git fetch origin"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -1659,7 +1519,7 @@
         "title": "What Git Stash Is For",
         "paragraphs": [
           "Git stash lets you temporarily set aside local changes without committing them. It is useful when you are halfway through one task and suddenly need to switch branches to fix something urgent.",
-          "Instead of creating a messy \u201cwork in progress\u201d commit, you can stash the changes, do the urgent task, and then restore your original work later.",
+          "Instead of creating a messy “work in progress” commit, you can stash the changes, do the urgent task, and then restore your original work later.",
           "Tip: Stash is great for short-term interruptions. For longer work, a real branch and commit are usually safer."
         ],
         "codeBlock": null
@@ -1823,48 +1683,28 @@
           "Whenever the work will outlive the next half hour. A stash is an unnamed, unordered pile that is easy to forget and easy to clear, and git stash list after a busy fortnight is nobody's friend. For anything you intend to return to, commit it on a branch, even as a scrappy \"wip\" commit you later amend or squash. Stash is at its best for exactly what it was designed for: parking a few minutes of work to pull, switch branch for a quick fix, or check something on a clean tree."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git status",
-        "explanation": "Command: git status"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git stash",
-        "explanation": "Command: git stash"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git stash list",
-        "explanation": "Command: git stash list"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git stash apply stash@{0}",
-        "explanation": "Command: git stash apply stash@{0}"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git stash apply",
-        "explanation": "Command: git stash apply"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -2043,48 +1883,28 @@
           "git clean -fd deletes untracked files and directories, with -f required because Git refuses to do something this destructive without it, and -d extending it to directories. Always run git clean -nd first: -n is a dry run that lists exactly what would be removed. By default .gitignored files are left alone, and -x includes them. Useful for wiping build output and node_modules, and a fast way to delete a local .env you meant to keep."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git restore app.js",
-        "explanation": "Command: git restore app.js"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git restore --staged app.js",
-        "explanation": "Command: git restore --staged app.js"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git add config.env",
-        "explanation": "Command: git add config.env"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git restore --staged config.env",
-        "explanation": "Command: git restore --staged config.env"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git reset --soft HEAD~1",
-        "explanation": "Command: git reset --soft HEAD~1"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -2270,48 +2090,28 @@
           "A tag is the Git primitive; a \"release\" on GitHub or GitLab is a layer on top of a tag, adding notes and downloadable artefacts. The convention is a v prefix and semantic versioning, v1.4.2, where the major number changes on a breaking change, the minor on a backwards-compatible feature, and the patch on a fix. Most release automation, including semantic-release, works by reading commits since the last tag and creating the next one, so consistent tagging is what makes the automation possible."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git tag v1.0.0",
-        "explanation": "Command: git tag v1.0.0"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git tag -a v1.0.0 -m \"Release version 1.0.0\"",
-        "explanation": "Command: git tag -a v1.0.0 -m \"Release version 1.0.0\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git tag",
-        "explanation": "Command: git tag"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git tag -l \"v1.*\"",
-        "explanation": "Command: git tag -l \"v1.*\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git log --oneline",
-        "explanation": "Command: git log --oneline"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -2362,7 +2162,7 @@
       {
         "title": "Forking vs Cloning",
         "paragraphs": [
-          "A fork is your own server-side copy of someone else\u2019s repository on GitHub. A clone is your local copy on your machine.",
+          "A fork is your own server-side copy of someone else’s repository on GitHub. A clone is your local copy on your machine.",
           "If you contribute to an open source project, you often fork first, then clone your fork:",
           "Then add the original repository as upstream:",
           "This lets you fetch changes from the source project while pushing to your own fork.",
@@ -2507,48 +2307,28 @@
           "Correctness first, then whether the change is understandable without the author present, then tests covering the behaviour rather than the implementation. Leave formatting to a linter. A review that spends its attention on spacing has spent it on the thing a tool should have handled. Be specific and direct about problems, ask rather than assert when you may have missed context, and distinguish blocking concerns from suggestions so the author knows what actually needs to change."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git clone https://github.com/your-user/project.git",
-        "explanation": "Command: git clone https://github.com/your-user/project.git"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git remote add upstream https://github.com/original-owner/project.git",
-        "explanation": "Command: git remote add upstream https://github.com/original-owner/project.git"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git remote -v",
-        "explanation": "Command: git remote -v"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git switch main",
-        "explanation": "Command: git switch main"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git fetch upstream",
-        "explanation": "Command: git fetch upstream"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -2632,7 +2412,7 @@
           "git reflog records where HEAD and branch references have pointed over time. It is a lifesaver when you accidentally lose track of commits after reset, rebase, or checkout operations.",
           "You may see entries like:",
           "If you hard-reset by mistake, reflog can help you recover:",
-          "Note: Reflog tracks your local reference movement. It is one of the best recovery tools for \u201cI think I lost my commit\u201d moments."
+          "Note: Reflog tracks your local reference movement. It is one of the best recovery tools for “I think I lost my commit” moments."
         ],
         "codeBlock": {
           "language": "bash",
@@ -2689,11 +2469,6 @@
         "codeBlock": null
       },
       {
-        "title": "When to Reach for These Tools",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "What You Should Remember",
         "paragraphs": [
           "Advanced Git is about control and recovery. cherry-pick moves specific changes, bisect finds the commit that broke something, and reflog helps recover from history mistakes. Submodules, hooks, and aliases extend Git into larger workflows and better habits.",
@@ -2733,48 +2508,28 @@
           "Three, in this order. git reflog, because it turns most disasters into inconveniences and takes five minutes to understand. git bisect, because nothing else finds a regression in a long history nearly as fast. And git log -S, because \"when did this string appear\" is a question you ask constantly. Cherry-pick and interactive rebase are valuable but situational, and submodules are best avoided until you have a specific need for them."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git switch release/1.2",
-        "explanation": "Command: git switch release/1.2"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git cherry-pick a1b2c3d",
-        "explanation": "Command: git cherry-pick a1b2c3d"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git bisect start",
-        "explanation": "Command: git bisect start"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git bisect bad",
-        "explanation": "Command: git bisect bad"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git bisect good v1.0.0",
-        "explanation": "Command: git bisect good v1.0.0"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -2932,44 +2687,24 @@
           "Install it as a dev dependency, run npx husky init, and it creates a .husky directory and a prepare script so the hooks install automatically after npm install. Add a hook by writing the command into .husky/pre-commit, commonly npx lint-staged, and commit that file. Because .husky is tracked, everyone gets the same hooks on their next install, which is the whole problem raw .git/hooks cannot solve."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "chmod +x .git/hooks/pre-commit",
-        "explanation": "Command: chmod +x .git/hooks/pre-commit"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "cat > .git/hooks/pre-commit <<'HOOK'",
-        "explanation": "Command: cat > .git/hooks/pre-commit <<'HOOK'"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "cat > .git/hooks/commit-msg <<'HOOK'",
-        "explanation": "Command: cat > .git/hooks/commit-msg <<'HOOK'"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "chmod +x .git/hooks/commit-msg",
-        "explanation": "Command: chmod +x .git/hooks/commit-msg"
+        "explanation": "CLI execution command for chmod"
       }
     ],
     "commonPitfalls": [
@@ -3075,11 +2810,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick Comparison",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "What You Should Remember",
         "paragraphs": [
           "GitFlow adds structure for releases and hotfixes, GitHub Flow keeps things simple around main and pull requests, and Trunk-Based Development pushes toward very fast integration with short-lived branches and feature flags. The best workflow is the one that matches your release cadence, team size, and automation maturity."
@@ -3112,48 +2842,28 @@
           "They are what makes the workflow actually happen rather than being a document people mean to follow. On main, typical rules require a pull request rather than a direct push, at least one approving review, passing status checks, and an up-to-date branch before merge. Setting the merge strategy, squash, merge commit or rebase, at the repository level is worth doing too, since leaving it per-developer produces a history with all three. Enforce it centrally; local hooks can be bypassed with --no-verify."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git switch develop",
-        "explanation": "Command: git switch develop"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git switch -c feature/add-audit-logs",
-        "explanation": "Command: git switch -c feature/add-audit-logs"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git switch -c release/2.4.0",
-        "explanation": "Command: git switch -c release/2.4.0"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git switch main",
-        "explanation": "Command: git switch main"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git switch -c hotfix/fix-payment-timeout",
-        "explanation": "Command: git switch -c hotfix/fix-payment-timeout"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -3321,48 +3031,28 @@
           "Four are worth setting immediately. init.defaultBranch main, so new repositories match what hosting platforms expect. pull.rebase true, which stops a plain git pull littering history with merge commits. fetch.prune true, so branches deleted upstream disappear from your local list. And core.editor set to something you can exit, which spares you meeting Vim unexpectedly. Adding rerere.enabled true pays for itself the first time you rebase through the same conflict twice."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git config --list",
-        "explanation": "Command: git config --list"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --list --show-origin",
-        "explanation": "Command: git config --list --show-origin"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --global user.name \"Vishvesh Patel\"",
-        "explanation": "Command: git config --global user.name \"Vishvesh Patel\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --global user.email \"vishvesh@example.com\"",
-        "explanation": "Command: git config --global user.email \"vishvesh@example.com\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git config --global user.name",
-        "explanation": "Command: git config --global user.name"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -3538,48 +3228,28 @@
           "Only when you genuinely need to pin another repository at a known commit and cannot use a package manager. A published package, npm, PyPI, Go modules, a Terraform module registry, solves the same problem with far better tooling, versioning and caching. Submodules earn their place for vendored forks, shared configuration repositories, and monorepo-adjacent setups where no packaging exists. If a package manager can express the dependency, use it instead."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git submodule add https://github.com/example/shared-lib.git libs/shared-lib",
-        "explanation": "Command: git submodule add https://github.com/example/shared-lib.git libs/shared-lib"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git add .gitmodules libs/shared-lib",
-        "explanation": "Command: git add .gitmodules libs/shared-lib"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git commit -m \"Add shared-lib as a submodule\"",
-        "explanation": "Command: git commit -m \"Add shared-lib as a submodule\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git clone --recurse-submodules https://github.com/example/platform.git",
-        "explanation": "Command: git clone --recurse-submodules https://github.com/example/platform.git"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git submodule update --init --recursive",
-        "explanation": "Command: git submodule update --init --recursive"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -3709,7 +3379,7 @@
           "What makes a good Git commit message?",
           "A short imperative summary under about 50 characters, \"Fix login redirect loop\", not \"Fixed\" or \"Fixes\", then a blank line, then a body explaining why the change was needed if it is not obvious. The summary appears in git log --oneline, on pull requests and in git blame, so it has to stand alone. The body is where the value is: the diff already shows what changed, and only the message can record the reasoning, the alternative you rejected, or the ticket that prompted it.",
           "Why should commit messages use the imperative mood?",
-          "Because Git itself does. Its generated messages read \"Merge branch 'main'\" and \"Revert 'Add caching'\", so an imperative summary sits consistently alongside them. The practical test is that the message should complete the sentence \"If applied, this commit will\u2026\", \"Add rate limiting\" reads correctly, \"Added rate limiting\" does not. It is a convention rather than a rule, and its real benefit is consistency: a log where every line is phrased the same way is far quicker to scan.",
+          "Because Git itself does. Its generated messages read \"Merge branch 'main'\" and \"Revert 'Add caching'\", so an imperative summary sits consistently alongside them. The practical test is that the message should complete the sentence \"If applied, this commit will…\", \"Add rate limiting\" reads correctly, \"Added rate limiting\" does not. It is a convention rather than a rule, and its real benefit is consistency: a log where every line is phrased the same way is far quicker to scan.",
           "What are Conventional Commits and do I need them?",
           "A format that prefixes the summary with a type and optional scope: feat(auth): add password reset, fix: handle empty cart, chore(deps): bump axios. The point is machine readability. Tooling can derive a changelog and the next semantic version from the log without anyone maintaining either by hand. You need them if you want automated releases or generated changelogs. If you do not, the discipline still helps, but plain clear messages are perfectly adequate.",
           "How do Conventional Commits map to semantic versioning?",
@@ -3720,32 +3390,12 @@
           "Use commitlint with a commit-msg hook, installed through Husky so the hook lives in the repository and arrives with a clone. Raw .git/hooks files are not version-controlled and so never reach anyone else. That rejects a badly formatted message before the commit is created. Back it up with a server-side check in CI, since local hooks can be skipped with --no-verify; a pull request check that validates the commits is what actually makes the convention stick."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat > commitlint.config.js <<'EOF'",
-        "explanation": "Command: cat > commitlint.config.js <<'EOF'"
+        "explanation": "CLI execution command for cat"
       }
     ],
     "commonPitfalls": [

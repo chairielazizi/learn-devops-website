@@ -88,7 +88,7 @@ export default function TrackQuestionsClient({ track, questions }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-gray-200 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0f172a] text-gray-200 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Navigation Breadcrumb */}
         <div>
@@ -318,3 +318,4 @@ export default function TrackQuestionsClient({ track, questions }: Props) {
     </div>
   );
 }
+

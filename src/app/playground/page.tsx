@@ -59,7 +59,7 @@ const PLAYGROUNDS = [
 
 export default function PlaygroundIndexPage() {
   return (
-    <div className="min-h-screen bg-[#090a0f] text-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0f172a] text-gray-200 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-10">
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-semibold uppercase tracking-wider mb-3">
@@ -126,7 +126,7 @@ export default function PlaygroundIndexPage() {
                 </p>
 
                 {/* Sample commands */}
-                <div className="bg-[#090a0f] p-3 rounded-xl border border-white/5 space-y-1.5 font-mono text-xs">
+                <div className="bg-[#0f172a] p-3 rounded-xl border border-white/5 space-y-1.5 font-mono text-xs">
                   <div className="text-[10px] text-gray-500 uppercase tracking-wider font-sans font-semibold">Supported Commands:</div>
                   {item.quickCmds.map((cmd) => (
                     <div key={cmd} className="text-orange-400/90 truncate">

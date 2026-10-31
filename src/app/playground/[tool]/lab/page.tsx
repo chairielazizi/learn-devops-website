@@ -29,3 +29,4 @@ export default async function PlaygroundLabPage({ params }: Props) {
 
   notFound();
 }
+

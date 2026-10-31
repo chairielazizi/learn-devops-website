@@ -23,3 +23,4 @@ export default async function InterviewTrackPage({ params }: PageProps) {
 
   return <TrackQuestionsClient track={track} questions={questions} />;
 }
+

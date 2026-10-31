@@ -104,19 +104,6 @@
         "codeBlock": null
       },
       {
-        "title": "Where to go next",
-        "paragraphs": [
-          "Learn it in this order. Each one builds on the last:",
-          "Install kind or minikube and run the commands. Kubernetes is not a subject you can absorb by reading."
-        ],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You run kubectl delete pod on a Pod managed by a Deployment. Seconds later a new Pod with a different name is running. Why?",
@@ -141,50 +128,20 @@
           "Deploying an application and understanding Pods, Deployments and Services takes a few days of hands-on work. Being genuinely comfortable. Debugging networking, understanding storage and access modes, reasoning about scheduling and resource limits, and operating upgrades. Takes months of real use. The most effective approach is a local cluster with kind or minikube and deliberately breaking things: delete Pods, set a memory limit too low, misconfigure a probe. The failure modes are what you actually need to recognise."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl apply -f web.yaml",
-        "explanation": "Command: kubectl apply -f web.yaml"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pods",
-        "explanation": "Command: kubectl get pods"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl delete pod web-6d8f7c9b4-2xk9p",
-        "explanation": "Command: kubectl delete pod web-6d8f7c9b4-2xk9p"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -278,13 +235,13 @@
       {
         "title": "What happens when you run kubectl apply",
         "paragraphs": [
-          "Request flow: kubectl \u2192 running pod",
+          "Request flow: kubectl → running pod",
           "Validates & persists to etcd",
           "Pulls image & starts container",
-          "\u2713 Desired state achieved",
+          "✓ Desired state achieved",
           "Validates & persists to etcd",
           "Pulls image & starts container",
-          "\u2713 Desired state achieved",
+          "✓ Desired state achieved",
           "Nothing in that chain is a direct call between components. Each one watches the API server and reacts. That is why Kubernetes is resilient to any single piece being briefly unavailable, and why \"eventually consistent\" describes its behaviour better than \"immediate\"."
         ],
         "codeBlock": null
@@ -294,11 +251,6 @@
         "paragraphs": [
           "Control plane nodes normally carry a taint preventing workloads from being scheduled there. Removing it on a single-node dev cluster is standard; doing it in production means an application can starve the control plane."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
         "codeBlock": null
       },
       {
@@ -326,42 +278,12 @@
           "The scheduler filtered out every node and found nowhere to place it. kubectl describe pod <name> reports the exact reason in its events, usually something like 0/5 nodes are available: 2 Insufficient memory, 2 node(s) had untolerated taint. The frequent causes are resource requests larger than any node's free capacity, taints without matching tolerations, node selectors or affinity rules that match nothing, and a PersistentVolumeClaim that cannot bind or is in the wrong Availability Zone."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get nodes",
-        "explanation": "Command: kubectl get nodes"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe node <name>",
@@ -405,11 +327,6 @@
           "There is no single \"install Kubernetes\" step. There are several distributions aimed at different purposes, and picking the wrong one wastes a lot of time.",
           "For learning, the answer is almost always kind or minikube. For production, it is almost always a managed cloud cluster."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "The options",
-        "paragraphs": [],
         "codeBlock": null
       },
       {
@@ -498,16 +415,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You build myapp:dev locally and deploy it to a kind cluster. The Pod reports ImagePullBackOff even though docker images lists it. Why?",
@@ -532,54 +439,24 @@
           "No CNI plugin is installed. kubeadm init deliberately leaves the choice of network plugin to you, and without one Pods cannot be assigned addresses, so CoreDNS cannot start. Apply a CNI such as Calico, Flannel or Cilium and CoreDNS moves to Running within a minute. If you passed --pod-network-cidr to kubeadm init, make sure the plugin's configuration uses the same range."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get nodes",
-        "explanation": "Command: kubectl get nodes"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "curl -sfL https://get.k3s.io | sh -",
-        "explanation": "Command: curl -sfL https://get.k3s.io | sh -"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml",
-        "explanation": "Command: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/calico.yaml"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl cluster-info",
-        "explanation": "Command: kubectl cluster-info"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pods -A",
@@ -714,11 +591,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You run eval $(minikube docker-env), build myapp:dev, and deploy it. The Pod still reports ImagePullBackOff. What is the most likely cause?",
@@ -743,58 +615,28 @@
           "Yes, using profiles: minikube start -p payments and minikube start -p legacy --kubernetes-version=v1.28.0 create independent clusters, each with its own kubectl context. minikube profile list shows them and minikube profile <name> sets the default for minikube commands. Each profile is a separate VM or container consuming real CPU and memory, so delete profiles you are not actively using."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64",
-        "explanation": "Command: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "kubectl get nodes",
-        "explanation": "Command: kubectl get nodes"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl port-forward service/payments-api 8080:80",
-        "explanation": "Command: kubectl port-forward service/payments-api 8080:80"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "docker build -t myapp:dev .",
-        "explanation": "Command: docker build -t myapp:dev ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "kubectl config use-context payments",
-        "explanation": "Command: kubectl config use-context payments"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -949,11 +791,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "An ingress-nginx controller is running in a kind cluster, but curl localhost times out. The cluster was created with kind create cluster with no config file. What is wrong?",
@@ -978,58 +815,28 @@
           "Yes, and it is the standard approach for integration testing against a real Kubernetes API. helm/kind-action sets up a cluster in a GitHub Actions job in under a minute, after which you build your image, kind load it, apply your manifests, and run tests. Because it is a genuine API server, it catches admission controller rejections, RBAC problems and invalid manifests that YAML linting cannot detect."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64",
-        "explanation": "Command: curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "chmod +x ./kind && sudo mv ./kind /usr/local/bin/kind",
-        "explanation": "Command: chmod +x ./kind && sudo mv ./kind /usr/local/bin/kind"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "kubectl get nodes",
-        "explanation": "Command: kubectl get nodes"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "docker build -t myapp:dev .",
-        "explanation": "Command: docker build -t myapp:dev ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml",
-        "explanation": "Command: kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -1148,11 +955,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "On a fresh machine with no cluster configured, kubectl version fails with a connection error. How do you check the installed version?",
@@ -1177,46 +979,16 @@
           "Install krew first, then ctx and ns for fast context and namespace switching, tree for viewing resource ownership hierarchies, and neat for stripping managed fields and status out of get -o yaml so the output is readable. Outside krew, stern handles multi-Pod log tailing far better than kubectl logs -l, and k9s gives you a terminal UI that makes browsing a cluster much quicker than repeated get and describe commands."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl -LO \"https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl\"",
-        "explanation": "Command: curl -LO \"https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl\""
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "kubectl version --client",
-        "explanation": "Command: kubectl version --client"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl version",
@@ -1224,11 +996,11 @@
       },
       {
         "command": "aws eks update-kubeconfig --region us-east-1 --name production",
-        "explanation": "Command: aws eks update-kubeconfig --region us-east-1 --name production"
+        "explanation": "CLI execution command for aws"
       },
       {
         "command": "kubectl config get-contexts",
-        "explanation": "Command: kubectl config get-contexts"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -1267,13 +1039,13 @@
           "Learn the kubectl commands you will run daily: get, apply, describe, delete, selectors, output formats, namespaces and tips to work faster with kubeconfig.",
           "kubectl is a REST client. Every command turns into an HTTP request to the API server, authenticated with credentials from your kubeconfig.",
           "Internalising that explains a lot. Every kubectl verb maps to an HTTP method, anything you can do in a manifest you can do through the API, and permission errors are RBAC decisions, not client bugs.",
-          "Request flow: kubectl \u2192 running pod",
+          "Request flow: kubectl → running pod",
           "Validates & persists to etcd",
           "Pulls image & starts container",
-          "\u2713 Desired state achieved",
+          "✓ Desired state achieved",
           "Validates & persists to etcd",
           "Pulls image & starts container",
-          "\u2713 Desired state achieved"
+          "✓ Desired state achieved"
         ],
         "codeBlock": null
       },
@@ -1375,16 +1147,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You run kubectl create -f deployment.yaml, edit the replica count in the file, and run the same command again. What happens?",
@@ -1409,36 +1171,6 @@
           "kubectl diff -f manifest.yaml shows what applying that file would change, comparing your manifest against the live objects in the cluster and printing a unified diff. It is the closest equivalent to terraform plan and is worth running before any change to a production namespace. Pair it with kubectl apply --dry-run=server, which validates against the real API server including admission controllers and catches problems that client-side validation cannot see."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -1456,11 +1188,11 @@
       },
       {
         "command": "kubectl get pods -v=6",
-        "explanation": "Command: kubectl get pods -v=6"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create deployment web --image=nginx:1.27",
-        "explanation": "Command: kubectl create deployment web --image=nginx:1.27"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -1565,11 +1297,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "kubectl get pods shows a Pod as Running with READY 0/1 and RESTARTS 0. What does this tell you?",
@@ -1594,42 +1321,12 @@
           "No, and the name is misleading. It covers the common workload and networking types. Pods, Services, Deployments, ReplicaSets, StatefulSets, DaemonSets and Jobs, but omits ConfigMaps, Secrets, PersistentVolumeClaims, Ingresses, ServiceAccounts and every custom resource. To see genuinely everything in a namespace you need to enumerate the API resources and query each, which kubectl api-resources supports but is rarely worth doing by hand."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get pods",
-        "explanation": "Command: kubectl get pods"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pods,services,deployments",
@@ -1645,7 +1342,7 @@
       },
       {
         "command": "kubectl get pods -n payments",
-        "explanation": "Command: kubectl get pods -n payments"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -1775,11 +1472,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Deployment manifest previously set nodeSelector. Someone removes those lines and runs kubectl apply. The live Deployment no longer has a nodeSelector. Is that expected?",
@@ -1804,42 +1496,12 @@
           "kubectl apply -f ./manifests/ --prune -l app=myapp deletes objects matching the label selector that are no longer present in the applied manifests, which is what makes apply fully declarative rather than additive. It is genuinely useful and genuinely dangerous, because a wrong or overly broad selector deletes more than intended. Most teams get the same behaviour from ArgoCD or Flux, where pruning is scoped to an application and previewed before it runs."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl apply -f deployment.yaml",
-        "explanation": "Command: kubectl apply -f deployment.yaml"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl apply -f ./manifests/",
@@ -1855,7 +1517,7 @@
       },
       {
         "command": "kubectl diff -f deployment.yaml",
-        "explanation": "Command: kubectl diff -f deployment.yaml"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -1973,11 +1635,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Pod is in CrashLoopBackOff. kubectl logs returns nothing at all. What is the explanation?",
@@ -2002,42 +1659,12 @@
           "Yes, with a label selector: kubectl logs -l app=payments-api --tail=50 --prefix. The --prefix flag labels each line with its Pod name, which is necessary to make sense of interleaved output. Following multiple Pods is capped by --max-log-requests, five by default. For sustained multi-Pod log watching, stern handles it considerably better, with colouring per Pod and automatic pickup of new Pods as they appear."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl logs payments-api-7d4f-x8k2",
-        "explanation": "Command: kubectl logs payments-api-7d4f-x8k2"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs payments-api-7d4f-x8k2 -f",
@@ -2045,15 +1672,15 @@
       },
       {
         "command": "kubectl logs payments-api-7d4f-x8k2 --tail=100",
-        "explanation": "Command: kubectl logs payments-api-7d4f-x8k2 --tail=100"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs payments-api-7d4f-x8k2 --since=15m",
-        "explanation": "Command: kubectl logs payments-api-7d4f-x8k2 --since=15m"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs payments-api-7d4f-x8k2 --timestamps",
-        "explanation": "Command: kubectl logs payments-api-7d4f-x8k2 --timestamps"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -2186,11 +1813,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "kubectl get pods returns \"No resources found in default namespace\" on a cluster where you know workloads are running. What are the two things to check?",
@@ -2215,42 +1837,12 @@
           "Cloud kubeconfigs use an exec credential plugin that shells out to aws, gcloud or az to obtain a short-lived token on each call. When that CLI's own session expires, kubectl surfaces it as an authentication failure even though the kubeconfig itself is fine. Re-authenticating with the cloud CLI, aws sso login, gcloud auth login, restores access without touching your Kubernetes configuration."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl config get-contexts",
-        "explanation": "Command: kubectl config get-contexts"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl config current-context",
@@ -2409,16 +2001,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Pod defines two containers, both configured to listen on port 8080. What happens?",
@@ -2443,58 +2025,28 @@
           "The container exceeded its memory limit and the kernel killed it. Confirm it with kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}', which returns OOMKilled. Either the limit is genuinely too low for the workload, or the application has a memory leak that a higher limit will only postpone. Check actual usage with kubectl top pod before raising the number, and be aware that runtimes with their own heap settings, the JVM especially, need to be told about the container limit or they will size their heap against the node's total memory instead."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get pods -o wide",
-        "explanation": "Command: kubectl get pods -o wide"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe pod payments-api-7d4f-x8k2",
-        "explanation": "Command: kubectl describe pod payments-api-7d4f-x8k2"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs payments-api-7d4f-x8k2 --previous",
-        "explanation": "Command: kubectl logs payments-api-7d4f-x8k2 --previous"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pod payments-api-7d4f-x8k2 -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'",
-        "explanation": "Command: kubectl get pod payments-api-7d4f-x8k2 -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl run tmp-shell --rm -it --image=nicolaka/netshoot -- bash",
-        "explanation": "Command: kubectl run tmp-shell --rm -it --image=nicolaka/netshoot -- bash"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -2622,11 +2174,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Pod declares containerPort: 8080 but the application actually listens on 3000. What happens?",
@@ -2651,58 +2198,28 @@
           "kubectl explain pod.spec and kubectl explain pod.spec.containers.resources document fields directly from the API server you are connected to, so the output always matches your cluster's version rather than whatever a search result describes. Add --recursive to see a whole subtree at once. To get a working starting point, kubectl run name --image=x --dry-run=client -o yaml generates a valid manifest without contacting the cluster."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl explain pod.spec",
-        "explanation": "Command: kubectl explain pod.spec"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl explain pod.spec.containers.resources",
-        "explanation": "Command: kubectl explain pod.spec.containers.resources"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl explain pod.spec.securityContext --recursive",
-        "explanation": "Command: kubectl explain pod.spec.securityContext --recursive"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl run payments-api --image=ghcr.io/acme/payments-api:1.4.2 \\",
-        "explanation": "Command: kubectl run payments-api --image=ghcr.io/acme/payments-api:1.4.2 \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl apply -f pod.yaml --dry-run=server",
-        "explanation": "Command: kubectl apply -f pod.yaml --dry-run=server"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -2839,11 +2356,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Pod runs a migration script that completes successfully and exits 0, but Kubernetes keeps restarting it. The Pod was created directly with default settings. Why?",
@@ -2868,58 +2380,28 @@
           "An init container is failing or still waiting. Init containers run to completion in order before any application container starts, so a failing one blocks the Pod indefinitely while being retried. Read its logs with kubectl logs <pod> -c <init-container-name>. The container name is required, since the main container has not started. Common causes are an init container waiting on a dependency that never becomes available, or a migration step failing against the database."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get pod <name> -o jsonpath='{.status.phase}'",
-        "explanation": "Command: kubectl get pod <name> -o jsonpath='{.status.phase}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].state}' | jq",
-        "explanation": "Command: kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].state}' | jq"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'",
-        "explanation": "Command: kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs <pod> -c <init-container-name>",
-        "explanation": "Command: kubectl logs <pod> -c <init-container-name>"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs <pod> --previous",
-        "explanation": "Command: kubectl logs <pod> --previous"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -3039,11 +2521,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Job runs a batch task plus a log-shipping sidecar listed under containers. The task completes, but the Job stays active indefinitely. Why?",
@@ -3068,54 +2545,24 @@
           "No. Containers in a Pod scale together, so three replicas means three databases with three separate datasets. They also deploy together, so every application release restarts the database. And they are scheduled together, so both compete for one node's resources. Run the database as a StatefulSet with its own storage and put a Service in front of it. The convenience of localhost is not worth losing independent scaling, independent deployment, and the ability to give each workload the resources it actually needs."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl logs <pod> -c wait-for-db",
-        "explanation": "Command: kubectl logs <pod> -c wait-for-db"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs <pod> -c api",
-        "explanation": "Command: kubectl logs <pod> -c api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs <pod> --all-containers --prefix",
-        "explanation": "Command: kubectl logs <pod> --all-containers --prefix"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl exec -it <pod> -c api -- sh",
-        "explanation": "Command: kubectl exec -it <pod> -c api -- sh"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe pod <pod>",
@@ -3223,7 +2670,7 @@
       {
         "title": "The timing fields",
         "paragraphs": [
-          "Time to detection is periodSeconds \u00d7 failureThreshold, plus up to one timeoutSeconds. The defaults above mean roughly 30 seconds.",
+          "Time to detection is periodSeconds × failureThreshold, plus up to one timeoutSeconds. The defaults above mean roughly 30 seconds.",
           "timeoutSeconds: 1 is the default and it is aggressive. An endpoint that occasionally takes 1.2 seconds under load will fail intermittently, and because probes get slower exactly when the system is loaded, the probe pushes a busy service over the edge. Setting it to 3 to 5 seconds costs nothing."
         ],
         "codeBlock": null
@@ -3255,11 +2702,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A liveness probe hits /healthz, which verifies the database is reachable. The database slows down for two minutes. What happens to the application?",
@@ -3279,51 +2721,21 @@
           "Should my health check verify the database connection?",
           "Not in a liveness probe. A shared dependency fails for every replica at once, so the entire fleet gets restarted simultaneously and a slow database becomes a complete outage caused by the health check itself. A readiness probe may check that the application is able to serve, including that its connection pool is initialised, since removing Pods from the Service is recoverable and does not restart anything. The safest pattern is a /healthz that checks only the process and a /ready that checks whether this instance can serve a request.",
           "What do initialDelaySeconds and failureThreshold actually control?",
-          "initialDelaySeconds is how long the kubelet waits before the first probe, periodSeconds how often it repeats, timeoutSeconds how long it waits for a response, and failureThreshold how many consecutive failures trigger the action. Time to detection is roughly periodSeconds \u00d7 failureThreshold. The default timeoutSeconds of 1 is worth changing. An endpoint that occasionally takes just over a second under load will fail intermittently, and probes get slower precisely when the system is busiest.",
+          "initialDelaySeconds is how long the kubelet waits before the first probe, periodSeconds how often it repeats, timeoutSeconds how long it waits for a response, and failureThreshold how many consecutive failures trigger the action. Time to detection is roughly periodSeconds × failureThreshold. The default timeoutSeconds of 1 is worth changing. An endpoint that occasionally takes just over a second under load will fail intermittently, and probes get slower precisely when the system is busiest.",
           "Why do my Pods get no traffic even though they are Running?",
           "They are Running but not Ready, so they have been excluded from the Service's endpoints. kubectl get pods shows this in the READY column as 0/1, and kubectl describe pod gives the probe's failure message. Common causes are a readiness path that requires authentication and returns 401, a wrong port, or an initialDelaySeconds shorter than the application's real startup time. Confirm with kubectl get endpointslices -l kubernetes.io/service-name=<service>. An empty list means no Pod is currently ready."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl describe pod <name> | grep -A5 Events",
-        "explanation": "Command: kubectl describe pod <name> | grep -A5 Events"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl exec -it <name> -- wget -qO- localhost:8080/healthz",
-        "explanation": "Command: kubectl exec -it <name> -- wget -qO- localhost:8080/healthz"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -3374,13 +2786,13 @@
         "codeBlock": null
       },
       {
-        "title": "The chain: Deployment \u2192 ReplicaSet \u2192 Pods",
+        "title": "The chain: Deployment → ReplicaSet → Pods",
         "paragraphs": [
           "This indirection confuses people until they see why it exists.",
           "A Deployment does not create pods. It creates a ReplicaSet, and the ReplicaSet creates pods. Each time you change the pod template, a new image, a changed environment variable, the Deployment creates a new ReplicaSet and gradually scales the old one down while scaling the new one up.",
-          "Deployment \u2192 ReplicaSet \u2192 Pods",
-          "replicas: 3 \u00b7 strategy: RollingUpdate",
-          "desired: 3 \u00b7 ready: 3",
+          "Deployment → ReplicaSet → Pods",
+          "replicas: 3 · strategy: RollingUpdate",
+          "desired: 3 · ready: 3",
           "The old ReplicaSet is kept at zero replicas deliberately. That retained object is your rollback. Undoing a release scales it back up. revisionHistoryLimit controls how many are kept, defaulting to 10.",
           "One consequence worth knowing: scaling does not create a revision. Only pod template changes do. Changing replicas from 3 to 5 adjusts the current ReplicaSet in place."
         ],
@@ -3452,16 +2864,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Deployment with maxUnavailable: 0 has no readiness probe. During every rollout users see brief 502 errors, yet kubectl rollout status reports success. Why?",
@@ -3486,58 +2888,28 @@
           "When pod identity matters. StatefulSets give each pod a stable name and DNS entry that survives rescheduling, create a PersistentVolumeClaim per pod, and start and stop pods in order. That is what databases, message brokers and quorum-based systems need. A replica has to come back as the same member with the same data. If any replica can serve any request and keeps nothing on local disk, a Deployment is simpler and is the right choice."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get replicasets",
-        "explanation": "Command: kubectl get replicasets"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl set image deployment/payments-api api=ghcr.io/acme/payments-api:1.5.0",
-        "explanation": "Command: kubectl set image deployment/payments-api api=ghcr.io/acme/payments-api:1.5.0"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl rollout status deployment/payments-api",
-        "explanation": "Command: kubectl rollout status deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl rollout history deployment/payments-api",
-        "explanation": "Command: kubectl rollout history deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl rollout undo deployment/payments-api",
-        "explanation": "Command: kubectl rollout undo deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -3667,11 +3039,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You edit an existing Deployment to change selector.matchLabels from app: api to app.kubernetes.io/name: api, and update the template labels to match. kubectl apply fails. Why?",
@@ -3696,58 +3063,28 @@
           "READY shows how many Pods are passing readiness checks against how many are desired. UP-TO-DATE counts Pods running the current pod template, which is how you see rollout progress. AVAILABLE counts Pods that have been ready for at least minReadySeconds, so it lags READY slightly when that is configured. During a rollout these diverge, 3/3 ready with only 1 up-to-date means the new version is still being rolled out."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl create deployment web --image=nginx:1.27 --replicas=3",
-        "explanation": "Command: kubectl create deployment web --image=nginx:1.27 --replicas=3"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get deployments",
-        "explanation": "Command: kubectl get deployments"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create deployment web --image=nginx:1.27 --replicas=3 \\",
-        "explanation": "Command: kubectl create deployment web --image=nginx:1.27 --replicas=3 \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl apply -f deployment.yaml",
-        "explanation": "Command: kubectl apply -f deployment.yaml"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get deployment,replicaset,pods -l app=payments-api",
-        "explanation": "Command: kubectl get deployment,replicaset,pods -l app=payments-api"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -3882,11 +3219,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Deployment has maxUnavailable: 0 and a working readiness probe, yet clients see a handful of connection resets during every rollout. What is the most likely cause?",
@@ -3911,42 +3243,12 @@
           "kubectl rollout restart deployment/<name>. It sets a timestamp annotation on the pod template, which counts as a template change and triggers a normal rolling update honouring your surge and unavailability settings, so there is no downtime. This is necessary because ConfigMap values consumed as environment variables are fixed when the process starts and can never update in place. Values mounted as volumes do refresh automatically, within about a minute, unless mounted with subPath, which never updates."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl set image deployment/payments-api api=ghcr.io/acme/payments-api:1.5.0",
-        "explanation": "Command: kubectl set image deployment/payments-api api=ghcr.io/acme/payments-api:1.5.0"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl apply -f deployment.yaml",
@@ -3954,15 +3256,15 @@
       },
       {
         "command": "kubectl rollout restart deployment/payments-api",
-        "explanation": "Command: kubectl rollout restart deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl rollout status deployment/payments-api",
-        "explanation": "Command: kubectl rollout status deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get rs -l app=payments-api",
-        "explanation": "Command: kubectl get rs -l app=payments-api"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -4088,11 +3390,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "Release 1.5.0 ran a migration dropping an unused column, then proved buggy. After kubectl rollout undo, the old version crashes on startup. Why?",
@@ -4117,58 +3414,28 @@
           "Largely, yes. With a correct readiness probe and maxUnavailable: 0, a version that never becomes Ready never displaces the old Pods. The rollout stalls and fails after progressDeadlineSeconds while the application stays up. That converts a bad release into a failed deploy rather than an incident. Lowering progressDeadlineSeconds from its 600-second default makes the failure visible sooner, and kubectl diff -f before applying catches unintended changes."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl rollout history deployment/payments-api",
-        "explanation": "Command: kubectl rollout history deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get rs -l app=payments-api",
-        "explanation": "Command: kubectl get rs -l app=payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl rollout history deployment/payments-api --revision=2",
-        "explanation": "Command: kubectl rollout history deployment/payments-api --revision=2"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl annotate deployment/payments-api \\",
-        "explanation": "Command: kubectl annotate deployment/payments-api \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl rollout undo deployment/payments-api",
-        "explanation": "Command: kubectl rollout undo deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -4214,8 +3481,8 @@
         "title": "How a Service finds its pods",
         "paragraphs": [
           "A Service does not reference pods by name. It carries a label selector, and Kubernetes continuously maintains a list of the pod IPs matching it.",
-          "Service \u2192 Endpoints \u2192 Pods",
-          "10.0.0.1:8080 \u00b7 10.0.0.2:8080",
+          "Service → Endpoints → Pods",
+          "10.0.0.1:8080 · 10.0.0.2:8080",
           "That matching list is stored in EndpointSlice objects, and it is the first thing to check when a Service does not work:",
           "If that list is empty, the Service is a dead end: it will accept connections and then have nowhere to send them. Two things cause it, and they account for most Service problems people hit:"
         ],
@@ -4291,16 +3558,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "Requests to a ClusterIP Service time out. The pods are Running and serving correctly when reached by pod IP. kubectl get endpointslices shows no endpoints. What should you check first?",
@@ -4325,58 +3582,28 @@
           "When clients need the individual pod addresses rather than a single balanced endpoint. Setting clusterIP: None makes DNS return every ready pod IP instead of one virtual IP. StatefulSets use this so each replica is individually addressable, which database clients and quorum-based systems require. It is also the foundation for client-side load balancing, which is how you get even distribution for gRPC traffic that would otherwise pin to one pod."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get endpointslices -l kubernetes.io/service-name=payments-api",
-        "explanation": "Command: kubectl get endpointslices -l kubernetes.io/service-name=payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pods --show-labels",
-        "explanation": "Command: kubectl get pods --show-labels"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get service payments-api -o jsonpath='{.spec.selector}'",
-        "explanation": "Command: kubectl get service payments-api -o jsonpath='{.spec.selector}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl run tmp --rm -it --image=nicolaka/netshoot -- \\",
-        "explanation": "Command: kubectl run tmp --rm -it --image=nicolaka/netshoot -- \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get service payments-api",
-        "explanation": "Command: kubectl get service payments-api"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -4493,11 +3720,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A developer reports a ClusterIP Service is broken because ping 10.96.41.203 times out, though curl to the same address on port 80 works. What is happening?",
@@ -4522,58 +3744,28 @@
           "Not directly, that is the point of the type. To expose something externally you use a NodePort Service, a LoadBalancer Service, or, most commonly for HTTP, an Ingress that routes to your ClusterIP Service by hostname and path. kubectl port-forward provides temporary access for debugging without changing anything, which is usually what you actually want."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get service payments-api",
-        "explanation": "Command: kubectl get service payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl run tmp --rm -it --image=nicolaka/netshoot -- \\",
-        "explanation": "Command: kubectl run tmp --rm -it --image=nicolaka/netshoot -- \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get endpointslices -l kubernetes.io/service-name=payments-api",
-        "explanation": "Command: kubectl get endpointslices -l kubernetes.io/service-name=payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get svc payments-api -o jsonpath='{.spec.selector}'",
-        "explanation": "Command: kubectl get svc payments-api -o jsonpath='{.spec.selector}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pods --show-labels",
-        "explanation": "Command: kubectl get pods --show-labels"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -4687,11 +3879,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "An application behind a NodePort Service logs the same handful of source IPs for all traffic, matching the cluster nodes. Rate limiting by client IP is therefore useless. Why?",
@@ -4716,58 +3903,28 @@
           "If it works internally, the Service, its selector and its endpoints are all correct, so the problem is network reachability to the node. On a cloud provider the node's security group or firewall almost certainly does not allow inbound traffic on 30000 to 32767, which is the most frequent cause. Also confirm you are using an IP that is actually reachable from where you are testing. A private node IP will not work from outside the VPC."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get service payments-api",
-        "explanation": "Command: kubectl get service payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get nodes -o wide",
-        "explanation": "Command: kubectl get nodes -o wide"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "curl http://192.168.1.24:30080/healthz",
-        "explanation": "Command: curl http://192.168.1.24:30080/healthz"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "kubectl get endpointslices -l kubernetes.io/service-name=payments-api",
-        "explanation": "Command: kubectl get endpointslices -l kubernetes.io/service-name=payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl run tmp --rm -it --image=nicolaka/netshoot -- curl -s payments-api/healthz",
-        "explanation": "Command: kubectl run tmp --rm -it --image=nicolaka/netshoot -- curl -s payments-api/healthz"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -4896,11 +4053,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A LoadBalancer Service on a kind cluster has shown EXTERNAL-IP as pending for twenty minutes. What is happening?",
@@ -4925,42 +4077,12 @@
           "Some providers allow requesting a pre-allocated static address via spec.loadBalancerIP, though support and syntax vary and several clouds have moved to annotations instead. The more durable approach is ExternalDNS, which watches Services and Ingresses and updates your DNS provider automatically whenever an address changes. That way recreation is handled rather than avoided, which also covers cluster rebuilds and failovers."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get service payments-api",
-        "explanation": "Command: kubectl get service payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe service payments-api",
@@ -4968,7 +4090,7 @@
       },
       {
         "command": "kubectl logs -n kube-system -l component=cloud-controller-manager --tail=50",
-        "explanation": "Command: kubectl logs -n kube-system -l component=cloud-controller-manager --tail=50"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -5096,11 +4218,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "An Ingress has been applied successfully but kubectl get ingress shows an empty ADDRESS column after 15 minutes. What is the most likely cause?",
@@ -5125,58 +4242,28 @@
           "For a new platform, it is worth serious consideration. The Gateway API separates the cluster operator's concerns from the application team's, and brings header-based matching, traffic splitting and cross-namespace routing into the specification rather than leaving them to vendor annotations. For existing clusters, Ingress remains well supported, has far more ecosystem tooling and examples, and is not being removed. Migrating is a project rather than a quick win, so most teams adopt the Gateway API for new workloads first."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get pods -A | grep -i ingress",
-        "explanation": "Command: kubectl get pods -A | grep -i ingress"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get ingressclass",
-        "explanation": "Command: kubectl get ingressclass"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get ingress",
-        "explanation": "Command: kubectl get ingress"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe ingress acme-public",
-        "explanation": "Command: kubectl describe ingress acme-public"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get endpointslices -l kubernetes.io/service-name=payments-api",
-        "explanation": "Command: kubectl get endpointslices -l kubernetes.io/service-name=payments-api"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -5275,16 +4362,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You update a ConfigMap consumed by pods as environment variables via envFrom. Minutes later the running pods still report the old value. What is happening?",
@@ -5309,42 +4386,12 @@
           "Mounted files when the value may change while the pod runs, when the application expects a config file on disk, or when the value is large or structured. Environment variables when the value is small, static for the pod's lifetime, and the application reads its configuration from the environment. A practical default is environment variables for simple scalars and volumes for anything file-shaped, while remembering that only volumes refresh without a restart."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl rollout restart deployment/payments-api",
-        "explanation": "Command: kubectl rollout restart deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -5456,11 +4503,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A ConfigMap is mounted with subPath to place one config file into /etc/nginx. Editing the ConfigMap updates it in the API, but the file in the running container never changes. Why?",
@@ -5485,58 +4527,28 @@
           "Usually yes, paired with a versioned name such as app-config-v4. It makes accidental in-place edits of production configuration impossible, and it lets the kubelet stop watching the object, which noticeably reduces API server load in large clusters. The trade-off is that a change means creating a new ConfigMap and updating the Deployment to reference it, which is arguably the point, since the config change then appears in your rollout history and rolls back like any other change."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl create configmap app-config \\",
-        "explanation": "Command: kubectl create configmap app-config \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create configmap nginx-config --from-file=nginx.conf",
-        "explanation": "Command: kubectl create configmap nginx-config --from-file=nginx.conf"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create configmap nginx-config --from-file=default.conf=nginx.prod.conf",
-        "explanation": "Command: kubectl create configmap nginx-config --from-file=default.conf=nginx.prod.conf"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl rollout restart deployment/payments-api",
-        "explanation": "Command: kubectl rollout restart deployment/payments-api"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get configmaps",
-        "explanation": "Command: kubectl get configmaps"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -5647,11 +4659,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A cluster has encryption at rest enabled for Secrets. A developer with get secrets permission in the namespace runs kubectl get secret -o yaml. What do they see?",
@@ -5676,58 +4683,28 @@
           "Keep the source of truth outside the cluster and sync it in. The External Secrets Operator reads from AWS Secrets Manager, SSM Parameter Store, Vault or Azure Key Vault and creates native Secrets, so Git holds only a reference. Sealed Secrets takes the other approach, encrypting a Secret with a cluster-held key so the encrypted file is safe to commit. The usual fit for GitOps. Either way, no plaintext credential is committed and rotation happens in one place instead of across every manifest."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get secret app-secret -o jsonpath='{.data.DB_PASSWORD}' | base64 -d",
-        "explanation": "Command: kubectl get secret app-secret -o jsonpath='{.data.DB_PASSWORD}' | base64 -d"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl auth can-i get secrets --as=system:serviceaccount:default:my-app",
-        "explanation": "Command: kubectl auth can-i get secrets --as=system:serviceaccount:default:my-app"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create secret generic app-secret \\",
-        "explanation": "Command: kubectl create secret generic app-secret \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create secret generic app-secret --from-file=DB_PASSWORD=./db-password.txt",
-        "explanation": "Command: kubectl create secret generic app-secret --from-file=DB_PASSWORD=./db-password.txt"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create secret docker-registry regcred \\",
-        "explanation": "Command: kubectl create secret docker-registry regcred \\"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -5780,7 +4757,7 @@
       {
         "title": "The storage options, in order of how long data lasts",
         "paragraphs": [
-          "Pod \u2192 PVC \u2192 PV \u2192 Storage backend",
+          "Pod → PVC → PV → Storage backend",
           "cluster-wide resource",
           "Created empty when the pod is assigned to a node, deleted when the pod is removed. Its main use is sharing a directory between containers in the same pod:",
           "It consumes node disk, and by default nothing bounds it. A runaway process filling an emptyDir can fill the node and get every pod on it evicted. Set a limit:",
@@ -5849,16 +4826,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Deployment with 3 replicas mounts a single PVC with ReadWriteOnce backed by an EBS volume. One pod runs; two stay Pending with a volume attachment error. Why?",
@@ -5883,50 +4850,20 @@
           "emptyDir is a directory created when a pod is assigned to a node and deleted when the pod is removed. It survives container restarts but not pod replacement, which makes it right for scratch space, caches, and sharing files between containers in the same pod. An application writing logs that a sidecar ships, for instance. Set a sizeLimit, because by default it can consume all node disk and cause evictions across the node. Setting medium: Memory makes it a tmpfs, which is fast but counts against the pod's memory limit."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl patch pvc payments-data -p '{\"spec\":{\"resources\":{\"requests\":{\"storage\":\"50Gi\"}}}}'",
-        "explanation": "Command: kubectl patch pvc payments-data -p '{\"spec\":{\"resources\":{\"requests\":{\"storage\":\"50Gi\"}}}}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pvc",
-        "explanation": "Command: kubectl get pvc"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe pvc payments-data",
-        "explanation": "Command: kubectl describe pvc payments-data"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -5981,7 +4918,7 @@
           "Static means an administrator creates PVs ahead of time and claims bind to whichever one fits. You will see this in tutorials and on bare metal, and rarely anywhere else:",
           "Dynamic means a StorageClass creates the PV on demand when a PVC appears. This is how essentially every real cluster works:",
           "Omitting storageClassName entirely uses the cluster's default StorageClass. Setting it to \"\" explicitly disables dynamic provisioning and forces binding to a pre-created PV. A distinction that catches people out, because the two are not the same thing.",
-          "Pod \u2192 PVC \u2192 PV \u2192 Storage backend",
+          "Pod → PVC → PV → Storage backend",
           "cluster-wide resource"
         ],
         "codeBlock": {
@@ -6071,11 +5008,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A PVC was deleted by mistake. The PV has reclaimPolicy Retain and shows status Released, and the data is intact. A new PVC with identical specs stays Pending. Why?",
@@ -6100,58 +5032,28 @@
           "No. PVCs created from a volumeClaimTemplate deliberately outlive the StatefulSet so that deleting a workload cannot destroy a database. Recreating the StatefulSet with the same name reattaches the existing volumes, which is also how scaling down and back up preserves data. The flip side is that finished workloads leave PVCs behind that continue to cost money, so decommissioning something properly means deleting its claims explicitly."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get pv,pvc",
-        "explanation": "Command: kubectl get pv,pvc"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl patch pv pvc-a1b2 -p '{\"spec\":{\"persistentVolumeReclaimPolicy\":\"Retain\"}}'",
-        "explanation": "Command: kubectl patch pv pvc-a1b2 -p '{\"spec\":{\"persistentVolumeReclaimPolicy\":\"Retain\"}}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl patch pvc payments-data -p '{\"spec\":{\"resources\":{\"requests\":{\"storage\":\"50Gi\"}}}}'",
-        "explanation": "Command: kubectl patch pvc payments-data -p '{\"spec\":{\"resources\":{\"requests\":{\"storage\":\"50Gi\"}}}}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pvc payments-data -o jsonpath='{.status.conditions}'",
-        "explanation": "Command: kubectl get pvc payments-data -o jsonpath='{.status.conditions}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pv pvc-a1b2 -o yaml",
-        "explanation": "Command: kubectl get pv pvc-a1b2 -o yaml"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -6264,11 +5166,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A StorageClass uses volumeBindingMode: Immediate on a three-zone cluster. A PVC binds instantly, but the Pod using it stays Pending with \"volume node affinity conflict\". What happened?",
@@ -6293,58 +5190,28 @@
           "Most fields on a StorageClass are immutable, and in any case changes do not apply retroactively to existing PersistentVolumes. They were provisioned with the settings in force at the time. To move a workload onto different storage you create a new StorageClass, create a new PVC using it, and migrate the data, typically from a volume snapshot. This is why enabling allowVolumeExpansion and encryption from the beginning matters: neither can be added to a volume that already exists."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get storageclass",
-        "explanation": "Command: kubectl get storageclass"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get csidrivers",
-        "explanation": "Command: kubectl get csidrivers"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl patch pvc payments-data -p '{\"spec\":{\"resources\":{\"requests\":{\"storage\":\"50Gi\"}}}}'",
-        "explanation": "Command: kubectl patch pvc payments-data -p '{\"spec\":{\"resources\":{\"requests\":{\"storage\":\"50Gi\"}}}}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl patch storageclass gp3 \\",
-        "explanation": "Command: kubectl patch storageclass gp3 \\"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe pvc payments-data",
-        "explanation": "Command: kubectl describe pvc payments-data"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -6470,11 +5337,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A team puts an internal admin service in its own namespace, assuming other teams cannot reach it. Is that assumption correct on a default cluster?",
@@ -6499,58 +5361,28 @@
           "Namespaces per environment are cheap and fine for development and staging, where sharing nodes and a control plane is acceptable. For production, separate clusters are safer: namespaces share nodes, a kernel and a control plane, so a resource-hungry workload or a cluster-wide upgrade affects everything at once. A common arrangement is one non-production cluster split by namespace and a dedicated production cluster, itself split by team or service."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl api-resources --namespaced=true | head",
-        "explanation": "Command: kubectl api-resources --namespaced=true | head"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl api-resources --namespaced=false",
-        "explanation": "Command: kubectl api-resources --namespaced=false"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl create namespace payments",
-        "explanation": "Command: kubectl create namespace payments"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl apply -f - <<'EOF'",
-        "explanation": "Command: kubectl apply -f - <<'EOF'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pods -n payments",
-        "explanation": "Command: kubectl get pods -n payments"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -6684,16 +5516,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "Monitoring shows a node at 20% CPU utilisation, but new Pods will not schedule there and report Insufficient cpu. Why?",
@@ -6718,58 +5540,28 @@
           "Measure first. kubectl top pods --containers gives a current snapshot, and Prometheus history is better because a single reading misses daily peaks. A reasonable starting point is a memory request at observed steady-state plus about 25%, a memory limit with genuine headroom above that, and a CPU request at observed average rather than peak. Vertical Pod Autoscaler in recommendation mode watches real usage and suggests values without changing anything, which is a low-risk way to sanity-check your numbers."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl describe node ip-10-0-1-42 | grep -A8 \"Allocated resources\"",
-        "explanation": "Command: kubectl describe node ip-10-0-1-42 | grep -A8 \"Allocated resources\""
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl exec -it <pod> -- cat /sys/fs/cgroup/cpu.stat | grep throttled",
-        "explanation": "Command: kubectl exec -it <pod> -- cat /sys/fs/cgroup/cpu.stat | grep throttled"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'",
-        "explanation": "Command: kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pod <name> -o jsonpath='{.status.qosClass}'",
-        "explanation": "Command: kubectl get pod <name> -o jsonpath='{.status.qosClass}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl top pods --containers",
-        "explanation": "Command: kubectl top pods --containers"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -6899,11 +5691,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A container sets memory request and limit both to 512Mi, and a CPU request of 200m with no CPU limit. What QoS class does the Pod get?",
@@ -6921,65 +5708,35 @@
           "Should I set CPU limits on my containers?",
           "It is a genuine trade-off rather than a settled best practice. Limits prevent one workload starving its neighbours and are required for the Guaranteed QoS class, but they throttle rather than kill, and throttling adds latency that is very hard to see from inside the application. Multi-threaded runtimes reach the quota quickly because it is consumed across all threads within each 100ms window. A common position is to always set CPU requests and memory limits, and either omit CPU limits on latency-sensitive services or set them comfortably above observed peak.",
           "What is the difference between Mi and M?",
-          "Mi is mebibytes, a multiple of 1024\u00b2, and M is megabytes, a multiple of 1000\u00b2. So 128Mi is 134,217,728 bytes while 128M is 128,000,000, about 5% apart, which grows to a meaningful gap at gigabyte scale. Kubernetes accepts both, but the binary suffixes Ki, Mi and Gi match how memory is actually reported by tools and by the kernel, so mixing them up can turn a carefully sized limit into one that triggers the OOM killer.",
+          "Mi is mebibytes, a multiple of 1024², and M is megabytes, a multiple of 1000². So 128Mi is 134,217,728 bytes while 128M is 128,000,000, about 5% apart, which grows to a meaningful gap at gigabyte scale. Kubernetes accepts both, but the binary suffixes Ki, Mi and Gi match how memory is actually reported by tools and by the kernel, so mixing them up can turn a carefully sized limit into one that triggers the OOM killer.",
           "How do I know what values to use?",
           "Measure before guessing. kubectl top pods --containers gives a current snapshot but misses daily peaks, so Prometheus history is better if you have it. Vertical Pod Autoscaler in recommendation mode watches real usage over time and proposes values without modifying anything, which is a safe way to validate your numbers. As a starting point, set memory request to steady-state usage plus around 25%, memory limit with real headroom above that, and CPU request to the observed average rather than peak.",
           "What happens if I set no requests or limits at all?",
           "The Pod becomes BestEffort, which is the worst of both worlds. The scheduler believes it needs nothing and will place it on an already-loaded node, and under memory pressure the kubelet evicts BestEffort Pods first. The container is also uncapped, so a memory leak can consume the node and take down everything else running on it. A LimitRange in the namespace with defaultRequest and default values prevents this happening by accident."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl describe node ip-10-0-1-42 | grep -A8 \"Allocated resources\"",
-        "explanation": "Command: kubectl describe node ip-10-0-1-42 | grep -A8 \"Allocated resources\""
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl exec -it <pod> -- cat /sys/fs/cgroup/cpu.stat",
-        "explanation": "Command: kubectl exec -it <pod> -- cat /sys/fs/cgroup/cpu.stat"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'",
-        "explanation": "Command: kubectl get pod <name> -o jsonpath='{.status.containerStatuses[0].lastState.terminated.reason}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pods -o custom-columns=NAME:.metadata.name,QOS:.status.qosClass",
-        "explanation": "Command: kubectl get pods -o custom-columns=NAME:.metadata.name,QOS:.status.qosClass"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl describe resourcequota team-quota -n payments",
-        "explanation": "Command: kubectl describe resourcequota team-quota -n payments"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -7025,12 +5782,12 @@
         "title": "The formula",
         "paragraphs": [
           "Everything the HPA does follows from one line:",
-          "Three replicas averaging 90% CPU against a 50% target gives ceil(3 \u00d7 1.8) = 6 replicas. The controller re-evaluates every 15 seconds by default.",
+          "Three replicas averaging 90% CPU against a 50% target gives ceil(3 × 1.8) = 6 replicas. The controller re-evaluates every 15 seconds by default.",
           "Two consequences worth noticing. It is proportional, so a large overshoot produces a large jump rather than one replica at a time. And it depends on currentReplicas, which is why an HPA cannot scale up from zero. Anything times zero is zero. Scale-to-zero needs KEDA."
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "desiredReplicas = ceil( currentReplicas \u00d7 ( currentMetric / targetMetric ) )",
+          "code": "desiredReplicas = ceil( currentReplicas × ( currentMetric / targetMetric ) )",
           "description": "Architecture specification"
         }
       },
@@ -7113,11 +5870,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "kubectl get hpa shows TARGETS as <unknown>/50% and the replica count never changes. kubectl top pods works correctly. What is wrong?",
@@ -7131,7 +5883,7 @@
           "Why does my HPA show <unknown> for the target metric?",
           "Two causes only. Either metrics-server is not installed, in which case kubectl top pods also fails, or the target Pods have no resource request for the metric being measured. A Utilization target is a percentage of the request, so without a request there is nothing to compute against. Check with kubectl get deployment <name> -o jsonpath='{.spec.template.spec.containers[0].resources}' and add requests if they are missing.",
           "How does the HPA decide how many replicas to run?",
-          "It applies desiredReplicas = ceil(currentReplicas \u00d7 (currentMetric / targetMetric)), recalculated every 15 seconds by default. Three replicas averaging 90% CPU against a 50% target gives six. Because the calculation is proportional it corrects large overshoots in one step rather than incrementing. It also explains why an HPA cannot scale up from zero: multiplying zero replicas by any ratio gives zero, which is why scale-to-zero requires KEDA.",
+          "It applies desiredReplicas = ceil(currentReplicas × (currentMetric / targetMetric)), recalculated every 15 seconds by default. Three replicas averaging 90% CPU against a 50% target gives six. Because the calculation is proportional it corrects large overshoots in one step rather than incrementing. It also explains why an HPA cannot scale up from zero: multiplying zero replicas by any ratio gives zero, which is why scale-to-zero requires KEDA.",
           "Can the HPA scale on something other than CPU?",
           "Yes, with autoscaling/v2. Memory works but is often a poor signal, since many runtimes retain memory rather than releasing it so the value never falls enough to scale back down. Custom metrics from your application, requests per second, for example, are available through Prometheus Adapter, and external metrics such as SQS queue depth suit worker pools. When several metrics are configured, the HPA computes a target for each and uses the largest, so any one signal under pressure triggers a scale up.",
           "Why does my HPA keep scaling up and down repeatedly?",
@@ -7142,42 +5894,12 @@
           "Not on the same metric. VPA adjusts CPU and memory requests while the HPA scales replicas based on utilisation of those requests, so both react to each other and the result oscillates. The workable split is VPA managing memory and the HPA scaling on CPU or a custom metric, which keeps them out of each other's way. VPA in recommendation-only mode is always safe to run alongside an HPA, since it reports suggested values without changing anything."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get hpa",
-        "explanation": "Command: kubectl get hpa"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl top pods",
@@ -7185,15 +5907,15 @@
       },
       {
         "command": "kubectl get deployment payments-api -o jsonpath='{.spec.template.spec.containers[0].resources}'",
-        "explanation": "Command: kubectl get deployment payments-api -o jsonpath='{.spec.template.spec.containers[0].resources}'"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl apply -f hpa.yaml",
-        "explanation": "Command: kubectl apply -f hpa.yaml"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get hpa payments-api -w",
-        "explanation": "Command: kubectl get hpa payments-api -w"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -7308,16 +6030,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You upgrade an operator chart to a version whose custom resources have new fields. The controller starts, but applying a resource with the new fields fails validation. What is the most likely cause?",
@@ -7341,36 +6053,6 @@
           "Is Helm safe to use in production? What happened to Tiller?",
           "Helm 3 is safe in a way Helm 2 was not. Helm 2 ran a cluster-side component called Tiller that typically held broad cluster-admin permissions and was a well-documented privilege escalation risk. Helm 3 removed it entirely and runs client-side, authenticating with your own kubeconfig, so it can only do what you are already permitted to do. Release state lives in Secrets in the release's namespace rather than in a privileged service. Any guide that mentions helm init or Tiller is describing Helm 2 and is out of date."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -7508,11 +6190,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A colleague installed a release yesterday, but helm list on your machine shows nothing. Both of you use the same cluster and the same kubeconfig. What is the most likely explanation?",
@@ -7537,50 +6214,20 @@
           "helm template <release-name> <chart> -f values.yaml renders the chart locally and prints the full set of manifests without contacting the cluster. This is the best way to review a third-party chart before trusting it, and to debug your own templates. helm install --dry-run --debug does something similar but validates against the live API server, which additionally catches schema problems and missing CRDs. Pair either with helm show values so you know which settings are available to change."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash",
-        "explanation": "Command: curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "kubectl config current-context",
-        "explanation": "Command: kubectl config current-context"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get pvc -n <namespace>",
-        "explanation": "Command: kubectl get pvc -n <namespace>"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -7629,7 +6276,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "mychart/\n\u251c\u2500\u2500 Chart.yaml          # metadata: name, version, dependencies\n\u251c\u2500\u2500 values.yaml         # default configuration\n\u251c\u2500\u2500 charts/             # vendored subcharts\n\u251c\u2500\u2500 crds/               # CRDs, installed once and never upgraded\n\u251c\u2500\u2500 templates/\n\u2502   \u251c\u2500\u2500 deployment.yaml\n\u2502   \u251c\u2500\u2500 service.yaml\n\u2502   \u251c\u2500\u2500 _helpers.tpl    # reusable snippets, not rendered itself\n\u2502   \u2514\u2500\u2500 NOTES.txt       # printed after install\n\u2514\u2500\u2500 .helmignore",
+          "code": "mychart/\n├── Chart.yaml          # metadata: name, version, dependencies\n├── values.yaml         # default configuration\n├── charts/             # vendored subcharts\n├── crds/               # CRDs, installed once and never upgraded\n├── templates/\n│   ├── deployment.yaml\n│   ├── service.yaml\n│   ├── _helpers.tpl    # reusable snippets, not rendered itself\n│   └── NOTES.txt       # printed after install\n└── .helmignore",
           "description": "Architecture specification"
         }
       },
@@ -7710,11 +6357,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A template uses {{ template \"app.labels\" . | nindent 4 }} and Helm fails with a parse error. What is wrong?",
@@ -7738,36 +6380,6 @@
           "Should I use helm create as a starting point?",
           "It is a reasonable scaffold and worth running once to see the conventions, but the generated chart includes a ServiceAccount, Ingress, HorizontalPodAutoscaler and a large values.yaml that most services do not need. Carrying unused templates makes a chart harder to read and review. Generate it, delete what your application genuinely does not use, and keep _helpers.tpl. The naming and label helpers it produces follow the recommended Kubernetes label conventions and are worth preserving."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -7900,11 +6512,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A release was installed with -f production.yaml. A later upgrade ran with only --set image.tag=1.5.0. Afterwards, replica count and resource limits are back at chart defaults. Why?",
@@ -7929,46 +6536,16 @@
           "Keep a shared base file with everything common, then a small per-environment overlay holding only what differs, and pass both: -f base.yaml -f production.yaml. Later files override earlier ones per key, so the overlay stays short and the shared settings have exactly one definition. This avoids the usual failure mode of three or four near-identical full values files that quietly drift apart. Keep secrets out of these files entirely. Use --set-file, or an external secret manager synced into the cluster."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl get secret -n <namespace> -l owner=helm,name=myapp",
-        "explanation": "Command: kubectl get secret -n <namespace> -l owner=helm,name=myapp"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl delete secret sh.helm.release.v1.myapp.v<stuck-revision> -n <namespace>",
-        "explanation": "Command: kubectl delete secret sh.helm.release.v1.myapp.v<stuck-revision> -n <namespace>"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [
@@ -8110,11 +6687,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A team installs metrics-server and asks why they cannot graph last week's memory usage. What is the explanation?",
@@ -8139,58 +6711,28 @@
           "Symptoms that users experience, not every metric that moves. A short, honest starting set: Pods crash-looping, Deployments with unavailable replicas, nodes not Ready, disk above 85%, certificates expiring within two weeks, and your own error rate and latency against an agreed SLO. Always include a for clause so transient blips do not page anyone. Alerts nobody acts on are worse than no alerts, because they teach people to ignore the channel that also carries the real ones."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "kubectl top nodes",
-        "explanation": "Command: kubectl top nodes"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl top pods --containers",
-        "explanation": "Command: kubectl top pods --containers"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl get deployment metrics-server -n kube-system",
-        "explanation": "Command: kubectl get deployment metrics-server -n kube-system"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-prometheus 9090",
-        "explanation": "Command: kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-prometheus 9090"
+        "explanation": "CLI execution command for kubectl"
       },
       {
         "command": "kubectl logs <pod>",
-        "explanation": "Command: kubectl logs <pod>"
+        "explanation": "CLI execution command for kubectl"
       }
     ],
     "commonPitfalls": [

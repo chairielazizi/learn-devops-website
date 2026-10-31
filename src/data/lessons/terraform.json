@@ -142,54 +142,24 @@
           "State. Terraform records what it created in a state file, and almost every confusing situation. A resource it wants to recreate for no obvious reason, a change made in the console that Terraform undoes, two people applying at once and corrupting the file. Traces back to state. Set up a remote backend with locking before working in a team rather than after, and spend time understanding what state is for early; it pays back more than any other Terraform concept."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform init",
-        "explanation": "Command: terraform init"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan",
-        "explanation": "Command: terraform plan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply",
-        "explanation": "Command: terraform apply"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform destroy",
-        "explanation": "Command: terraform destroy"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -341,7 +311,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "my-project/\n\u251c\u2500\u2500 main.tf          # Core resources\n\u251c\u2500\u2500 variables.tf     # Input variable declarations\n\u251c\u2500\u2500 outputs.tf       # Output value declarations\n\u251c\u2500\u2500 providers.tf     # Provider configuration\n\u251c\u2500\u2500 versions.tf      # terraform{} block with version constraints\n\u2514\u2500\u2500 terraform.tfvars # Variable values (gitignored if sensitive)",
+          "code": "my-project/\n├── main.tf          # Core resources\n├── variables.tf     # Input variable declarations\n├── outputs.tf       # Output value declarations\n├── providers.tf     # Provider configuration\n├── versions.tf      # terraform{} block with version constraints\n└── terraform.tfvars # Variable values (gitignored if sensitive)",
           "description": "Architecture specification"
         }
       },
@@ -372,58 +342,24 @@
           "Only if the Business Source License is a problem for you. OpenTofu is a fork of the last MPL-licensed Terraform, now under the Linux Foundation, and is close to a drop-in replacement with the same configuration language and workflow. For ordinary infrastructure work either is fine. Check which your team's tooling, modules and CI integrations target, since a few vendor integrations still assume one or the other."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv",
-        "explanation": "Command: git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "terraform -version",
-        "explanation": "Command: terraform -version"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform -install-autocomplete",
-        "explanation": "Command: terraform -install-autocomplete"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "mkdir ~/terraform-hello",
-        "explanation": "Command: mkdir ~/terraform-hello"
-      },
-      {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
+        "explanation": "CLI execution command for mkdir"
       }
     ],
     "commonPitfalls": [
@@ -467,7 +403,7 @@
       {
         "title": "The four commands",
         "paragraphs": [
-          "The loop is write \u2192 init \u2192 plan \u2192 apply, repeated for the life of the project. destroy sits outside it and is used deliberately."
+          "The loop is write → init → plan → apply, repeated for the life of the project. destroy sits outside it and is used deliberately."
         ],
         "codeBlock": {
           "language": "bash",
@@ -535,16 +471,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore each command",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "The loop is four commands, but the discipline is one habit: read the plan before every apply. Almost every Terraform incident is a plan somebody scrolled past: a -/+ on a database, a destroy count larger than expected, or an apply against the wrong workspace. The plan tells you all three before anything happens."
@@ -567,36 +493,6 @@
           "What is the difference between terraform fmt and terraform validate?",
           "fmt rewrites files into canonical formatting, indentation and alignment, and changes nothing about behaviour. validate checks that the configuration is syntactically valid and internally consistent: correct argument names, sensible types, references that resolve. Neither contacts a provider or touches infrastructure, both run in under a second, and both belong in CI, with fmt -check failing the build on unformatted code."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -695,7 +591,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "my-project/\n\u251c\u2500\u2500 main.tf\n\u251c\u2500\u2500 variables.tf\n\u251c\u2500\u2500 .terraform/                    # \u2190 created by init, add to .gitignore\n\u2502   \u251c\u2500\u2500 providers/\n\u2502   \u2502   \u2514\u2500\u2500 registry.terraform.io/\n\u2502   \u2502       \u2514\u2500\u2500 hashicorp/\n\u2502   \u2502           \u2514\u2500\u2500 aws/5.54.1/    # downloaded provider binary\n\u2502   \u2514\u2500\u2500 terraform.tfstate          # backend config cache\n\u2514\u2500\u2500 .terraform.lock.hcl            # \u2190 commit this to Git",
+          "code": "my-project/\n├── main.tf\n├── variables.tf\n├── .terraform/                    # ← created by init, add to .gitignore\n│   ├── providers/\n│   │   └── registry.terraform.io/\n│   │       └── hashicorp/\n│   │           └── aws/5.54.1/    # downloaded provider binary\n│   └── terraform.tfstate          # backend config cache\n└── .terraform.lock.hcl            # ← commit this to Git",
           "description": "Architecture specification"
         }
       },
@@ -762,58 +658,20 @@
           "Usually network access or a version constraint that cannot be satisfied. In a restricted network the registry may be unreachable, in which case a provider mirror or a network policy change is needed. If the error names a version, your constraints conflict. Perhaps a module requires a provider version your root configuration excludes. Read the constraint chain in the error, which names each source, and reconcile them in required_providers."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform init",
-        "explanation": "Command: terraform init"
-      },
-      {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
-      },
-      {
-        "command": "aws = {",
-        "explanation": "Command: aws = {"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform init -upgrade",
-        "explanation": "Command: terraform init -upgrade"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform init -reconfigure",
-        "explanation": "Command: terraform init -reconfigure"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -952,7 +810,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "Error: No configuration files\n\u2502 Plan requires configuration to be present.",
+          "code": "Error: No configuration files\n│ Plan requires configuration to be present.",
           "description": "Architecture specification"
         }
       },
@@ -982,58 +840,28 @@
           "Run terraform plan -input=false -out=tfplan on pull requests and post the output as a comment so the change is reviewable, then apply the saved plan file on merge. Use -detailed-exitcode, which returns 0 for no changes, 2 for changes present and 1 for an error, that lets a pipeline distinguish \"nothing to do\" from \"changes await approval\" and act accordingly. Never let apply run automatically from a feature branch against shared infrastructure."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform plan",
-        "explanation": "Command: terraform plan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -out=tfplan",
-        "explanation": "Command: terraform plan -out=tfplan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -input=false -out=tfplan",
-        "explanation": "Command: terraform plan -input=false -out=tfplan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply -input=false tfplan",
-        "explanation": "Command: terraform apply -input=false tfplan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -target=aws_s3_bucket.assets",
-        "explanation": "Command: terraform plan -target=aws_s3_bucket.assets"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -1118,7 +946,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "aws_s3_bucket.logs: Creating...       \u2190 no dependencies, starts immediately\naws_s3_bucket.assets: Creating...     \u2190 no dependencies, starts immediately\naws_vpc.main: Creating...             \u2190 no dependencies, starts immediately\naws_s3_bucket.logs: Creation complete after 2s\naws_s3_bucket.assets: Creation complete after 2s\naws_vpc.main: Creation complete after 2s\naws_subnet.public: Creating...        \u2190 depends on VPC, starts after VPC",
+          "code": "aws_s3_bucket.logs: Creating...       ← no dependencies, starts immediately\naws_s3_bucket.assets: Creating...     ← no dependencies, starts immediately\naws_vpc.main: Creating...             ← no dependencies, starts immediately\naws_s3_bucket.logs: Creation complete after 2s\naws_s3_bucket.assets: Creation complete after 2s\naws_vpc.main: Creation complete after 2s\naws_subnet.public: Creating...        ← depends on VPC, starts after VPC",
           "description": "Architecture specification"
         }
       },
@@ -1190,7 +1018,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "\u2577\n\u2502 Error: error creating EC2 Instance: InvalidParameterValue: Invalid value for InstanceType\n\u2502   with aws_instance.web,\n\u2502   on main.tf line 10\n\u2502\n\u2502 aws_instance.web: Creation failed after 2s\n\u2575\n\nApply complete! Resources: 3 added, 0 changed, 0 destroyed.\nError: 1 error occurred.",
+          "code": "╷\n│ Error: error creating EC2 Instance: InvalidParameterValue: Invalid value for InstanceType\n│   with aws_instance.web,\n│   on main.tf line 10\n│\n│ aws_instance.web: Creation failed after 2s\n╵\n\nApply complete! Resources: 3 added, 0 changed, 0 destroyed.\nError: 1 error occurred.",
           "description": "Architecture specification"
         }
       },
@@ -1220,58 +1048,28 @@
           "Check whether Terraform knows about it. If the resource was created but the provider errored afterwards, it is usually in state and a subsequent apply will fix or replace it. If it was created and Terraform lost track, import it with terraform import rather than letting a second apply create a duplicate. If state contains something that no longer exists, terraform state rm removes the entry so Terraform stops trying to manage it. Always run a plan and read it before acting on any of these."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform apply",
-        "explanation": "Command: terraform apply"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply -parallelism=5",
-        "explanation": "Command: terraform apply -parallelism=5"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply -parallelism=1",
-        "explanation": "Command: terraform apply -parallelism=1"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply tfplan",
-        "explanation": "Command: terraform apply tfplan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply -auto-approve",
-        "explanation": "Command: terraform apply -auto-approve"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -1445,58 +1243,28 @@
           "Only for genuinely ephemeral environments. A per-pull-request preview stack that is torn down on merge, or a nightly cleanup of a sandbox account. Even then, scope it tightly with a separate state file and credentials that cannot reach production, so an error in the pipeline cannot destroy the wrong thing. For anything long-lived, destruction should require a human."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform destroy",
-        "explanation": "Command: terraform destroy"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform destroy -target=aws_instance.web",
-        "explanation": "Command: terraform destroy -target=aws_instance.web"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform destroy -target=module.database",
-        "explanation": "Command: terraform destroy -target=module.database"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform destroy -auto-approve",
-        "explanation": "Command: terraform destroy -auto-approve"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -destroy",
-        "explanation": "Command: terraform plan -destroy"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -1606,16 +1374,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Variables in, locals for internal logic, outputs out. Most unreadable Terraform comes from blurring those lines. Parameterising things that never vary, or computing in-line what should be a named local. Keep the required variable surface small, give everything a description, and remember that sensitive protects logs rather than state."
@@ -1639,46 +1397,16 @@
           "Because the module interface is deliberately a contract. A parent module can only see what a child explicitly exposes through output blocks, which is what lets a module change its internals without breaking callers. If you need a value from a module, add an output for it, and when writing a module, expose anything a caller might plausibly want, since adding an output later is easy but callers have no way to work around a missing one."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform apply -var-file=production.tfvars",
-        "explanation": "Command: terraform apply -var-file=production.tfvars"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply -var=\"instance_count=5\"",
-        "explanation": "Command: terraform apply -var=\"instance_count=5\""
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform output",
@@ -2016,11 +1744,6 @@
         "codeBlock": null
       },
       {
-        "title": "Best Practices for Terraform Input Variables",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Input variables are one of the foundations of real-world Terraform. They make the difference between a one-off script and reusable infrastructure as code. Once you understand variables, you can create modules that work across multiple environments, pass values cleanly from CI/CD systems, validate user input, and keep your Terraform code easier to maintain.",
@@ -2055,58 +1778,28 @@
           "No. Over-parameterising is a common mistake that makes a module hard to use and hard to reason about, because a caller faces twenty decisions where three would do. Make something a variable when it genuinely differs between callers or environments; use a local for internal logic, and hardcode values that should not vary. A module with sensible defaults and a small required surface is far more usable than one exposing every attribute."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform plan -var=\"environment=staging\" -var=\"instance_count=2\"",
-        "explanation": "Command: terraform plan -var=\"environment=staging\" -var=\"instance_count=2\""
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -var-file=\"dev.tfvars\"",
-        "explanation": "Command: terraform plan -var-file=\"dev.tfvars\""
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply -var-file=\"prod.tfvars\"",
-        "explanation": "Command: terraform apply -var-file=\"prod.tfvars\""
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -var-file=\"environments/dev.tfvars\"",
-        "explanation": "Command: terraform plan -var-file=\"environments/dev.tfvars\""
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -var-file=\"environments/staging.tfvars\"",
-        "explanation": "Command: terraform plan -var-file=\"environments/staging.tfvars\""
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -2361,11 +2054,6 @@
         }
       },
       {
-        "title": "Common Patterns for Local Values",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "1. Common tags",
         "paragraphs": [
           "This is probably the most common real-world use of locals.",
@@ -2453,11 +2141,6 @@
         "codeBlock": null
       },
       {
-        "title": "Best Practices for Terraform Locals",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Local values are one of the easiest ways to make Terraform code more readable. They help you avoid copy-paste, keep naming conventions consistent, and express environment-specific logic once instead of in ten different places.",
@@ -2491,36 +2174,6 @@
           "Can I overuse locals?",
           "Yes. A configuration where every value is indirected through a local becomes harder to follow than one with a few literals, because reading any resource means jumping to the locals block and back. Reserve them for values used in several places, for expressions complex enough that a name aids comprehension, and for anything you expect to change. A single-use local wrapping a simple literal usually costs more in navigation than it saves."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -2606,11 +2259,6 @@
           "code": "output \"alb_dns_name\" {\n  description = \"DNS name of the application load balancer\"\n  value       = aws_lb.app.dns_name\n}",
           "description": "Architecture specification"
         }
-      },
-      {
-        "title": "Simple Output Examples",
-        "paragraphs": [],
-        "codeBlock": null
       },
       {
         "title": "Resource attribute output",
@@ -2836,58 +2484,28 @@
           "Yes, and it is the standard way to hand values to later steps. Run terraform output -json > outputs.json and parse it, or use -raw to capture a single value into a shell variable. Typical uses are passing a load balancer DNS name to a smoke test, an ECR repository URL to a build step, or a cluster name to a deployment job. Remember sensitive outputs appear unredacted in -json, so avoid printing the whole document into a log."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform output",
-        "explanation": "Command: terraform output"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform output alb_dns_name",
-        "explanation": "Command: terraform output alb_dns_name"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform output -json",
-        "explanation": "Command: terraform output -json"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform output application_url",
-        "explanation": "Command: terraform output application_url"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform output -json application_url",
-        "explanation": "Command: terraform output -json application_url"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -3014,16 +2632,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "State is not an implementation detail you can ignore. It is the thing Terraform reasons from, and understanding it converts most Terraform confusion into something obvious. Set up a remote backend with locking and versioning before you need it, keep environments in separate state files, and never let state into version control."
@@ -3047,50 +2655,16 @@
           "That is drift: someone changed the infrastructure outside Terraform, and the plan is proposing to bring it back in line with your configuration. Run terraform plan -refresh-only to review what changed without mixing it with configuration changes. Then decide whether to accept the manual change by updating your code, or let Terraform revert it. Leaving drift unresolved is how teams stop trusting Terraform, and a tool people distrust gets bypassed."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
-      },
-      {
         "command": "terraform init -backend-config=\"key=production/terraform.tfstate\"",
-        "explanation": "Command: terraform init -backend-config=\"key=production/terraform.tfstate\""
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform force-unlock <LOCK_ID>",
-        "explanation": "Command: terraform force-unlock <LOCK_ID>"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -3287,11 +2861,6 @@
         "codeBlock": null
       },
       {
-        "title": "Best Practices for Terraform State",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Terraform state is not just an implementation detail. It is one of the core reasons Terraform can plan changes accurately, detect drift, and manage infrastructure safely over time. The terraform.tfstate file gives Terraform the memory it needs to connect your code to real cloud resources.",
@@ -3326,36 +2895,6 @@
           "Do I need remote state for a solo project?",
           "Not strictly, but it is worth it early. Local state lives on one machine, so it is lost with that laptop, has no version history, and cannot be shared the moment a second person or a CI pipeline is involved. An S3 bucket with versioning and encryption takes ten minutes to set up and removes a whole category of future pain. Migrating later is possible but always less pleasant than starting that way."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -3582,11 +3121,6 @@
         "codeBlock": null
       },
       {
-        "title": "Best Practices",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Remote backends are what turn Terraform from a personal tool into a team-ready platform. They centralize state, make CI/CD practical, improve durability, and reduce the risk of conflicting updates.",
@@ -3623,54 +3157,20 @@
           "Use a separate state file per environment, typically by giving each its own key in the same bucket, production/terraform.tfstate, staging/terraform.tfstate. This means a mistake in staging cannot touch production state, blast radius is contained, and the two can be applied independently. Backend configuration cannot use variables, so supply the differing values with -backend-config at init time, or use separate directories per environment."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
-      },
-      {
         "command": "terraform apply",
-        "explanation": "Command: terraform apply"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform init",
-        "explanation": "Command: terraform init"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform init -backend-config=\"backend-prod.hcl\"",
-        "explanation": "Command: terraform init -backend-config=\"backend-prod.hcl\""
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -3761,7 +3261,7 @@
         "title": "terraform state mv",
         "paragraphs": [
           "The terraform state mv command changes a resource's address in the state file.",
-          "It does not recreate the cloud resource. It tells Terraform, \u201cThis existing object should now be tracked under a different address.\u201d",
+          "It does not recreate the cloud resource. It tells Terraform, “This existing object should now be tracked under a different address.”",
           "Imagine you rename this resource in code:",
           "If you do nothing, Terraform sees:",
           "That is not what you want. It is the same real instance; only the logical Terraform name changed.",
@@ -3874,11 +3374,6 @@
         }
       },
       {
-        "title": "Common Risks and Mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Using state commands casually",
         "paragraphs": [
           "State commands are not everyday formatting tools. They change Terraform's understanding of infrastructure. Always know why you are running one."
@@ -3911,11 +3406,6 @@
         "paragraphs": [
           "It shows Terraform's current recorded information, not necessarily a complete real-time console replacement."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Best Practices for State Commands",
-        "paragraphs": [],
         "codeBlock": null
       },
       {
@@ -3953,58 +3443,28 @@
           "terraform state list enumerates every managed resource address, and terraform state show <address> prints all recorded attributes for one. Both are read-only and safe to run at any time. They are the fastest way to answer \"does Terraform know about this\" and \"what does Terraform think this resource looks like\", which between them explain most confusing plans."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform state list",
-        "explanation": "Command: terraform state list"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform state show aws_instance.web",
-        "explanation": "Command: terraform state show aws_instance.web"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform state mv aws_instance.web aws_instance.app",
-        "explanation": "Command: terraform state mv aws_instance.web aws_instance.app"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform state mv aws_security_group.web module.network.aws_security_group.web",
-        "explanation": "Command: terraform state mv aws_security_group.web module.network.aws_security_group.web"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform state rm aws_instance.web",
-        "explanation": "Command: terraform state rm aws_instance.web"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -4092,7 +3552,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "modules/s3-bucket/\n\u251c\u2500\u2500 main.tf        # resources\n\u251c\u2500\u2500 variables.tf   # inputs\n\u251c\u2500\u2500 outputs.tf     # outputs\n\u251c\u2500\u2500 versions.tf    # terraform and provider constraints\n\u2514\u2500\u2500 README.md      # usage example",
+          "code": "modules/s3-bucket/\n├── main.tf        # resources\n├── variables.tf   # inputs\n├── outputs.tf     # outputs\n├── versions.tf    # terraform and provider constraints\n└── README.md      # usage example",
           "description": "Architecture specification"
         }
       },
@@ -4118,16 +3578,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Modules are how Terraform configurations stay maintainable past a few hundred lines, and how a pattern gets defined once instead of copied. The judgement is knowing when. Extract after the second repetition, not the first, and design the interface for the caller rather than for the implementation. Pin every version, keep nesting shallow, and use moved blocks when refactoring so a reorganisation never becomes a rebuild."
@@ -4150,36 +3600,6 @@
           "Should a module contain its own provider block?",
           "No. Declare required_providers in the module's versions.tf to state which providers and versions it needs, but leave the provider configuration, region, credentials, aliases, to the root module, which the child inherits. A module with its own provider block cannot be used with multiple regions or accounts and cannot be cleanly removed from state. When a module genuinely needs a non-default provider, pass an alias explicitly through the providers argument."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -4429,11 +3849,6 @@
         "codeBlock": null
       },
       {
-        "title": "Best Practices for Using Terraform Modules",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Common Beginner Mistakes",
         "paragraphs": [
           "This can lead to surprising resource creation, unnecessary cost, or incorrect assumptions.",
@@ -4479,42 +3894,12 @@
           "Because moving a resource into a module changes its state address from aws_instance.web to module.compute.aws_instance.web, and Terraform sees the old address gone and a new one appear. Fix it with moved blocks in configuration, which declare the rename and are reviewable in a pull request, or with terraform state mv for a one-off. Always run a plan afterwards and confirm it is empty before applying."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform init",
-        "explanation": "Command: terraform init"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -4777,11 +4162,6 @@
         "codeBlock": null
       },
       {
-        "title": "Best Practices for Writing Terraform Modules",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Complete Example: Reusable VPC Module Pattern",
         "paragraphs": [
           "A more advanced module might include:",
@@ -4829,46 +4209,16 @@
           "Start with the cheap layers: terraform validate and terraform fmt -check in CI, plus tfsec or Checkov for security policy. Beyond that, the native terraform test framework runs assertions against plan or apply results using .tftest.hcl files, which is enough for most modules. Terratest, which drives real infrastructure from Go, is heavier but suited to modules where a genuine end-to-end check is worth the runtime and cost."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform init",
-        "explanation": "Command: terraform init"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan",
-        "explanation": "Command: terraform plan"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -5185,36 +4535,6 @@
           "The filters matched nothing, usually because of the region, the account, or a tag that does not exist. Data sources fail the plan rather than returning empty, which is deliberate. Continuing with a missing value would produce worse errors later. Check you are in the expected region and account with aws sts get-caller-identity, and test the equivalent CLI query directly to confirm the filters match something before debugging the Terraform side."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -5331,16 +4651,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Default to for_each. Use count for conditional creation and for genuinely interchangeable quantities, and nowhere else. The question worth asking before choosing is simple: could an item ever be removed from the middle? If yes, positional identity will eventually destroy something you did not intend, and no amount of care at apply time will catch it."
@@ -5363,36 +4673,6 @@
           "How do I convert existing resources from count to for_each?",
           "Add a moved block for each instance, mapping the old indexed address to the new keyed one, from = aws_s3_bucket.this[0], to = aws_s3_bucket.this[\"logs\"]. Without them Terraform sees every address change and plans a full destroy and recreate. It is tedious for a large set, but it turns a rebuild into a no-op. Always run a plan afterwards and confirm it reports no changes before applying."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -5673,36 +4953,6 @@
           "Can I use count with modules?",
           "Yes, count works on module blocks exactly as it does on resources, producing module.name[0]. The same positional-identity caveat applies and matters more, because recreating a module instance recreates every resource inside it. For anything beyond a simple conditional enable, for_each on the module block is the safer choice."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -5987,36 +5237,6 @@
           "By key: aws_subnet.this[\"public-a\"].id. For all of them, use a for expression such as [for s in aws_subnet.this : s.id], or values(aws_subnet.this)[*].id. The splat syntax that works with count does not apply directly to for_each resources, because they form a map rather than a list. This is a common stumbling block when converting a resource from one to the other."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -6150,16 +5370,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "Two things carry most of the weight here: the for expression, which turns lists into the maps for_each needs and filters in the same pass, and terraform console, which removes guesswork entirely. Learn those two and the function library becomes something you look up rather than memorise."
@@ -6183,42 +5393,12 @@
           "Not in Terraform itself. The function library is fixed and there is no user-defined function support. The idiomatic substitute is a locals block, which lets you name a complex expression once and reuse it everywhere, giving most of the readability benefit. For genuinely complex logic, either reshape the input data so the expression becomes simple, or move the computation outside Terraform and pass the result in as a variable."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform console",
-        "explanation": "Command: terraform console"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -6583,36 +5763,6 @@
           "Where can I test Terraform expressions?",
           "terraform console gives an interactive prompt with access to your variables, locals, data sources and state, so you can evaluate an expression against real values rather than guessing. It is the fastest way to work out why a function is not producing what you expect, and it is read-only, so it is safe to run against production state."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -7036,36 +6186,6 @@
           "With a for expression and an if clause: [for s in var.subnets : s.id if s.public]. The same syntax builds filtered maps by using the key => value form. There is no dedicated filter function, and the for expression is the idiomatic approach. It also handles transformation at the same time, so filtering and mapping happen in one pass."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -7301,36 +6421,6 @@
           "Should I prefer security group rule resources over dynamic ingress blocks?",
           "Often, yes. Separate aws_vpc_security_group_ingress_rule resources with for_each give each rule its own state address, so adding or removing one shows as a single change rather than a rewrite of the whole security group, and a description per rule is preserved cleanly. Dynamic blocks inside aws_security_group remain valid, but the standalone rule resources produce clearer plans on anything that changes regularly."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -7651,58 +6741,28 @@
           "Destroy its resources first with terraform destroy while it is selected, then switch away and run terraform workspace delete <name>. Terraform refuses to delete a workspace whose state is non-empty unless you force it, and forcing leaves orphaned infrastructure nobody is tracking. For ephemeral preview environments, wire the destroy-then-delete sequence into the pipeline that tears the environment down."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform workspace show",
-        "explanation": "Command: terraform workspace show"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform workspace list",
-        "explanation": "Command: terraform workspace list"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform workspace new dev",
-        "explanation": "Command: terraform workspace new dev"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform workspace select staging",
-        "explanation": "Command: terraform workspace select staging"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform workspace delete dev",
-        "explanation": "Command: terraform workspace delete dev"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -7797,7 +6857,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "environments/\n\u251c\u2500\u2500 production/     # own backend key, own state, own credentials\n\u251c\u2500\u2500 staging/\n\u2514\u2500\u2500 dev/\nmodules/\n\u251c\u2500\u2500 network/\n\u251c\u2500\u2500 application/\n\u2514\u2500\u2500 data/",
+          "code": "environments/\n├── production/     # own backend key, own state, own credentials\n├── staging/\n└── dev/\nmodules/\n├── network/\n├── application/\n└── data/",
           "description": "Architecture specification"
         }
       },
@@ -7825,16 +6885,6 @@
         "codeBlock": null
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Thoughts",
         "paragraphs": [
           "The Terraform part of AWS work is rarely the hard part. What determines whether an estate stays manageable is the surrounding decisions: pin the provider, tag by default, authenticate with roles rather than keys, keep state separate per environment, and split configurations by how often they change. Get those right early and the resource blocks look after themselves."
@@ -7858,54 +6908,16 @@
           "Usually not. Networking changes rarely and is shared by many workloads; application infrastructure changes constantly. Combining them means every application deploy plans against the whole network, the blast radius of a mistake is larger, and applies are slower. Put the VPC in its own configuration, expose IDs as outputs, and consume them from application configurations through a data source or a value published to SSM Parameter Store."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
-      },
-      {
-        "command": "aws = {",
-        "explanation": "Command: aws = {"
-      },
-      {
         "command": "terraform plan",
-        "explanation": "Command: terraform plan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "aws sts get-caller-identity",
-        "explanation": "Command: aws sts get-caller-identity"
+        "explanation": "CLI execution command for aws"
       }
     ],
     "commonPitfalls": [
@@ -7960,14 +6972,14 @@
         "paragraphs": [
           "Conceptually, the layout looks like this:",
           "A few design principles are worth understanding before you write any code:",
-          "A subnet becomes \u201cpublic\u201d when its route table sends outbound internet traffic to an Internet Gateway and resources inside it can receive public IP addresses. A subnet stays \u201cprivate\u201d when it does not expose that direct path.",
+          "A subnet becomes “public” when its route table sends outbound internet traffic to an Internet Gateway and resources inside it can receive public IP addresses. A subnet stays “private” when it does not expose that direct path.",
           "Private resources often still need outbound internet access. For example:",
           "A NAT gateway gives those private resources outbound internet connectivity without opening inbound access from the internet.",
           "You will spread subnets across multiple AZs by using the AWS availability zone data source. This is good practice because it prepares the environment for high availability. Even if you launch only one EC2 instance today, you are learning a production-friendly network layout."
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "VPC 10.0.0.0/16\n\u251c\u2500\u2500 Public subnet A   10.0.1.0/24\n\u251c\u2500\u2500 Public subnet B   10.0.2.0/24\n\u251c\u2500\u2500 Private subnet A  10.0.11.0/24\n\u251c\u2500\u2500 Private subnet B  10.0.12.0/24\n\u251c\u2500\u2500 Internet Gateway\n\u251c\u2500\u2500 NAT Gateway (in a public subnet)\n\u251c\u2500\u2500 Public route table   -> 0.0.0.0/0 via Internet Gateway\n\u2514\u2500\u2500 Private route table  -> 0.0.0.0/0 via NAT Gateway",
+          "code": "VPC 10.0.0.0/16\n├── Public subnet A   10.0.1.0/24\n├── Public subnet B   10.0.2.0/24\n├── Private subnet A  10.0.11.0/24\n├── Private subnet B  10.0.12.0/24\n├── Internet Gateway\n├── NAT Gateway (in a public subnet)\n├── Public route table   -> 0.0.0.0/0 via Internet Gateway\n└── Private route table  -> 0.0.0.0/0 via NAT Gateway",
           "description": "Architecture specification"
         }
       },
@@ -7993,7 +7005,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "terraform-aws-vpc/\n\u251c\u2500\u2500 main.tf\n\u251c\u2500\u2500 variables.tf\n\u251c\u2500\u2500 outputs.tf\n\u2514\u2500\u2500 terraform.tfvars",
+          "code": "terraform-aws-vpc/\n├── main.tf\n├── variables.tf\n├── outputs.tf\n└── terraform.tfvars",
           "description": "Architecture specification"
         }
       },
@@ -8216,58 +7228,20 @@
           "Usually not. Networking changes rarely and is shared by many workloads, while application infrastructure changes constantly. Keeping them together means every application deploy plans against the whole VPC and a mistake has a larger blast radius. Put the VPC in its own configuration and expose IDs via outputs, then consume them from application configurations with a data source or by reading a parameter from SSM."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "aws sts get-caller-identity",
-        "explanation": "Command: aws sts get-caller-identity"
+        "explanation": "CLI execution command for aws"
       },
       {
         "command": "terraform version",
-        "explanation": "Command: terraform version"
-      },
-      {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
-      },
-      {
-        "command": "aws = {",
-        "explanation": "Command: aws = {"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform init",
-        "explanation": "Command: terraform init"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -8312,7 +7286,7 @@
         "paragraphs": [
           "In the previous lesson, you built the network layer: a custom VPC, public and private subnets, an internet gateway, route tables, and a NAT gateway. That network is the foundation. Now it is time to place a compute resource inside it.",
           "In this lesson, you will launch a public EC2 web server with Terraform. The finished setup includes:",
-          "This is a realistic next step because infrastructure projects rarely stop at \u201cthe network exists.\u201d A useful VPC normally hosts something: a web server, an application tier, a bastion host, or a load balancer."
+          "This is a realistic next step because infrastructure projects rarely stop at “the network exists.” A useful VPC normally hosts something: a web server, an application tier, a bastion host, or a load balancer."
         ],
         "codeBlock": null
       },
@@ -8324,7 +7298,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "Internet\n  \u2502\nElastic IP\n  \u2502\nEC2 instance (Nginx)\n  \u2502\nSecurity Group (80, 22 open)\n  \u2502\nPublic subnet\n  \u2502\nVPC",
+          "code": "Internet\n  │\nElastic IP\n  │\nEC2 instance (Nginx)\n  │\nSecurity Group (80, 22 open)\n  │\nPublic subnet\n  │\nVPC",
           "description": "Architecture specification"
         }
       },
@@ -8388,7 +7362,7 @@
         "title": "Writing the User Data Script",
         "paragraphs": [
           "user_data lets you bootstrap the instance when it starts. Instead of SSHing in manually and installing Nginx yourself, Terraform passes a startup script to cloud-init on the VM.",
-          "This pattern keeps the infrastructure reproducible. If the instance is destroyed and recreated, it configures itself the same way every time. That is much better than \u201claunch a VM and click around until it works.\u201d",
+          "This pattern keeps the infrastructure reproducible. If the instance is destroyed and recreated, it configures itself the same way every time. That is much better than “launch a VM and click around until it works.”",
           "It is also your first taste of the boundary between provisioning and configuration management:",
           "For more advanced software configuration, tools like cloud-init, Packer, or Ansible are often cleaner than long user data scripts."
         ],
@@ -8491,7 +7465,7 @@
       {
         "title": "Final Thoughts",
         "paragraphs": [
-          "This lesson shows how Terraform moves from \u201cnetworking exists\u201d to \u201ca real workload is running.\u201d You used a data source to stay current with AMIs, a security group to control traffic, user data to automate first-boot configuration, and an Elastic IP to give the server a stable identity.",
+          "This lesson shows how Terraform moves from “networking exists” to “a real workload is running.” You used a data source to stay current with AMIs, a security group to control traffic, user data to automate first-boot configuration, and an Elastic IP to give the server a stable identity.",
           "That is a strong baseline for many AWS labs. Next, you can add storage and static content to round out the project."
         ],
         "codeBlock": null
@@ -8522,58 +7496,28 @@
           "The root volume is configured inline with a root_block_device block; additional volumes are separate aws_ebs_volume resources attached with aws_volume_attachment. Use gp3 rather than gp2, since it is cheaper and faster with performance independent of size. Set encrypted = true, or better, enable EBS encryption by default at the account level so no configuration can forget it. Note that additional volumes do not delete on termination by default, which is usually what you want but does leave orphans if instances are replaced often."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat > /var/www/html/index.html <<'HTML'",
-        "explanation": "Command: cat > /var/www/html/index.html <<'HTML'"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "systemctl enable nginx",
-        "explanation": "Command: systemctl enable nginx"
+        "explanation": "CLI execution command for systemctl"
       },
       {
         "command": "systemctl restart nginx",
-        "explanation": "Command: systemctl restart nginx"
+        "explanation": "CLI execution command for systemctl"
       },
       {
         "command": "terraform output web_public_ip",
-        "explanation": "Command: terraform output web_public_ip"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform output web_public_dns",
-        "explanation": "Command: terraform output web_public_dns"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -8617,7 +7561,7 @@
         "title": "Continuing the AWS Project",
         "paragraphs": [
           "So far, the project has a network layer and a public EC2 web server. The next useful component is object storage. In AWS, that means S3.",
-          "In this lesson, you will create an S3 bucket that stores static assets such as HTML, CSS, JavaScript, images, and downloads. The tutorial goes a bit further than \u201ccreate a bucket\u201d because real buckets need policy and lifecycle decisions too.",
+          "In this lesson, you will create an S3 bucket that stores static assets such as HTML, CSS, JavaScript, images, and downloads. The tutorial goes a bit further than “create a bucket” because real buckets need policy and lifecycle decisions too.",
           "By the end, your S3 configuration will include:",
           "This lesson intentionally uses a public static-asset pattern because it is easy to understand and test. In production, many teams prefer CloudFront in front of S3 instead of a directly public bucket, but learning the underlying S3 pieces is still valuable."
         ],
@@ -8795,7 +7739,7 @@
       {
         "title": "Final Thoughts",
         "paragraphs": [
-          "The S3 part of the project teaches an important Terraform lesson: cloud resources are rarely \u201cdone\u201d after the first resource block. Buckets need naming strategy, access design, versioning decisions, lifecycle management, and often object uploads or policies.",
+          "The S3 part of the project teaches an important Terraform lesson: cloud resources are rarely “done” after the first resource block. Buckets need naming strategy, access design, versioning decisions, lifecycle management, and often object uploads or policies.",
           "That is why Terraform is so useful. Instead of manually remembering every checkbox in the AWS console, you define the bucket once in code and recreate it consistently."
         ],
         "codeBlock": null
@@ -8826,58 +7770,20 @@
           "Not in the configuration that uses it, since the bucket must exist before terraform init can store state there. Create it in a small separate configuration with local state, or once via the CLI. Enable versioning so a bad state write can be recovered, enable encryption, block all public access, and restrict who can read it. State contains secrets in plain text. Keep that bootstrap configuration in version control even though its own state is local; it changes rarely."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
-      },
-      {
-        "command": "aws = {",
-        "explanation": "Command: aws = {"
-      },
-      {
         "command": "terraform output assets_bucket_name",
-        "explanation": "Command: terraform output assets_bucket_name"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform output assets_website_endpoint",
-        "explanation": "Command: terraform output assets_website_endpoint"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform init",
-        "explanation": "Command: terraform init"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -8935,7 +7841,7 @@
           "Imagine you create an EC2 instance and then want to:",
           "A provisioner can do all of that. That sounds convenient, especially if you come from a Bash or configuration-management background.",
           "Here is the beginner mental model:",
-          "That model is not wrong, but it hides some operational problems. Provisioners can fail halfway through. They can depend on SSH availability. They can make repeated applies unpredictable. They can blur the separation between \u201cTerraform manages infrastructure state\u201d and \u201csomething else manages software configuration.\u201d",
+          "That model is not wrong, but it hides some operational problems. Provisioners can fail halfway through. They can depend on SSH availability. They can make repeated applies unpredictable. They can blur the separation between “Terraform manages infrastructure state” and “something else manages software configuration.”",
           "So before you treat provisioners as the default answer, learn their mechanics and their tradeoffs."
         ],
         "codeBlock": null
@@ -8995,7 +7901,7 @@
         "paragraphs": [
           "Both remote-exec and file usually need a connection block. This tells Terraform how to reach the remote host.",
           "Other useful fields can include:",
-          "Inside a provisioner or connection block, self refers to the resource being provisioned. So self.public_ip means \u201cuse the public IP of this resource.\u201d",
+          "Inside a provisioner or connection block, self refers to the resource being provisioned. So self.public_ip means “use the public IP of this resource.”",
           "That is convenient, but it also shows how tightly provisioners depend on resource timing and runtime connectivity."
         ],
         "codeBlock": {
@@ -9034,11 +7940,11 @@
       {
         "title": "Better Alternatives to Provisioners",
         "paragraphs": [
-          "HashiCorp does not say \u201cnever automate post-provision tasks.\u201d It says \u201cuse better-native patterns first.\u201d",
+          "HashiCorp does not say “never automate post-provision tasks.” It says “use better-native patterns first.”",
           "For VM bootstrapping, user_data and cloud-init are usually cleaner than remote-exec.",
           "If the same packages and files should exist on every VM, bake them into a machine image with Packer instead of installing them during every Terraform apply.",
           "If you need rich configuration management, Ansible is usually a better tool than Terraform provisioners. It is built for:",
-          "If the post-provision step is \u201cdeploy the app,\u201d that step often belongs in CI/CD, not inside Terraform."
+          "If the post-provision step is “deploy the app,” that step often belongs in CI/CD, not inside Terraform."
         ],
         "codeBlock": null
       },
@@ -9136,36 +8042,6 @@
           "For genuinely local, idempotent side effects that do not represent infrastructure. Writing a kubeconfig for a subsequent step, or triggering a notification. It is pragmatic and widely used. It becomes a problem when it is doing work that should be declarative, because nothing plans it, nothing detects drift in it, and nobody reviewing the plan can see what it will do. If a local-exec is creating or modifying infrastructure, that infrastructure belongs in a resource block."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -9215,10 +8091,10 @@
         "title": "Why Infrastructure as Code Belongs in CI/CD",
         "paragraphs": [
           "Terraform gives you reproducible infrastructure, but if engineers still apply changes manually from their laptops, you only solved half the problem.",
-          "A CI/CD pipeline turns Terraform from \u201ccode that could be run consistently\u201d into \u201ccode that is run consistently.\u201d That matters for several reasons.",
+          "A CI/CD pipeline turns Terraform from “code that could be run consistently” into “code that is run consistently.” That matters for several reasons.",
           "The same validation and deployment steps run every time. You do not rely on one engineer remembering the right command sequence.",
           "Pipelines attach infrastructure actions to commits, branches, merge requests, and job logs. That makes it far easier to answer questions like:",
-          "\u201cCowboy infrastructure\u201d means someone changes production directly from a laptop, outside a reviewable pipeline, often with local credentials and local state. CI/CD reduces that risk by making the pipeline the normal path.",
+          "“Cowboy infrastructure” means someone changes production directly from a laptop, outside a reviewable pipeline, often with local credentials and local state. CI/CD reduces that risk by making the pipeline the normal path.",
           "A good pipeline can validate automatically, publish a plan artifact, and require a manual approval before apply. That creates a safer change-management flow without slowing teams down too much.",
           "Once more than one person manages infrastructure, a pipeline becomes the easiest way to standardize execution."
         ],
@@ -9229,7 +8105,7 @@
         "paragraphs": [
           "A practical GitLab Terraform pipeline often follows this flow:",
           "Each phase has a specific purpose:",
-          "This separation matters. You do not want \u201cvalidate and deploy immediately\u201d as your only option."
+          "This separation matters. You do not want “validate and deploy immediately” as your only option."
         ],
         "codeBlock": {
           "language": "bash",
@@ -9254,7 +8130,7 @@
         "paragraphs": [
           "The validate stage should be cheap, fast, and mandatory.",
           "This checks whether your Terraform files are formatted according to Terraform's standard style.",
-          "-check means \u201cverify formatting, do not rewrite files.\u201d That is exactly what you want in CI.",
+          "-check means “verify formatting, do not rewrite files.” That is exactly what you want in CI.",
           "This validates the configuration's syntax and internal consistency.",
           "It checks things like:",
           "It does not create infrastructure. Think of it as structural validation."
@@ -9271,7 +8147,7 @@
           "The plan stage is where the pipeline becomes genuinely useful.",
           "The -out=tfplan flag saves the generated execution plan to a binary plan file. That matters because it creates a fixed artifact that can later be applied.",
           "Because the plan is the reviewable proposed change set.",
-          "If the apply stage uses the exact plan produced earlier, you reduce the chance that conditions drift between \u201cwhat we reviewed\u201d and \u201cwhat got applied.\u201d",
+          "If the apply stage uses the exact plan produced earlier, you reduce the chance that conditions drift between “what we reviewed” and “what got applied.”",
           "The example pipeline also runs:",
           "That converts the binary plan into readable text and saves it as an artifact too. Reviewers can inspect plan.txt without re-running Terraform locally."
         ],
@@ -9373,7 +8249,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "terraform/\n\u251c\u2500\u2500 modules/\n\u2502   \u251c\u2500\u2500 vpc/\n\u2502   \u251c\u2500\u2500 ec2/\n\u2502   \u2514\u2500\u2500 s3/\n\u2514\u2500\u2500 env/\n    \u251c\u2500\u2500 dev/\n    \u251c\u2500\u2500 staging/\n    \u2514\u2500\u2500 prod/",
+          "code": "terraform/\n├── modules/\n│   ├── vpc/\n│   ├── ec2/\n│   └── s3/\n└── env/\n    ├── dev/\n    ├── staging/\n    └── prod/",
           "description": "Architecture specification"
         }
       },
@@ -9436,58 +8312,28 @@
           "Keep a separate state file per environment and run the same pipeline with different backend configuration and credentials, supplied via -backend-config and -var-file. Promote by applying identical code to each environment in turn, dev, then staging, then production, rather than maintaining divergent branches. Scope each environment's credentials to that environment alone, so a pipeline misconfiguration cannot reach production from a staging job."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "terraform fmt -check -recursive",
-        "explanation": "Command: terraform fmt -check -recursive"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform validate",
-        "explanation": "Command: terraform validate"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform plan -out=tfplan",
-        "explanation": "Command: terraform plan -out=tfplan"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform show -no-color tfplan > plan.txt",
-        "explanation": "Command: terraform show -no-color tfplan > plan.txt"
+        "explanation": "CLI execution command for terraform"
       },
       {
         "command": "terraform apply -auto-approve tfplan",
-        "explanation": "Command: terraform apply -auto-approve tfplan"
+        "explanation": "CLI execution command for terraform"
       }
     ],
     "commonPitfalls": [
@@ -9790,42 +8636,12 @@
           "No. Static analysis catches known misconfiguration patterns; it cannot tell you that a change will replace your production database, delete a bucket that holds data, or apply to the wrong account. Those come from reading the plan. Particularly the -/+ replacement markers. Scanning and plan review answer different questions and both belong in the pipeline."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
-        "command": "terraform {",
-        "explanation": "Command: terraform {"
+        "command": "terraform plan",
+        "explanation": "Core command for terraform"
       }
     ],
     "commonPitfalls": [

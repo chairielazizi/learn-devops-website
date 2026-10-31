@@ -124,31 +124,6 @@
           "Yes, and you should. Add pull_request: to the on: block and open a draft pull request from a branch. For manual testing add workflow_dispatch:, which puts a \"Run workflow\" button in the Actions tab. Local simulators exist but they approximate the runner environment rather than reproducing it."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -292,31 +267,6 @@
           "No. needs controls order only. Each job runs on a clean runner, so files must move through artifacts and values through job outputs."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -452,31 +402,6 @@
           "Should each environment have its own secret, or one secret with the environment in the name?",
           "Use environment scope with the same secret name in each. A single API_TOKEN defined separately under staging and production keeps the workflow file identical for both and means a deploy job cannot accidentally reach the wrong one."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -622,31 +547,6 @@
           "Not with actions/cache. Docker Buildx has purpose-built cache backends that are faster and handle layer semantics correctly, covered in the Docker build and push lesson."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -778,31 +678,6 @@
           "Is an artifact a good way to pass a small value between jobs?",
           "No. Use a job output for values, which is covered in the workflow syntax lesson. An artifact for a single string means an upload, a download and an unzip to move a few bytes."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -952,31 +827,6 @@
           "Only if the cache key includes the matrix dimensions. A key without matrix.node in it will restore the wrong version's dependencies into every job, which is covered in the caching lesson."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -1114,31 +964,6 @@
           "Can I scan the image for vulnerabilities in the same workflow?",
           "Yes, and the ordering matters: build with push: false and load: true so the image is available to the local daemon, scan it, then push in a later step conditional on the scan passing. Pushing first and scanning afterwards means the vulnerable image was publishable for the duration."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -1290,41 +1115,16 @@
           "Make the first job do nothing but aws sts get-caller-identity. It fails if the trust relationship is wrong and succeeds cheaply if it is right, and it prints the assumed role ARN so you can confirm you got the role you intended."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "aws iam create-open-id-connect-provider \\",
-        "explanation": "Command: aws iam create-open-id-connect-provider \\"
+        "explanation": "CLI execution command for aws"
       },
       {
         "command": "aws iam list-open-id-connect-providers",
-        "explanation": "Command: aws iam list-open-id-connect-providers"
+        "explanation": "CLI execution command for aws"
       }
     ],
     "commonPitfalls": [

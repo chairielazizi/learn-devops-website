@@ -58,7 +58,7 @@
           "If something fails, the team knows immediately.",
           "That fast feedback loop changes everything. Problems become smaller, easier to understand, and much cheaper to fix.",
           "CI encourages developers to merge code frequently rather than keeping large feature branches open for long periods. Small merges reduce the chance of conflicts and make failures easier to isolate. When a pipeline fails after a small change, you usually know where to look. When it fails after three weeks of accumulated work, debugging is much harder.",
-          "The goal of CI is not just \u201crun tests automatically.\u201d The deeper goal is to keep the codebase in a healthy, integrated state all the time.",
+          "The goal of CI is not just “run tests automatically.” The deeper goal is to keep the codebase in a healthy, integrated state all the time.",
           "A strong CI setup gives a team confidence that:"
         ],
         "codeBlock": null
@@ -68,7 +68,7 @@
         "paragraphs": [
           "The second part of CI/CD is commonly Continuous Delivery.",
           "Continuous Delivery means that your code is always kept in a deployable state. After the build and tests pass, the software is ready to be released. A human may still choose when to deploy, but the hard technical work of preparing the release has already been automated.",
-          "Think of Continuous Delivery as \u201cpush-button releases.\u201d If the business decides it is the right time, the team should be able to deploy quickly and safely without scrambling to prepare the application.",
+          "Think of Continuous Delivery as “push-button releases.” If the business decides it is the right time, the team should be able to deploy quickly and safely without scrambling to prepare the application.",
           "That means the pipeline has already handled key steps such as:",
           "The software is ready. The final production deployment simply waits for approval.",
           "Many organizations want automation but still keep a human gate before production. That approval may exist for business timing, compliance, change management, or risk control. Continuous Delivery supports that model well.",
@@ -126,7 +126,7 @@
           "An artifact is a file produced by a job and passed along or saved for later use. Examples include:",
           "Artifacts help jobs share outputs safely.",
           "A runner is the machine or agent that actually executes CI/CD jobs. In GitLab, a GitLab Runner picks up work and runs it using a chosen executor, often Docker.",
-          "A trigger starts the pipeline. It is the \u201cwhy now?\u201d event behind the automation.",
+          "A trigger starts the pipeline. It is the “why now?” event behind the automation.",
           "Understanding these terms makes documentation and pipeline files much easier to read."
         ],
         "codeBlock": null
@@ -241,31 +241,6 @@
           "Does CI/CD mean deploying to production automatically?",
           "No, and conflating the two puts a lot of teams off. Continuous integration is only about verifying changes automatically, and it delivers most of the value on its own. Automated deployment to production is a separate decision that depends on your test coverage, your ability to roll back quickly, and your appetite for risk. Plenty of mature teams run excellent CI with a deliberate human approval before production, and that is a perfectly legitimate place to stop."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -529,7 +504,7 @@
       {
         "title": "Debugging a Failing Job Step by Step",
         "paragraphs": [
-          "Sooner or later, your first \u201creal\u201d pipeline will fail. That is normal.",
+          "Sooner or later, your first “real” pipeline will fail. That is normal.",
           "A calm debugging process helps a lot.",
           "Look at the pipeline graph and identify which specific job failed.",
           "Read the log carefully from top to bottom. Search for the first genuine error.",
@@ -583,45 +558,20 @@
           "Open the job in the GitLab UI and read the log from the bottom up. The failing command and its output are almost always in the last twenty lines, above the exit code. Each job log shows the full script as it ran, so you can see exactly which command produced the error. For problems you cannot reproduce from the log, adding set -x at the start of the script prints each command before running it, which makes variable expansion and path problems visible immediately."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "git add .gitlab-ci.yml",
-        "explanation": "Command: git add .gitlab-ci.yml"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git commit -m \"Add first GitLab CI pipeline\"",
-        "explanation": "Command: git commit -m \"Add first GitLab CI pipeline\""
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "git push origin main",
-        "explanation": "Command: git push origin main"
+        "explanation": "CLI execution command for git"
       }
     ],
     "commonPitfalls": [
@@ -745,14 +695,9 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "push / MR / tag / schedule\n            \u2502\n            \u25bc\n       \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n       \u2502 workflow\u2502  should this pipeline exist at all?\n       \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2518\n            \u25bc\n   stage: build \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25ba job: build-app \u2500\u2500\u25ba runner\n            \u2502                     \u2502\n            \u2502                     \u2514\u2500 artifacts: dist/\n            \u25bc\n   stage: test  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25ba job: unit-tests \u2500\u25ba runner   \u2510 parallel\n                \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25ba job: lint \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25ba runner   \u2518\n            \u2502                     \u2502\n            \u2502                     \u2514\u2500 artifacts: reports: junit\n            \u25bc\n   stage: deploy \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u25ba job: deploy-staging \u25ba runner\n                                  \u2502\n                                  \u2514\u2500 environment: staging",
+          "code": "push / MR / tag / schedule\n            │\n            ▼\n       ┌─────────┐\n       │ workflow│  should this pipeline exist at all?\n       └────┬────┘\n            ▼\n   stage: build ──────────► job: build-app ──► runner\n            │                     │\n            │                     └─ artifacts: dist/\n            ▼\n   stage: test  ──────────► job: unit-tests ─► runner   ┐ parallel\n                └─────────► job: lint ───────► runner   ┘\n            │                     │\n            │                     └─ artifacts: reports: junit\n            ▼\n   stage: deploy ─────────► job: deploy-staging ► runner\n                                  │\n                                  └─ environment: staging",
           "description": "Architecture specification"
         }
-      },
-      {
-        "title": "Where to go next",
-        "paragraphs": [],
-        "codeBlock": null
       },
       {
         "title": "Final Takeaway",
@@ -778,31 +723,6 @@
           "Can a job start before the previous stage finishes?",
           "Yes, with needs:. Listing the specific jobs a job depends on lets it begin as soon as those have completed, ignoring stage boundaries and turning the pipeline into a directed acyclic graph. This can cut total runtime substantially when job durations are uneven. A deploy that only needs the build no longer waits for a slow test suite. The cost is that the pipeline becomes harder to read, so it is worth using where the time saving is genuine rather than applying it everywhere."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -1094,31 +1014,6 @@
           "Either a rules, only or except condition excluded it, or it is waiting for a runner. Open the pipeline and check whether the job appears at all. A job filtered out by rules is absent from the pipeline entirely, while a job waiting for a runner shows as pending. For rules problems, the usual cause is a branch or pipeline-source condition that does not match: a rule written for $CI_COMMIT_BRANCH == \"main\" never fires on a merge request pipeline, where the branch variable is not set and $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME applies instead."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -1381,31 +1276,6 @@
           "Can I download artifacts without using the UI?",
           "Yes. The GitLab API exposes them at a per-job endpoint, and there is a stable URL for the latest artifacts from a successful job on a given ref, which is what most external tooling uses. A CI job token authorises access from within another pipeline, which is how multi-project pipelines consume builds from an upstream project without a personal access token."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -1689,31 +1559,6 @@
           "Because uploading and downloading a large cache can cost more than regenerating its contents. A multi-gigabyte cache over a slow link easily exceeds the time saved, especially on a fast dependency install. Cache selectively rather than broadly, a package manager's download directory rather than an entire workspace, and measure the job duration before and after. Setting policy: pull on jobs that do not change the cache removes half the transfer cost immediately."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -1910,7 +1755,7 @@
           "In most GitLab Docker jobs, you use shell syntax like:",
           "In Windows command environments, variable syntax often looks like:",
           "That matters if your runner uses a Windows shell rather than a Linux-based container.",
-          "A variable may exist correctly but still appear \u201cbroken\u201d if you use the wrong shell syntax."
+          "A variable may exist correctly but still appear “broken” if you use the wrong shell syntax."
         ],
         "codeBlock": {
           "language": "bash",
@@ -2021,31 +1866,6 @@
           "Not if the variables are marked protected, which is exactly what protection is for. An unprotected variable is available to any pipeline including those from forked repositories, which means an untrusted contributor could add a job that prints it. This is the single most important reason to mark production credentials protected as well as masked, and to review changes to .gitlab-ci.yml in merge requests from outside your organisation with particular care."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -2137,7 +1957,7 @@
         "title": "How the Docker Executor Works",
         "paragraphs": [
           "Because the GitLab runner Docker executor is so widely used, it deserves a closer look. When a job is assigned to a Docker executor runner, the runner performs a sequence like this:",
-          "That \u201cfresh container per job\u201d model is the reason Docker executor pipelines are so predictable. If one job installs a package or writes files, those changes do not magically leak into the next job unless you explicitly store them as artifacts or cache. This clean-slate behavior reduces the \u201cworks on one runner, fails on another\u201d problem.",
+          "That “fresh container per job” model is the reason Docker executor pipelines are so predictable. If one job installs a package or writes files, those changes do not magically leak into the next job unless you explicitly store them as artifacts or cache. This clean-slate behavior reduces the “works on one runner, fails on another” problem.",
           "For example, if your job uses:",
           "The Docker executor pulls node:20, starts a container, and runs the Node commands there. Another job in the same pipeline could use python:3.12 with no conflict because it gets a separate container."
         ],
@@ -2278,37 +2098,12 @@
           "Only with care. A runner using the shell executor gives every job full access to the host, so any project that can run jobs on it can read files, credentials and other projects' build directories. The docker executor is much better isolated, but privileged mode, often enabled to allow Docker-in-Docker image builds, effectively grants root on the host and undoes that isolation. For untrusted code, or for repositories that accept outside contributions, use ephemeral runners that are destroyed after each job."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash",
-        "explanation": "Command: curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash"
+        "explanation": "CLI execution command for curl"
       }
     ],
     "commonPitfalls": [
@@ -2511,11 +2306,6 @@
         }
       },
       {
-        "title": "Common Rule Design Mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Takeaway",
         "paragraphs": [
           "GitLab pipeline rules are not just syntax trivia. They are how you turn a pipeline from a blunt instrument into a precise automation system. Use rules:if for branch, tag, and pipeline-source logic. Use rules:changes to save CI minutes in monorepos. Use rules:exists for reusable templates. Use when, manual, and allow_failure to shape job behavior. And when you need to decide whether a pipeline should exist at all, reach for workflow:rules."
@@ -2547,31 +2337,6 @@
           "Can I use rules and only/except in the same job?",
           "No. GitLab rejects the pipeline with a configuration error if a job contains both. They are alternative mechanisms, and rules is the current one, only and except still work for backwards compatibility but receive no new features. When migrating, do it a whole job at a time rather than mixing, and remember that rules defaults differ: a job with rules and no matching entry is not created at all, where only had a more permissive default."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -2658,7 +2423,7 @@
         "title": "Viewing Deployment History in GitLab",
         "paragraphs": [
           "One of the best benefits of environment tracking is visibility in the GitLab UI. Once jobs declare environments, GitLab can show:",
-          "This makes release troubleshooting much easier. If someone asks, \u201cWhat commit is in staging right now?\u201d you do not need to dig through Slack or guess from timestamps. GitLab already knows.",
+          "This makes release troubleshooting much easier. If someone asks, “What commit is in staging right now?” you do not need to dig through Slack or guess from timestamps. GitLab already knows.",
           "For regulated or fast-moving teams, this audit trail is extremely valuable because deployment information stays close to the source code and pipeline that produced it."
         ],
         "codeBlock": null
@@ -2743,16 +2508,6 @@
         }
       },
       {
-        "title": "Practical Tips for Designing Environments",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Common Mistakes to Avoid",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Takeaway",
         "paragraphs": [
           "GitLab environments are one of the features that turn a basic CI pipeline into a real delivery platform. By using the environment keyword, setting URLs, modeling static and dynamic targets, adding review apps, wiring stop jobs with on_stop, protecting production, and scoping variables per environment, you gain far more than deployment automation. You gain visibility, safer releases, better collaboration, and stronger operational insight."
@@ -2784,31 +2539,6 @@
           "Do environments cost anything or affect DORA metrics?",
           "Environments themselves are a free GitLab feature; you only pay for the infrastructure you deploy to. They are also what makes DORA metrics work. Deployment frequency and lead time for changes are both derived from deployments recorded against environments, so a team that deploys without declaring an environment will see those metrics stay empty regardless of how often they actually ship."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -3036,11 +2766,6 @@
         }
       },
       {
-        "title": "Common Mistakes to Avoid",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Takeaway",
         "paragraphs": [
           "GitLab CI and Docker work beautifully together when you separate the concerns clearly. Use the image keyword to choose the right runtime for each job. Use DinD when you need a familiar Docker CLI workflow and accept the security implications. Use Kaniko when you want a daemonless image build approach. Authenticate safely to the GitLab Container Registry or Docker Hub with CI variables, tag images in a traceable way, and keep your Docker pipelines honest by testing before you publish."
@@ -3073,49 +2798,24 @@
           "Because nothing is providing one. Either add the docker:dind service and the environment variables that point the client at it, or switch to Kaniko, which does not need a daemon. A subtler variant of this error occurs when DinD is configured but the runner is not in privileged mode. The service container fails to start, and the job's error looks identical even though the cause is the runner configuration rather than the pipeline."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker build -t \"$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA\" .",
-        "explanation": "Command: docker build -t \"$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA\" ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build -t \"$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG\" .",
-        "explanation": "Command: docker build -t \"$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG\" ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker tag \"$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA\" \"$CI_REGISTRY_IMAGE:latest\"",
-        "explanation": "Command: docker tag \"$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA\" \"$CI_REGISTRY_IMAGE:latest\""
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --target build -t myapp-build:$CI_COMMIT_SHA .",
-        "explanation": "Command: docker build --target build -t myapp-build:$CI_COMMIT_SHA ."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -3152,7 +2852,7 @@
         "title": "Introduction & Overview",
         "paragraphs": [
           "Run tests in GitLab CI: collect JUnit reports, view results in merge requests, extract coverage with a regex, run in parallel and follow a Jest pipeline.",
-          "Automated testing is not a \u201cnice to have\u201d in CI/CD. It is the control system that tells you whether a change is safe to merge, safe to release, and safe to trust. Without automated tests in your pipeline, every merge becomes a guess and every deployment becomes a gamble. That is why GitLab CI testing, GitLab CI unit tests, GitLab CI test reports, and GitLab CI code coverage are core skills for any DevOps engineer or software team.",
+          "Automated testing is not a “nice to have” in CI/CD. It is the control system that tells you whether a change is safe to merge, safe to release, and safe to trust. Without automated tests in your pipeline, every merge becomes a guess and every deployment becomes a gamble. That is why GitLab CI testing, GitLab CI unit tests, GitLab CI test reports, and GitLab CI code coverage are core skills for any DevOps engineer or software team.",
           "In GitLab, testing is not just about running a command and getting a pass or fail result. GitLab can also capture structured JUnit XML reports, display test summaries in merge requests, extract coverage percentages from logs, visualize line-level coverage changes, publish badges, and even parallelize test execution to keep feedback fast."
         ],
         "codeBlock": null
@@ -3185,7 +2885,7 @@
         "paragraphs": [
           "A plain pass or fail result is useful, but GitLab can do much more when you upload test results in JUnit XML format. This is done with artifacts:reports:junit.",
           "When GitLab understands your test results as structured data, it can:",
-          "This is one of the most valuable upgrades from \u201cbasic CI\u201d to \u201cdeveloper-friendly CI.\u201d",
+          "This is one of the most valuable upgrades from “basic CI” to “developer-friendly CI.”",
           "If tests fail, you usually still want the JUnit report. Setting when: always ensures GitLab uploads the report even when the job exits with a non-zero status."
         ],
         "codeBlock": {
@@ -3284,7 +2984,7 @@
         "paragraphs": [
           "Tests often need configuration values such as:",
           "You can define these in GitLab CI variables and use them safely in jobs.",
-          "For sensitive values, store them in Settings \u2192 CI/CD \u2192 Variables instead of hardcoding them in the YAML file.",
+          "For sensitive values, store them in Settings → CI/CD → Variables instead of hardcoding them in the YAML file.",
           "This is especially important for integration tests that touch ephemeral databases, staging services, or external APIs."
         ],
         "codeBlock": {
@@ -3318,11 +3018,6 @@
         }
       },
       {
-        "title": "Common Mistakes to Avoid",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Final Takeaway",
         "paragraphs": [
           "GitLab testing features do more than turn a job green or red. They let you build fast, visible, enforceable quality gates. Start with straightforward unit test jobs. Then add JUnit reports so merge requests show structured failures. Add coverage extraction and Cobertura visualization so reviewers can see what changed. Use thresholds when your team is ready for stronger enforcement. And if the suite gets slow, scale it with parallel execution and better CI design."
@@ -3354,31 +3049,6 @@
           "Should CI run tests against a real database?",
           "For integration tests, yes, and GitLab makes it straightforward with service containers. Declare Postgres or Redis under services: and it runs alongside the job, reachable over the network with a clean state per job. That is considerably more trustworthy than mocking the database and finding out about a query problem in production. Keep unit tests free of external dependencies so they stay fast, and reserve service containers for the tests that genuinely need them."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -3431,10 +3101,10 @@
       {
         "title": "What DevSecOps Means in Practice",
         "paragraphs": [
-          "DevSecOps is not just \u201crun a scanner sometimes.\u201d It is a mindset and an operating model.",
+          "DevSecOps is not just “run a scanner sometimes.” It is a mindset and an operating model.",
           "In a traditional workflow, development writes code, operations deploys it, and security reviews it near the end. That sequence creates friction. Security findings arrive late, release dates slip, and teams start seeing security as a blocker.",
           "In a DevSecOps workflow:",
-          "This is why \u201cshift left\u201d matters. The earlier a problem is identified, the cheaper it is to fix and the less likely it is to reach customers."
+          "This is why “shift left” matters. The earlier a problem is identified, the cheaper it is to fix and the less likely it is to reach customers."
         ],
         "codeBlock": null
       },
@@ -3455,7 +3125,7 @@
           "Because SAST runs before deployment, it is one of the purest forms of shift-left security. It catches problems while developers are still working in branches and merge requests.",
           "A GitLab SAST analyzer inspects the code repository and attempts to identify vulnerabilities in supported languages and frameworks. Depending on analyzer support and configuration, it can inspect languages such as:",
           "The exact analyzer selection depends on the project contents. GitLab automatically chooses analyzers based on the repository language and the included SAST template.",
-          "The simplest way to enable SAST is to include GitLab\u2019s security template:",
+          "The simplest way to enable SAST is to include GitLab’s security template:",
           "That one line is often enough to get an initial scan running. GitLab adds the SAST job definitions for you. In many projects, this is the fastest first win for GitLab DevSecOps adoption.",
           "To get more value from SAST:",
           "SAST is excellent for code patterns, but it cannot tell you everything about a running system. That is why GitLab security scanning includes other analyzers too."
@@ -3543,7 +3213,7 @@
       {
         "title": "Reading Security Reports in the Merge Request UI",
         "paragraphs": [
-          "One of GitLab\u2019s biggest advantages is not just that the scanners run, but that the results are visible where developers already work.",
+          "One of GitLab’s biggest advantages is not just that the scanners run, but that the results are visible where developers already work.",
           "When a merge request pipeline includes security jobs, GitLab can show findings directly in the merge request UI. Reviewers can see whether a branch introduces new vulnerabilities, which scanner reported them, the severity, and often the affected file or dependency.",
           "That improves adoption because developers do not have to leave the review flow and open a separate security tool. The feedback is attached to the change they are reviewing.",
           "In practice, teams often use the MR security widget to:"
@@ -3631,31 +3301,6 @@
           "Run the heavier scanners where they earn their keep rather than on every commit. Secret Detection and Dependency Scanning are fast enough to run everywhere. Container Scanning naturally belongs after the image is built, and DAST needs a deployed environment so it fits on merge requests to the default branch or on a nightly schedule. Using rules to target them appropriately keeps the fast feedback loop fast while still getting the coverage."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -3707,7 +3352,7 @@
       {
         "title": "Overview of Deploying to AWS from GitLab CI",
         "paragraphs": [
-          "There is no single \u201cAWS deployment\u201d workflow. AWS offers many targets, and GitLab can drive all of them. Common patterns include:",
+          "There is no single “AWS deployment” workflow. AWS offers many targets, and GitLab can drive all of them. Common patterns include:",
           "Your choice depends on the application architecture."
         ],
         "codeBlock": null
@@ -3885,31 +3530,6 @@
           "Yes, and it is a natural fit, but use a remote backend with state locking, typically S3 with DynamoDB or GitLab's own managed Terraform state, because local state in a job is discarded when the container exits. Run terraform plan on merge requests so the change is reviewable, and gate terraform apply behind a manual job on the default branch. Never let apply run automatically on a feature branch against shared infrastructure."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -4059,7 +3679,7 @@
         "title": "Cross-Project Pipeline Dependencies with needs:project",
         "paragraphs": [
           "Sometimes a pipeline does not need to trigger another one. It just needs to consume an artifact produced in another project. That is where needs:project becomes useful.",
-          "This allows a job to fetch artifacts from a different project\u2019s pipeline. It is helpful when:",
+          "This allows a job to fetch artifacts from a different project’s pipeline. It is helpful when:",
           "This is more efficient than copying files manually or rebuilding the same artifact everywhere."
         ],
         "codeBlock": {
@@ -4146,41 +3766,16 @@
           "Split when the components have genuinely independent release cycles, different ownership, or different access requirements. A shared library consumed by several teams, or a deployment project that holds production credentials the application repositories should not have. Keep a monorepo pipeline when components are released together, since coordinating versions across repositories is real ongoing work. For a monorepo that has simply grown unwieldy, child pipelines usually solve the problem without splitting the repository at all."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl --request POST   --form token=$CI_JOB_TOKEN   --form ref=main   --url \"https://gitlab.example.com/api/v4/projects/42/trigger/pipeline\"",
-        "explanation": "Command: curl --request POST   --form token=$CI_JOB_TOKEN   --form ref=main   --url \"https://gitlab.example.com/api/v4/projects/42/trigger/pipeline\""
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "curl --request POST   --form token=$CI_JOB_TOKEN   --form ref=main   --form \"variables[IMAGE_TAG]=$CI_COMMIT_SHA\"   --form \"variables[TARGET_ENV]=staging\"   --url \"https://gitlab.example.com/api/v4/projects/42/trigger/pipeline\"",
-        "explanation": "Command: curl --request POST   --form token=$CI_JOB_TOKEN   --form ref=main   --form \"variables[IMAGE_TAG]=$CI_COMMIT_SHA\"   --form \"variables[TARGET_ENV]=staging\"   --url \"https://gitlab.example.com/api/v4/projects/42/trigger/pipeline\""
+        "explanation": "CLI execution command for curl"
       }
     ],
     "commonPitfalls": [
@@ -4429,31 +4024,6 @@
           "How do I protect production deployments?",
           "Three mechanisms together. Mark the production credentials as protected variables so only protected branches and tags can read them. Use a protected environment, which lets GitLab enforce who may deploy and can require approvals. And set when: manual on the deploy job so a person deliberately triggers it. Each covers a different gap. The variable stops an untrusted branch reading secrets, the environment stops an unauthorised person deploying, and the manual gate stops an accidental deploy."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],

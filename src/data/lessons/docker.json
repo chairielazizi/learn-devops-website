@@ -107,16 +107,6 @@
         "codeBlock": null
       },
       {
-        "title": "Where to go next",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "You run docker run three times against the same image. How many images and containers now exist?",
@@ -141,36 +131,6 @@
           "No. A single simple application running fine on one server gains little from containerisation and pays the cost of another layer to understand and maintain. Desktop GUI applications are awkward in containers. Workloads needing a specific kernel or kernel modules cannot use them, since containers share the host kernel. And genuinely untrusted multi-tenant code deserves a stronger boundary than a container provides. A VM or a microVM runtime such as Firecracker."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -184,15 +144,15 @@
       },
       {
         "command": "docker build -t myapp:1.0 .",
-        "explanation": "Command: docker build -t myapp:1.0 ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d -p 8080:3000 --name web myapp:1.0",
-        "explanation": "Command: docker run -d -p 8080:3000 --name web myapp:1.0"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker ps",
-        "explanation": "Command: docker ps"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -286,11 +246,6 @@
         "codeBlock": null
       },
       {
-        "title": "Ready to see Docker in action? Let's move on!",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What problem does Docker actually solve?",
@@ -306,36 +261,6 @@
           "What are the downsides of using Docker?",
           "Real ones worth weighing. There is a genuine learning curve covering images, layers, networking, volumes and orchestration. Persistent data needs deliberate handling, since anything written inside a container is lost when it is replaced. Debugging is less direct than on a plain host. Isolation is weaker than a VM's, so genuinely untrusted code deserves a stronger boundary. And on macOS and Windows, the hidden Linux VM makes file sharing noticeably slow for large projects."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -394,14 +319,9 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "Virtual machines                    Containers\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510               \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502  App A  \u2502  App B  \u2502               \u2502  App A  \u2502  App B  \u2502\n\u2502  Libs   \u2502  Libs   \u2502               \u2502  Libs   \u2502  Libs   \u2502\n\u2502 Guest OS\u2502 Guest OS\u2502  \u2190 own kernel \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524               \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502    Hypervisor     \u2502               \u2502  Container runtime\u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524               \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502     Host OS       \u2502               \u2502      Host OS      \u2502  \u2190 one kernel\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524               \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502     Hardware      \u2502               \u2502     Hardware      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518               \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518",
+          "code": "Virtual machines                    Containers\n┌─────────┬─────────┐               ┌─────────┬─────────┐\n│  App A  │  App B  │               │  App A  │  App B  │\n│  Libs   │  Libs   │               │  Libs   │  Libs   │\n│ Guest OS│ Guest OS│  ← own kernel └─────────┴─────────┘\n├─────────┴─────────┤               ├───────────────────┤\n│    Hypervisor     │               │  Container runtime│\n├───────────────────┤               ├───────────────────┤\n│     Host OS       │               │      Host OS      │  ← one kernel\n├───────────────────┤               ├───────────────────┤\n│     Hardware      │               │     Hardware      │\n└───────────────────┘               └───────────────────┘",
           "description": "Architecture specification"
         }
-      },
-      {
-        "title": "The practical comparison",
-        "paragraphs": [],
-        "codeBlock": null
       },
       {
         "title": "The two limits that actually matter",
@@ -439,11 +359,6 @@
         "codeBlock": null
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "Docker Desktop on macOS runs Linux containers. How, given macOS does not have a Linux kernel?",
@@ -467,36 +382,6 @@
           "Why is Docker slow on macOS and Windows?",
           "Because Linux containers cannot run natively there. Docker Desktop runs a Linux VM and your containers live inside it, so every bind-mounted file access crosses the boundary between the host filesystem and the VM. For a project with many small files, such as a large node_modules, this is the dominant cost. Mitigate it by bind-mounting only the source directory, keeping dependency directories in named volumes, and enabling VirtioFS in Docker Desktop's settings."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -603,7 +488,7 @@
         "title": "After it works",
         "paragraphs": [
           "Two settings worth changing straight away on Docker Desktop.",
-          "Resource limits. Desktop's VM claims a fixed slice of CPU and memory. The defaults are conservative for real builds and generous if you only run the occasional container. Adjust under Settings \u2192 Resources.",
+          "Resource limits. Desktop's VM claims a fixed slice of CPU and memory. The defaults are conservative for real builds and generous if you only run the occasional container. Adjust under Settings → Resources.",
           "Disk reclamation. Images, build cache and dangling volumes accumulate quickly, and the VM's disk does not shrink on its own:",
           "That removes every stopped container, unused image, unused network and unused volume. It is safe in the sense that running containers are untouched, and destructive in the sense that --volumes deletes data you have not explicitly kept. Read the confirmation prompt."
         ],
@@ -637,58 +522,28 @@
           "In practice yes. Docker Desktop's WSL 2 backend is the supported and far faster option; the older Hyper-V backend is deprecated. Run wsl --install then wsl --set-default-version 2, and make sure hardware virtualisation is enabled in the BIOS, systeminfo | findstr /C:\"Virtualization\" tells you whether Windows can see it. Containers then run inside a managed Linux distribution, with bind mounts noticeably faster when your project lives on the WSL filesystem rather than under /mnt/c."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker --version",
-        "explanation": "Command: docker --version"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker info --format '{{.ServerVersion}} {{.OperatingSystem}}'",
-        "explanation": "Command: docker info --format '{{.ServerVersion}} {{.OperatingSystem}}'"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run --rm hello-world",
-        "explanation": "Command: docker run --rm hello-world"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker compose version",
-        "explanation": "Command: docker compose version"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker system df",
-        "explanation": "Command: docker system df"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -810,11 +665,6 @@
         }
       },
       {
-        "title": "Where to go next",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "On Windows with the WSL 2 backend, docker build on a Node project takes several minutes; a colleague on Linux takes twenty seconds with the same Dockerfile. The project lives in C:\\Users\\you\\app. What is the most likely cause?"
@@ -827,7 +677,7 @@
           "Can I run Docker Desktop on Windows 10 or 11 Home?",
           "Yes. The old requirement for Pro, Enterprise or Education applied to the Hyper-V backend, which needed a feature Home does not ship. The WSL 2 backend has no such dependency and is now the default and recommended option, so Home editions run Docker Desktop normally. You still need a 64-bit build 19041 or later, hardware virtualisation enabled in firmware, and WSL 2 installed.",
           "Why is Docker so slow on Windows?",
-          "Almost always because the project lives on the Windows filesystem and is reached from WSL 2 through /mnt/c. That path crosses a translation layer that handles large sequential reads reasonably and the thousands of tiny file operations a build produces very poorly. Clone the repository inside the WSL distribution instead, cd ~ && git clone \u2026, and open it with VS Code's Remote-WSL extension. Add a .dockerignore excluding node_modules and .git so the build context stays small either way.",
+          "Almost always because the project lives on the Windows filesystem and is reached from WSL 2 through /mnt/c. That path crosses a translation layer that handles large sequential reads reasonably and the thousands of tiny file operations a build produces very poorly. Clone the repository inside the WSL distribution instead, cd ~ && git clone …, and open it with VS Code's Remote-WSL extension. Add a .dockerignore excluding node_modules and .git so the build context stays small either way.",
           "How do I fix \"WSL 2 installation is incomplete\" or a failed WSL update?",
           "Run wsl --install from an elevated PowerShell, then wsl --update and wsl --set-default-version 2, and reboot. If it still fails, the usual cause is virtualisation being disabled in firmware, systeminfo | findstr /C:\"Virtualization\" reporting No confirms it, and the setting is Intel VT-x or AMD-V, often labelled SVM Mode on AMD boards. Corporate machines sometimes also have the Virtual Machine Platform Windows feature disabled by policy, which wsl --install cannot override.",
           "Why does Docker Desktop say the daemon is not running right after I installed it?",
@@ -838,58 +688,28 @@
           "Linux containers are what essentially all tutorials, base images and production workloads mean by \"containers\", and on Windows they run inside the WSL 2 Linux VM. Windows containers are a separate mode that runs Windows processes against the Windows kernel, used for containerising .NET Framework and other Windows-only applications. You switch between modes from the Docker Desktop tray menu, and they cannot run at the same time. Unless you have specifically been asked for Windows containers, stay in Linux mode."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker --version",
-        "explanation": "Command: docker --version"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run hello-world",
-        "explanation": "Command: docker run hello-world"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker compose version",
-        "explanation": "Command: docker compose version"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d -p 8080:80 nginx",
-        "explanation": "Command: docker run -d -p 8080:80 nginx"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker ps",
-        "explanation": "Command: docker ps"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -1035,8 +855,8 @@
         "paragraphs": [
           "The long-standing macOS complaint. Every file operation on a bind-mounted host directory crosses the VM boundary, and node_modules generates a great many of them.",
           "Two settings in Docker Desktop are worth checking:",
-          "VirtioFS: Settings \u2192 General \u2192 Choose file sharing implementation. It is the default on current versions and substantially faster than the older gRPC-FUSE. If you have upgraded Docker Desktop over several years, you may still be on the old one.",
-          "Rosetta for x86/64 emulation: Settings \u2192 General, on Apple Silicon. Considerably faster than QEMU when you do need to run amd64 images.",
+          "VirtioFS: Settings → General → Choose file sharing implementation. It is the default on current versions and substantially faster than the older gRPC-FUSE. If you have upgraded Docker Desktop over several years, you may still be on the old one.",
+          "Rosetta for x86/64 emulation: Settings → General, on Apple Silicon. Considerably faster than QEMU when you do need to run amd64 images.",
           "Beyond that, keep dependency directories out of the mount so they live in the container's own filesystem:"
         ],
         "codeBlock": {
@@ -1058,11 +878,6 @@
         }
       },
       {
-        "title": "Where to go next",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "An image built on an M3 MacBook runs perfectly locally. Deployed to EC2, every container exits immediately with \"exec /app/server: exec format error\". What is wrong?"
@@ -1075,7 +890,7 @@
           "Why does my Docker image built on an M1 or M2 Mac fail on the server?",
           "Because Docker builds for the host architecture, and Apple Silicon is arm64 while most servers are amd64. The container starts and immediately exits with exec format error, which does not mention architecture at all. Check with docker image inspect <image> --format '{{.Architecture}}'. For images others will run, build multi-architecture: docker buildx build --platform linux/amd64,linux/arm64 -t <image> --push .. For a quick one-off, docker build --platform linux/amd64 works but runs under emulation and is slower.",
           "Why are Docker volumes so slow on macOS?",
-          "Every file operation on a bind-mounted host directory has to cross the boundary into the Linux VM, and workloads like node_modules or a Rails app generate enormous numbers of small operations. Make sure VirtioFS is selected in Settings \u2192 General. It is the default now and much faster than the older gRPC-FUSE, but upgraded installations sometimes still use the old one. Then shadow dependency directories with an anonymous volume (- /app/node_modules in Compose) so they stay inside the VM's own filesystem.",
+          "Every file operation on a bind-mounted host directory has to cross the boundary into the Linux VM, and workloads like node_modules or a Rails app generate enormous numbers of small operations. Make sure VirtioFS is selected in Settings → General. It is the default now and much faster than the older gRPC-FUSE, but upgraded installations sometimes still use the old one. Then shadow dependency directories with an anonymous volume (- /app/node_modules in Compose) so they stay inside the VM's own filesystem.",
           "Should I install Docker Desktop with Homebrew or the .dmg?",
           "Either works and they install the same application. brew install --cask docker is easier to script and keeps Docker in the same update flow as your other tools, which is why it suits dotfiles and new-machine setups. The .dmg from Docker's site is more explicit about which build you are getting, which matters because Apple Silicon and Intel have separate downloads. Homebrew picks the right one for your machine automatically.",
           "What is the free alternative to Docker Desktop on Mac?",
@@ -1086,58 +901,28 @@
           "That image publishes no arm64 build, which is common for older or smaller third-party images, and databases in particular. Run it under emulation with docker run --platform linux/amd64 <image>, accepting that it will be slower. Check whether a newer tag is multi-arch first, docker manifest inspect <image> lists the platforms available, since most widely used images added arm64 support once Apple Silicon became common."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker --version",
-        "explanation": "Command: docker --version"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run hello-world",
-        "explanation": "Command: docker run hello-world"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker compose version",
-        "explanation": "Command: docker compose version"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker info",
-        "explanation": "Command: docker info"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d -p 8080:80 nginx",
-        "explanation": "Command: docker run -d -p 8080:80 nginx"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -1303,11 +1088,6 @@
         }
       },
       {
-        "title": "Where to go next",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A long-running container on an Ubuntu server gradually consumes all free disk space. The application writes no files. Everything goes to stdout. What is the usual cause?"
@@ -1331,58 +1111,28 @@
           "Remove the packages, then the data directories, because purging the package deliberately leaves your images and volumes behind. On Debian and Ubuntu: sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin, then sudo rm -rf /var/lib/docker /var/lib/containerd. On RHEL-family systems substitute dnf remove for the first command. That second step deletes every image, container and named volume on the machine, so confirm nothing there is wanted before running it."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl \\",
-        "explanation": "Command: curl \\"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg",
-        "explanation": "Command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "docker run hello-world",
-        "explanation": "Command: docker run hello-world"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker --version",
-        "explanation": "Command: docker --version"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker compose version",
-        "explanation": "Command: docker compose version"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -1431,7 +1181,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "Dockerfile \u2500\u2500docker build\u2500\u2500\u25b6 Image \u2500\u2500docker run\u2500\u2500\u25b6 Container\n                              \u2502  \u25b2\n                    docker push\u2502  \u2502docker pull\n                              \u25bc  \u2502\n                            Registry",
+          "code": "Dockerfile ──docker build──▶ Image ──docker run──▶ Container\n                              │  ▲\n                    docker push│  │docker pull\n                              ▼  │\n                            Registry",
           "description": "Architecture specification"
         }
       },
@@ -1482,7 +1232,7 @@
         "paragraphs": [
           "Storage and distribution for images. GitHub, but for images rather than source. You push to share and pull to consume.",
           "Docker Hub is the default: if you run docker pull nginx with no registry prefix, that is where it comes from. Most organisations also use a private registry. GitHub Container Registry, Amazon ECR, Google Artifact Registry, Azure Container Registry. For their own images.",
-          "A tag such as 1.0 or latest is a mutable pointer to an image, not a permanent name. latest in particular is just a default tag with no special meaning; it does not track the newest version. A digest (@sha256:\u2026) is immutable and is what you pin when reproducibility matters.",
+          "A tag such as 1.0 or latest is a mutable pointer to an image, not a permanent name. latest in particular is just a default tag with no special meaning; it does not track the newest version. A digest (@sha256:…) is immutable and is what you pin when reproducibility matters.",
           "Go deeper: Docker Hub and registries."
         ],
         "codeBlock": {
@@ -1541,14 +1291,9 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "docker CLI \u2500\u2500/var/run/docker.sock\u2500\u2500\u25b6 dockerd \u2500\u2500\u25b6 containerd \u2500\u2500\u25b6 runc \u2500\u2500\u25b6 your process",
+          "code": "docker CLI ──/var/run/docker.sock──▶ dockerd ──▶ containerd ──▶ runc ──▶ your process",
           "description": "Architecture specification"
         }
-      },
-      {
-        "title": "The vocabulary, condensed",
-        "paragraphs": [],
-        "codeBlock": null
       },
       {
         "title": "Key takeaways",
@@ -1574,58 +1319,28 @@
           "Because localhost inside a container refers to that container and nothing else. Each one has its own network namespace and its own loopback interface. Put both on the same user-defined network and use the container name as the hostname: docker network create appnet, start each with --network appnet, then connect to db:5432. Compose does this for you automatically, which is why service names work as hostnames there without any configuration."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
-        "command": "docker push\u2502  \u2502docker pull",
-        "explanation": "Command: docker push\u2502  \u2502docker pull"
+        "command": "docker push│  │docker pull",
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker images",
-        "explanation": "Command: docker images"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker ps",
-        "explanation": "Command: docker ps"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build -t myapp:1.0 .",
-        "explanation": "Command: docker build -t myapp:1.0 ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull postgres:17",
-        "explanation": "Command: docker pull postgres:17"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -1743,11 +1458,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Dockerfile downloads a 500 MB archive in one RUN and deletes it in the next. The image is still 500 MB larger than expected. Why?",
@@ -1772,46 +1482,16 @@
           "No. latest is not special. It is simply the default tag name, pointing at whatever the maintainer most recently pushed, which can change without warning. Deploying it means two deploys of the same nominal version can run different code, and a rollback has no specific artifact to return to. Pin an explicit version tag, and for anything security-sensitive pin the digest with image@sha256:..., which is a content hash and genuinely immutable."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker history nginx:1.27",
-        "explanation": "Command: docker history nginx:1.27"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker system df",
-        "explanation": "Command: docker system df"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull nginx:1.27",
@@ -1823,7 +1503,7 @@
       },
       {
         "command": "docker tag myapp:1.4.2 registry.example.com/myapp:1.4.2",
-        "explanation": "Command: docker tag myapp:1.4.2 registry.example.com/myapp:1.4.2"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -1946,11 +1626,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What happens if I don't specify a tag?",
@@ -1963,58 +1638,28 @@
           "Not always. Alpine images are smaller and faster to pull, but they use a different C library (musl instead of glibc), which can cause compatibility issues with some software. Test Alpine images thoroughly before using them in production."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker pull node:latest",
-        "explanation": "Command: docker pull node:latest"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull node:20.11.0",
-        "explanation": "Command: docker pull node:20.11.0"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull nginx@sha256:7144f7bab3d4c2648d7e59409f15ec52a18006a128c733fcff20d3a4a54ba44a",
-        "explanation": "Command: docker pull nginx@sha256:7144f7bab3d4c2648d7e59409f15ec52a18006a128c733fcff20d3a4a54ba44a"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull nginx",
-        "explanation": "Command: docker pull nginx"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker tag nginx webserver:v1.0",
-        "explanation": "Command: docker tag nginx webserver:v1.0"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -2113,42 +1758,12 @@
           "Some are, some aren't. Red flags include: no recent updates, very few stars/pulls, and no documentation. Always prefer official or verified publisher images when they exist."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker login",
-        "explanation": "Command: docker login"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -2208,7 +1823,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "7.2: Pulling from library/redis\na480a496ba95: Pull complete      \u2190 downloading the base OS layer\ne2677dab5ef2: Pull complete      \u2190 installing packages on top\nca5b0a5ac559: Pull complete      \u2190 adding the Redis binary itself\nDigest: sha256:e96c03a6dda7...\nStatus: Downloaded newer image for redis:7.2",
+          "code": "7.2: Pulling from library/redis\na480a496ba95: Pull complete      ← downloading the base OS layer\ne2677dab5ef2: Pull complete      ← installing packages on top\nca5b0a5ac559: Pull complete      ← adding the Redis binary itself\nDigest: sha256:e96c03a6dda7...\nStatus: Downloaded newer image for redis:7.2",
           "description": "Architecture specification"
         }
       },
@@ -2239,11 +1854,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Do I need to run docker pull before docker run?",
@@ -2260,58 +1870,28 @@
           "Some images are only built for linux/amd64 (Intel architecture). Pull with --platform linux/amd64 to explicitly request that version, and Docker Desktop will run it through emulation automatically."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker pull nginx",
-        "explanation": "Command: docker pull nginx"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull postgres:16",
-        "explanation": "Command: docker pull postgres:16"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull python:3.12-alpine",
-        "explanation": "Command: docker pull python:3.12-alpine"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull gcr.io/google-samples/hello-app:1.0",
-        "explanation": "Command: docker pull gcr.io/google-samples/hello-app:1.0"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker pull ubuntu@sha256:77906da...",
-        "explanation": "Command: docker pull ubuntu@sha256:77906da..."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -2436,11 +2016,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What's the difference between docker images and docker image ls?",
@@ -2455,58 +2030,28 @@
           "Because shared layers are counted in each image's size but only stored once on disk. Two images that both use the same Alpine base will each show the Alpine layer in their size, but your disk only holds one copy of it. docker system df gives a more accurate picture of real disk usage."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker images",
-        "explanation": "Command: docker images"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker image ls",
-        "explanation": "Command: docker image ls"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker images -a",
-        "explanation": "Command: docker images -a"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker images -q",
-        "explanation": "Command: docker images -q"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker images nginx",
-        "explanation": "Command: docker images nginx"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -2636,11 +2181,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Does the order of instructions in a Dockerfile matter?",
@@ -2657,58 +2197,28 @@
           "Always use exec form: CMD [\"node\", \"server.js\"]. Shell form runs your command inside /bin/sh -c, which can cause issues with signal handling (like graceful shutdown) and behaves differently across environments."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker build -t myapp:v1.0 .",
-        "explanation": "Command: docker build -t myapp:v1.0 ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build -f Dockerfile.prod -t myapp:production .",
-        "explanation": "Command: docker build -f Dockerfile.prod -t myapp:production ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --build-arg VERSION=2.1.0 -t myapp:2.1.0 .",
-        "explanation": "Command: docker build --build-arg VERSION=2.1.0 -t myapp:2.1.0 ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --no-cache -t myapp:latest .",
-        "explanation": "Command: docker build --no-cache -t myapp:latest ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --platform linux/amd64 -t myapp:amd64 .",
-        "explanation": "Command: docker build --platform linux/amd64 -t myapp:amd64 ."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -2773,7 +2283,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "First build (nothing cached):\nFROM node:18-alpine     \u2713 downloaded fresh\nWORKDIR /app            \u2713 created\nCOPY package*.json ./   \u2713 copied\nRUN npm install         \u2713 installed, let's say it took 30 seconds\nCOPY . .                \u2713 copied\n\u2192 Total: ~35 seconds\n\nSecond build (only your app code changed):\nFROM node:18-alpine     \u2713 CACHED (skipped)\nWORKDIR /app            \u2713 CACHED (skipped)\nCOPY package*.json ./   \u2713 CACHED (skipped)\nRUN npm install         \u2713 CACHED (skipped), saves 30 seconds\nCOPY . .                \u2717 REBUILT (source code changed)\n\u2192 Total: ~2 seconds",
+          "code": "First build (nothing cached):\nFROM node:18-alpine     ✓ downloaded fresh\nWORKDIR /app            ✓ created\nCOPY package*.json ./   ✓ copied\nRUN npm install         ✓ installed, let's say it took 30 seconds\nCOPY . .                ✓ copied\n→ Total: ~35 seconds\n\nSecond build (only your app code changed):\nFROM node:18-alpine     ✓ CACHED (skipped)\nWORKDIR /app            ✓ CACHED (skipped)\nCOPY package*.json ./   ✓ CACHED (skipped)\nRUN npm install         ✓ CACHED (skipped), saves 30 seconds\nCOPY . .                ✗ REBUILT (source code changed)\n→ Total: ~2 seconds",
           "description": "Architecture specification"
         }
       },
@@ -2829,11 +2339,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Why does Docker rebuild everything after I change one file?",
@@ -2848,58 +2353,28 @@
           "Use it when you need to pull in external updates that Docker can't detect, most commonly when running apt-get update or pip install to get the latest security patches. Since the instruction string hasn't changed, Docker would normally use the cache and miss the new patches."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker build -t cachetest:v1 .",
-        "explanation": "Command: docker build -t cachetest:v1 ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --no-cache -t myapp:latest .",
-        "explanation": "Command: docker build --no-cache -t myapp:latest ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --build-arg CACHE_BUST=$(date +%s) -t myapp:latest .",
-        "explanation": "Command: docker build --build-arg CACHE_BUST=$(date +%s) -t myapp:latest ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker system df",
-        "explanation": "Command: docker system df"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker builder prune",
-        "explanation": "Command: docker builder prune"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -2961,7 +2436,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "# \u2500\u2500 Stage 1: Build \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM node:18-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install                       # Install everything, including dev deps\nCOPY . .\nRUN npm run build                     # Compile TypeScript \u2192 /app/dist\n\n# \u2500\u2500 Stage 2: Production \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM node:18-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install --omit=dev            # Production dependencies only\nCOPY --from=builder /app/dist ./dist  # Grab only the compiled output\nCMD [\"node\", \"dist/server.js\"]",
+          "code": "# ── Stage 1: Build ─────────────────────────────────────────\nFROM node:18-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install                       # Install everything, including dev deps\nCOPY . .\nRUN npm run build                     # Compile TypeScript → /app/dist\n\n# ── Stage 2: Production ────────────────────────────────────\nFROM node:18-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install --omit=dev            # Production dependencies only\nCOPY --from=builder /app/dist ./dist  # Grab only the compiled output\nCMD [\"node\", \"dist/server.js\"]",
           "description": "Architecture specification"
         }
       },
@@ -3022,11 +2497,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Do multi-stage builds make the build slower?",
@@ -3041,54 +2511,24 @@
           "Yes. COPY --from=nginx:alpine /etc/nginx/nginx.conf . pulls a file directly from the official nginx image without you needing to build it yourself. This is useful for grabbing configuration files or binaries from well-known images."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker build -t myapp:slim .",
-        "explanation": "Command: docker build -t myapp:slim ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker images | grep myapp",
-        "explanation": "Command: docker images | grep myapp"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --target test -t myapp:test .",
-        "explanation": "Command: docker build --target test -t myapp:test ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --target production -t myapp:latest .",
-        "explanation": "Command: docker build --target production -t myapp:latest ."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -3251,11 +2691,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Do I need to apply all of these techniques to every image?",
@@ -3270,46 +2705,16 @@
           "For statically compiled binaries like Go or Rust programs, yes, scratch is an empty image with nothing in it at all, which is as minimal as it gets. But it means no shell, no package manager, and no OS utilities, so debugging becomes much harder. It's best suited for simple, self-contained services in well-understood production environments."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker exec -it my-container sh -c \"apk add --no-cache curl\"",
-        "explanation": "Command: docker exec -it my-container sh -c \"apk add --no-cache curl\""
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker scout cves myapp:latest",
-        "explanation": "Command: docker scout cves myapp:latest"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -3448,11 +2853,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "If I remove a tag, does it delete the image?",
@@ -3467,58 +2867,28 @@
           "It's a portable snapshot of your image that can be moved between machines without a registry. It's a reasonable backup approach for small setups, but for production workflows a registry (even a self-hosted one) is much more manageable at scale."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker tag myapp:v1.0 myapp:latest",
-        "explanation": "Command: docker tag myapp:v1.0 myapp:latest"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker tag myapp:v1.0 myapp:production",
-        "explanation": "Command: docker tag myapp:v1.0 myapp:production"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker tag myapp:v1.0 myapp:staging",
-        "explanation": "Command: docker tag myapp:v1.0 myapp:staging"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker tag myapp:v1.0 registry.company.com/myteam/myapp:v1.0",
-        "explanation": "Command: docker tag myapp:v1.0 registry.company.com/myteam/myapp:v1.0"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker tag myapp:v1.0 myapp:sha-$(git rev-parse --short HEAD)",
-        "explanation": "Command: docker tag myapp:v1.0 myapp:sha-$(git rev-parse --short HEAD)"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -3566,7 +2936,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "docker run \u2500\u2500\u25ba Running \u2500\u2500\u25ba docker stop \u2500\u2500\u25ba Exited \u2500\u2500\u25ba docker rm \u2500\u2500\u25ba gone\n                  \u2502            \u25b2\n                  \u2514\u2500 pause \u2500\u2500\u2500\u2500\u2518",
+          "code": "docker run ──► Running ──► docker stop ──► Exited ──► docker rm ──► gone\n                  │            ▲\n                  └─ pause ────┘",
           "description": "Architecture specification"
         }
       },
@@ -3594,7 +2964,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "docker run -d -p 8080:80 nginx:1.27\n#               \u2502    \u2514\u2500\u2500 container port\n#               \u2514\u2500\u2500 host port",
+          "code": "docker run -d -p 8080:80 nginx:1.27\n#               │    └── container port\n#               └── host port",
           "description": "Architecture specification"
         }
       },
@@ -3670,11 +3040,6 @@
         }
       },
       {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "docker run -d myapp returns an ID but docker ps shows nothing. docker ps -a shows \"Exited (0)\". What does this mean?",
@@ -3699,42 +3064,12 @@
           "docker container prune removes every stopped container in one command and reports how much space was reclaimed. To remove absolutely everything including running containers, docker ps -aq | xargs docker rm -f works but should be used carefully. The better habit is prevention: add --rm to any one-off docker run so the container deletes itself on exit, which stops the buildup entirely."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
-        "command": "docker run \u2500\u2500\u25ba Running \u2500\u2500\u25ba docker stop \u2500\u2500\u25ba Exited \u2500\u2500\u25ba docker rm \u2500\u2500\u25ba gone",
-        "explanation": "Command: docker run \u2500\u2500\u25ba Running \u2500\u2500\u25ba docker stop \u2500\u2500\u25ba Exited \u2500\u2500\u25ba docker rm \u2500\u2500\u25ba gone"
+        "command": "docker run ──► Running ──► docker stop ──► Exited ──► docker rm ──► gone",
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d --name web nginx:1.27",
@@ -3923,11 +3258,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What's the difference between docker run and docker start?",
@@ -3944,58 +3274,28 @@
           "Both restart automatically after a host reboot. The difference is what happens after a manual docker stop. With unless-stopped, a manual stop is respected, and the container stays stopped. With always, Docker will restart it again even after you stop it manually, which can be surprising and hard to control."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run [OPTIONS] IMAGE [COMMAND] [ARGS...]",
-        "explanation": "Command: docker run [OPTIONS] IMAGE [COMMAND] [ARGS...]"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run hello-world",
-        "explanation": "Command: docker run hello-world"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d nginx",
-        "explanation": "Command: docker run -d nginx"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -it ubuntu bash",
-        "explanation": "Command: docker run -it ubuntu bash"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run --rm alpine echo \"Hello!\"",
-        "explanation": "Command: docker run --rm alpine echo \"Hello!\""
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -4162,11 +3462,6 @@
         }
       },
       {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "If I docker stop a container and then docker start it, does it lose its data?",
@@ -4181,58 +3476,28 @@
           "The container's in-memory state is lost as a host restart doesn't preserve RAM. The container will be in a stopped state when Docker starts back up, not a paused state."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker stop my-container",
-        "explanation": "Command: docker stop my-container"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker stop --time 30 my-container",
-        "explanation": "Command: docker stop --time 30 my-container"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker stop web-server db-server cache-server",
-        "explanation": "Command: docker stop web-server db-server cache-server"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker kill my-container",
-        "explanation": "Command: docker kill my-container"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker start my-container",
-        "explanation": "Command: docker start my-container"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -4315,7 +3580,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "# Host \u2192 Container\ndocker cp ./config.json my-container:/app/config.json\n\n# Container \u2192 Host\ndocker cp my-container:/app/logs/app.log ./app.log\n\n# Works even on stopped containers\ndocker cp my-stopped-container:/var/log/app.log ./recovered.log",
+          "code": "# Host → Container\ndocker cp ./config.json my-container:/app/config.json\n\n# Container → Host\ndocker cp my-container:/app/logs/app.log ./app.log\n\n# Works even on stopped containers\ndocker cp my-stopped-container:/var/log/app.log ./recovered.log",
           "description": "Architecture specification"
         }
       },
@@ -4366,16 +3631,6 @@
         }
       },
       {
-        "title": "Quick Reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What's the difference between docker exec and docker attach?",
@@ -4392,42 +3647,12 @@
           "The container only has access to its own filesystem layer. Files that live on your host (outside of mounted volumes) won't appear inside the container. If you need to get a file in, use docker cp or mount a volume when starting the container."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker exec [OPTIONS] CONTAINER COMMAND [ARGS...]",
-        "explanation": "Command: docker exec [OPTIONS] CONTAINER COMMAND [ARGS...]"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker exec my-nginx nginx -t",
@@ -4439,11 +3664,11 @@
       },
       {
         "command": "docker exec my-app python manage.py check",
-        "explanation": "Command: docker exec my-app python manage.py check"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker exec -it my-nginx bash",
-        "explanation": "Command: docker exec -it my-nginx bash"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -4556,16 +3781,6 @@
         }
       },
       {
-        "title": "Quick Reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Why do my docker logs show nothing even though the container is running?",
@@ -4582,58 +3797,28 @@
           "By default every 30 seconds, with a 30-second timeout and 3 retries before marking the container unhealthy. You can customize all three with --interval, --timeout, and --retries in your Dockerfile."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker logs my-container",
-        "explanation": "Command: docker logs my-container"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker logs -f my-container",
-        "explanation": "Command: docker logs -f my-container"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker logs --tail 100 my-container",
-        "explanation": "Command: docker logs --tail 100 my-container"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker logs --tail 50 -f my-container",
-        "explanation": "Command: docker logs --tail 50 -f my-container"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker logs --since 10m my-container",
-        "explanation": "Command: docker logs --since 10m my-container"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -4759,16 +3944,6 @@
         }
       },
       {
-        "title": "Quick Reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Why can't my two containers talk to each other even though they're both running?",
@@ -4785,42 +3960,12 @@
           "Bridge networking gives each container its own isolated network namespace. It has its own IP, and you control what's exposed via port publishing. Host networking removes that isolation completely; the container shares the host's network interfaces and ports directly. Bridge is safer and more flexible; host is faster but requires careful port management."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run -d nginx",
-        "explanation": "Command: docker run -d nginx"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker inspect bridge",
@@ -4828,15 +3973,15 @@
       },
       {
         "command": "docker network create my-app-network",
-        "explanation": "Command: docker network create my-app-network"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d --name web   --network my-app-network nginx",
-        "explanation": "Command: docker run -d --name web   --network my-app-network nginx"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d --name db    --network my-app-network postgres:16",
-        "explanation": "Command: docker run -d --name db    --network my-app-network postgres:16"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -4960,16 +4105,6 @@
         }
       },
       {
-        "title": "Quick Reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "If I delete a container, does its volume get deleted too?",
@@ -4986,58 +4121,28 @@
           "It permanently deletes all volumes that aren't currently attached to at least one container (running or stopped). Before running it, check docker volume ls and make sure you're not about to lose anything important. There's no undo."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker volume create mydata",
-        "explanation": "Command: docker volume create mydata"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d \\",
-        "explanation": "Command: docker run -d \\"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d --name db -v pgdata:/var/lib/postgresql/data postgres:16",
-        "explanation": "Command: docker run -d --name db -v pgdata:/var/lib/postgresql/data postgres:16"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker rm -f db",
-        "explanation": "Command: docker rm -f db"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume ls",
-        "explanation": "Command: docker volume ls"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -5147,16 +4252,6 @@
         }
       },
       {
-        "title": "Quick Reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What's the difference between ARG and ENV in a Dockerfile?",
@@ -5173,58 +4268,28 @@
           "In your docker-compose.yml, use the environment key for inline values or env_file to load from a file. It's the same concepts as -e and --env-file in docker run."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run -e NODE_ENV=production my-app",
-        "explanation": "Command: docker run -e NODE_ENV=production my-app"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run \\",
-        "explanation": "Command: docker run \\"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -e API_KEY my-app",
-        "explanation": "Command: docker run -e API_KEY my-app"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run --env-file .env my-app",
-        "explanation": "Command: docker run --env-file .env my-app"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker exec my-app env",
-        "explanation": "Command: docker exec my-app env"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -5366,16 +4431,6 @@
         }
       },
       {
-        "title": "Quick Reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Key Takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "How do I check how much disk space Docker is using?",
@@ -5392,58 +4447,28 @@
           "Unfortunately, docker volume prune permanently deletes volume data and there's no built-in recovery. This is why checking docker volume ls before pruning is so important. Going forward, set up regular volume backups."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker ps",
-        "explanation": "Command: docker ps"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker ps -a",
-        "explanation": "Command: docker ps -a"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker ps -aq -f status=exited | wc -l",
-        "explanation": "Command: docker ps -aq -f status=exited | wc -l"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker system df",
-        "explanation": "Command: docker system df"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker rm my-container",
-        "explanation": "Command: docker rm my-container"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -5562,16 +4587,6 @@
         }
       },
       {
-        "title": "Common mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Dockerfile has COPY . . before RUN npm ci. Changing one line of source reinstalls every dependency. Why?",
@@ -5596,50 +4611,20 @@
           "Because that is the default when no USER instruction is given, and most base images do not set one. It is unnecessary for nearly every application and increases the damage a compromise can do, particularly combined with a mounted host path. Add USER node, or whichever non-root user your base image provides, after any instructions that need root, such as package installation. On Kubernetes you can additionally enforce it with runAsNonRoot: true, which turns a root image into a visible startup failure rather than a silent risk."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker build -t myapp:1.0 .",
-        "explanation": "Command: docker build -t myapp:1.0 ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d -p 3000:3000 myapp:1.0",
-        "explanation": "Command: docker run -d -p 3000:3000 myapp:1.0"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --secret id=npmtoken,src=./token.txt -t myapp .",
-        "explanation": "Command: docker build --secret id=npmtoken,src=./token.txt -t myapp ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --target build -t myapp:debug .",
@@ -5752,21 +4737,6 @@
         }
       },
       {
-        "title": "Choosing, in one table",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Common mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A team switches a Python service from python:3.12-slim to python:3.12-alpine expecting a smaller image. The build takes eight minutes instead of forty seconds, and the final image is larger. What happened?"
@@ -5781,63 +4751,33 @@
           "Why shouldn't I use the latest tag in a Dockerfile?",
           "Because a tag is a mutable pointer, not a fixed image. node:latest resolves to something different over time, so the same Dockerfile and the same source produce different images on different days, and a build can break with no change on your side. The same applies more subtly to node:22, which advances through 22.x. Pin a full version tag at minimum, and a digest when reproducibility genuinely matters. Then use Renovate or Dependabot to bump it, so updates arrive as reviewable pull requests.",
           "What is a distroless image and when should I use one?",
-          "A distroless image contains your application's runtime and nothing else, no shell, no package manager, no coreutils. It is glibc-based, so it avoids Alpine's musl compatibility problems while still being small, and the missing tooling removes most of what an attacker would use after gaining execution. The cost is debugging: docker exec \u2026 sh fails because there is no shell. Use the :debug tag variant when you need one, or kubectl debug to attach an ephemeral container in Kubernetes.",
+          "A distroless image contains your application's runtime and nothing else, no shell, no package manager, no coreutils. It is glibc-based, so it avoids Alpine's musl compatibility problems while still being small, and the missing tooling removes most of what an attacker would use after gaining execution. The cost is debugging: docker exec … sh fails because there is no shell. Use the :debug tag variant when you need one, or kubectl debug to attach an ephemeral container in Kubernetes.",
           "Why does my FROM scratch container exit immediately with \"no such file or directory\"?",
           "The binary is dynamically linked and the file the kernel cannot find is the dynamic linker, not your program, which is why the message names nothing useful. Build statically: for Go that means CGO_ENABLED=0 go build, for Rust the musl target. Two other things scratch does not provide are TLS root certificates and timezone data, so copy /etc/ssl/certs/ca-certificates.crt from the build stage if your application makes HTTPS calls, or use gcr.io/distroless/static, which includes both.",
           "How do I pin a Docker base image to a digest?",
-          "Run docker inspect node:22-alpine --format='{{index .RepoDigests 0}}' to get the digest, then write FROM node:22-alpine@sha256:\u2026 in the Dockerfile. A digest is content-addressed, so it always resolves to the exact same bytes. Keep the human-readable tag alongside it for legibility. Pair this with Renovate or Dependabot, which raise a pull request when the underlying tag moves, that way you get reproducible builds and still receive security patches, rather than trading one for the other.",
+          "Run docker inspect node:22-alpine --format='{{index .RepoDigests 0}}' to get the digest, then write FROM node:22-alpine@sha256:… in the Dockerfile. A digest is content-addressed, so it always resolves to the exact same bytes. Keep the human-readable tag alongside it for legibility. Pair this with Renovate or Dependabot, which raise a pull request when the underlying tag moves, that way you get reproducible builds and still receive security patches, rather than trading one for the other.",
           "What is the difference between multiple FROM lines and multiple Dockerfiles?",
           "Multiple FROM lines create stages within a single build, and only the final stage becomes the image. Earlier stages exist purely so later ones can copy artefacts out with COPY --from=build, which is how compilers and dev dependencies stay out of what ships. That is almost always better than maintaining separate build and runtime Dockerfiles, because the stages share one file, one build command and one cache. Use --target when you want to stop at an intermediate stage for debugging or testing."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker build --pull -t myapp:latest .",
-        "explanation": "Command: docker build --pull -t myapp:latest ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker inspect node:22-alpine --format='{{index .RepoDigests 0}}'",
-        "explanation": "Command: docker inspect node:22-alpine --format='{{index .RepoDigests 0}}'"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --target build -t myapp:debug .",
-        "explanation": "Command: docker build --target build -t myapp:debug ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker buildx build --platform linux/amd64,linux/arm64 -t myapp:1.0 --push .",
-        "explanation": "Command: docker buildx build --platform linux/amd64,linux/arm64 -t myapp:1.0 --push ."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -5992,16 +4932,6 @@
         }
       },
       {
-        "title": "Common mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Dockerfile at services/api/Dockerfile has COPY ../../shared/config.json /app/. The file definitely exists on disk, but the build fails with \"not found\". Why?"
@@ -6025,46 +4955,16 @@
           "It reads from somewhere other than the build context. Either an earlier stage in the same Dockerfile (COPY --from=build /app/dist ./dist) or a completely separate image (COPY --from=hashicorp/terraform:1.9 /bin/terraform /usr/local/bin/). The first is what makes multi-stage builds work, letting compilers and dev dependencies stay behind in the build stage. The second is often a cleaner way to obtain a binary than downloading and verifying it yourself, since the image is already versioned and pinnable."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker build -t myapp .",
-        "explanation": "Command: docker build -t myapp ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build -f services/api/Dockerfile -t api .",
-        "explanation": "Command: docker build -f services/api/Dockerfile -t api ."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -6220,16 +5120,6 @@
         }
       },
       {
-        "title": "Common mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Dockerfile downloads a 400 MB SDK in one RUN and deletes it in the next RUN. The final image is still around 400 MB larger than expected. Why?"
@@ -6244,67 +5134,37 @@
           "Why doesn't deleting files in a later RUN reduce my image size?",
           "Because each instruction commits an immutable filesystem diff. A delete in a later layer writes a whiteout marker, which makes the file invisible inside the container while the actual bytes stay in the layer that created them and still travel with the image. Put the creation and the deletion in one RUN joined with &&, or move the whole step into a build stage that never ships. The same mechanism is why a secret written and later deleted is still recoverable from the published image.",
           "Why should apt-get update and apt-get install be in the same RUN?",
-          "Docker caches a RUN layer on its command string, not on what the command actually produced. As a separate instruction, RUN apt-get update keeps its cached layer indefinitely, so a later install runs against a package index that may be months old. Producing Version '\u2026' for '\u2026' was not found or silently installing outdated packages. Chaining them means any change to the install list re-runs the update too.",
+          "Docker caches a RUN layer on its command string, not on what the command actually produced. As a separate instruction, RUN apt-get update keeps its cached layer indefinitely, so a later install runs against a package index that may be months old. Producing Version '…' for '…' was not found or silently installing outdated packages. Chaining them means any change to the install list re-runs the update too.",
           "How do I make Docker builds faster without making the image bigger?",
           "Use BuildKit cache mounts. RUN --mount=type=cache,target=/root/.npm npm ci keeps the package cache on the builder between builds while writing nothing into the image, and the same works for pip, Go module and build caches, and apt. Combine that with ordering instructions from least to most frequently changing, and copying dependency manifests before source code. In CI you will also need a persistent or exported cache, since the mount lives on whichever builder ran the build.",
           "Why does my build succeed even though a command inside RUN failed?",
-          "Shell form runs under /bin/sh -c, and in a pipeline only the final command's exit status is reported. So RUN curl -fsSL https://\u2026 | sh succeeds even when curl 404s, because sh reads empty input and exits cleanly. Add SHELL [\"/bin/bash\", \"-o\", \"pipefail\", \"-c\"] near the top of the Dockerfile, or prefix the individual instruction with set -o pipefail &&. Using set -eux inside a heredoc block gives the same protection plus a readable build log.",
+          "Shell form runs under /bin/sh -c, and in a pipeline only the final command's exit status is reported. So RUN curl -fsSL https://… | sh succeeds even when curl 404s, because sh reads empty input and exits cleanly. Add SHELL [\"/bin/bash\", \"-o\", \"pipefail\", \"-c\"] near the top of the Dockerfile, or prefix the individual instruction with set -o pipefail &&. Using set -eux inside a heredoc block gives the same protection plus a readable build log.",
           "How do I find which instruction made my image so large?",
           "docker history <image> --no-trunc lists every layer with its size and the instruction that created it, largest offenders usually being obvious at a glance. docker image inspect and tools like dive go further if you need to see individual files. Once you have identified it, the fix is normally one of three things: clean up inside the same RUN, add --no-install-recommends, or move the whole step into a build stage and copy only the artefact forward with COPY --from."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl \\",
-        "explanation": "Command: curl \\"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "git \\",
-        "explanation": "Command: git \\"
+        "explanation": "CLI execution command for git"
       },
       {
         "command": "docker history myapp:1.0 --no-trunc --format '{{.Size}}\\t{{.CreatedBy}}'",
-        "explanation": "Command: docker history myapp:1.0 --no-trunc --format '{{.Size}}\\t{{.CreatedBy}}'"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --secret id=npmtoken,src=./token.txt -t myapp .",
-        "explanation": "Command: docker build --secret id=npmtoken,src=./token.txt -t myapp ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --no-cache -t myapp .",
-        "explanation": "Command: docker build --no-cache -t myapp ."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -6426,16 +5286,6 @@
         }
       },
       {
-        "title": "Choosing",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Dockerfile uses CMD node server.js in shell form. Every docker stop takes exactly 10 seconds and the application's shutdown handler never runs. Why?",
@@ -6460,54 +5310,24 @@
           "docker run --entrypoint /bin/sh -it myimage replaces the entrypoint and drops you into a shell, which is the standard way to inspect an image whose entrypoint exits immediately or crashes. Note that --entrypoint accepts only the executable. Any arguments go after the image name. For a distroless image with no shell at all, copy the filesystem out with docker create and docker cp instead."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run myimage",
-        "explanation": "\u2192 hello"
+        "explanation": "→ hello"
       },
       {
         "command": "docker run myimage echo goodbye",
-        "explanation": "\u2192 goodbye     (CMD replaced)"
+        "explanation": "→ goodbye     (CMD replaced)"
       },
       {
         "command": "docker run myimage goodbye",
-        "explanation": "\u2192 hello goodbye   (appended)"
+        "explanation": "→ hello goodbye   (appended)"
       },
       {
         "command": "docker run myimage other.py",
-        "explanation": "\u2192 python other.py"
+        "explanation": "→ python other.py"
       },
       {
         "command": "docker run myimage other-arg",
@@ -6566,7 +5386,7 @@
           "One instruction for several variables, because each ENV is its own layer. The older space-separated form (ENV NODE_ENV production) still parses but is deprecated and cannot set multiple values. Use =.",
           "Values are visible to every RUN that follows, to the container's main process, and to any later docker exec session:",
           "ENV sets a default, and -e overrides it without a rebuild:",
-          "That is the point of it: the image ships sensible defaults, the deployment overrides what differs. Precedence runs docker run -e \u2192 Compose environment: \u2192 Compose env_file: \u2192 Dockerfile ENV, with the leftmost winning.",
+          "That is the point of it: the image ships sensible defaults, the deployment overrides what differs. Precedence runs docker run -e → Compose environment: → Compose env_file: → Dockerfile ENV, with the leftmost winning.",
           "ENV also expands earlier variables, which is how you extend PATH:",
           "Good uses: default ports and log levels, PATH-style variables, tool configuration such as PIP_NO_CACHE_DIR=1 or PYTHONUNBUFFERED=1.",
           "Never: API tokens, passwords, connection strings with credentials. Those come from the orchestrator at runtime."
@@ -6655,16 +5475,6 @@
         }
       },
       {
-        "title": "Common mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Dockerfile declares ARG NODE_VERSION=22 before FROM, uses it successfully in the FROM line, then RUN echo \"Node $NODE_VERSION\" prints \"Node\" with no number. Why?"
@@ -6677,7 +5487,7 @@
           "What is the difference between ARG and ENV in a Dockerfile?",
           "ARG defines a variable that exists only while docker build runs and is gone once the image is finished. Nothing inside a running container can see it. ENV writes a variable into the image so it is present during the remainder of the build and in every container started from that image. Use ARG for things that shape how the image is built, such as a base image version or a commit SHA, and ENV for configuration the application reads at runtime, such as a port or log level.",
           "Is it safe to pass a secret with --build-arg?",
-          "No. The value is recorded in the image's build metadata and docker history --no-trunc prints it back, even if the file you wrote it to was deleted in the same RUN. Anyone who can pull the image can recover it, and rotating the credential is the only fix after the fact. Use a BuildKit secret mount instead, RUN --mount=type=secret,id=token \u2026 with docker build --secret id=token,env=TOKEN, which exposes the value to a single instruction and writes it to no layer.",
+          "No. The value is recorded in the image's build metadata and docker history --no-trunc prints it back, even if the file you wrote it to was deleted in the same RUN. Anyone who can pull the image can recover it, and rotating the credential is the only fix after the fact. Use a BuildKit secret mount instead, RUN --mount=type=secret,id=token … with docker build --secret id=token,env=TOKEN, which exposes the value to a single instruction and writes it to no layer.",
           "Why is my ARG empty after FROM?",
           "Because the region before the first FROM is a separate scope, and build stages do not inherit from it. That scope exists so the base image itself can be parameterised. Add a bare ARG NODE_VERSION after FROM to bring the value into that stage, and repeat it in every stage of a multi-stage build that needs it. Docker gives no warning. An out-of-scope variable simply expands to an empty string.",
           "How do I override an environment variable at runtime?",
@@ -6688,58 +5498,28 @@
           "Different tools for different jobs. Dockerfile ENV bakes a default into the image, which is right for values that are part of the image itself: a PATH addition, PYTHONUNBUFFERED=1, a default port. A .env file is read by Docker Compose on your machine and never enters the image, which makes it right for per-environment values and for anything you would not publish. In production the orchestrator supplies the values, typically from a Kubernetes Secret or a parameter store, and the image's ENV defaults just fill the gaps."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run --rm myapp env | grep NODE_ENV",
-        "explanation": "Command: docker run --rm myapp env | grep NODE_ENV"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -e LOG_LEVEL=debug -e PORT=4000 myapp",
-        "explanation": "Command: docker run -e LOG_LEVEL=debug -e PORT=4000 myapp"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build \\",
-        "explanation": "Command: docker build \\"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --build-arg APP_VERSION=2.5.0 -t myapp:2.5.0 .",
-        "explanation": "Command: docker build --build-arg APP_VERSION=2.5.0 -t myapp:2.5.0 ."
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run --rm myapp:2.5.0 sh -c 'echo $APP_VERSION'",
-        "explanation": "Command: docker run --rm myapp:2.5.0 sh -c 'echo $APP_VERSION'"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -6792,7 +5572,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "WORKDIR /app\n\nCOPY package.json .        # \u2192 /app/package.json\nRUN npm ci                 # runs in /app\nCMD [\"node\", \"server.js\"]  # runs /app/server.js",
+          "code": "WORKDIR /app\n\nCOPY package.json .        # → /app/package.json\nRUN npm ci                 # runs in /app\nCMD [\"node\", \"server.js\"]  # runs /app/server.js",
           "description": "Architecture specification"
         }
       },
@@ -6868,16 +5648,6 @@
         }
       },
       {
-        "title": "Common mistakes",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Dockerfile declares VOLUME /app/data and then, on a later line, COPY seed.json /app/data/. The build succeeds, but /app/data is empty in every container. Why?"
@@ -6901,58 +5671,28 @@
           "RUN cd /app changes directory inside the shell that runs that one instruction, and that shell exits immediately afterwards, so the next instruction starts back at the previous directory. WORKDIR /app sets the directory for every subsequent instruction, persists into the final image as the container's starting directory, and creates the path if it does not exist. Use WORKDIR; the only place cd makes sense is chained within a single RUN, as in RUN cd /src && make install."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run myapp",
-        "explanation": "Command: docker run myapp"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "curl localhost:3000",
-        "explanation": "Command: curl localhost:3000"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "docker run -p 8080:3000 myapp",
-        "explanation": "host 8080 \u2192 container 3000"
+        "explanation": "host 8080 → container 3000"
       },
       {
         "command": "docker inspect myapp --format='{{json .Config.Labels}}'",
-        "explanation": "Command: docker inspect myapp --format='{{json .Config.Labels}}'"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker ps",
-        "explanation": "Command: docker ps"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -7070,7 +5810,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "FROM node:latest                      # moves without warning\nFROM node:22.11.0-alpine3.20          # a specific release\nFROM node:22-alpine@sha256:bf77dc26\u2026  # immutable",
+          "code": "FROM node:latest                      # moves without warning\nFROM node:22.11.0-alpine3.20          # a specific release\nFROM node:22-alpine@sha256:bf77dc26…  # immutable",
           "description": "Architecture specification"
         }
       },
@@ -7122,11 +5862,6 @@
         }
       },
       {
-        "title": "The pre-merge checklist",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "Every rolling deploy drops in-flight requests. The container takes the full termination grace period and is then killed. The Dockerfile ends with CMD node server.js and the app does handle SIGTERM. What is wrong?"
@@ -7141,7 +5876,7 @@
           "Is it really a problem to run a container as root?",
           "It is a defence you are giving up for one line. Container isolation is good, so root inside a container is not automatically root on the host, but combined with a bind-mounted host path, a privileged flag, or a kernel vulnerability, the gap closes fast. Add USER 1000, and on Kubernetes pair it with runAsNonRoot: true, readOnlyRootFilesystem: true and dropped capabilities. Use a numeric UID, because runAsNonRoot cannot verify a named user and the Pod will refuse to start.",
           "How do I pass a secret to a Docker build safely?",
-          "With a BuildKit secret mount. RUN --mount=type=secret,id=npm_token \u2026 makes the value readable at /run/secrets/npm_token for that one instruction and writes it to no layer, with docker build --secret id=npm_token,env=NPM_TOKEN supplying it. Do not use ARG or ENV: both are recorded in the image metadata and docker history --no-trunc prints them back, even when the file you wrote was deleted in the same RUN. Once a secret has shipped in an image, rotation is the only fix.",
+          "With a BuildKit secret mount. RUN --mount=type=secret,id=npm_token … makes the value readable at /run/secrets/npm_token for that one instruction and writes it to no layer, with docker build --secret id=npm_token,env=NPM_TOKEN supplying it. Do not use ARG or ENV: both are recorded in the image metadata and docker history --no-trunc prints them back, even when the file you wrote was deleted in the same RUN. Once a secret has shipped in an image, rotation is the only fix.",
           "What is the fastest way to make my Docker image smaller?",
           "In order: use a multi-stage build so compilers and dev dependencies never ship, switch to a -slim or -alpine base variant (but not Alpine for Python), and make sure every cleanup happens in the same RUN as the thing it cleans up. Run docker history <image> --no-trunc first. It names the instruction responsible for each layer's size, which usually makes the answer obvious and saves you optimising something that was never the problem.",
           "Which Dockerfile linter should I use, and what should it fail on?",
@@ -7149,36 +5884,6 @@
           "Do I need a HEALTHCHECK in my Dockerfile?",
           "Only if something reads it. docker run, Docker Swarm and Compose's depends_on: condition: service_healthy all do, and it is worth adding there. Kubernetes does not. It uses livenessProbe, readinessProbe and startupProbe from the Pod spec and ignores the image's healthcheck completely, so on a cluster the instruction buys you nothing and the probes are what you need to get right. Wherever you do use it, set --start-period generously or slow-starting applications are marked unhealthy while still booting."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -7189,19 +5894,19 @@
       },
       {
         "command": "docker run --init myapp",
-        "explanation": "Command: docker run --init myapp"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run --read-only --tmpfs /tmp myapp",
-        "explanation": "Command: docker run --read-only --tmpfs /tmp myapp"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker history myapp:1.0 --no-trunc | grep -i token",
-        "explanation": "Command: docker history myapp:1.0 --no-trunc | grep -i token"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker build --secret id=npm_token,env=NPM_TOKEN -t myapp .",
-        "explanation": "Command: docker build --secret id=npm_token,env=NPM_TOKEN -t myapp ."
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -7250,7 +5955,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "# syntax=docker/dockerfile:1\n\n# \u2500\u2500 Build \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM node:22-alpine AS build\nWORKDIR /app\n\nCOPY package*.json tsconfig.json ./\nRUN --mount=type=cache,target=/root/.npm npm ci\n\nCOPY src ./src\nRUN npm run build                      # \u2192 /app/dist\n\n# \u2500\u2500 Runtime \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM node:22-alpine\nWORKDIR /app\n\nENV NODE_ENV=production\n\nCOPY package*.json ./\nRUN --mount=type=cache,target=/root/.npm npm ci --omit=dev\n\nCOPY --from=build --chown=node:node /app/dist ./dist\n\nLABEL org.opencontainers.image.source=\"https://github.com/org/api\"\n\nUSER node\nEXPOSE 3000\n\nHEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \\\n  CMD wget -qO- http://localhost:3000/health || exit 1\n\nCMD [\"node\", \"dist/server.js\"]",
+          "code": "# syntax=docker/dockerfile:1\n\n# ── Build ──────────────────────────────────────────────\nFROM node:22-alpine AS build\nWORKDIR /app\n\nCOPY package*.json tsconfig.json ./\nRUN --mount=type=cache,target=/root/.npm npm ci\n\nCOPY src ./src\nRUN npm run build                      # → /app/dist\n\n# ── Runtime ────────────────────────────────────────────\nFROM node:22-alpine\nWORKDIR /app\n\nENV NODE_ENV=production\n\nCOPY package*.json ./\nRUN --mount=type=cache,target=/root/.npm npm ci --omit=dev\n\nCOPY --from=build --chown=node:node /app/dist ./dist\n\nLABEL org.opencontainers.image.source=\"https://github.com/org/api\"\n\nUSER node\nEXPOSE 3000\n\nHEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \\\n  CMD wget -qO- http://localhost:3000/health || exit 1\n\nCMD [\"node\", \"dist/server.js\"]",
           "description": "Architecture specification"
         }
       },
@@ -7265,7 +5970,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "# syntax=docker/dockerfile:1\n\n# \u2500\u2500 Build wheels \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM python:3.12-slim AS build\nRUN apt-get update \\\n && apt-get install -y --no-install-recommends gcc libpq-dev \\\n && rm -rf /var/lib/apt/lists/*\n\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt\n\n# \u2500\u2500 Runtime \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM python:3.12-slim\n\nENV PYTHONDONTWRITEBYTECODE=1 \\\n    PYTHONUNBUFFERED=1 \\\n    PIP_NO_CACHE_DIR=1\n\nRUN apt-get update \\\n && apt-get install -y --no-install-recommends libpq5 \\\n && rm -rf /var/lib/apt/lists/*\n\nWORKDIR /app\nRUN useradd -m -u 1000 appuser && chown appuser /app\n\nCOPY --from=build /wheels /wheels\nRUN pip install --no-cache /wheels/* && rm -rf /wheels\n\nCOPY --chown=appuser:appuser . .\nUSER 1000\nEXPOSE 8000\n\nCMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\", \"--workers\", \"4\"]",
+          "code": "# syntax=docker/dockerfile:1\n\n# ── Build wheels ───────────────────────────────────────\nFROM python:3.12-slim AS build\nRUN apt-get update \\\n && apt-get install -y --no-install-recommends gcc libpq-dev \\\n && rm -rf /var/lib/apt/lists/*\n\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt\n\n# ── Runtime ────────────────────────────────────────────\nFROM python:3.12-slim\n\nENV PYTHONDONTWRITEBYTECODE=1 \\\n    PYTHONUNBUFFERED=1 \\\n    PIP_NO_CACHE_DIR=1\n\nRUN apt-get update \\\n && apt-get install -y --no-install-recommends libpq5 \\\n && rm -rf /var/lib/apt/lists/*\n\nWORKDIR /app\nRUN useradd -m -u 1000 appuser && chown appuser /app\n\nCOPY --from=build /wheels /wheels\nRUN pip install --no-cache /wheels/* && rm -rf /wheels\n\nCOPY --chown=appuser:appuser . .\nUSER 1000\nEXPOSE 8000\n\nCMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\", \"--workers\", \"4\"]",
           "description": "Architecture specification"
         }
       },
@@ -7279,7 +5984,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "# syntax=docker/dockerfile:1\n\nFROM --platform=$BUILDPLATFORM golang:1.23-alpine AS build\nRUN apk add --no-cache ca-certificates tzdata\n\nWORKDIR /src\nCOPY go.mod go.sum ./\nRUN --mount=type=cache,target=/go/pkg/mod go mod download\n\nCOPY . .\nARG TARGETOS TARGETARCH\nRUN --mount=type=cache,target=/root/.cache/go-build \\\n    CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \\\n    go build -ldflags=\"-w -s\" -o /out/server .\n\n# \u2500\u2500 Runtime \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM scratch\nCOPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/\nCOPY --from=build /usr/share/zoneinfo /usr/share/zoneinfo\nCOPY --from=build /out/server /server\n\nEXPOSE 8080\nUSER 1000\nENTRYPOINT [\"/server\"]",
+          "code": "# syntax=docker/dockerfile:1\n\nFROM --platform=$BUILDPLATFORM golang:1.23-alpine AS build\nRUN apk add --no-cache ca-certificates tzdata\n\nWORKDIR /src\nCOPY go.mod go.sum ./\nRUN --mount=type=cache,target=/go/pkg/mod go mod download\n\nCOPY . .\nARG TARGETOS TARGETARCH\nRUN --mount=type=cache,target=/root/.cache/go-build \\\n    CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \\\n    go build -ldflags=\"-w -s\" -o /out/server .\n\n# ── Runtime ────────────────────────────────────────────\nFROM scratch\nCOPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/\nCOPY --from=build /usr/share/zoneinfo /usr/share/zoneinfo\nCOPY --from=build /out/server /server\n\nEXPOSE 8080\nUSER 1000\nENTRYPOINT [\"/server\"]",
           "description": "Architecture specification"
         }
       },
@@ -7291,7 +5996,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "# \u2500\u2500 Build \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM node:22-alpine AS build\nWORKDIR /app\n\nCOPY package*.json ./\nRUN npm ci\n\nCOPY . .\nARG VITE_API_URL=https://api.example.com\nENV VITE_API_URL=${VITE_API_URL}\nRUN npm run build                      # \u2192 /app/dist\n\n# \u2500\u2500 Runtime \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM nginx:1.27-alpine\nRUN rm /etc/nginx/conf.d/default.conf\nCOPY nginx.conf /etc/nginx/conf.d/app.conf\nCOPY --from=build /app/dist /usr/share/nginx/html\n\nEXPOSE 80\nSTOPSIGNAL SIGQUIT\nCMD [\"nginx\", \"-g\", \"daemon off;\"]",
+          "code": "# ── Build ──────────────────────────────────────────────\nFROM node:22-alpine AS build\nWORKDIR /app\n\nCOPY package*.json ./\nRUN npm ci\n\nCOPY . .\nARG VITE_API_URL=https://api.example.com\nENV VITE_API_URL=${VITE_API_URL}\nRUN npm run build                      # → /app/dist\n\n# ── Runtime ────────────────────────────────────────────\nFROM nginx:1.27-alpine\nRUN rm /etc/nginx/conf.d/default.conf\nCOPY nginx.conf /etc/nginx/conf.d/app.conf\nCOPY --from=build /app/dist /usr/share/nginx/html\n\nEXPOSE 80\nSTOPSIGNAL SIGQUIT\nCMD [\"nginx\", \"-g\", \"daemon off;\"]",
           "description": "Architecture specification"
         }
       },
@@ -7303,7 +6008,7 @@
         ],
         "codeBlock": {
           "language": "bash",
-          "code": "# syntax=docker/dockerfile:1\n\nFROM eclipse-temurin:21-jdk-alpine AS build\nWORKDIR /app\nCOPY .mvn/ .mvn/\nCOPY mvnw pom.xml ./\nRUN --mount=type=cache,target=/root/.m2 ./mvnw dependency:go-offline\n\nCOPY src ./src\nRUN --mount=type=cache,target=/root/.m2 ./mvnw package -DskipTests\nRUN java -Djarmode=layertools -jar target/*.jar extract --destination extracted\n\n# \u2500\u2500 Runtime \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nFROM eclipse-temurin:21-jre-alpine\nWORKDIR /app\nRUN addgroup -S spring && adduser -S -u 1000 -G spring spring\n\nCOPY --from=build --chown=spring:spring /app/extracted/dependencies/ ./\nCOPY --from=build --chown=spring:spring /app/extracted/spring-boot-loader/ ./\nCOPY --from=build --chown=spring:spring /app/extracted/snapshot-dependencies/ ./\nCOPY --from=build --chown=spring:spring /app/extracted/application/ ./\n\nUSER 1000\nEXPOSE 8080\nENTRYPOINT [\"java\", \"org.springframework.boot.loader.launch.JarLauncher\"]",
+          "code": "# syntax=docker/dockerfile:1\n\nFROM eclipse-temurin:21-jdk-alpine AS build\nWORKDIR /app\nCOPY .mvn/ .mvn/\nCOPY mvnw pom.xml ./\nRUN --mount=type=cache,target=/root/.m2 ./mvnw dependency:go-offline\n\nCOPY src ./src\nRUN --mount=type=cache,target=/root/.m2 ./mvnw package -DskipTests\nRUN java -Djarmode=layertools -jar target/*.jar extract --destination extracted\n\n# ── Runtime ────────────────────────────────────────────\nFROM eclipse-temurin:21-jre-alpine\nWORKDIR /app\nRUN addgroup -S spring && adduser -S -u 1000 -G spring spring\n\nCOPY --from=build --chown=spring:spring /app/extracted/dependencies/ ./\nCOPY --from=build --chown=spring:spring /app/extracted/spring-boot-loader/ ./\nCOPY --from=build --chown=spring:spring /app/extracted/snapshot-dependencies/ ./\nCOPY --from=build --chown=spring:spring /app/extracted/application/ ./\n\nUSER 1000\nEXPOSE 8080\nENTRYPOINT [\"java\", \"org.springframework.boot.loader.launch.JarLauncher\"]",
           "description": "Architecture specification"
         }
       },
@@ -7328,11 +6033,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What does a production-ready Dockerfile look like?",
@@ -7348,36 +6048,6 @@
           "Why does my Go container exit immediately with \"no such file or directory\"?",
           "The binary is dynamically linked and the file the kernel cannot find is the dynamic linker, not your program, which is why the error names nothing useful. Build with CGO_ENABLED=0 to produce a fully static binary. While you are there, remember that scratch also lacks TLS root certificates and timezone data, so copy /etc/ssl/certs/ca-certificates.crt and /usr/share/zoneinfo from the build stage, or use gcr.io/distroless/static, which ships both."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -7518,16 +6188,6 @@
         }
       },
       {
-        "title": "Explore further in this section",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Quick reference",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Key takeaways",
         "paragraphs": [
           "A Postgres container is recreated after an image update and all data is gone. It was started with docker run -d postgres:17 and no volume. What happened?",
@@ -7552,58 +6212,28 @@
           "When an image declares VOLUME /data in its Dockerfile and you run it without mounting anything at that path, Docker creates an unnamed volume with a random hexadecimal ID. Every docker run creates another, so repeatedly starting a database image leaves a trail of orphaned volumes each holding real data. Always mount a named volume explicitly at the documented path, and add --rm to one-off runs, which removes anonymous volumes when the container exits."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run -d --name db postgres:17",
-        "explanation": "Command: docker run -d --name db postgres:17"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker rm -f db",
-        "explanation": "Command: docker rm -f db"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d -v pgdata:/var/lib/postgresql/data postgres:17",
-        "explanation": "Command: docker run -d -v pgdata:/var/lib/postgresql/data postgres:17"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d -v $(pwd)/src:/app/src myapp:dev",
-        "explanation": "Command: docker run -d -v $(pwd)/src:/app/src myapp:dev"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d --tmpfs /tmp:size=64m myapp",
-        "explanation": "Command: docker run -d --tmpfs /tmp:size=64m myapp"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -7640,7 +6270,7 @@
         "title": "Introduction & Overview",
         "paragraphs": [
           "Create Docker named volumes with docker volume create, -v and --mount. See how data survives container removal and how to share a volume.",
-          "A container is easy to replace. That is one of Docker\u2019s biggest strengths. But the same feature creates a serious problem the moment your application stores real data. If you remove a container that has been writing into its own filesystem, that data disappears with it. Named volumes solve this by moving important data outside the container lifecycle.",
+          "A container is easy to replace. That is one of Docker’s biggest strengths. But the same feature creates a serious problem the moment your application stores real data. If you remove a container that has been writing into its own filesystem, that data disappears with it. Named volumes solve this by moving important data outside the container lifecycle.",
           "Named volumes are the standard Docker answer for persistent application storage. They are simple to use, portable across containers, and managed directly by Docker."
         ],
         "codeBlock": null
@@ -7763,7 +6393,7 @@
         "paragraphs": [
           "To see metadata about one volume:",
           "You usually get JSON output like:",
-          "This is the command you run when you want to answer, \u201cWhere is this volume actually stored?\u201d"
+          "This is the command you run when you want to answer, “Where is this volume actually stored?”"
         ],
         "codeBlock": {
           "language": "bash",
@@ -7822,7 +6452,7 @@
           "Over time, volumes accumulate. Some are still important. Others are leftovers from experiments, deleted containers, or old Compose projects.",
           "To remove all unused volumes:",
           "Docker asks for confirmation. To skip the prompt:",
-          "An \u201cunused\u201d volume may still contain important data. Docker only knows whether a volume is attached to a container, not whether you care about the contents. Always inspect before pruning in environments that matter."
+          "An “unused” volume may still contain important data. Docker only knows whether a volume is attached to a container, not whether you care about the contents. Always inspect before pruning in environments that matter."
         ],
         "codeBlock": {
           "language": "bash",
@@ -7904,58 +6534,28 @@
           "Yes, and it is a common pattern. One container writes files and another reads them, or several replicas share a cache. Mount the same volume name in each. Be aware Docker provides no coordination: if two containers write to the same files concurrently you are responsible for avoiding corruption, exactly as you would be with two processes on a host. Most databases explicitly do not support multiple instances sharing one data directory."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run -d --name db -v postgres-data:/var/lib/postgresql/data postgres:16",
-        "explanation": "Command: docker run -d --name db -v postgres-data:/var/lib/postgresql/data postgres:16"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume create myvolume",
-        "explanation": "Command: docker volume create myvolume"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume create postgres-data",
-        "explanation": "Command: docker volume create postgres-data"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume create app-uploads",
-        "explanation": "Command: docker volume create app-uploads"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume create shared-logs",
-        "explanation": "Command: docker volume create shared-logs"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -8258,58 +6858,28 @@
           "Rarely. Mounting /var/run/docker.sock gives the container full control of the Docker daemon, which on most setups is equivalent to root on the host. It can start a privileged container mounting the host filesystem. It is a common pattern for CI runners and monitoring agents, and it should be treated as granting host-level trust. Where possible use a socket proxy that restricts which API calls are permitted, rather than exposing the socket directly."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker run -v /host/path:/container/path my-image",
-        "explanation": "Command: docker run -v /host/path:/container/path my-image"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -it \\",
-        "explanation": "Command: docker run -it \\"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -d \\",
-        "explanation": "Command: docker run -d \\"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -it --rm \\",
-        "explanation": "Command: docker run -it --rm \\"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker run -v /Users/alex/project:/app my-image",
-        "explanation": "Command: docker run -v /Users/alex/project:/app my-image"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [
@@ -8377,7 +6947,7 @@
           "Driver tells you how Docker manages it. For most local systems, this is local.",
           "Mountpoint shows where the actual data is stored on the Docker host.",
           "Scope is usually local, meaning the volume belongs to the current Docker host.",
-          "If you ever need to answer \u201cWhere is my data?\u201d or \u201cWhich driver is this using?\u201d, docker volume inspect is the right command."
+          "If you ever need to answer “Where is my data?” or “Which driver is this using?”, docker volume inspect is the right command."
         ],
         "codeBlock": {
           "language": "bash",
@@ -8550,58 +7120,28 @@
           "When an image declares VOLUME /data and you run it without mounting anything there, Docker creates an anonymous volume with a random hexadecimal name. Every docker run creates another, so repeatedly starting such an image, database images commonly do this, leaves a trail of orphaned volumes holding real data. Mount a named volume explicitly to avoid it, add --rm which removes anonymous volumes on exit, and run docker volume prune periodically to clear the ones already accumulated."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "docker volume ls",
-        "explanation": "Command: docker volume ls"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume ls --filter dangling=true",
-        "explanation": "Command: docker volume ls --filter dangling=true"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume inspect pgdata",
-        "explanation": "Command: docker volume inspect pgdata"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume rm pgdata",
-        "explanation": "Command: docker volume rm pgdata"
+        "explanation": "CLI execution command for docker"
       },
       {
         "command": "docker volume rm old-cache temp-data",
-        "explanation": "Command: docker volume rm old-cache temp-data"
+        "explanation": "CLI execution command for docker"
       }
     ],
     "commonPitfalls": [

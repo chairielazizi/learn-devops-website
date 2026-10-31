@@ -69,7 +69,7 @@ export default function CheatsheetClient({ data }: { data: CheatsheetMeta }) {
   const totalCommands = data.sections.reduce((acc, s) => acc + s.commands.length, 0);
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-gray-200 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0f172a] text-gray-200 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto space-y-8">
         {/* Navigation Breadcrumb */}
         <div>
@@ -260,3 +260,4 @@ export default function CheatsheetClient({ data }: { data: CheatsheetMeta }) {
     </div>
   );
 }
+

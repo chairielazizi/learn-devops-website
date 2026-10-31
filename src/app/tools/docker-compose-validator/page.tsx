@@ -60,7 +60,7 @@ volumes:
   };
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0f172a] text-gray-200 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto space-y-8">
         <Link
           href="/tools"
@@ -96,7 +96,7 @@ volumes:
             <textarea
               value={yamlInput}
               onChange={(e) => setYamlInput(e.target.value)}
-              className="w-full h-[400px] bg-[#090a0f] p-5 font-mono text-xs text-gray-200 outline-none leading-relaxed resize-none border-none focus:ring-0"
+              className="w-full h-[400px] bg-[#0f172a] p-5 font-mono text-xs text-gray-200 outline-none leading-relaxed resize-none border-none focus:ring-0"
               spellCheck={false}
             />
           </div>

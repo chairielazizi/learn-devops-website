@@ -34,7 +34,7 @@
         "title": "What Is Linux?",
         "paragraphs": [
           "Linux is an open source operating system family built around the Linux kernel. In simple terms, it is the software layer that helps your computer talk to hardware, manage files, run programs, and control memory, networking, and users.",
-          "Many people say \u201cLinux\u201d when they really mean a complete operating system such as Ubuntu or CentOS. That is common in everyday conversation, but it helps to separate the main pieces.",
+          "Many people say “Linux” when they really mean a complete operating system such as Ubuntu or CentOS. That is common in everyday conversation, but it helps to separate the main pieces.",
           "The kernel is the core of the operating system. It handles low-level jobs such as CPU scheduling, memory allocation, device drivers, and process management.",
           "A distribution or distro is a complete Linux operating system built around the kernel. It bundles package managers, default tools, system services, documentation, and a release model. Ubuntu, CentOS Stream, and Alpine are all distros.",
           "A shell is the command-line interface you use to interact with the system. Popular shells include bash, zsh, and sh. When you type commands like ls or cd, the shell reads your input and launches the right program.",
@@ -138,42 +138,12 @@
           "Enough to be comfortable rather than expert: navigating the filesystem, reading and editing files, permissions and ownership, processes and signals, and following logs. Those map directly onto container work. A container is a Linux process, docker exec drops you into a shell, and most failures are permissions, a missing file or a process not listening where you expected. People who skip this find container debugging opaque, because the concepts underneath were never learned."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat /etc/os-release",
-        "explanation": "Command: cat /etc/os-release"
+        "explanation": "CLI execution command for cat"
       }
     ],
     "commonPitfalls": [
@@ -253,7 +223,7 @@
           "You should never store important long-term files in /tmp.",
           "Note: In operations work, a missing file in /tmp is often expected because cleanup jobs may remove old temporary data.",
           "/home stores personal directories for regular users.",
-          "A user\u2019s shell profile, SSH keys, and personal scripts are often stored here.",
+          "A user’s shell profile, SSH keys, and personal scripts are often stored here.",
           "/usr contains many user-space programs, libraries, and documentation. Despite its name, it is not only for user home data.",
           "Common subdirectories include:",
           "/proc is a virtual filesystem that exposes kernel and process information. Files here are generated dynamically by the system rather than stored like normal files.",
@@ -320,11 +290,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What is the Filesystem Hierarchy Standard?",
@@ -341,58 +306,28 @@
           "/var/log and /var/lib, in that order. Logs grow without limit when rotation is missing or misconfigured, and /var/lib/docker or /var/lib/containerd accumulates images, layers and volumes surprisingly fast on a build host. sudo du -sh /var/* | sort -h narrows it in one command. If df reports a full disk but du does not account for it, look for a deleted file still held open by a process with sudo lsof +L1."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat /proc/cpuinfo",
-        "explanation": "Command: cat /proc/cpuinfo"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "cat /proc/meminfo",
-        "explanation": "Command: cat /proc/meminfo"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "cat /proc/1/status",
-        "explanation": "Command: cat /proc/1/status"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "cat config.yaml",
-        "explanation": "Command: cat config.yaml"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "cat nginx.conf",
-        "explanation": "Command: cat nginx.conf"
+        "explanation": "CLI execution command for cat"
       }
     ],
     "commonPitfalls": [
@@ -506,7 +441,7 @@
         "title": "Locating Commands with which and whereis",
         "paragraphs": [
           "which shows the executable path that your shell will run.",
-          "whereis looks more broadly for a command\u2019s binary, source, and manual pages.",
+          "whereis looks more broadly for a command’s binary, source, and manual pages.",
           "Use which when you want the exact command path the shell uses. Use whereis when you want extra related locations."
         ],
         "codeBlock": {
@@ -576,11 +511,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What is the difference between an absolute and a relative path?",
@@ -595,36 +525,6 @@
           "Why does my terminal say \"command not found\" for a program I installed?",
           "The program is not in a directory on your PATH. Check with echo $PATH and confirm where it actually landed using ls /usr/local/bin or find / -name <program> 2>/dev/null. Fix it by adding the directory in ~/.bashrc with export PATH=\"$PATH:/opt/tool/bin\", then opening a new shell or running source ~/.bashrc. The other common cause is installing with a package manager whose install location is not on PATH, such as a user-level pip install putting binaries in ~/.local/bin."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -684,7 +584,7 @@
         "paragraphs": [
           "Use mkdir to create directories.",
           "The -p flag creates parent directories as needed and does not fail if parts already exist.",
-          "Use touch to create an empty file or update a file\u2019s timestamp.",
+          "Use touch to create an empty file or update a file’s timestamp.",
           "Tip: mkdir -p is very common in automation because it is safe for repeated runs."
         ],
         "codeBlock": {
@@ -732,7 +632,7 @@
       {
         "title": "Reading File Content",
         "paragraphs": [
-          "cat prints a file\u2019s full contents.",
+          "cat prints a file’s full contents.",
           "It is best for small files.",
           "head shows the first lines of a file.",
           "tail shows the last lines of a file.",
@@ -795,11 +695,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "Is there any way to undo rm in Linux?",
@@ -816,58 +711,28 @@
           "touch file.txt creates an empty file or updates an existing one's timestamp. mkdir -p a/b/c creates the whole path, creating parents as needed and succeeding silently if it already exists, which is what makes it safe in scripts, where plain mkdir errors on an existing directory. Brace expansion handles several at once: mkdir -p project/{src,tests,docs} creates all three subdirectories in one go."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "mkdir project",
-        "explanation": "Command: mkdir project"
+        "explanation": "CLI execution command for mkdir"
       },
       {
         "command": "mkdir -p project/config/environments",
-        "explanation": "Command: mkdir -p project/config/environments"
+        "explanation": "CLI execution command for mkdir"
       },
       {
         "command": "cat /etc/hosts",
-        "explanation": "Command: cat /etc/hosts"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "cat app.log",
-        "explanation": "Command: cat app.log"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "mkdir -p myapp/{config,logs,bin}",
-        "explanation": "Command: mkdir -p myapp/{config,logs,bin}"
+        "explanation": "CLI execution command for mkdir"
       }
     ],
     "commonPitfalls": [
@@ -1039,11 +904,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "When should I use grep, sed or awk?",
@@ -1060,42 +920,12 @@
           "Because a pipe carries stdout only, and errors go to stderr. command | grep error therefore filters the normal output and lets the actual error print straight to your terminal, unfiltered. Redirect stderr into stdout first with command 2>&1 | grep error. The order matters: 2>&1 >file and >file 2>&1 do different things, because redirections are processed left to right. The second is the one that sends both to the file."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat access.log | grep 500 | wc -l",
-        "explanation": "Command: cat access.log | grep 500 | wc -l"
+        "explanation": "CLI execution command for cat"
       }
     ],
     "commonPitfalls": [
@@ -1204,13 +1034,13 @@
         "title": "Special Permission Bits",
         "paragraphs": [
           "Linux also supports three special bits.",
-          "When setuid is set on an executable file, the program runs with the file owner\u2019s privileges.",
+          "When setuid is set on an executable file, the program runs with the file owner’s privileges.",
           "This is powerful and should be used carefully.",
-          "On an executable file, setgid runs the program with the file group\u2019s privileges. On a directory, new files created inside inherit the directory\u2019s group.",
+          "On an executable file, setgid runs the program with the file group’s privileges. On a directory, new files created inside inherit the directory’s group.",
           "This is useful for team-shared directories.",
           "The sticky bit on a directory means users can delete only files they own, even if the directory is otherwise writable.",
           "A classic example is a shared temporary directory.",
-          "Note: The sticky bit improves safety in shared writeable directories by preventing users from deleting each other\u2019s files."
+          "Note: The sticky bit improves safety in shared writeable directories by preventing users from deleting each other’s files."
         ],
         "codeBlock": {
           "language": "bash",
@@ -1234,7 +1064,7 @@
       {
         "title": "Real-World Scenarios",
         "paragraphs": [
-          "but get \u201cPermission denied.\u201d Check and fix:",
+          "but get “Permission denied.” Check and fix:",
           "The service runs as www-data, but the file is owned by another user and unreadable to the group. Fixing ownership or permission bits may solve the issue.",
           "That allows the owner and group to read while blocking everyone else."
         ],
@@ -1258,11 +1088,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What does chmod 755 mean?",
@@ -1279,58 +1104,28 @@
           "umask is a mask of bits to remove from the defaults when a file is created: 666 for files and 777 for directories. The common default of 022 therefore yields 644 for files and 755 for directories. Set a stricter 077 and new files are readable only by you, which suits a multi-user server. Check the current value with umask and set it in ~/.bashrc for a user or /etc/profile for everyone; note that it affects only newly created files, not existing ones."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "chmod 755 script.sh",
-        "explanation": "Command: chmod 755 script.sh"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "chmod 644 config.yaml",
-        "explanation": "Command: chmod 644 config.yaml"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "chmod 755 deploy.sh",
-        "explanation": "Command: chmod 755 deploy.sh"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "chmod u+x deploy.sh",
-        "explanation": "Command: chmod u+x deploy.sh"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "chmod g-w shared.txt",
-        "explanation": "Command: chmod g-w shared.txt"
+        "explanation": "CLI execution command for chmod"
       }
     ],
     "commonPitfalls": [
@@ -1396,7 +1191,7 @@
         "paragraphs": [
           "Use useradd to create a user account.",
           "-r also removes the home directory.",
-          "Tip: Be careful with userdel -r because it removes the user\u2019s home data too."
+          "Tip: Be careful with userdel -r because it removes the user’s home data too."
         ],
         "codeBlock": {
           "language": "bash",
@@ -1487,11 +1282,6 @@
         }
       },
       {
-        "title": "Best Practices",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Test Your Understanding",
         "paragraphs": [
           "Question: Why is usermod -aG docker deploy safer than using -G docker without -a?",
@@ -1501,11 +1291,6 @@
           "Question: What is the key reason to use visudo when changing sudo rules?",
           "Choose why visudo is the recommended editor for sudo configuration."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Key takeaways",
-        "paragraphs": [],
         "codeBlock": null
       },
       {
@@ -1525,42 +1310,12 @@
           "Add them to the administrative group: usermod -aG sudo alice on Debian and Ubuntu, or wheel on RHEL-family systems. They must log out and back in for it to apply. For narrower access, add a file under /etc/sudoers.d/ granting specific commands, alice ALL=(ALL) NOPASSWD: /bin/systemctl restart myapp, which is better practice than full root for a service operator. Always edit sudoers files with visudo (or visudo -f), since it validates the syntax and a malformed sudoers file locks everyone out."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat /etc/passwd",
-        "explanation": "Command: cat /etc/passwd"
+        "explanation": "CLI execution command for cat"
       }
     ],
     "commonPitfalls": [
@@ -1713,11 +1468,6 @@
         }
       },
       {
-        "title": "Best Practices",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Test Your Understanding",
         "paragraphs": [
           "Question: When a process is misbehaving, which signal should you normally try before using SIGKILL?",
@@ -1728,11 +1478,6 @@
           "Question: Why is nohup ./sync-data.sh > sync.log 2>&1 & useful here?",
           "Choose what nohup plus backgrounding accomplishes for a long-running command."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Key takeaways",
-        "paragraphs": [],
         "codeBlock": null
       },
       {
@@ -1752,58 +1497,28 @@
           "The three numbers from uptime are the average number of processes runnable or waiting on I/O over the last 1, 5 and 15 minutes. They must be read against your core count: a load of 4.0 saturates a 4-core machine and is comfortable on 16. The trend across the three matters more than any single figure. A first number well above the third means load is climbing. Note that on Linux the figure includes processes blocked on disk, so high load with low CPU usage usually points at I/O rather than compute."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "ps aux",
-        "explanation": "Command: ps aux"
+        "explanation": "CLI execution command for ps"
       },
       {
         "command": "ps -ef",
-        "explanation": "Command: ps -ef"
+        "explanation": "CLI execution command for ps"
       },
       {
         "command": "ps aux | grep nginx",
-        "explanation": "Command: ps aux | grep nginx"
+        "explanation": "CLI execution command for ps"
       },
       {
         "command": "ps aux | grep myapp",
-        "explanation": "Command: ps aux | grep myapp"
+        "explanation": "CLI execution command for ps"
       },
       {
         "command": "ps -ef | grep myapp",
-        "explanation": "Command: ps -ef | grep myapp"
+        "explanation": "CLI execution command for ps"
       }
     ],
     "commonPitfalls": [
@@ -1948,11 +1663,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What is the difference between systemctl start and systemctl enable?",
@@ -1969,58 +1679,28 @@
           "sudo systemctl edit <unit> creates a drop-in at /etc/systemd/system/<unit>.d/override.conf containing only your changes, which a package upgrade will not touch. Editing the shipped file under /lib/systemd/system/ risks losing your work on the next update. One quirk worth knowing: to replace a directive that takes a list, such as ExecStart, you must first clear it with an empty assignment (ExecStart=) and then set the new value, or systemd appends rather than replaces."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "systemctl status nginx",
-        "explanation": "Command: systemctl status nginx"
+        "explanation": "CLI execution command for systemctl"
       },
       {
         "command": "journalctl -f",
-        "explanation": "Command: journalctl -f"
+        "explanation": "CLI execution command for journalctl"
       },
       {
         "command": "journalctl -u nginx",
-        "explanation": "Command: journalctl -u nginx"
+        "explanation": "CLI execution command for journalctl"
       },
       {
         "command": "journalctl -u sshd -f",
-        "explanation": "Command: journalctl -u sshd -f"
+        "explanation": "CLI execution command for journalctl"
       },
       {
         "command": "journalctl --since \"2026-07-14 09:00:00\"",
-        "explanation": "Command: journalctl --since \"2026-07-14 09:00:00\""
+        "explanation": "CLI execution command for journalctl"
       }
     ],
     "commonPitfalls": [
@@ -2063,7 +1743,7 @@
       {
         "title": "Why Networking Skills Matter",
         "paragraphs": [
-          "In DevOps, many \u201capplication problems\u201d are really networking problems. A service may be healthy but unreachable, a DNS name may resolve incorrectly, or a firewall may block the expected port.",
+          "In DevOps, many “application problems” are really networking problems. A service may be healthy but unreachable, a DNS name may resolve incorrectly, or a firewall may block the expected port.",
           "Linux includes strong networking tools for checking addresses, routes, listening ports, remote connectivity, and file transfers."
         ],
         "codeBlock": null
@@ -2189,7 +1869,7 @@
       {
         "title": "A Practical Troubleshooting Flow",
         "paragraphs": [
-          "Suppose a service is \u201cdown.\u201d You could check:",
+          "Suppose a service is “down.” You could check:",
           "That sequence answers key questions:"
         ],
         "codeBlock": {
@@ -2212,11 +1892,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What replaced ifconfig and netstat on modern Linux?",
@@ -2233,54 +1908,24 @@
           "scp copies files over SSH and copies everything, every time. rsync compares source and destination first and transfers only the differences, resumes interrupted transfers with --partial, can delete files that no longer exist at the source with --delete, and reports progress. For a one-off small file either is fine; for anything repeated or large, rsync -avz is substantially faster. OpenSSH has also deprecated the scp protocol on security grounds, which is another reason to standardise on rsync or sftp."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "curl https://example.com",
-        "explanation": "Command: curl https://example.com"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "curl -I https://example.com",
-        "explanation": "Command: curl -I https://example.com"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "curl -X GET https://api.example.com/health",
-        "explanation": "Command: curl -X GET https://api.example.com/health"
+        "explanation": "CLI execution command for curl"
       },
       {
         "command": "curl -I https://api.example.com/health",
-        "explanation": "Command: curl -I https://api.example.com/health"
+        "explanation": "CLI execution command for curl"
       }
     ],
     "commonPitfalls": [
@@ -2469,11 +2114,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What is the difference between df and du?",
@@ -2489,36 +2129,6 @@
           "What is the difference between tar, gzip and zip?",
           "tar bundles many files into one archive and does not compress. gzip compresses a single file and does not bundle. They are used together, which is what tar -czf archive.tar.gz dir/ does. The z pipes the tar through gzip. zip does both at once and is the more portable choice for anything going to a Windows user. Practical notes: tar -tzf lists an archive's contents without extracting, which is worth doing before unpacking anything you did not create, and unzip -l is the equivalent."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -2730,11 +2340,6 @@
         "codeBlock": null
       },
       {
-        "title": "Key takeaways",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
         "title": "Frequently Asked Questions",
         "paragraphs": [
           "What does set -euo pipefail do and why use it?",
@@ -2751,46 +2356,16 @@
           "Bash is excellent at running other programs and piping between them, if the script is mostly command invocations and a little control flow, it is the right tool. Move to Python once you need data structures, JSON or arithmetic beyond counting, error handling more nuanced than exit codes, or once the script passes a few hundred lines. The honest signal is associative arrays and nested quoting: by the time you are fighting bash's syntax rather than using it, the rewrite has already paid for itself."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "chmod +x deploy.sh",
-        "explanation": "Command: chmod +x deploy.sh"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "mkdir testdir",
-        "explanation": "Command: mkdir testdir"
+        "explanation": "CLI execution command for mkdir"
       }
     ],
     "commonPitfalls": [
@@ -2944,42 +2519,12 @@
           "Distribution packages first: they are smaller, start faster, integrate with the system, and receive security updates through the channel you already monitor. Snap and Flatpak bundle their dependencies, which makes them useful for desktop applications that need newer libraries than your release ships, at the cost of size and slower first launch. On a server, prefer the distribution's packages or containers. Snaps auto-update on their own schedule, which is rarely what you want on infrastructure."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "chmod +x MyTool.AppImage",
-        "explanation": "Command: chmod +x MyTool.AppImage"
+        "explanation": "CLI execution command for chmod"
       }
     ],
     "commonPitfalls": [
@@ -3152,36 +2697,6 @@
           "They are better than a file committed to a repository and worse than a secrets manager. The problems are real: /proc/<pid>/environ exposes them to anyone who can read that process, they are inherited by every child process whether or not it should see them, they frequently end up in crash dumps and logs, and history captures the command that set them. For containers and Kubernetes they remain the normal interface, so the mitigation is to inject them at runtime from a secrets store rather than baking them into an image or a .env file in version control."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
@@ -3349,49 +2864,19 @@
           "Should I use cron or a systemd timer?",
           "Cron for simple, portable, recurring jobs. It is universally available and a one-line entry. systemd timers for anything that needs more: journalctl integration for logs, Persistent=true to run a missed job after downtime, dependency ordering, resource limits, and randomised delays to avoid thundering herds. Timers need two files rather than one line, which is the main cost. In containers, neither may be present. Most base images run no cron daemon at all, so scheduling belongs outside the container.",
           "*What does /5 mean in a cron expression?",
-          "A step value: \"every 5\" within that field. In the minute position, */5 * * * * runs at minute 0, 5, 10 and so on. In the hour position, 0 */6 * * * runs at 00:00, 06:00, 12:00 and 18:00. Steps are not modulo arithmetic across boundaries, so */7 in the minute field fires at 0, 7, \u2026, 56 and then again at 0. A 4-minute gap at the top of each hour. For intervals that do not divide 60, list the values explicitly."
+          "A step value: \"every 5\" within that field. In the minute position, */5 * * * * runs at minute 0, 5, 10 and so on. In the hour position, 0 */6 * * * runs at 00:00, 06:00, 12:00 and 18:00. Steps are not modulo arithmetic across boundaries, so */7 in the minute field fires at 0, 7, …, 56 and then again at 0. A 4-minute gap at the top of each hour. For intervals that do not divide 60, list the values explicitly."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "systemctl list-timers",
-        "explanation": "Command: systemctl list-timers"
+        "explanation": "CLI execution command for systemctl"
       },
       {
         "command": "journalctl -u backup.service",
-        "explanation": "Command: journalctl -u backup.service"
+        "explanation": "CLI execution command for journalctl"
       }
     ],
     "commonPitfalls": [
@@ -3579,58 +3064,28 @@
           "Not entirely, and it is worth knowing why. ssh -A lets processes on the remote host use your agent to authenticate onward, which means root on that host, or anyone who compromises it, can use your key while you are connected. They cannot steal the key itself, but they can act as you for the duration. Prefer ProxyJump (ssh -J bastion target), which tunnels the connection without exposing the agent. If you must forward, do it per-host in ~/.ssh/config, never globally."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat ~/.ssh/id_ed25519.pub",
-        "explanation": "Command: cat ~/.ssh/id_ed25519.pub"
+        "explanation": "CLI execution command for cat"
       },
       {
         "command": "chmod 700 ~/.ssh",
-        "explanation": "Command: chmod 700 ~/.ssh"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "chmod 600 ~/.ssh/authorized_keys",
-        "explanation": "Command: chmod 600 ~/.ssh/authorized_keys"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "chmod 600 ~/.ssh/id_ed25519",
-        "explanation": "Command: chmod 600 ~/.ssh/id_ed25519"
+        "explanation": "CLI execution command for chmod"
       },
       {
         "command": "chmod 644 ~/.ssh/id_ed25519.pub",
-        "explanation": "Command: chmod 644 ~/.ssh/id_ed25519.pub"
+        "explanation": "CLI execution command for chmod"
       }
     ],
     "commonPitfalls": [
@@ -3786,36 +3241,6 @@
           "What does \"default deny\" mean and why does it matter?",
           "Blocking all incoming traffic by default and explicitly allowing only what is needed, rather than allowing everything and blocking known-bad ports. The difference is what happens to something you did not think about: with default deny, a service that starts listening unexpectedly, a debug port, a database bound to 0.0.0.0, a container publishing a port, is unreachable rather than exposed. ufw default deny incoming plus ufw default allow outgoing is the standard starting point."
         ],
-        "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
         "codeBlock": null
       }
     ],
@@ -3987,58 +3412,28 @@
           "Start with journalctl -p err -b, which shows every error-level message from the current boot across all units, usually the fastest way to see what is broken. Then narrow to a unit with -u. For plain files, sudo grep -ri \"error\" /var/log --include=\"*.log\" | tail -50 casts a wide net, and adding -A 5 gives you the lines after each match, which is often where the actual cause is. Check timestamps against when the problem started rather than reading from the top."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "journalctl -f",
-        "explanation": "Command: journalctl -f"
+        "explanation": "CLI execution command for journalctl"
       },
       {
         "command": "journalctl -u nginx",
-        "explanation": "Command: journalctl -u nginx"
+        "explanation": "CLI execution command for journalctl"
       },
       {
         "command": "journalctl -u sshd -f",
-        "explanation": "Command: journalctl -u sshd -f"
+        "explanation": "CLI execution command for journalctl"
       },
       {
         "command": "journalctl --since \"1 hour ago\"",
-        "explanation": "Command: journalctl --since \"1 hour ago\""
+        "explanation": "CLI execution command for journalctl"
       },
       {
         "command": "journalctl --since \"2026-07-14 09:00:00\" --until \"2026-07-14 10:00:00\"",
-        "explanation": "Command: journalctl --since \"2026-07-14 09:00:00\" --until \"2026-07-14 10:00:00\""
+        "explanation": "CLI execution command for journalctl"
       }
     ],
     "commonPitfalls": [
@@ -4197,42 +3592,12 @@
           "htop for an interactive overview, iotop for per-process disk activity, sysstat for iostat, pidstat and sar, and ncdu for disk usage. sar is the one worth setting up in advance, because it records history, without it, a question like \"what did memory do at 03:00 last night\" has no answer. Installing these during an incident wastes the time when you least have it, so add them to your base image or configuration management."
         ],
         "codeBlock": null
-      },
-      {
-        "title": "Continue Learning",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Explore Related Topics",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Try the Tool",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Practise this in the browser",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "When it breaks",
-        "paragraphs": [],
-        "codeBlock": null
-      },
-      {
-        "title": "Related Resources",
-        "paragraphs": [],
-        "codeBlock": null
       }
     ],
     "quickReference": [
       {
         "command": "cat /proc/net/dev",
-        "explanation": "Command: cat /proc/net/dev"
+        "explanation": "CLI execution command for cat"
       }
     ],
     "commonPitfalls": [

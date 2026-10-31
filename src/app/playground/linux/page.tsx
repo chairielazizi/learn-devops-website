@@ -50,7 +50,7 @@ export default function LinuxPlaygroundPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-gray-200 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0f172a] text-gray-200 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
@@ -100,7 +100,7 @@ export default function LinuxPlaygroundPage() {
                 <Folder className="w-4 h-4 text-orange-400" />
                 <span>Virtual Filesystem Structure</span>
               </div>
-              <div className="bg-[#090a0f] p-3 rounded-lg border border-white/5 font-mono text-xs text-gray-300 space-y-1.5 leading-relaxed">
+              <div className="bg-[#0f172a] p-3 rounded-lg border border-white/5 font-mono text-xs text-gray-300 space-y-1.5 leading-relaxed">
                 <div className="text-orange-400 font-bold">/home/devops/ (Home)</div>
                 <div className="pl-4 flex items-center gap-1.5 text-gray-300">
                   <FileText className="w-3.5 h-3.5 text-orange-400/80" /> README.md
