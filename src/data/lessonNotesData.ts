@@ -6,6 +6,8 @@ export interface LessonNote {
   duration: string;
   difficulty: "Beginner" | "Intermediate" | "Advanced";
   playgroundSlug: string;
+  markdown?: string;
+  headings?: string[];
   verifiedFacts: string[];
   keyConcepts: { term: string; explanation: string }[];
   sections: {

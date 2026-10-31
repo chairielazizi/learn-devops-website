@@ -12,8 +12,9 @@ export default function Footer() {
             <div className="w-8 h-8 rounded-lg bg-gradient-orange flex items-center justify-center shadow-lg shadow-orange-500/30">
               <Terminal className="w-4 h-4 text-white" />
             </div>
-            <span className="font-extrabold text-base text-white tracking-tight">
-              DevOps<span className="text-gradient-orange">Lesson</span>
+            <span className="font-extrabold text-base tracking-tight flex items-center gap-1.5">
+              <span className="text-white">Learn</span>
+              <span className="text-gradient-orange">DevOps</span>
             </span>
           </Link>
           <p className="text-gray-400 text-xs leading-relaxed max-w-sm">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
@@ -7,19 +7,45 @@ import { LessonNote } from "@/data/lessonNotesData";
 import TutorialLessonClient from "./TutorialLessonClient";
 
 interface LessonPageProps {
-  params: Promise<{ track: string; lesson: string }>;
+  params: Promise<{
+    track: string;
+    lesson: string;
+  }>;
 }
 
 export async function generateStaticParams() {
-  const paramsList: { track: string; lesson: string }[] = [];
-  TUTORIAL_TRACKS.forEach((track) => {
-    track.modules.forEach((mod) => {
-      mod.lessons.forEach((lesson) => {
-        paramsList.push({ track: track.slug, lesson: lesson.slug });
-      });
-    });
-  });
-  return paramsList;
+  const params: { track: string; lesson: string }[] = [];
+  const tracksDir = path.join(process.cwd(), "src", "data", "lessons");
+  if (fs.existsSync(tracksDir)) {
+    const files = fs.readdirSync(tracksDir);
+    for (const f of files) {
+      if (f.endsWith(".json")) {
+        const trackSlug = f.replace(".json", "");
+        try {
+          const raw = fs.readFileSync(path.join(tracksDir, f), "utf-8");
+          const lessonsData = JSON.parse(raw);
+          for (const lessonSlug of Object.keys(lessonsData)) {
+            params.push({ track: trackSlug, lesson: lessonSlug });
+          }
+        } catch (e) {
+          console.error("Error reading lessons json for params:", e);
+        }
+      }
+    }
+  }
+
+  // Also include any in TUTORIAL_TRACKS
+  for (const t of TUTORIAL_TRACKS) {
+    for (const m of t.modules) {
+      for (const l of m.lessons) {
+        if (!params.some((p) => p.track === t.slug && p.lesson === l.slug)) {
+          params.push({ track: t.slug, lesson: l.slug });
+        }
+      }
+    }
+  }
+
+  return params;
 }
 
 function loadLesson(trackSlug: string, lessonSlug: string): LessonNote | null {
@@ -72,55 +98,32 @@ function loadLesson(trackSlug: string, lessonSlug: string): LessonNote | null {
     verifiedFacts: [
       `Production workloads utilizing ${foundLesson.title} must adhere to declarative version control and least-privilege boundaries.`,
       `Verified against standard cloud-native specifications and official ${track.title} engineering documentation.`,
-      `Can be tested immediately in the browser-based ${track.title.split(" ")[0]} interactive playground.`,
     ],
     keyConcepts: [
       { term: "Architecture Foundation", explanation: foundLesson.summary },
-      { term: "Operational Rigor", explanation: `Ensure declarative state, idempotent changes, and version control when deploying ${track.title}.` },
     ],
     sections: [
       {
         title: "Overview & Core Architecture",
         paragraphs: [
           foundLesson.summary,
-          `Understanding ${foundLesson.title} is an essential milestone in the ${track.title} curriculum. In production systems, maintaining deterministic behavior requires avoiding manual drift and enforcing declarative manifests.`,
+          `Understanding ${foundLesson.title} is an essential milestone in the ${track.title} curriculum.`,
         ],
-        codeBlock: {
-          language: track.id === "terraform" ? "hcl" : track.id === "kubernetes" ? "yaml" : "bash",
-          code: `# Practice command for ${foundLesson.title}\n${
-            track.id === "docker"
-              ? "docker run -d -p 80:80 nginx:alpine"
-              : track.id === "kubernetes"
-              ? "kubectl get pods -A -o wide"
-              : track.id === "terraform"
-              ? "terraform plan"
-              : "ls -la"
-          }`,
-          description: `Example command for ${foundLesson.title}`,
-        },
       },
     ],
     quickReference: [
       {
-        command:
-          track.id === "docker"
-            ? "docker ps -a"
-            : track.id === "kubernetes"
-            ? "kubectl get nodes"
-            : track.id === "terraform"
-            ? "terraform plan"
-            : "pwd",
+        command: "terraform plan",
         explanation: `Fundamental command for ${track.title}`,
       },
     ],
     commonPitfalls: [
       "Applying changes to production without dry-running or checking execution diffs.",
-      "Neglecting automated healthchecks, probe timeouts, and resource quota boundaries.",
     ],
   };
 }
 
-export default async function LessonDetailPage({ params }: LessonPageProps) {
+async function LessonContent({ params }: { params: Promise<{ track: string; lesson: string }> }) {
   const resolved = await params;
   const note = loadLesson(resolved.track, resolved.lesson);
 
@@ -128,23 +131,39 @@ export default async function LessonDetailPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  const trackMeta = TUTORIAL_TRACKS.find((t) => t.slug === resolved.track);
-  if (!trackMeta) {
+  const track = TUTORIAL_TRACKS.find((t) => t.slug === resolved.track);
+  if (!track) {
     notFound();
   }
 
-  // Flatten lessons to calculate previous, next, and continue recommendations
-  const allLessons = trackMeta.modules.flatMap((m) => m.lessons);
-  const currIdx = allLessons.findIndex((l) => l.slug === resolved.lesson);
+  // Build complete list of lessons for prev/next
+  let allLessons: { title: string; slug: string; summary: string; duration: string }[] = [];
+  try {
+    const jsonPath = path.join(process.cwd(), "src", "data", "lessons", `${resolved.track}.json`);
+    if (fs.existsSync(jsonPath)) {
+      const data = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+      allLessons = Object.values(data).map((item: any) => ({
+        title: item.title,
+        slug: item.slug,
+        summary: item.subtitle || item.description || "",
+        duration: item.duration || "12 min read",
+      }));
+    }
+  } catch (e) {
+    console.error("Error building allLessons:", e);
+  }
 
+  if (allLessons.length === 0) {
+    allLessons = track.modules.flatMap((m) => m.lessons);
+  }
+
+  const currIdx = allLessons.findIndex((l) => l.slug === resolved.lesson);
   const prevLesson = currIdx > 0 ? allLessons[currIdx - 1] : null;
   const nextLesson = currIdx >= 0 && currIdx < allLessons.length - 1 ? allLessons[currIdx + 1] : null;
 
-  // Next 3 lessons for Continue Learning cards
   let continueLessons: { title: string; slug: string; summary: string; duration: string }[] = [];
   if (currIdx >= 0) {
     continueLessons = allLessons.slice(currIdx + 1, currIdx + 4);
-    // If fewer than 3 remain, wrap from beginning (excluding current)
     if (continueLessons.length < 3) {
       const extra = allLessons.filter((l) => l.slug !== resolved.lesson).slice(0, 3 - continueLessons.length);
       continueLessons = [...continueLessons, ...extra];
@@ -153,12 +172,41 @@ export default async function LessonDetailPage({ params }: LessonPageProps) {
 
   return (
     <TutorialLessonClient
-      trackMeta={trackMeta}
+      trackMeta={track}
       note={note}
       currentLessonSlug={resolved.lesson}
       prevLesson={prevLesson}
       nextLesson={nextLesson}
       continueLessons={continueLessons}
     />
+  );
+}
+
+function LessonSkeleton() {
+  return (
+    <div className="min-h-screen bg-[#0f172a] text-slate-200">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex gap-8 items-start">
+          <div className="hidden lg:block w-72 sm:w-80 shrink-0 h-[600px] bg-[#141d2e]/40 rounded-2xl animate-pulse" />
+          <div className="flex-1 max-w-4xl mx-auto space-y-6">
+            <div className="h-6 w-48 bg-slate-800 rounded animate-pulse" />
+            <div className="h-32 bg-[#182234] rounded-3xl animate-pulse" />
+            <div className="space-y-4">
+              <div className="h-44 bg-[#141d2e]/50 rounded-2xl animate-pulse" />
+              <div className="h-44 bg-[#141d2e]/50 rounded-2xl animate-pulse" />
+            </div>
+          </div>
+          <div className="hidden xl:block w-64 shrink-0 h-64 bg-[#182234]/40 rounded-2xl animate-pulse" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function LessonDetailPage({ params }: LessonPageProps) {
+  return (
+    <Suspense fallback={<LessonSkeleton />}>
+      <LessonContent params={params} />
+    </Suspense>
   );
 }

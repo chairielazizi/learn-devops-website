@@ -29,26 +29,27 @@ export default function Navbar() {
               <Terminal className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-lg text-white tracking-tight flex items-center gap-1">
-                DevOps<span className="text-gradient-orange">Lesson</span>
+              <span className="font-extrabold text-base sm:text-lg tracking-tight flex items-center gap-1.5 leading-none">
+                <span className="text-white">Learn</span>
+                <span className="text-gradient-orange">DevOps</span>
               </span>
-              <span className="text-[10px] text-orange-400/90 font-mono -mt-1 tracking-wider uppercase">
+              <span className="text-[10px] text-orange-400/90 font-mono tracking-wider uppercase mt-0.5">
                 Hands-On Labs
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1.5">
             {navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-300 hover:text-white hover:bg-orange-500/10 transition-colors flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-200 hover:text-white hover:bg-orange-500/15 transition-all flex items-center gap-1.5"
               >
                 <span>{item.label}</span>
                 {item.badge && (
-                  <span className="px-1.5 py-0.5 text-[9px] font-bold rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 uppercase">
+                  <span className="px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30 uppercase">
                     {item.badge}
                   </span>
                 )}

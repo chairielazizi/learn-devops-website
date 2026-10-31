@@ -15,9 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DevOpsLesson — Hands-On DevOps Tutorials & Interactive Browser Playgrounds",
+  title: "Learn DevOps — Hands-On DevOps Tutorials & Interactive Browser Playgrounds",
   description:
     "Master Docker, Kubernetes, Terraform, CI/CD, AWS, and Linux by typing real commands in interactive simulated browser playgrounds.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
