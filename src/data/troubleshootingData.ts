@@ -34,7 +34,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"is not authorized to perform\": run aws sts get-caller-identity, then simulate the action in IAM. Covers SCPs, boundaries, resource policies and AssumeRole.",
           "medium fix\u00b77 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -212,7 +212,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix ALB 502 Bad Gateway: turn on access logs, then raise the target's keep-alive above the ALB idle timeout. Also covers health checks and security groups.",
           "hard fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -375,7 +375,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix ECS CannotPullContainerError: add a NAT or VPC endpoints, grant the execution role ECR access, and check the image tag. Covers Fargate and secrets errors.",
           "medium fix\u00b75 min read\u00b74 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -538,7 +538,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix ECS \"unable to place a task\": read the closest-match reason, free the host port, add memory or CPU, or use a capacity provider. Covers ENI limits in awsvpc.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -707,7 +707,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix EKS nodes not joining: attach the node IAM policies, open the API server path, check security groups and subnet tags, then read the instance bootstrap logs.",
           "hard fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -884,7 +884,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix EKS \"You must be logged in to the server (Unauthorized)\": run aws sts get-caller-identity, then add an access entry or aws-auth mapping. Covers lockouts.",
           "hard fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -1049,7 +1049,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix ExpiredToken: run aws sts get-caller-identity, then refresh with aws sso login or assume the role again. Covers stale env vars, session length and CI OIDC.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -1219,7 +1219,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix iam:PassRole denied: add iam:PassRole on the exact role ARN with an iam:PassedToService condition. Covers EC2 instance profiles and ECS task roles.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -1393,7 +1393,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix InsufficientInstanceCapacity: retry in another availability zone, switch instance type, or accept a range of types. Covers Spot and Capacity Reservations.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -1569,7 +1569,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Lambda \"Task timed out\": read the REPORT line, raise memory and timeout, and check VPC NAT access. Covers cold starts and in-function client timeouts.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -1745,7 +1745,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix S3 AccessDenied on GetObject: run aws sts get-caller-identity, then the IAM policy simulator. Covers bucket policy, Block Public Access and ARN mistakes.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -1928,7 +1928,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix S3 SignatureDoesNotMatch: sync the system clock, strip whitespace from the secret key, and set the right region. Also covers proxies and presigned URLs.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -2102,7 +2102,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix ThrottlingException \"Rate exceeded\": set AWS_RETRY_MODE=adaptive, cut API calls, and request a quota increase. Covers Terraform parallelism and DynamoDB.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -2263,7 +2263,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Cannot connect to the Docker daemon\": run sudo systemctl start docker and sudo usermod -aG docker $USER. Covers contexts, Docker Desktop, WSL and CI.",
           "easy fix\u00b77 min read\u00b76 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -2450,7 +2450,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Unable to download artifact: Artifact not found\": match the upload and download names, order jobs with needs, and handle the v4 changes. Covers expiry.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -2624,7 +2624,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Cannot connect to the Docker daemon\" in CI: add a docker:dind service with DOCKER_HOST, bind the socket, or build with Kaniko or Buildah instead.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -2776,7 +2776,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"No space left on device\" on a CI runner: remove unused toolchains, run docker system prune, and trim caches. Covers self-hosted runners and larger runners.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -2930,7 +2930,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Not authorized to perform sts:AssumeRoleWithWebIdentity\": add id-token: write, print the OIDC claims, and match the trust policy sub and aud exactly.",
           "hard fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -3093,7 +3093,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix a GitHub Actions workflow that will not trigger: validate the YAML, check branch and path filters and the default branch. Covers GITHUB_TOKEN and cron.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -3263,7 +3263,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix CrashLoopBackOff: run kubectl logs --previous and kubectl describe pod, then match the exit code to the cause. Covers OOMKilled, bad config and probes.",
           "medium fix\u00b77 min read\u00b76 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -3470,7 +3470,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix CreateContainerConfigError: run kubectl describe pod and read the Events. Usually a missing Secret, ConfigMap, key or ServiceAccount the Pod references.",
           "easy fix\u00b76 min read\u00b74 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -3661,7 +3661,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Compose \"connection refused\" at startup: add a healthcheck and depends_on with condition: service_healthy. Also covers migration gates and app retries.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -3826,7 +3826,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"container name is already in use\": run docker ps -a, then docker rm or docker rename the old container. Covers docker run --rm and Compose in CI.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -3994,7 +3994,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"docker-credential-desktop not installed\": remove credsStore from ~/.docker/config.json or install a helper. Covers CI and the Kubernetes variant.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -4158,7 +4158,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"executable file not found in $PATH\": run docker run --rm -it --entrypoint sh image, then fix the COPY path, exec-form CMD or missing shell.",
           "easy fix\u00b77 min read\u00b74 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -4348,7 +4348,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"failed to solve: process did not complete successfully: exit code 1\": rebuild with --progress=plain and debug the failing RUN layer interactively.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -4518,7 +4518,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Docker \"no space left on device\": run docker system df, then docker system prune and docker builder prune. Covers container logs, volumes and Desktop.",
           "easy fix\u00b77 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -4703,7 +4703,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"port is already allocated\": run docker ps and lsof -i :PORT to find the owner, then stop it or change the host port. Covers Compose and localhost binds.",
           "easy fix\u00b76 min read\u00b73 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -4877,7 +4877,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"pull access denied, repository does not exist\": check the image name, then docker login to the right registry. Covers token scopes, Actions and Kubernetes.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -5037,7 +5037,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"exec format error\": check the image with docker inspect, then run docker buildx build --platform linux/amd64. Covers multi-arch images and CI.",
           "medium fix\u00b77 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -5228,7 +5228,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Git \"Authentication failed\" on GitHub: use a personal access token instead of a password, clear the stale keychain entry, or switch the remote to SSH.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -5391,7 +5391,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix detached HEAD: run git switch -c new-branch to keep your commits, or git switch main to leave. Covers recovering via reflog and why CI is detached.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -5567,7 +5567,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Your local changes would be overwritten by merge\": run git stash, pull, then git stash pop. Or commit first, or discard with git restore. Pick by intent.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -5750,7 +5750,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix a Git merge conflict: run git status, edit the conflict markers, git add the file, then git commit. Use git merge --abort to start over, or checkout --ours.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -5931,7 +5931,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"fatal: not a git repository\" fast: check pwd, run git rev-parse --show-toplevel, then git init or re-clone. Covers safe.directory, submodules and Docker.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -6100,7 +6100,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Permission denied (publickey)\": run ssh -vT git@github.com, ssh-add your key, chmod 600 it, and add the public key to your account. Covers multiple keys.",
           "easy fix\u00b76 min read\u00b74 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -6297,7 +6297,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"refusing to merge unrelated histories\": confirm with git log, then git pull --allow-unrelated-histories or rebase. Explains what the flag does.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -6480,7 +6480,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"rejected non-fast-forward\": run git pull --rebase then git push. Use --force-with-lease only to overwrite on purpose, and recover lost commits via reflog.",
           "easy fix\u00b77 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -6662,7 +6662,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"src refspec main does not match any\": make a first commit, or rename master with git branch -M main, then git push -u origin main. Covers typos and CI.",
           "easy fix\u00b75 min read\u00b73 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -6835,7 +6835,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Resource not accessible by integration\": add the missing scope to the permissions block, such as contents: write or pull-requests: write. Covers forks.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -6993,7 +6993,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"could not read Username for gitlab.com\" in CI: set git config insteadOf with CI_JOB_TOKEN, allow the job token, or use a deploy key over SSH.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -7183,7 +7183,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix GitLab \"job is stuck, no active runners\": match job tags to the runner, allow protected branches, and check the runner is online. Covers shared runners.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -7349,7 +7349,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Helm \"another operation is in progress\": run helm history, then helm rollback to the last good revision. Last resort: delete the pending release Secret.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -7511,7 +7511,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Helm \"cannot re-use a name\": run helm list -A --all, then use helm upgrade --install, or helm uninstall the failed release. Covers other namespaces.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -7694,7 +7694,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Helm \"nil pointer evaluating interface {}\": run helm template --debug, then add default, required or an if guard for the missing value. Add a values schema.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -7863,7 +7863,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Helm \"rendered manifests contain a resource that already exists\": add Helm ownership labels and annotations to adopt it, or delete it. Covers CRDs.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -8028,7 +8028,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Helm UPGRADE FAILED: run helm status and helm history, then helm rollback the pending release. Covers immutable fields, CRDs and using --atomic.",
           "medium fix\u00b77 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -8202,7 +8202,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix ImagePullBackOff: run kubectl describe pod, then correct the image name or tag, add imagePullSecrets or fix registry access. Covers rate limits and TLS.",
           "easy fix\u00b77 min read\u00b75 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -8395,7 +8395,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix \"connection to the server localhost:8080 was refused\": check KUBECONFIG, then kubectl config get-contexts and use-context. Covers no kubeconfig and sudo.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -8572,7 +8572,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix Kubernetes \"context deadline exceeded\": find which component timed out, then check admission webhooks, API server and etcd, CSI calls, probes and kubectl.",
           "hard fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -8729,7 +8729,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix \"Forbidden: User cannot list resource\": confirm with kubectl auth can-i, then add a Role and RoleBinding for the exact verb and apiGroup, not cluster-admin.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -8904,7 +8904,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix Init:CrashLoopBackOff: run kubectl logs pod -c init-name, then check the dependency it waits on, migrations that cannot rerun, and volume permissions.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -9067,7 +9067,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix \"no matches for kind in version\": run kubectl api-resources, then update the removed apiVersion or install the missing CRD first. Covers Helm and CI order.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -9223,7 +9223,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix a NotReady node: run kubectl describe node, then check disk and memory pressure, the kubelet, container runtime and CNI. Includes journalctl commands.",
           "medium fix\u00b78 min read\u00b75 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -9429,7 +9429,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix Pod eviction for ephemeral-storage: set requests and limits, cap emptyDir with sizeLimit, rotate container logs and tune image garbage collection.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -9607,7 +9607,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix \"Readiness probe failed: HTTP probe failed\": curl the endpoint inside the Pod, correct the port and path, then raise initialDelaySeconds or timeoutSeconds.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -9787,7 +9787,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix \"Unable to attach or mount volumes\": check Multi-Attach on a ReadWriteOnce volume, a zone mismatch or a stale attachment. Covers CSI drivers and limits.",
           "hard fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -9945,7 +9945,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"bind: address already in use\": run ss -ltnp or lsof -i :PORT to find the listener, then stop it. For TIME_WAIT, set SO_REUSEADDR. Covers IPv6 overlap.",
           "easy fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -10125,7 +10125,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"fork: Cannot allocate memory\": run free -m, count threads, then check cgroup limits, ulimit -u and vm.overcommit_memory. Often not real memory exhaustion.",
           "hard fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -10293,7 +10293,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Could not get lock dpkg/lock-frontend\": run ps aux | grep apt, wait for unattended-upgrades, then dpkg --configure -a. Do not delete the lock file.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -10471,7 +10471,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"No space left on device\" with free space: run df -i for inodes and lsof +L1 for deleted open files. Covers wrong filesystems and finding the space with du.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -10627,7 +10627,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Read-only file system\": run mount | grep ' ro', check dmesg for I/O errors, then mount -o remount,rw. Covers fsck, containers and cloud volumes.",
           "hard fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -10785,7 +10785,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"sudo: unable to resolve host\": add your hostname to /etc/hosts as 127.0.1.1 myserver, or set it with hostnamectl. Covers containers and cloud images.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -10945,7 +10945,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Temporary failure in name resolution\": check /etc/resolv.conf, test with dig @8.8.8.8, and restart systemd-resolved. Covers containers and search domains.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -11099,7 +11099,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix \"Too many open files\": check the limit in /proc/PID/limits, find the leak with lsof, then raise LimitNOFILE in systemd. Covers Docker and Kubernetes.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -11288,7 +11288,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix OOMKilled exit code 137: run kubectl describe pod to confirm, then raise the memory limit or fix the leak. Covers JVM and Node heap settings and sizing.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -11453,7 +11453,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix \"0/3 nodes are available: node(s) had untolerated taint\": run kubectl describe node, then add a toleration or remove the taint. Covers control-plane nodes.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -11621,7 +11621,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix a Pod stuck in Pending: run kubectl describe pod and read FailedScheduling. Fix Insufficient cpu, taints, volume conflicts, PVC binding and node selectors.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -11810,7 +11810,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix a PVC stuck in Pending: run kubectl describe pvc, then add the CSI driver, set a valid StorageClass, fix zone or access mode. Covers WaitForFirstConsumer.",
           "medium fix\u00b77 min read\u00b75 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -11998,7 +11998,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "KubernetesKubernetes",
           "Fix a Service with no endpoints: run kubectl get endpointslices, then match the selector to Pod labels and make the Pods Ready. Covers port mismatches.",
           "easy fix\u00b76 min read\u00b72 causes",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -12165,7 +12165,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix Terraform \"Backend configuration changed\": run terraform init -migrate-state to move state, or init -reconfigure to discard the old setup. Safe CI defaults.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -12330,7 +12330,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix Terraform \"Error: Cycle\": run terraform graph to see it, then break the loop with separate security group rules, remove depends_on, or split modules.",
           "hard fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -12485,7 +12485,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix \"Inconsistent dependency lock file\": run terraform init, or terraform providers lock for every platform. In CI, use -lockfile=readonly instead of -upgrade.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -12650,7 +12650,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix \"Invalid count argument\": derive count from input variables, not resources created in the same run. Or switch to for_each, or apply with -target first.",
           "hard fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -12825,7 +12825,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix \"Invalid for_each argument\": build the map keys from known inputs instead of values only known after apply. Covers data sources, modules and -target.",
           "hard fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -13000,7 +13000,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix \"Provider configuration not present\": restore the provider block and run terraform destroy, or use terraform state rm. Covers aliased providers in modules.",
           "hard fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -13150,7 +13150,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix Terraform \"resource already exists\": run terraform import to adopt the object, or rename yours. Always plan after importing. Covers state drift.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -13317,7 +13317,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix Terraform \"Saved plan is stale\": run terraform plan -out again, then apply that fresh plan. Use state locking so state cannot move between plan and apply.",
           "medium fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -13485,7 +13485,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix \"Error acquiring the state lock\": read the lock info, wait if a run is live, otherwise run terraform force-unlock LOCK_ID. Covers S3 and DynamoDB backends.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -13655,7 +13655,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
           "TerraformTerraform",
           "Fix Terraform \"Unsupported argument\": check the provider docs for your version, convert arguments to blocks, rename module inputs. Then run terraform validate.",
           "easy fix\u00b75 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 21 September 2026"
         ],
         "codeBlock": {
           "language": "bash",
@@ -13818,7 +13818,7 @@ export const TROUBLESHOOTING_GUIDES: TroubleshootingGuide[] = [
         "paragraphs": [
           "Fix Docker Hub \"toomanyrequests: You have reached your pull rate limit\": run docker login, or pull via an ECR pull-through cache or a registry mirror.",
           "medium fix\u00b76 min read",
-          "By Vishvesh Patel\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
+          "By Qirielz\u00b7DevOps Engineer\u00b7Updated 16 September 2026"
         ],
         "codeBlock": {
           "language": "bash",

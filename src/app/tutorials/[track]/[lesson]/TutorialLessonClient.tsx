@@ -296,7 +296,7 @@ export default function TutorialLessonClient({
                 Tutorials
               </Link>
               <span>/</span>
-              <span className="text-orange-400 font-semibold">{trackShortTitle}</span>
+              <Link href={`/tutorials/${trackMeta.slug}`} className="text-orange-400 hover:text-orange-300 font-semibold transition-colors">{trackShortTitle}</Link>
             </div>
 
             {/* Title & Metadata Header */}
@@ -333,10 +333,10 @@ export default function TutorialLessonClient({
               <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 font-mono pt-1">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-400 font-bold flex items-center justify-center text-[10px]">
-                    VP
+                    Q
                   </div>
                   <span className="text-slate-300 font-sans font-semibold">
-                    By Vishvesh Patel
+                    By Qirielz
                   </span>
                 </div>
                 <span>·</span>

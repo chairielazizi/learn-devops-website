@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TUTORIAL_TRACKS } from "@/data/tutorialsData";
-import { ArrowLeft, BookOpen, Clock, Terminal, CheckCircle2, ArrowRight, FileText } from "lucide-react";
+import { TUTORIAL_SUBSECTIONS } from "@/data/tutorialSubsections";
+import { ArrowLeft, BookOpen, Clock, Terminal, CheckCircle2, FileText, CornerDownRight } from "lucide-react";
 
 interface TrackPageProps {
   params: Promise<{ track: string }>;
@@ -28,6 +29,11 @@ export default async function TrackDetailsPage({ params }: TrackPageProps) {
       : track.id === "terraform"
       ? "terraform"
       : "linux";
+
+  // Build a lookup set of sub-lesson slugs
+  const subLessonSlugs = new Set(
+    Object.values(TUTORIAL_SUBSECTIONS).flatMap((children) => children.map((c) => c.slug))
+  );
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-gray-200 py-12 px-4 sm:px-6 lg:px-8">
@@ -59,7 +65,7 @@ export default async function TrackDetailsPage({ params }: TrackPageProps) {
             <div className="pt-2 flex flex-wrap gap-6 text-xs text-gray-300">
               <div className="flex items-center space-x-1.5">
                 <BookOpen className="w-4 h-4 text-orange-400" />
-                <span>{track.lessonsCount} Modules & Lessons</span>
+                <span>{track.lessonsCount} Lessons</span>
               </div>
               <div className="flex items-center space-x-1.5">
                 <Clock className="w-4 h-4 text-orange-400" />
@@ -91,7 +97,7 @@ export default async function TrackDetailsPage({ params }: TrackPageProps) {
               <div key={mod.title} className="bg-[#11131c] rounded-2xl border border-orange-500/20 overflow-hidden shadow-xl">
                 <div className="px-6 py-4 bg-[#161927] border-b border-orange-500/10 flex items-center justify-between">
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 text-xs flex items-center justify-center font-mono">
+                    <span className="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 text-xs flex items-center justify-center font-mono font-semibold">
                       {modIdx + 1}
                     </span>
                     {mod.title}
@@ -100,47 +106,68 @@ export default async function TrackDetailsPage({ params }: TrackPageProps) {
                 </div>
 
                 <div className="divide-y divide-white/5">
-                  {mod.lessons.map((lesson) => (
-                    <div
-                      key={lesson.slug}
-                      className="p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-[#151825] transition-colors group"
-                    >
-                      <div className="space-y-1">
-                        <Link
-                          href={`/tutorials/${track.slug}/${lesson.slug}`}
-                          className="text-sm font-bold text-white group-hover:text-orange-400 transition-colors flex items-center gap-2"
-                        >
-                          <CheckCircle2 className="w-4 h-4 text-orange-500/60 shrink-0 group-hover:text-orange-400" />
-                          <span>{lesson.title}</span>
-                        </Link>
-                        <p className="text-xs text-gray-400 pl-6 leading-relaxed">{lesson.summary}</p>
+                  {mod.lessons.map((lesson) => {
+                    const isSub = subLessonSlugs.has(lesson.slug);
+
+                    return (
+                      <div
+                        key={lesson.slug}
+                        className={`p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors group ${
+                          isSub
+                            ? "pl-8 sm:pl-12 bg-[#0c0e17]/50 border-l-2 border-orange-500/30 hover:bg-[#131624]"
+                            : "hover:bg-[#151825]"
+                        }`}
+                      >
+                        <div className="space-y-1">
+                          <Link
+                            href={`/tutorials/${track.slug}/${lesson.slug}`}
+                            className="text-sm font-bold text-white group-hover:text-orange-400 transition-colors flex items-center gap-2"
+                          >
+                            {isSub ? (
+                              <CornerDownRight className="w-3.5 h-3.5 text-orange-500/70 shrink-0" />
+                            ) : (
+                              <CheckCircle2 className="w-4 h-4 text-orange-500/60 shrink-0 group-hover:text-orange-400" />
+                            )}
+                            <span>{lesson.title}</span>
+                            {isSub && (
+                              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 font-medium">
+                                Sub-topic
+                              </span>
+                            )}
+                          </Link>
+                          <p className={`text-xs text-gray-400 leading-relaxed ${isSub ? "pl-5 sm:pl-6" : "pl-6"}`}>
+                            {lesson.summary}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center space-x-2 shrink-0 pl-6 sm:pl-0">
+                          <span className="text-xs text-gray-500 font-mono hidden md:inline mr-1">
+                            {lesson.duration}
+                          </span>
+
+                          {/* See Notes Button */}
+                          <Link
+                            href={`/tutorials/${track.slug}/${lesson.slug}`}
+                            className="px-3 py-1.5 rounded-lg bg-[#181b29] hover:bg-orange-500/20 text-orange-300 text-xs font-semibold border border-orange-500/30 transition-all flex items-center gap-1.5 shadow-sm"
+                            title="Read concept notes and architecture breakdown"
+                          >
+                            <FileText className="w-3.5 h-3.5 text-orange-400" />
+                            <span>See Notes</span>
+                          </Link>
+
+                          {/* Try Lab Button */}
+                          <Link
+                            href={`/playground/${playgroundSlug}`}
+                            className="px-3 py-1.5 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 text-xs font-medium border border-orange-500/20 transition-all flex items-center gap-1"
+                            title="Open browser terminal to run commands"
+                          >
+                            <Terminal className="w-3 h-3 text-orange-400" />
+                            <span>Try Lab</span>
+                          </Link>
+                        </div>
                       </div>
-
-                      <div className="flex items-center space-x-2 shrink-0 pl-6 sm:pl-0">
-                        <span className="text-xs text-gray-500 font-mono hidden md:inline mr-1">{lesson.duration}</span>
-
-                        {/* See Notes Button */}
-                        <Link
-                          href={`/tutorials/${track.slug}/${lesson.slug}`}
-                          className="px-3 py-1.5 rounded-lg bg-[#181b29] hover:bg-orange-500/20 text-orange-300 text-xs font-semibold border border-orange-500/30 transition-all flex items-center gap-1.5 shadow-sm"
-                          title="Read concept notes and architecture breakdown"
-                        >
-                          <FileText className="w-3.5 h-3.5 text-orange-400" />
-                          <span>See Notes</span>
-                        </Link>
-
-                        {/* Try Lab Button */}
-                        <Link
-                          href={`/playground/${playgroundSlug}`}
-                          className="px-3 py-1.5 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 text-xs font-medium border border-orange-500/20 transition-all flex items-center gap-1"
-                          title="Open browser terminal to run commands"
-                        >
-                          <Terminal className="w-3 h-3 text-orange-400" />
-                          <span>Try Lab</span>
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             ))}

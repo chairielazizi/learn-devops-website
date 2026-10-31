@@ -73,7 +73,7 @@ export default function Navbar() {
 
             {/* GitHub Link */}
             <a
-              href="https://github.com/Viishveesh/devopslesson"
+              href="https://github.com/chairielazizi/learn-devops-website"
               target="_blank"
               rel="noreferrer"
               className="p-2 rounded-xl bg-[#141724] border border-white/10 text-gray-300 hover:text-orange-400 hover:border-orange-500/30 transition-all hidden sm:flex items-center"
