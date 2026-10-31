@@ -1,9 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Copy, Check, HelpCircle, Code2 } from "lucide-react";
+import { Copy, Check, HelpCircle, Code2, X, RotateCcw } from "lucide-react";
+
+export interface MCQOption {
+  id: string;
+  text: string;
+}
+
+export interface MCQExerciseData {
+  id: string;
+  title: string;
+  description: string;
+  options: MCQOption[];
+  correctId: string;
+  explanation: string;
+  wrongExplanations?: Record<string, string>;
+}
+
+type ContentBlock =
+  | { type: "markdown"; content: string }
+  | { type: "mcq"; exercise: MCQExerciseData };
 
 interface Props {
   markdown: string;
@@ -37,7 +56,7 @@ function CodeBlockWithCopy({ children, className }: { children: React.ReactNode;
         </span>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/60 hover:bg-slate-700 text-slate-300 hover:text-white transition-all text-[11px]"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/60 hover:bg-slate-700 text-slate-300 hover:text-white transition-all text-[11px] cursor-pointer"
         >
           {copied ? (
             <>
@@ -61,26 +80,241 @@ function CodeBlockWithCopy({ children, className }: { children: React.ReactNode;
   );
 }
 
+function MCQExerciseCard({ exercise }: { exercise: MCQExerciseData }) {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [status, setStatus] = useState<"unanswered" | "correct" | "wrong">("unanswered");
+  const [attempts, setAttempts] = useState(0);
+
+  const isSubmitted = status !== "unanswered";
+  const wrongExplanation =
+    (selectedId && exercise.wrongExplanations?.[selectedId]) ||
+    "Not quite - review the lesson material and try again.";
+
+  const handleSubmit = () => {
+    if (!selectedId) return;
+    setAttempts((prev) => prev + 1);
+    setStatus(selectedId === exercise.correctId ? "correct" : "wrong");
+  };
+
+  const handleRetry = () => {
+    setSelectedId(null);
+    setStatus("unanswered");
+  };
+
+  return (
+    <div className="my-6 sm:my-8 rounded-2xl border border-slate-800 bg-[#141d2e] shadow-xl overflow-hidden">
+      {/* Exercise Header */}
+      <div className="px-5 sm:px-6 py-4 sm:py-5 border-b border-slate-800/80 bg-[#162032]/70">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-md bg-orange-500/10 text-orange-400 border border-orange-500/25 uppercase tracking-wider">
+            Exercise
+          </span>
+        </div>
+        <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 tracking-tight">
+          {exercise.title}
+        </h3>
+        <p className="text-sm sm:text-[15px] text-slate-300 leading-relaxed font-normal">
+          {exercise.description}
+        </p>
+      </div>
+
+      {/* Options List */}
+      <div className="px-4 sm:px-6 pt-5 pb-5 space-y-2.5">
+        {exercise.options.map((option, idx) => {
+          const letter = ["A", "B", "C", "D", "E"][idx] || String(idx + 1);
+          const isSelected = selectedId === option.id;
+          const isCorrect = option.id === exercise.correctId;
+
+          let btnClass =
+            "w-full text-left rounded-xl border px-4 py-3.5 flex items-center gap-3.5 transition-all duration-150 group text-left ";
+          let badgeClass =
+            "w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold font-mono transition-colors ";
+          let textClass = "text-sm sm:text-[15px] leading-relaxed flex-1 font-mono sm:font-sans ";
+
+          if (isSubmitted) {
+            if (isCorrect) {
+              btnClass +=
+                "border-emerald-500/50 bg-emerald-950/25 text-emerald-200 cursor-default ring-1 ring-emerald-500/30";
+              badgeClass += "bg-emerald-500 text-white shadow-md shadow-emerald-500/20";
+              textClass += "text-emerald-200 font-medium";
+            } else if (isSelected && status === "wrong") {
+              btnClass +=
+                "border-rose-500/50 bg-rose-950/25 text-rose-200 cursor-default ring-1 ring-rose-500/30";
+              badgeClass += "bg-rose-500 text-white shadow-md shadow-rose-500/20";
+              textClass += "text-rose-200 font-medium";
+            } else {
+              btnClass +=
+                "border-slate-800/60 bg-[#0f172a]/30 opacity-40 cursor-default text-slate-400";
+              badgeClass += "bg-slate-800 text-slate-500";
+              textClass += "text-slate-400";
+            }
+          } else {
+            if (isSelected) {
+              btnClass +=
+                "border-orange-500 bg-orange-500/10 text-white cursor-pointer shadow-lg shadow-orange-500/10 ring-1 ring-orange-500/40";
+              badgeClass += "bg-orange-500 text-white";
+              textClass += "text-white font-medium";
+            } else {
+              btnClass +=
+                "border-slate-800 bg-[#162032] hover:border-slate-700 hover:bg-[#1a263c] text-slate-200 cursor-pointer";
+              badgeClass += "bg-slate-800 text-slate-300 group-hover:bg-slate-700 group-hover:text-white";
+              textClass += "text-slate-200";
+            }
+          }
+
+          return (
+            <button
+              key={option.id}
+              type="button"
+              onClick={() => !isSubmitted && setSelectedId(option.id)}
+              disabled={isSubmitted}
+              className={btnClass}
+            >
+              <span className={badgeClass}>{letter}</span>
+              <span className={textClass}>{option.text}</span>
+              {isSubmitted && isCorrect && (
+                <Check className="w-5 h-5 text-emerald-400 shrink-0" />
+              )}
+              {isSubmitted && isSelected && status === "wrong" && (
+                <X className="w-5 h-5 text-rose-400 shrink-0" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Footer / Feedback */}
+      {!isSubmitted ? (
+        <div className="px-4 sm:px-6 pb-5 sm:pb-6">
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={!selectedId}
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl text-sm font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed bg-gradient-orange text-white hover:brightness-110 shadow-lg shadow-orange-500/20 cursor-pointer"
+          >
+            Submit answer
+          </button>
+        </div>
+      ) : (
+        <div className="px-4 sm:px-6 pb-5 sm:pb-6">
+          {status === "correct" && (
+            <div className="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-4 h-4 text-emerald-400" />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                    Correct {attempts > 1 ? `· took ${attempts} tries` : ""}
+                  </p>
+                  <div className="text-sm text-slate-200 leading-relaxed">
+                    <ReactMarkdown
+                      components={{
+                        code({ children }) {
+                          return (
+                            <code className="bg-emerald-500/10 text-emerald-300 font-mono text-[13px] px-1.5 py-0.5 rounded border border-emerald-500/20">
+                              {children}
+                            </code>
+                          );
+                        },
+                      }}
+                    >
+                      {exercise.explanation}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {status === "wrong" && (
+            <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-4 space-y-3">
+              <div className="flex items-start gap-3">
+                <div className="w-7 h-7 rounded-lg bg-rose-500/20 border border-rose-500/40 flex items-center justify-center shrink-0 mt-0.5">
+                  <X className="w-4 h-4 text-rose-400" />
+                </div>
+                <div className="flex-1 space-y-1">
+                  <p className="text-xs font-bold text-rose-400 uppercase tracking-wider">
+                    Not quite
+                  </p>
+                  <p className="text-sm text-slate-200 leading-relaxed">
+                    {wrongExplanation}
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={handleRetry}
+                className="flex items-center gap-1.5 text-xs font-bold text-rose-400 hover:text-rose-300 transition-colors ml-10 cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Try again</span>
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function MarkdownLessonRenderer({ markdown }: Props) {
   // Check if markdown has an FAQ section
-  let mainBody = markdown;
-  let faqList: { question: string; answer: string }[] = [];
+  const { blocks, faqList } = useMemo(() => {
+    let mainBody = markdown;
+    let faqItems: { question: string; answer: string }[] = [];
 
-  const faqSplit = markdown.split(/##\s+Frequently Asked Questions/i);
-  if (faqSplit.length > 1) {
-    mainBody = faqSplit[0].trim();
-    const faqText = faqSplit[1].trim();
+    const faqSplit = markdown.split(/##\s+Frequently Asked Questions/i);
+    if (faqSplit.length > 1) {
+      mainBody = faqSplit[0].trim();
+      const faqText = faqSplit[1].trim();
 
-    // Split questions formatted like **Question?**
-    const parts = faqText.split(/\n\s*\*\*([^*]+)\*\*\s*\n/);
-    for (let i = 1; i < parts.length; i += 2) {
-      const q = parts[i].trim();
-      const a = (parts[i + 1] || "").trim();
-      if (q) {
-        faqList.push({ question: q, answer: a });
+      // Split questions formatted like **Question?**
+      const parts = faqText.split(/\n\s*\*\*([^*]+)\*\*\s*\n/);
+      for (let i = 1; i < parts.length; i += 2) {
+        const q = parts[i].trim();
+        const a = (parts[i + 1] || "").trim();
+        if (q) {
+          faqItems.push({ question: q, answer: a });
+        }
       }
     }
-  }
+
+    const parsedBlocks: ContentBlock[] = [];
+    const MCQ_REGEX = /<MCQExercise\s+exercise=\{([\s\S]*?)\}\s*\/>/g;
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = MCQ_REGEX.exec(mainBody)) !== null) {
+      if (match.index > lastIndex) {
+        const text = mainBody.slice(lastIndex, match.index).trim();
+        if (text) {
+          parsedBlocks.push({ type: "markdown", content: text });
+        }
+      }
+
+      try {
+        const fn = new Function(`return (${match[1]});`);
+        const exercise = fn() as MCQExerciseData;
+        if (exercise && exercise.id && exercise.title && Array.isArray(exercise.options)) {
+          parsedBlocks.push({ type: "mcq", exercise });
+        }
+      } catch (err) {
+        console.error("Failed to parse MCQExercise:", err);
+      }
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < mainBody.length) {
+      const text = mainBody.slice(lastIndex).trim();
+      if (text) {
+        parsedBlocks.push({ type: "markdown", content: text });
+      }
+    }
+
+    return { blocks: parsedBlocks, faqList: faqItems };
+  }, [markdown]);
 
   const markdownComponents = {
     h2({ children }: { children?: React.ReactNode }) {
@@ -116,7 +350,6 @@ export default function MarkdownLessonRenderer({ markdown }: Props) {
       );
     },
     code({ inline, className, children, ...props }: any) {
-      // Inline vs block code
       const isInline = inline || !className;
       if (isInline) {
         return (
@@ -193,11 +426,18 @@ export default function MarkdownLessonRenderer({ markdown }: Props) {
 
   return (
     <div className="space-y-6">
-      {/* Main Lesson Body */}
-      <div className="prose-slate max-w-none">
-        <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
-          {mainBody}
-        </ReactMarkdown>
+      {/* Content Blocks: Markdown sections interleaved with Interactive MCQs */}
+      <div className="prose-slate max-w-none space-y-4">
+        {blocks.map((block, index) => {
+          if (block.type === "mcq") {
+            return <MCQExerciseCard key={block.exercise.id || index} exercise={block.exercise} />;
+          }
+          return (
+            <ReactMarkdown key={index} remarkPlugins={[remarkGfm]} components={markdownComponents}>
+              {block.content}
+            </ReactMarkdown>
+          );
+        })}
       </div>
 
       {/* Frequently Asked Questions */}
@@ -256,4 +496,3 @@ export default function MarkdownLessonRenderer({ markdown }: Props) {
     </div>
   );
 }
-

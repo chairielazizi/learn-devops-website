@@ -29,10 +29,17 @@ export default function InteractiveTerminal({
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const outputContainerRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (outputContainerRef.current) {
+      outputContainerRef.current.scrollTop = outputContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -90,7 +97,7 @@ export default function InteractiveTerminal({
     } else {
       setHistory((prev) => [...prev, `${promptSymbol} ${cmd}`, ...result.lines]);
     }
-    inputRef.current?.focus();
+    inputRef.current?.focus({ preventScroll: true });
   };
 
   const copyOutput = () => {
@@ -130,21 +137,21 @@ export default function InteractiveTerminal({
           <button
             onClick={copyOutput}
             title="Copy Terminal Logs"
-            className="p-1.5 rounded-lg text-gray-400 hover:text-orange-300 hover:bg-orange-500/10 transition-all text-xs flex items-center space-x-1"
+            className="p-1.5 rounded-lg text-gray-400 hover:text-orange-300 hover:bg-orange-500/10 transition-all text-xs flex items-center space-x-1 cursor-pointer"
           >
             {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           </button>
           <button
             onClick={() => setHistory([])}
             title="Clear Terminal"
-            className="p-1.5 rounded-lg text-gray-400 hover:text-orange-300 hover:bg-orange-500/10 transition-all text-xs"
+            className="p-1.5 rounded-lg text-gray-400 hover:text-orange-300 hover:bg-orange-500/10 transition-all text-xs cursor-pointer"
           >
             <Trash2 className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={handleResetClick}
             title="Reset Environment State"
-            className="p-1.5 rounded-lg text-gray-400 hover:text-orange-300 hover:bg-orange-500/10 transition-all text-xs flex items-center space-x-1"
+            className="p-1.5 rounded-lg text-gray-400 hover:text-orange-300 hover:bg-orange-500/10 transition-all text-xs flex items-center space-x-1 cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
@@ -162,7 +169,7 @@ export default function InteractiveTerminal({
               <button
                 key={cmd}
                 onClick={() => runQuick(cmd)}
-                className="px-2.5 py-1 rounded bg-orange-500/10 hover:bg-orange-500/20 text-orange-200 border border-orange-500/20 hover:border-orange-500/40 font-mono text-[11px] transition-all flex items-center gap-1 shrink-0"
+                className="px-2.5 py-1 rounded bg-orange-500/10 hover:bg-orange-500/20 text-orange-200 border border-orange-500/20 hover:border-orange-500/40 font-mono text-[11px] transition-all flex items-center gap-1 shrink-0 cursor-pointer"
               >
                 <Play className="w-2.5 h-2.5 text-orange-400 fill-orange-400" />
                 {cmd}
@@ -174,7 +181,8 @@ export default function InteractiveTerminal({
 
       {/* Terminal Output */}
       <div
-        onClick={() => inputRef.current?.focus()}
+        ref={outputContainerRef}
+        onClick={() => inputRef.current?.focus({ preventScroll: true })}
         className="p-4 font-mono text-sm leading-relaxed overflow-y-auto h-[380px] sm:h-[440px] text-gray-300 select-text cursor-text"
       >
         {history.map((line, idx) => {
@@ -206,15 +214,12 @@ export default function InteractiveTerminal({
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             className="flex-1 bg-transparent border-none outline-none text-white font-mono text-sm focus:ring-0 p-0 m-0 caret-orange-500"
-            autoFocus
             spellCheck={false}
             autoComplete="off"
             placeholder="Type a command (e.g. help, docker ps)..."
           />
         </form>
-        <div ref={bottomRef} />
       </div>
     </div>
   );
 }
-
