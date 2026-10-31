@@ -1,0 +1,606 @@
+{
+  "devops-engineer": {
+    "orderMatters": "A roadmap is only worth following for its sequence. Any list can tell you that Kubernetes exists; the useful part is knowing what has to come before it and why.",
+    "stages": [
+      {
+        "header": "Stage 1: Foundations: OS & Scripting",
+        "summary": "Every DevOps engineer starts on the command line. Get comfortable with Linux and one scripting language.",
+        "topics": [
+          {
+            "title": "Linux",
+            "badge": "Recommended",
+            "description": "Learn the Linux filesystem, permissions, processes, package managers, systemd services and networking commands. The vast majority of servers and containers run Linux, so terminal fluency is non-negotiable."
+          },
+          {
+            "title": "Bash / Shell Scripting",
+            "badge": "Recommended",
+            "description": "Master shell scripting to glue tools together: variables, loops, conditionals, pipes, exit codes and cron. Bash is the default automation language on Linux servers and CI runners."
+          },
+          {
+            "title": "Python",
+            "badge": "Recommended",
+            "description": "Python powers automation scripts, tooling, and cloud SDKs (boto3, google-cloud). Learn the basics plus working with files, APIs and JSON/YAML."
+          },
+          {
+            "title": "Go",
+            "badge": "Alternative",
+            "description": "Go is the language behind Docker, Kubernetes and Terraform. Optional early on, but valuable if you want to build or extend cloud-native tooling."
+          }
+        ]
+      },
+      {
+        "header": "Stage 2: Version Control & Collaboration",
+        "summary": "Git is the backbone of every modern engineering workflow and the entry point to CI/CD.",
+        "topics": [
+          {
+            "title": "Git",
+            "badge": "Recommended",
+            "description": "Learn commits, branches, merging, rebasing, resolving conflicts and undoing mistakes. Git underpins pull-request reviews, GitOps and pipeline triggers."
+          },
+          {
+            "title": "GitHub / GitLab",
+            "badge": "Recommended",
+            "description": "Understand pull/merge requests, code review, branch protection, issues and how hosting platforms integrate with CI/CD and GitOps workflows."
+          },
+          {
+            "title": "Branching Strategies",
+            "badge": "Optional",
+            "description": "Know the trade-offs between trunk-based development, GitFlow and environment branches so you can pick a workflow that fits release cadence."
+          }
+        ]
+      },
+      {
+        "header": "Stage 3: Networking & Security Basics",
+        "summary": "You cannot deploy or debug systems you do not understand at the network layer.",
+        "topics": [
+          {
+            "title": "HTTP, DNS, TLS",
+            "badge": "Recommended",
+            "description": "Understand the request/response cycle, DNS resolution, TLS/HTTPS certificates, TCP/UDP and status codes. Essential for debugging deployments and load balancers."
+          },
+          {
+            "title": "SSH",
+            "badge": "Recommended",
+            "description": "Learn key-based authentication, SSH config, tunnelling and agent forwarding to securely manage remote servers."
+          },
+          {
+            "title": "Web Servers & Reverse Proxies",
+            "badge": "Recommended",
+            "description": "Configure Nginx or Caddy as a web server, reverse proxy and load balancer, including TLS termination and caching."
+          },
+          {
+            "title": "Firewalls & Security",
+            "badge": "Optional",
+            "description": "Understand ports, security groups, firewalls (iptables/ufw) and the principle of least privilege for hardening infrastructure."
+          }
+        ]
+      },
+      {
+        "header": "Stage 4: Containers",
+        "summary": "Containers standardise how applications are packaged and shipped. This is the heart of modern DevOps.",
+        "topics": [
+          {
+            "title": "Docker",
+            "badge": "Recommended",
+            "description": "Learn images, containers, Dockerfiles, volumes, networks and Docker Compose. Docker is the industry-standard container runtime."
+          },
+          {
+            "title": "Container Registries",
+            "badge": "Recommended",
+            "description": "Push and pull images from Docker Hub, GitHub Container Registry, ECR or GCR, and understand tagging and image scanning."
+          },
+          {
+            "title": "Podman",
+            "badge": "Alternative",
+            "description": "A rootless, daemonless alternative to Docker with a compatible CLI, popular in security-conscious enterprises."
+          }
+        ]
+      },
+      {
+        "header": "Stage 5: Container Orchestration",
+        "summary": "Once you have containers, you need to run them reliably at scale.",
+        "topics": [
+          {
+            "title": "Kubernetes",
+            "badge": "Recommended",
+            "description": "The dominant orchestrator. Learn Pods, Deployments, Services, Ingress, ConfigMaps, Secrets, and how the control plane schedules workloads."
+          },
+          {
+            "title": "Helm",
+            "badge": "Recommended",
+            "description": "Template and version Kubernetes manifests with Helm charts to make deployments repeatable and configurable across environments."
+          },
+          {
+            "title": "Docker Swarm / Nomad",
+            "badge": "Alternative",
+            "description": "Lighter-weight orchestration options for smaller teams that do not need the full complexity of Kubernetes."
+          }
+        ]
+      },
+      {
+        "header": "Stage 6: Infrastructure as Code",
+        "summary": "Provision and configure infrastructure declaratively so it is versioned, reviewable and repeatable.",
+        "topics": [
+          {
+            "title": "Terraform",
+            "badge": "Recommended",
+            "description": "Define infrastructure with HCL, manage state, use modules and remote backends. Terraform is the leading multi-cloud IaC tool."
+          },
+          {
+            "title": "Ansible",
+            "badge": "Recommended",
+            "description": "Automate server configuration and application deployment with agentless, YAML-based playbooks and roles."
+          },
+          {
+            "title": "Pulumi",
+            "badge": "Alternative",
+            "description": "Write infrastructure in TypeScript, Python or Go instead of HCL. Useful for teams that prefer general-purpose languages."
+          }
+        ]
+      },
+      {
+        "header": "Stage 7: CI/CD Pipelines",
+        "summary": "Automate build, test and deploy so software ships continuously and safely.",
+        "topics": [
+          {
+            "title": "GitHub Actions",
+            "badge": "Recommended",
+            "description": "Build workflows triggered by git events, run tests, build images and deploy. Deeply integrated with GitHub repos."
+          },
+          {
+            "title": "Jenkins",
+            "badge": "Alternative",
+            "description": "A highly extensible, plugin-rich automation server still widely used in enterprises. Learn declarative Jenkinsfiles and agents."
+          },
+          {
+            "title": "GitLab CI / Argo CD",
+            "badge": "Alternative",
+            "description": "GitLab CI offers integrated pipelines; Argo CD brings GitOps continuous delivery to Kubernetes."
+          }
+        ]
+      },
+      {
+        "header": "Stage 8: Cloud Providers",
+        "summary": "Almost all modern infrastructure runs in the cloud. Go deep on one provider first.",
+        "topics": [
+          {
+            "title": "AWS",
+            "badge": "Recommended",
+            "description": "Master core services: EC2, S3, IAM, VPC, RDS, EKS and CloudWatch. AWS has the largest market share and job demand."
+          },
+          {
+            "title": "Azure / GCP",
+            "badge": "Alternative",
+            "description": "Azure dominates enterprise and Microsoft shops; GCP is strong for data and Kubernetes. Concepts transfer once you know one cloud well."
+          }
+        ]
+      },
+      {
+        "header": "Stage 9: Monitoring & Observability",
+        "summary": "You can only operate reliably what you can measure. Instrument everything.",
+        "topics": [
+          {
+            "title": "Prometheus & Grafana",
+            "badge": "Recommended",
+            "description": "Collect metrics with Prometheus, query with PromQL, and visualise with Grafana dashboards and alerts."
+          },
+          {
+            "title": "Logging (ELK / Loki)",
+            "badge": "Recommended",
+            "description": "Aggregate and search logs with the ELK stack or Grafana Loki to debug distributed systems."
+          },
+          {
+            "title": "Tracing & APM",
+            "badge": "Optional",
+            "description": "Use OpenTelemetry, Jaeger or Datadog to trace requests across microservices and find latency bottlenecks."
+          }
+        ]
+      },
+      {
+        "header": "Stage 10: DevSecOps & Secrets",
+        "summary": "Bake security into the pipeline rather than bolting it on at the end.",
+        "topics": [
+          {
+            "title": "Secrets Management",
+            "badge": "Recommended",
+            "description": "Store and rotate secrets with HashiCorp Vault, AWS Secrets Manager or Kubernetes Secrets, and inject them securely at runtime."
+          },
+          {
+            "title": "Scanning & Supply Chain",
+            "badge": "Optional",
+            "description": "Scan images and dependencies (Trivy, Snyk), sign artifacts and enforce policies to secure the software supply chain."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How long does it take to become a DevOps engineer?",
+        "answer": "With consistent study, most people become job-ready in 4 to 6 months. Prior programming or sysadmin experience can shorten that. Focus on Linux, Git, Docker, CI/CD and one cloud provider first."
+      },
+      {
+        "question": "Do I need to know how to code to learn DevOps?",
+        "answer": "Yes, at least scripting. Bash and Python are the most useful languages for automation. You do not need to be a full software engineer, but you must be comfortable writing scripts and reading code."
+      },
+      {
+        "question": "Should I learn Docker or Kubernetes first?",
+        "answer": "Learn Docker first. Kubernetes orchestrates containers, so you need a solid grasp of images, containers and networking before it will make sense."
+      },
+      {
+        "question": "Which cloud provider should I learn for DevOps?",
+        "answer": "Start with AWS because it has the largest market share and the most job openings. The core concepts transfer to Azure and GCP once you understand one cloud deeply."
+      }
+    ]
+  },
+  "cloud-engineer": {
+    "orderMatters": "A roadmap is only worth following for its sequence. Any list can tell you that Kubernetes exists; the useful part is knowing what has to come before it and why.",
+    "stages": [
+      {
+        "header": "Stage 1: Cloud Fundamentals",
+        "summary": "Understand the mental model of the cloud before touching any console.",
+        "topics": [
+          {
+            "title": "IaaS, PaaS & SaaS",
+            "badge": "Recommended",
+            "description": "Understand the spectrum from raw infrastructure (IaaS) to managed platforms (PaaS) to full software (SaaS), and when to use each."
+          },
+          {
+            "title": "Regions & Availability Zones",
+            "badge": "Recommended",
+            "description": "Learn how providers organise data centres into regions and AZs, and how this drives latency, redundancy and compliance decisions."
+          },
+          {
+            "title": "Shared Responsibility Model",
+            "badge": "Recommended",
+            "description": "Know the line between what the cloud provider secures (of the cloud) and what you secure (in the cloud)."
+          },
+          {
+            "title": "Pricing & Billing",
+            "badge": "Optional",
+            "description": "Understand on-demand vs reserved vs spot pricing and how to read a cloud bill to avoid surprises."
+          }
+        ]
+      },
+      {
+        "header": "Stage 2: Choose a Cloud Provider",
+        "summary": "Go deep on one provider first. Concepts transfer once you master one.",
+        "topics": [
+          {
+            "title": "AWS",
+            "badge": "Recommended",
+            "description": "AWS leads in market share and job demand. Start here unless your target employer uses another cloud."
+          },
+          {
+            "title": "Microsoft Azure",
+            "badge": "Alternative",
+            "description": "Dominant in enterprises and organisations already invested in the Microsoft ecosystem."
+          },
+          {
+            "title": "Google Cloud (GCP)",
+            "badge": "Alternative",
+            "description": "Excellent for data analytics, machine learning and Kubernetes (GKE is best-in-class)."
+          }
+        ]
+      },
+      {
+        "header": "Stage 3: Compute",
+        "summary": "The services that actually run your code.",
+        "topics": [
+          {
+            "title": "Virtual Machines",
+            "badge": "Recommended",
+            "description": "Launch, size, and manage virtual servers including images, instance types, auto-scaling groups and SSH access."
+          },
+          {
+            "title": "Serverless (Lambda / Functions)",
+            "badge": "Recommended",
+            "description": "Use event-driven functions (AWS Lambda, Azure Functions, Cloud Functions) to run code without managing infrastructure."
+          },
+          {
+            "title": "Managed Containers",
+            "badge": "Recommended",
+            "description": "Run Docker containers on managed services rather than provisioning your own orchestrator from scratch."
+          }
+        ]
+      },
+      {
+        "header": "Stage 4: Cloud Networking",
+        "summary": "How resources connect, isolate and expose themselves to the world.",
+        "topics": [
+          {
+            "title": "VPC, Subnets & Routing",
+            "badge": "Recommended",
+            "description": "Design virtual private clouds with public/private subnets, route tables, NAT gateways and peering."
+          },
+          {
+            "title": "Load Balancers",
+            "badge": "Recommended",
+            "description": "Use application and network load balancers to spread traffic, enable high availability and terminate TLS."
+          },
+          {
+            "title": "DNS & CDN",
+            "badge": "Recommended",
+            "description": "Manage DNS records and accelerate global delivery with a content delivery network and edge caching."
+          }
+        ]
+      },
+      {
+        "header": "Stage 5: Storage & Databases",
+        "summary": "Choosing the right data store is one of the highest-leverage cloud skills.",
+        "topics": [
+          {
+            "title": "Object Storage (S3)",
+            "badge": "Recommended",
+            "description": "Store files, backups and static assets in object storage with lifecycle policies, versioning and access controls."
+          },
+          {
+            "title": "Block & File Storage",
+            "badge": "Optional",
+            "description": "Attach persistent block volumes to VMs and share file systems across instances."
+          },
+          {
+            "title": "Managed Databases",
+            "badge": "Recommended",
+            "description": "Run relational (RDS/Aurora) and NoSQL (DynamoDB) databases as managed services with backups and replication."
+          }
+        ]
+      },
+      {
+        "header": "Stage 6: Identity & Security",
+        "summary": "Access control is the number-one source of cloud breaches. Get it right.",
+        "topics": [
+          {
+            "title": "IAM & Least Privilege",
+            "badge": "Recommended",
+            "description": "Design users, roles, groups and policies following least privilege. IAM is the foundation of cloud security."
+          },
+          {
+            "title": "Encryption & KMS",
+            "badge": "Recommended",
+            "description": "Manage encryption keys with KMS and enforce encryption for storage, databases and network traffic."
+          },
+          {
+            "title": "Security Services",
+            "badge": "Optional",
+            "description": "Layer on managed security services for threat detection, web application firewalls and compliance monitoring."
+          }
+        ]
+      },
+      {
+        "header": "Stage 7: Infrastructure as Code",
+        "summary": "Never click through consoles for production. Codify everything.",
+        "topics": [
+          {
+            "title": "Terraform",
+            "badge": "Recommended",
+            "description": "The de-facto standard for provisioning cloud infrastructure declaratively across any provider."
+          },
+          {
+            "title": "CloudFormation / Bicep / ARM",
+            "badge": "Alternative",
+            "description": "Provider-specific tools (CloudFormation for AWS, Bicep/ARM for Azure) that integrate tightly with one cloud."
+          }
+        ]
+      },
+      {
+        "header": "Stage 8: Monitoring, Cost & Architecture",
+        "summary": "Running the cloud well means watching health, spend and design quality.",
+        "topics": [
+          {
+            "title": "Monitoring & Logging",
+            "badge": "Recommended",
+            "description": "Track metrics, logs and alarms with native tooling (CloudWatch, Azure Monitor) or third-party observability platforms."
+          },
+          {
+            "title": "Cost Optimisation",
+            "badge": "Recommended",
+            "description": "Right-size resources, use reserved/spot capacity, set budgets and tag resources to control cloud spend."
+          },
+          {
+            "title": "Well-Architected Framework",
+            "badge": "Optional",
+            "description": "Apply the pillars of operational excellence, security, reliability, performance and cost to design robust systems."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What does a cloud engineer do?",
+        "answer": "A cloud engineer designs, builds and maintains infrastructure on cloud platforms like AWS, Azure or GCP. This includes compute, networking, storage, security and automating provisioning with Infrastructure as Code."
+      },
+      {
+        "question": "Which cloud certification should I get first?",
+        "answer": "For AWS, start with the AWS Certified Cloud Practitioner or Solutions Architect Associate. For Azure, the AZ-900 fundamentals; for GCP, the Associate Cloud Engineer. Certifications validate your knowledge and help with hiring."
+      },
+      {
+        "question": "Is cloud engineering the same as DevOps?",
+        "answer": "They overlap heavily but differ in focus. Cloud engineers specialise in designing and running cloud infrastructure, while DevOps engineers focus on the software delivery pipeline and culture. Many roles blend both."
+      },
+      {
+        "question": "Do I need to learn all three clouds?",
+        "answer": "No. Master one provider (AWS is the most in-demand) deeply. The underlying concepts, compute, networking, storage, IAM, transfer directly, so a second cloud is much faster to pick up."
+      }
+    ]
+  },
+  "sre": {
+    "orderMatters": "A roadmap is only worth following for its sequence. Any list can tell you that Kubernetes exists; the useful part is knowing what has to come before it and why.",
+    "stages": [
+      {
+        "header": "Stage 1: Engineering Foundations",
+        "summary": "SRE sits at the intersection of software engineering and operations. You need both.",
+        "topics": [
+          {
+            "title": "What is SRE?",
+            "badge": "Recommended",
+            "description": "Understand Google’s SRE philosophy: applying software engineering to operations, treating reliability as a feature, and balancing velocity with stability."
+          },
+          {
+            "title": "Linux & Networking",
+            "badge": "Recommended",
+            "description": "Strong Linux internals, networking and debugging skills are prerequisites for diagnosing production issues under pressure."
+          },
+          {
+            "title": "Coding (Python / Go)",
+            "badge": "Recommended",
+            "description": "SREs write real software to eliminate toil, build tooling and integrate systems. Python and Go are the most common languages."
+          }
+        ]
+      },
+      {
+        "header": "Stage 2: SLIs, SLOs & Error Budgets",
+        "summary": "The core language of SRE. Everything else hangs off these definitions.",
+        "topics": [
+          {
+            "title": "Service Level Indicators (SLIs)",
+            "badge": "Recommended",
+            "description": "Define precise metrics, latency, availability, error rate, throughput, that reflect the user experience of your service."
+          },
+          {
+            "title": "Service Level Objectives (SLOs)",
+            "badge": "Recommended",
+            "description": "Set realistic reliability targets (e.g. 99.9% availability) that balance user happiness against engineering cost."
+          },
+          {
+            "title": "Error Budgets",
+            "badge": "Recommended",
+            "description": "Use the gap between 100% and your SLO as a budget for change. When it is spent, you slow down releases and prioritise reliability."
+          },
+          {
+            "title": "SLAs",
+            "badge": "Optional",
+            "description": "Understand how SLAs (with financial penalties) relate to internal SLOs and why SLOs should always be stricter."
+          }
+        ]
+      },
+      {
+        "header": "Stage 3: Monitoring & Observability",
+        "summary": "You cannot keep a system reliable if you cannot see inside it.",
+        "topics": [
+          {
+            "title": "Metrics (Prometheus)",
+            "badge": "Recommended",
+            "description": "Instrument services with metrics, build RED/USE dashboards in Grafana and alert on symptoms, not causes."
+          },
+          {
+            "title": "Logging",
+            "badge": "Recommended",
+            "description": "Centralise structured logs (ELK, Loki) to reconstruct what happened during an incident."
+          },
+          {
+            "title": "Distributed Tracing",
+            "badge": "Recommended",
+            "description": "Use OpenTelemetry and Jaeger to trace requests through microservices and locate latency and failures."
+          },
+          {
+            "title": "Alerting on SLOs",
+            "badge": "Recommended",
+            "description": "Design alerts based on error budget burn rate to catch real problems without paging engineers for noise."
+          }
+        ]
+      },
+      {
+        "header": "Stage 4: Incident Response & On-Call",
+        "summary": "How you respond to failure defines your reliability just as much as how you prevent it.",
+        "topics": [
+          {
+            "title": "On-Call Practices",
+            "badge": "Recommended",
+            "description": "Design humane on-call rotations, escalation policies and paging tools (PagerDuty/Opsgenie) that avoid burnout."
+          },
+          {
+            "title": "Incident Command",
+            "badge": "Recommended",
+            "description": "Adopt a structured incident command process with clear roles (commander, comms, ops) to resolve outages quickly."
+          },
+          {
+            "title": "Blameless Postmortems",
+            "badge": "Recommended",
+            "description": "Write blameless postmortems that focus on systemic causes and action items so the same failure never recurs."
+          }
+        ]
+      },
+      {
+        "header": "Stage 5: Toil Reduction & Automation",
+        "summary": "SRE caps manual work and engineers it away.",
+        "topics": [
+          {
+            "title": "Identifying Toil",
+            "badge": "Recommended",
+            "description": "Measure and cap toil (manual, repetitive, automatable work) so engineers spend time on lasting improvements."
+          },
+          {
+            "title": "Automation & Tooling",
+            "badge": "Recommended",
+            "description": "Build scripts, operators and self-service platforms to automate deployments, remediation and routine operations."
+          },
+          {
+            "title": "IaC & Config Management",
+            "badge": "Recommended",
+            "description": "Use Terraform and Ansible so infrastructure is versioned, reviewable and rebuildable from code."
+          }
+        ]
+      },
+      {
+        "header": "Stage 6: Reliability & Capacity",
+        "summary": "Design systems that degrade gracefully and scale predictably.",
+        "topics": [
+          {
+            "title": "Capacity Planning",
+            "badge": "Recommended",
+            "description": "Forecast demand, load-test systems and provision headroom so you scale before you break."
+          },
+          {
+            "title": "Resilience Patterns",
+            "badge": "Recommended",
+            "description": "Apply redundancy, retries with backoff, circuit breakers, bulkheads and graceful degradation to survive partial failures."
+          },
+          {
+            "title": "Chaos Engineering",
+            "badge": "Optional",
+            "description": "Run controlled experiments (Chaos Monkey, Litmus) to prove your systems tolerate failures before they happen for real."
+          }
+        ]
+      },
+      {
+        "header": "Stage 7: Release Engineering",
+        "summary": "Ship changes safely and roll them back instantly when things go wrong.",
+        "topics": [
+          {
+            "title": "CI/CD & GitOps",
+            "badge": "Recommended",
+            "description": "Automate testing and deployment with pipelines and GitOps so every change is repeatable and traceable."
+          },
+          {
+            "title": "Progressive Delivery",
+            "badge": "Recommended",
+            "description": "Use canary, blue-green and rolling deployments with feature flags to release gradually and limit blast radius."
+          },
+          {
+            "title": "Rollbacks & Safeguards",
+            "badge": "Recommended",
+            "description": "Ensure every deploy is reversible with fast, automated rollbacks and health-based automatic aborts."
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What is the difference between SRE and DevOps?",
+        "answer": "DevOps is a culture and set of practices for faster, safer software delivery. SRE is a specific implementation of those principles, created at Google, that treats reliability as an engineering discipline using SLOs, error budgets and toil reduction."
+      },
+      {
+        "question": "What are SLIs, SLOs and error budgets?",
+        "answer": "An SLI is a metric (e.g. request latency). An SLO is the target for that metric (e.g. 99.9% under 300ms). An error budget is the allowed amount of unreliability (100% minus the SLO), which teams spend on shipping new features."
+      },
+      {
+        "question": "Do I need to be a strong programmer to be an SRE?",
+        "answer": "Yes. SRE is a software engineering role applied to operations. You should be comfortable building tools and automation in a language like Python or Go, not just running commands."
+      },
+      {
+        "question": "How long does it take to become an SRE?",
+        "answer": "SRE is typically not an entry-level role. Expect 5 to 7 months of focused study if you already have solid Linux, coding and cloud experience, and longer if you are starting from scratch."
+      }
+    ]
+  }
+}

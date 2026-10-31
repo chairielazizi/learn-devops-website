@@ -49,17 +49,17 @@ export default function RoadmapsIndexPage() {
 
                 <div className="pt-2 space-y-2">
                   <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Key Milestones:</div>
-                  {r.steps.slice(0, 3).map((s, idx) => (
+                  {r.details.stages.slice(0, 3).map((s, idx) => (
                     <div key={idx} className="flex items-center space-x-2 text-xs text-gray-300">
                       <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0" />
-                      <span className="truncate">{s.title}</span>
+                      <span className="truncate">{s.header}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
-                <span className="text-xs text-gray-400">{r.steps.length} Milestones</span>
+                <span className="text-xs text-gray-400">{r.details.stages.length} Milestones</span>
                 <Link
                   href={`/roadmaps/${r.slug}`}
                   className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-gradient-orange text-white text-xs font-bold shadow-lg shadow-orange-500/20 hover:scale-[1.02] transition-all"
