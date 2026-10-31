@@ -1,0 +1,2012 @@
+{
+  "docker": [
+    {
+      "id": "images",
+      "category": "Images",
+      "commands": [
+        {
+          "cmd": "docker pull <image>",
+          "desc": "Download an image from a registry (Docker Hub by default)",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker build -t <name>:<tag> <path>",
+          "desc": "Build an image from a Dockerfile in the specified path",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker images",
+          "desc": "List all locally available images",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker rmi <image>",
+          "desc": "Remove one or more images from local storage",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker push <image>",
+          "desc": "Upload an image to a registry",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker tag <source> <target>",
+          "desc": "Create a new tag that refers to an existing image",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker image prune",
+          "desc": "Remove unused/dangling images to free up disk space",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker inspect <image>",
+          "desc": "Return low-level JSON information about an image",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker history <image>",
+          "desc": "Show the build history and layers of an image",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker save -o <file>.tar <image>",
+          "desc": "Export an image to a tar archive for offline transfer",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker load -i <file>.tar",
+          "desc": "Import an image from a tar archive",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "containers",
+      "category": "Containers",
+      "commands": [
+        {
+          "cmd": "docker run <image>",
+          "desc": "Create and start a new container from an image",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker ps",
+          "desc": "List running containers",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker stop <container>",
+          "desc": "Gracefully stop a running container (SIGTERM → SIGKILL)",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker start <container>",
+          "desc": "Start one or more stopped containers",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker rm <container>",
+          "desc": "Remove one or more stopped containers",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker exec -it <container> <cmd>",
+          "desc": "Run a command inside a running container interactively",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker logs <container>",
+          "desc": "Fetch the logs output from a container",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker inspect <container>",
+          "desc": "Return detailed JSON metadata about a container",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker stats",
+          "desc": "Display a live stream of resource usage for containers",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker cp <src> <dest>",
+          "desc": "Copy files between a container and the local filesystem",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker commit <container> <image>",
+          "desc": "Create a new image from a container's current state",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "volumes",
+      "category": "Volumes",
+      "commands": [
+        {
+          "cmd": "docker volume create <name>",
+          "desc": "Create a named volume managed by Docker",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker volume ls",
+          "desc": "List all Docker volumes on the host",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker volume rm <name>",
+          "desc": "Remove one or more volumes",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker volume inspect <name>",
+          "desc": "Show detailed info about a volume including its mount point",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker volume prune",
+          "desc": "Remove all unused local volumes",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker run -v <vol>:<path> <image>",
+          "desc": "Mount a named volume into a container at a specific path",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "networks",
+      "category": "Networks",
+      "commands": [
+        {
+          "cmd": "docker network create <name>",
+          "desc": "Create a new Docker network",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker network ls",
+          "desc": "List all Docker networks",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker network connect <net> <container>",
+          "desc": "Connect a running container to a network",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker network disconnect <net> <container>",
+          "desc": "Disconnect a container from a network",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker network inspect <name>",
+          "desc": "Show detailed info about a network including connected containers",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "docker network rm <name>",
+          "desc": "Remove one or more networks",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker network prune",
+          "desc": "Remove all unused networks",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "compose",
+      "category": "Compose",
+      "commands": [
+        {
+          "cmd": "docker compose up",
+          "desc": "Create and start all services defined in docker-compose.yml",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker compose down",
+          "desc": "Stop and remove containers and networks",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker compose ps",
+          "desc": "List containers for the current compose project",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker compose logs",
+          "desc": "View log output from services",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker compose exec <service> <cmd>",
+          "desc": "Execute a command inside a running service container",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker compose build",
+          "desc": "Build or rebuild service images without starting them",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker compose config",
+          "desc": "Validate and print the resolved compose configuration",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "registry",
+      "category": "Registry",
+      "commands": [
+        {
+          "cmd": "docker login <registry>",
+          "desc": "Authenticate to a Docker registry",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker logout <registry>",
+          "desc": "Log out from a Docker registry",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker search <term>",
+          "desc": "Search Docker Hub for images",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "system",
+      "category": "System",
+      "commands": [
+        {
+          "cmd": "docker system df",
+          "desc": "Show Docker disk usage - images, containers, volumes, build cache",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker system prune",
+          "desc": "Remove stopped containers, unused networks, dangling images and build cache",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker info",
+          "desc": "Display system-wide information about the Docker daemon",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker version",
+          "desc": "Show Docker client and server version details",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "docker events",
+          "desc": "Stream real-time events from the Docker daemon",
+          "difficulty": "advanced"
+        }
+      ]
+    }
+  ],
+  "kubernetes": [
+    {
+      "id": "cluster-info",
+      "category": "Cluster Info",
+      "commands": [
+        {
+          "cmd": "kubectl version --client",
+          "desc": "Show the installed kubectl client version without querying the cluster",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl cluster-info",
+          "desc": "Display the cluster control plane and core service endpoints",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get nodes",
+          "desc": "List all nodes and their readiness status in the current cluster",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get nodes -o wide",
+          "desc": "List nodes with extra details like internal IPs, OS image, and container runtime",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe node <name>",
+          "desc": "Show detailed capacity, conditions, labels, taints, and pod allocation for a node",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl top nodes",
+          "desc": "View live CPU and memory usage for nodes from Metrics Server",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl config view",
+          "desc": "Print the merged kubeconfig with clusters, users, and contexts",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl config current-context",
+          "desc": "Show the currently selected kubeconfig context",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl config get-contexts",
+          "desc": "List all available kubeconfig contexts and highlight the active one",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl config use-context <ctx>",
+          "desc": "Switch kubectl to a different cluster and user context",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "pods",
+      "category": "Pods",
+      "commands": [
+        {
+          "cmd": "kubectl get pods",
+          "desc": "List pods in the current namespace with basic readiness and status info",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get pods -A",
+          "desc": "List pods across every namespace in the cluster",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get pods -n <ns>",
+          "desc": "List pods only in a specific namespace",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get pods -o wide",
+          "desc": "Show pods with extra details like node placement and pod IPs",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe pod <name>",
+          "desc": "Inspect pod metadata, container states, events, probes, and mounts",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl logs <pod>",
+          "desc": "Fetch logs from the main container in a pod",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl logs <pod> -f",
+          "desc": "Stream logs from a pod in real time",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl logs <pod> --previous",
+          "desc": "View logs from the previously terminated container instance in a restarting pod",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl exec -it <pod> -- /bin/sh",
+          "desc": "Open an interactive shell inside a pod using the default container",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl exec -it <pod> -c <container> -- bash",
+          "desc": "Open a shell inside a specific container in a multi-container pod",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl delete pod <name>",
+          "desc": "Delete a pod and let its controller recreate it if managed",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl run nginx --image=nginx",
+          "desc": "Create a quick standalone pod directly from an image",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl port-forward pod/<name> 8080:80",
+          "desc": "Forward a local port to a pod port for direct debugging access",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "deployments",
+      "category": "Deployments",
+      "commands": [
+        {
+          "cmd": "kubectl get deployments",
+          "desc": "List deployments in the current namespace with desired and ready replica counts",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe deployment <name>",
+          "desc": "Inspect a deployment strategy, pod template, rollout conditions, and events",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl create deployment nginx --image=nginx",
+          "desc": "Create a deployment from a single image directly from the CLI",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl scale deployment <name> --replicas=3",
+          "desc": "Change the number of desired pod replicas for a deployment",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl set image deployment/<name> <container>=<image>:tag",
+          "desc": "Update a container image and trigger a rolling rollout",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl rollout status deployment/<name>",
+          "desc": "Watch the rollout until the deployment successfully completes or fails",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl rollout history deployment/<name>",
+          "desc": "Show previous rollout revisions for a deployment",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl rollout undo deployment/<name>",
+          "desc": "Roll back the deployment to the previous revision",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl rollout undo deployment/<name> --to-revision=2",
+          "desc": "Roll back the deployment to a specific stored revision",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "kubectl delete deployment <name>",
+          "desc": "Delete a deployment and its managed ReplicaSets and pods",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl apply -f deployment.yaml",
+          "desc": "Create or update a deployment declaratively from a manifest file",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl edit deployment <name>",
+          "desc": "Open the live deployment manifest in your editor for an immediate change",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "category": "Services &amp; Networking",
+      "commands": [
+        {
+          "cmd": "kubectl get svc",
+          "desc": "List services in the current namespace with type and cluster IP",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get svc -A",
+          "desc": "List services across all namespaces",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe svc <name>",
+          "desc": "Inspect service ports, selectors, endpoints, and load balancer details",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl expose deployment <name> --port=80 --type=ClusterIP",
+          "desc": "Expose a deployment internally within the cluster using a ClusterIP service",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl expose deployment <name> --port=80 --type=LoadBalancer",
+          "desc": "Expose a deployment externally through a cloud load balancer",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl expose deployment <name> --port=80 --type=NodePort",
+          "desc": "Expose a deployment on a static port on each cluster node",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get ingress",
+          "desc": "List ingress resources and their configured hosts and addresses",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe ingress <name>",
+          "desc": "Inspect ingress rules, TLS configuration, and backend service routing",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get endpoints",
+          "desc": "Show which pod IPs are currently backing each service",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl port-forward svc/<name> 8080:80",
+          "desc": "Forward a local port to a service for testing without external exposure",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl delete svc <name>",
+          "desc": "Delete a service resource by name",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "namespaces",
+      "category": "Namespaces",
+      "commands": [
+        {
+          "cmd": "kubectl get namespaces",
+          "desc": "List all namespaces in the cluster",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl create namespace <name>",
+          "desc": "Create a new namespace for an application, team, or environment",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl delete namespace <name>",
+          "desc": "Delete a namespace and everything contained inside it",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get all -n <namespace>",
+          "desc": "List the main workload and service resources in a target namespace",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl config set-context --current --namespace=<name>",
+          "desc": "Set the default namespace for the current context to reduce repeated -n flags",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get pods --all-namespaces",
+          "desc": "List pods across every namespace using the long-form namespace flag",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get quota -n <namespace>",
+          "desc": "View resource quota usage and hard limits for a namespace",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl describe namespace <name>",
+          "desc": "Inspect a namespace including labels, annotations, quotas, and limit ranges",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "config",
+      "category": "ConfigMaps &amp; Secrets",
+      "commands": [
+        {
+          "cmd": "kubectl get configmaps",
+          "desc": "List ConfigMaps in the current namespace",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe configmap <name>",
+          "desc": "Show the keys and metadata stored in a ConfigMap",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl create configmap my-config --from-literal=key=value",
+          "desc": "Create a ConfigMap from one or more literal key-value pairs",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl create configmap my-config --from-file=config.env",
+          "desc": "Create a ConfigMap from a local file such as an env file or config artifact",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get secrets",
+          "desc": "List secrets in the current namespace",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe secret <name>",
+          "desc": "Inspect secret metadata and available keys without printing decoded values",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl create secret generic my-secret --from-literal=password=abc",
+          "desc": "Create a generic secret from literal key-value pairs",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl create secret docker-registry regcred --docker-server=... --docker-username=... --docker-password=...",
+          "desc": "Create an image pull secret for a private container registry",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "kubectl get secret <name> -o jsonpath='{.data.key}' | base64 -d",
+          "desc": "Decode a specific secret key value from base64 for troubleshooting",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "category": "Storage",
+      "commands": [
+        {
+          "cmd": "kubectl get pv",
+          "desc": "List cluster-wide persistent volumes and their binding state",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get pvc",
+          "desc": "List persistent volume claims in the current namespace",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl get pvc -n <namespace>",
+          "desc": "List persistent volume claims in a specific namespace",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe pv <name>",
+          "desc": "Inspect a persistent volume including reclaim policy, capacity, and claim binding",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl describe pvc <name>",
+          "desc": "Inspect a claim including requested size, access modes, and mounted workloads",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl delete pvc <name>",
+          "desc": "Delete a persistent volume claim and release its bound volume according to policy",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get storageclass",
+          "desc": "List available storage classes and identify the default provisioner",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl describe storageclass <name>",
+          "desc": "Inspect provisioner parameters, reclaim policy, and binding mode for a storage class",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "troubleshoot",
+      "category": "Troubleshooting",
+      "commands": [
+        {
+          "cmd": "kubectl get events --sort-by=.metadata.creationTimestamp",
+          "desc": "List cluster events in chronological order to surface the newest failures last",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get events -n <ns> --field-selector=reason=Failed",
+          "desc": "Filter namespace events down to failure-related entries only",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl describe pod <name> | grep -A 10 Events",
+          "desc": "Extract the events section from a pod description for quick CLI triage",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "kubectl logs <pod> --since=1h",
+          "desc": "Show logs generated within the last hour to narrow noisy output",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl logs <pod> --tail=100",
+          "desc": "Show only the most recent log lines from a pod",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kubectl top pods",
+          "desc": "View CPU and memory usage for pods in the current namespace",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl top pods -n <namespace>",
+          "desc": "View CPU and memory usage for pods in a specific namespace",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get pods --field-selector=status.phase=Pending",
+          "desc": "List only pods that are still waiting to schedule or start",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl get pods --field-selector=status.phase=Failed",
+          "desc": "List pods whose last phase is Failed for cleanup or investigation",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kubectl drain <node> --ignore-daemonsets",
+          "desc": "Safely evict workloads from a node before maintenance or termination",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "kubectl cordon <node>",
+          "desc": "Mark a node unschedulable so new pods are not placed on it",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "kubectl uncordon <node>",
+          "desc": "Mark a node schedulable again after maintenance is complete",
+          "difficulty": "advanced"
+        }
+      ]
+    }
+  ],
+  "terraform": [
+    {
+      "id": "core-workflow",
+      "category": "Core Workflow",
+      "commands": [
+        {
+          "cmd": "terraform init",
+          "desc": "Initialize the working directory, download providers, and configure the backend.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform init -upgrade",
+          "desc": "Reinitialize the directory and upgrade providers and modules to newer allowed versions.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform init -backend-config=backend.hcl",
+          "desc": "Initialize Terraform using backend settings from an external configuration file.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform validate",
+          "desc": "Check whether the current Terraform configuration is syntactically valid and internally consistent.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform fmt",
+          "desc": "Format Terraform files in the current directory to the canonical style.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform fmt -recursive",
+          "desc": "Format all Terraform files recursively across modules and environment folders.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform plan",
+          "desc": "Create an execution plan showing what Terraform will add, change, or destroy.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform plan -out=tfplan",
+          "desc": "Save the generated plan to a file for later review or controlled apply.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform apply",
+          "desc": "Apply the current execution plan and reconcile infrastructure to the configuration.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform apply tfplan",
+          "desc": "Apply a previously saved plan file to ensure exactly reviewed changes are executed.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform apply -auto-approve",
+          "desc": "Apply changes without an interactive approval prompt.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform destroy",
+          "desc": "Generate and execute a plan that destroys all managed resources in the current workspace.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform destroy -auto-approve",
+          "desc": "Destroy all managed resources without asking for confirmation.",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "category": "State Management",
+      "commands": [
+        {
+          "cmd": "terraform state list",
+          "desc": "List all resources currently tracked in the Terraform state file.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform state show <resource>",
+          "desc": "Display the attributes of a single resource as stored in state.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform state mv <source> <dest>",
+          "desc": "Move a resource address in state without recreating the underlying infrastructure.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform state rm <resource>",
+          "desc": "Remove a resource from state without destroying the real infrastructure object.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform state pull",
+          "desc": "Download and print the latest remote state to standard output.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform state push",
+          "desc": "Upload a local state file to the configured backend.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform state replace-provider <old> <new>",
+          "desc": "Rewrite provider references in state when migrating resources to a new provider source.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform import <resource_type.name> <id>",
+          "desc": "Import an existing infrastructure object into Terraform state under a declared resource.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform refresh",
+          "desc": "Update state with the real infrastructure data from providers without changing configuration.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform force-unlock <lock-id>",
+          "desc": "Manually remove a state lock when a previous run exited unexpectedly.",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "workspaces",
+      "category": "Workspace",
+      "commands": [
+        {
+          "cmd": "terraform workspace list",
+          "desc": "List all available workspaces and mark the currently selected one.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform workspace new <name>",
+          "desc": "Create a new workspace with isolated state for a new environment.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform workspace select <name>",
+          "desc": "Switch the active workspace for future plan and apply operations.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform workspace show",
+          "desc": "Print the name of the currently selected workspace.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform workspace delete <name>",
+          "desc": "Delete an unused workspace after its state is no longer needed.",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "category": "Variables &amp; Outputs",
+      "commands": [
+        {
+          "cmd": "terraform plan -var=\"key=value\"",
+          "desc": "Pass a single input variable inline while generating a plan.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform plan -var-file=prod.tfvars",
+          "desc": "Load input variables from a tfvars file for a specific environment.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform apply -var=\"environment=production\"",
+          "desc": "Apply infrastructure changes using an inline variable override.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform output",
+          "desc": "Show all root module outputs after an apply completes.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform output <name>",
+          "desc": "Print a single named output value from the current state.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform output -json",
+          "desc": "Render all outputs as JSON for scripts, pipelines or tooling integrations.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform output -raw <name>",
+          "desc": "Print a single output as raw text without quotes or JSON formatting.",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "modules",
+      "category": "Modules",
+      "commands": [
+        {
+          "cmd": "terraform get",
+          "desc": "Download child modules referenced by the current configuration.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform get -update",
+          "desc": "Re-download child modules and update them to newer allowed versions.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform init",
+          "desc": "Initialize the working directory and download required providers and modules.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform plan -target=module.<name>",
+          "desc": "Preview changes for a specific module without planning the whole stack.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform apply -target=module.<name>",
+          "desc": "Apply changes only for a selected module when performing controlled partial operations.",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "targeting",
+      "category": "Targeting &amp; Partial Apply",
+      "commands": [
+        {
+          "cmd": "terraform plan -target=aws_instance.web",
+          "desc": "Create a plan limited to a specific resource address.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform apply -target=aws_instance.web",
+          "desc": "Apply only the changes needed for a single targeted resource.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform destroy -target=aws_instance.web",
+          "desc": "Destroy one targeted resource without tearing down the entire workspace.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform apply -replace=aws_instance.web",
+          "desc": "Force Terraform to replace a specific resource during apply.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform plan -refresh=false",
+          "desc": "Generate a plan without refreshing remote object state first.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform apply -parallelism=20",
+          "desc": "Control how many resource operations Terraform performs concurrently during apply.",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "debugging",
+      "category": "Debugging &amp; Logging",
+      "commands": [
+        {
+          "cmd": "TF_LOG=DEBUG terraform plan",
+          "desc": "Run a plan with debug logging enabled for provider and backend troubleshooting.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "TF_LOG=TRACE terraform apply",
+          "desc": "Run an apply with full trace logging to diagnose complex provider behavior.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "TF_LOG_PATH=terraform.log terraform plan",
+          "desc": "Write Terraform debug logs to a file instead of flooding standard output.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform show",
+          "desc": "Display the current state or a human-readable representation of Terraform data.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform show tfplan",
+          "desc": "Render the contents of a saved plan file for review before apply.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform show -json tfplan | jq .",
+          "desc": "Convert a saved plan to JSON for machine analysis, policy checks or drift tooling.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform graph",
+          "desc": "Generate a dependency graph of resources and modules in DOT format.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform graph | dot -Tpng > graph.png",
+          "desc": "Render the Terraform dependency graph to a PNG for architecture review.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform version",
+          "desc": "Show the installed Terraform CLI version and platform details.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform providers",
+          "desc": "List the providers required by the current configuration and modules.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform providers lock",
+          "desc": "Generate or update dependency lock entries for provider checksums across platforms.",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "cloud",
+      "category": "Cloud &amp; Registry",
+      "commands": [
+        {
+          "cmd": "terraform login",
+          "desc": "Authenticate the Terraform CLI with Terraform Cloud or HCP Terraform.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform logout",
+          "desc": "Remove locally stored Terraform Cloud credentials for the current hostname.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform whoami",
+          "desc": "Show the Terraform Cloud user associated with the current authenticated token.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "terraform workspace list",
+          "desc": "List remote workspaces when using a Terraform Cloud or remote backend.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "terraform force-unlock",
+          "desc": "Release a stuck remote state lock after verifying no run is still active.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform taint <resource>",
+          "desc": "Mark a resource as tainted so Terraform recreates it on the next apply.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "terraform untaint <resource>",
+          "desc": "Remove the tainted marker from a resource so Terraform stops forcing replacement.",
+          "difficulty": "advanced"
+        }
+      ]
+    }
+  ],
+  "git": [
+    {
+      "id": "setup",
+      "category": "Setup &amp; Config",
+      "commands": [
+        {
+          "cmd": "git config --global user.name \"<name>\"",
+          "desc": "Set the author name used on your commits",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git config --global user.email \"<email>\"",
+          "desc": "Set the author email used on your commits",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git config --list",
+          "desc": "Show all current Git configuration values",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git init",
+          "desc": "Create a new empty Git repository in the current directory",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git clone <url>",
+          "desc": "Copy a remote repository to your machine",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "basics",
+      "category": "Staging &amp; Committing",
+      "commands": [
+        {
+          "cmd": "git status",
+          "desc": "Show the working tree status - staged, unstaged and untracked files",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git add <file>",
+          "desc": "Stage changes for the next commit",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git commit -m \"<message>\"",
+          "desc": "Record staged changes to the repository history",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git diff",
+          "desc": "Show changes between working tree and the index",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git rm <file>",
+          "desc": "Remove a file from the working tree and stage the deletion",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git mv <src> <dest>",
+          "desc": "Move or rename a file and stage the change",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "branching",
+      "category": "Branching",
+      "commands": [
+        {
+          "cmd": "git branch",
+          "desc": "List all local branches (current marked with *)",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git switch <branch>",
+          "desc": "Switch to an existing branch",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git switch -c <branch>",
+          "desc": "Create a new branch and switch to it",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git branch -d <branch>",
+          "desc": "Delete a branch that has been merged",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git branch -m <new-name>",
+          "desc": "Rename the current branch",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "merge-rebase",
+      "category": "Merging &amp; Rebasing",
+      "commands": [
+        {
+          "cmd": "git merge <branch>",
+          "desc": "Merge another branch into the current branch",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git rebase <branch>",
+          "desc": "Reapply your commits on top of another branch for a linear history",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "git rebase -i HEAD~<n>",
+          "desc": "Interactively rewrite the last n commits",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "git cherry-pick <commit>",
+          "desc": "Apply a specific commit from another branch",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "remote",
+      "category": "Remotes &amp; Syncing",
+      "commands": [
+        {
+          "cmd": "git remote -v",
+          "desc": "List configured remote repositories and their URLs",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git remote add <name> <url>",
+          "desc": "Add a new remote repository",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git fetch <remote>",
+          "desc": "Download objects and refs without merging",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git pull",
+          "desc": "Fetch from the remote and merge into the current branch",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git push",
+          "desc": "Upload local commits to the remote",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "undo",
+      "category": "Undoing Changes",
+      "commands": [
+        {
+          "cmd": "git restore <file>",
+          "desc": "Discard uncommitted changes in a file",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git reset <file>",
+          "desc": "Unstage a file while keeping its changes",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git reset --soft HEAD~1",
+          "desc": "Undo the last commit but keep changes staged",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git reset --hard <commit>",
+          "desc": "Reset the branch and working tree to a commit, discarding changes",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "git revert <commit>",
+          "desc": "Create a new commit that undoes a previous commit",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git reflog",
+          "desc": "Show a log of where HEAD has been - your safety net",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "stash",
+      "category": "Stashing",
+      "commands": [
+        {
+          "cmd": "git stash",
+          "desc": "Save uncommitted changes and revert to a clean tree",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git stash list",
+          "desc": "List all stashed change sets",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git stash pop",
+          "desc": "Apply the most recent stash and remove it from the list",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git stash apply",
+          "desc": "Apply a stash but keep it in the stash list",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git stash drop",
+          "desc": "Delete a specific stash",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "inspect",
+      "category": "History &amp; Inspection",
+      "commands": [
+        {
+          "cmd": "git log",
+          "desc": "Show the commit history",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git show <commit>",
+          "desc": "Show the details and diff of a specific commit",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git blame <file>",
+          "desc": "Show who last modified each line of a file",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git diff <a>..<b>",
+          "desc": "Compare two commits or branches",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git bisect start",
+          "desc": "Binary-search commit history to find a bug-introducing commit",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "tags",
+      "category": "Tags &amp; Releases",
+      "commands": [
+        {
+          "cmd": "git tag",
+          "desc": "List all tags",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "git tag -a <name> -m \"<msg>\"",
+          "desc": "Create an annotated tag for a release",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git push <remote> <tag>",
+          "desc": "Push a tag to the remote",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "git tag -d <name>",
+          "desc": "Delete a local tag",
+          "difficulty": "intermediate"
+        }
+      ]
+    }
+  ],
+  "linux": [
+    {
+      "id": "filesystem-navigation",
+      "category": "File System &amp; Navigation",
+      "commands": [
+        {
+          "cmd": "pwd",
+          "desc": "Print the full path of your current working directory.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "ls -lah",
+          "desc": "List files with permissions, owners, sizes, and hidden entries in a readable format.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "cd /var/log",
+          "desc": "Change into another directory by absolute or relative path.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "find . -type f -name \"*.log\"",
+          "desc": "Search recursively for files matching a name pattern.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "find . -type f -mtime -1",
+          "desc": "Locate files modified within the last day.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "locate sshd_config",
+          "desc": "Query the locate database for files by name almost instantly.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "tree -L 2",
+          "desc": "Display directory contents as a tree up to a chosen depth.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "du -sh .",
+          "desc": "Show the total size of the current directory in human-readable form.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "du -sh * | sort -h",
+          "desc": "Rank files and folders by size to find what is consuming space.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "df -h",
+          "desc": "Show mounted filesystem capacity, usage, and free space.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "realpath ./script.sh",
+          "desc": "Resolve a relative path into its canonical absolute path.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "stat /etc/passwd",
+          "desc": "Inspect detailed file metadata like size, inode, mode, and timestamps.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "basename /var/log/nginx/access.log",
+          "desc": "Extract the filename portion from a full path.",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "file-operations",
+      "category": "File Operations",
+      "commands": [
+        {
+          "cmd": "cp -av src/ backup/",
+          "desc": "Copy files or directories while preserving attributes and showing progress.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "cp -r templates/ releases/templates/",
+          "desc": "Recursively copy a directory and everything inside it.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "mv old-name.txt new-name.txt",
+          "desc": "Rename a file or move it to another directory.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "rm -rf build/",
+          "desc": "Force-remove files or directories recursively.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "mkdir -p logs/archive/2024/07",
+          "desc": "Create nested directories without failing if parents already exist.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "touch deploy.log",
+          "desc": "Create an empty file or update its modification timestamp.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "touch -d \"2024-01-01 00:00\" audit.log",
+          "desc": "Set a file timestamp manually for testing or restore workflows.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "ln -s /opt/app/current /srv/www/app",
+          "desc": "Create a symbolic link that points to another file or directory.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "ln existing.txt hardlink.txt",
+          "desc": "Create a hard link that references the same inode as the original file.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "chmod 644 app.conf",
+          "desc": "Set read-write for owner and read-only for group and others.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "chmod u+x deploy.sh",
+          "desc": "Add execute permission for the file owner using symbolic mode.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "chmod -R 750 scripts/",
+          "desc": "Recursively apply restrictive directory and file permissions.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "chown -R deploy:devops /srv/app",
+          "desc": "Change file ownership recursively to a user and group.",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "text-processing",
+      "category": "Text Processing",
+      "commands": [
+        {
+          "cmd": "cat /etc/os-release",
+          "desc": "Print a file to standard output exactly as stored.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "grep -n \"ERROR\" app.log",
+          "desc": "Search for matching text and show the line numbers for each hit.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "grep -Rin \"DATABASE_URL\" .",
+          "desc": "Search recursively through a project for a string or pattern.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "awk -F: '{print $1, $7}' /etc/passwd",
+          "desc": "Split input into fields and print selected columns or computed values.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "sed -n '1,20p' file.txt",
+          "desc": "Print only a selected range of lines from a file.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "sed 's/http:/https:/g' urls.txt",
+          "desc": "Replace matching text in a stream using sed substitution syntax.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "cut -d: -f1 /etc/passwd",
+          "desc": "Extract specific delimiter-separated fields from each input line.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "sort -u hosts.txt",
+          "desc": "Sort lines alphabetically and remove duplicates in one step.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "uniq -c access.log",
+          "desc": "Collapse adjacent duplicate lines and count their occurrences.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "wc -l app.log",
+          "desc": "Count lines, words, or bytes in a file or stream.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "head -n 20 server.log",
+          "desc": "Show the first lines of a file for quick inspection.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "tail -f /var/log/nginx/access.log",
+          "desc": "Follow the end of a growing log file in real time.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "diff -u old.conf new.conf",
+          "desc": "Compare two files and show unified diff output.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "less +G /var/log/syslog",
+          "desc": "Open a file in a pager for efficient scrolling, searching, and navigation.",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "process-management",
+      "category": "Process Management",
+      "commands": [
+        {
+          "cmd": "ps aux",
+          "desc": "List every running process with CPU, memory, user, and command details.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "pgrep -af node",
+          "desc": "Find process IDs and commands by pattern without scanning raw ps output manually.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "top",
+          "desc": "Open the built-in live process monitor for CPU and memory analysis.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "htop",
+          "desc": "Use an interactive, colorized process viewer with easier sorting and filtering.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "kill -15 1234",
+          "desc": "Send SIGTERM so a process can shut down gracefully.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "kill -9 1234",
+          "desc": "Force-kill a stuck process using SIGKILL when graceful shutdown fails.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "killall nginx",
+          "desc": "Signal all processes with the same name at once.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "nice -n 10 tar -czf backup.tar.gz /srv/data",
+          "desc": "Start a process with lower CPU scheduling priority.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "nohup npm run start > app.log 2>&1 &",
+          "desc": "Run a command immune to hangups so it keeps running after logout.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "jobs",
+          "desc": "List background and stopped jobs in the current shell session.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "bg %1",
+          "desc": "Resume a stopped shell job and continue it in the background.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "fg %1",
+          "desc": "Bring a background or stopped job back into the foreground.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "systemctl status nginx",
+          "desc": "Check the current state, logs, and unit details for a systemd service.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "systemctl restart nginx",
+          "desc": "Restart a service managed by systemd.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "journalctl -u nginx -f",
+          "desc": "Follow logs from a specific systemd service in real time.",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "networking",
+      "category": "Networking",
+      "commands": [
+        {
+          "cmd": "ip addr show",
+          "desc": "Display IP addresses and status for all network interfaces.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "ip route show",
+          "desc": "Inspect the kernel routing table and default gateway configuration.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "ifconfig -a",
+          "desc": "Show interface configuration using the legacy net-tools command set.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "ping -c 4 8.8.8.8",
+          "desc": "Test reachability and round-trip latency to a host.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "curl -I https://example.com",
+          "desc": "Fetch HTTP headers to verify status codes, redirects, and server metadata.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "wget -O backup.html https://example.com",
+          "desc": "Download a remote resource and save it to a chosen filename.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "ss -tulpn",
+          "desc": "List listening TCP and UDP sockets with associated processes.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "netstat -tulpn",
+          "desc": "Display active listening ports and bound services with the classic networking tool.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "nmap -sV 192.168.1.10",
+          "desc": "Scan a target host for open ports and detected service versions.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "ssh devops@server.example.com",
+          "desc": "Open an encrypted remote shell session over SSH.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "scp app.tar.gz devops@server:/srv/releases/",
+          "desc": "Securely copy files between local and remote systems over SSH.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "rsync -avz ./site/ devops@server:/var/www/site/",
+          "desc": "Synchronize files efficiently while transferring only deltas.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "nc -vz localhost 5432",
+          "desc": "Test whether a TCP port is reachable using netcat.",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "user-permissions",
+      "category": "User &amp; Permissions",
+      "commands": [
+        {
+          "cmd": "whoami",
+          "desc": "Print the effective username of the current shell session.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "id",
+          "desc": "Show the current user ID, group ID, and supplementary groups.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "sudo -l",
+          "desc": "List the commands the current user may run with sudo.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "su - deploy",
+          "desc": "Switch to another user account with a full login shell.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "passwd",
+          "desc": "Change the password for the current account.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "useradd -m -s /bin/bash alice",
+          "desc": "Create a new user with a home directory and default Bash shell.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "usermod -aG docker alice",
+          "desc": "Append a user to an additional supplementary group.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "userdel -r alice",
+          "desc": "Delete a user account and remove its home directory.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "groupadd devops",
+          "desc": "Create a new system group for shared access control.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "groups alice",
+          "desc": "List all groups that a user belongs to.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "chmod 755 deploy.sh",
+          "desc": "Set owner read-write-execute and read-execute for group and others using octal mode.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "chmod 640 /etc/myapp.env",
+          "desc": "Restrict a sensitive file to owner read-write and group read-only using octal permissions.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "chown -R alice:devops /srv/app",
+          "desc": "Recursively set both owner and group for an application directory.",
+          "difficulty": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": "disk-storage",
+      "category": "Disk &amp; Storage",
+      "commands": [
+        {
+          "cmd": "df -hT",
+          "desc": "Show disk usage with human-readable sizes and filesystem types.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "du -sh /var/log",
+          "desc": "Measure how much space a directory consumes.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "lsblk -f",
+          "desc": "List block devices, partitions, filesystems, and mount points.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "mount | column -t",
+          "desc": "Display all currently mounted filesystems in an easy-to-scan format.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "mount /dev/sdb1 /mnt/data",
+          "desc": "Mount a filesystem at a chosen directory so it becomes accessible.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "umount /mnt/data",
+          "desc": "Unmount a filesystem cleanly before removing or reformatting it.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "fdisk -l",
+          "desc": "List disk partitions and geometry using the classic partitioning utility.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "parted -l",
+          "desc": "Inspect partition tables with GNU Parted, including GPT layouts.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "mkfs.ext4 /dev/sdb1",
+          "desc": "Create an ext4 filesystem on a partition or block device.",
+          "difficulty": "advanced"
+        },
+        {
+          "cmd": "tar -czf backup.tar.gz /etc/nginx",
+          "desc": "Create a compressed tar archive from files or directories.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "tar -xzf backup.tar.gz",
+          "desc": "Extract a gzip-compressed tar archive into the current directory.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "gzip -k app.log",
+          "desc": "Compress a file with gzip while keeping the original copy.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "zip -r artifacts.zip dist/",
+          "desc": "Create a ZIP archive recursively from a folder or file set.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "unzip artifacts.zip -d restore/",
+          "desc": "Extract a ZIP archive into a target directory.",
+          "difficulty": "beginner"
+        }
+      ]
+    },
+    {
+      "id": "bash-scripting",
+      "category": "Bash Scripting",
+      "commands": [
+        {
+          "cmd": "#!/usr/bin/env bash",
+          "desc": "Use a portable shebang so the script runs with Bash from the current environment.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "set -euo pipefail",
+          "desc": "Exit on errors, treat unset variables as failures, and catch pipe errors early.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "ENVIRONMENT=\"production\"",
+          "desc": "Assign a shell variable without spaces around the equals sign.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "echo \"${ENVIRONMENT^^}\"",
+          "desc": "Expand a variable and transform it to uppercase using Bash string operations.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "if [[ -f .env ]]; then echo \"found\"; fi",
+          "desc": "Run commands conditionally when a file, string, or status test succeeds.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "case \"$1\" in start|stop|restart) echo \"ok\" ;; *) exit 1 ;; esac",
+          "desc": "Dispatch different logic branches based on an input argument.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "for file in *.log; do gzip \"$file\"; done",
+          "desc": "Loop over matching files and run the same command for each one.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "while read -r host; do ping -c 1 \"$host\"; done < hosts.txt",
+          "desc": "Read input line by line from standard input or a file safely.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "sum() { echo \"$(( $1 + $2 ))\"; }",
+          "desc": "Define a reusable shell function that accepts positional parameters.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "servers=(\"web-1\" \"web-2\" \"web-3\")",
+          "desc": "Create a Bash array for managing multiple related values.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "echo \"${servers[@]}\"",
+          "desc": "Expand every array element as separate words.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "command > out.log 2> err.log",
+          "desc": "Redirect standard output and standard error to different files.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "command >> app.log 2>&1",
+          "desc": "Append both stdout and stderr to the same log file.",
+          "difficulty": "beginner"
+        },
+        {
+          "cmd": "journalctl -u nginx | grep ERROR | tee errors.log",
+          "desc": "Pipe output through multiple commands and save a copy with tee.",
+          "difficulty": "intermediate"
+        },
+        {
+          "cmd": "(crontab -l; echo \"0 2 * * * /opt/scripts/backup.sh >> /var/log/backup.log 2>&1\") | crontab -",
+          "desc": "Install a recurring cron job that runs a command on a fixed schedule.",
+          "difficulty": "advanced"
+        }
+      ]
+    }
+  ]
+}
