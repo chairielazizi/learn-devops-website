@@ -281,16 +281,7 @@ export default function TutorialLessonClient({
               })}
             </nav>
 
-            {/* Bottom Join Engineers CTA */}
-            <div className="p-3 border-t border-slate-800 bg-[#162032]/80">
-              <Link
-                href="/interview-questions"
-                className="w-full py-2.5 px-3 rounded-xl bg-gradient-orange hover:brightness-110 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 transition-all"
-              >
-                <Users className="w-3.5 h-3.5" />
-                <span>Join 20K+ Engineers</span>
-              </Link>
-            </div>
+
           </aside>
 
           {/* ================= CENTER MAIN ARTICLE ================= */}
