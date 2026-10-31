@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# reference and scrape files
+reference.md
+devopslesson-reference.md
+/reference/
+/scratch/
+*.html
+sitemap.xml
+robots.txt
+
