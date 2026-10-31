@@ -62,3 +62,84 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #f97316;
 }
+
+/* Scoped Interview Answer Content Styling */
+.interview-content {
+  color: #d1d5db;
+}
+.interview-content p {
+  color: #9ca3af;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.65;
+}
+.interview-content strong {
+  color: #f3f4f6;
+  font-weight: 600;
+}
+.interview-content a {
+  color: #fb923c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.interview-content a:hover {
+  color: #fdba74;
+}
+.interview-content code {
+  font-family: var(--font-geist-mono), monospace;
+  background-color: #0d0f18;
+  color: #fdba74;
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.375rem;
+  font-size: 0.85em;
+  border: 1px solid rgba(249, 115, 22, 0.18);
+}
+.interview-content pre {
+  background-color: #080910 !important;
+  border: 1px solid rgba(249, 115, 22, 0.25) !important;
+  border-radius: 0.75rem !important;
+  padding: 1rem !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  overflow-x: auto;
+}
+.interview-content pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: #e5e7eb !important;
+  font-size: 0.875rem !important;
+}
+.interview-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+.interview-content th {
+  color: #fb923c;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid rgba(249, 115, 22, 0.3);
+  background-color: rgba(249, 115, 22, 0.05);
+}
+.interview-content td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: #d1d5db;
+}
+.interview-content tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+.interview-content ul, .interview-content ol {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #9ca3af;
+}
+.interview-content li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
