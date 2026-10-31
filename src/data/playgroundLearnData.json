@@ -1,0 +1,178 @@
+{
+  "docker": {
+    "title": "Learn Docker",
+    "modules": [
+      {
+        "title": "Docker FundamentalsUnderstand what Docker is, why it exists, and how containers differ from virtual machines.Introduction to DockerWhy use Docker?Key Docker conceptsDocker vs. Virtual Machines02Installation & SetupGet Docker running on your machine. Linux, macOS or Windows.Installing DockerInstall on LinuxInstall on macOSInstall on Windows03Working with ImagesPull, list, tag, build and optimize the read-only templates behind every container.Docker images explainedPulling imagesNaming & taggingBuilding imagesImage optimization04Running ContainersMaster the container lifecycle: run, inspect, log, interact with and clean up.Docker containersContainer lifecycleRunning containersReading logsCleaning up05DockerfilesWrite your own images from scratch with a Dockerfile. The recipe for reproducible builds.Dockerfile basicsFROM & base imagesRUN, COPY & ADDCMD & ENTRYPOINTBest practices06Data & NetworkingPersist data with volumes and let containers talk to each other and the outside world.Docker volumesNamed volumesBind mountsContainer networkingWhy learn Docker?In demand everywhere",
+        "desc": "Docker is a baseline skill for DevOps, backend, cloud and SRE roles. It appears in the vast majority of modern job descriptions."
+      },
+      {
+        "title": "Ends \"works on my machine\"",
+        "desc": "Containers bundle your app and its dependencies, so it runs identically on every machine, every time."
+      },
+      {
+        "title": "The gateway to Kubernetes",
+        "desc": "Containers are the foundation of Kubernetes, CI/CD pipelines and cloud-native architecture. Docker is step one."
+      },
+      {
+        "title": "Fast to get productive",
+        "desc": "You can learn the core workflow in an afternoon and start containerizing real apps the same day."
+      }
+    ],
+    "whyLearn": "",
+    "faqs": [
+      {
+        "question": "Is this Docker course really free?+",
+        "answer": "Yes. Every lesson and the interactive playground are 100% free, with no sign-up, no paywall and no downloads required."
+      },
+      {
+        "question": "Do I need programming experience to learn Docker?+",
+        "answer": "No. Basic comfort with a command line helps, but the fundamentals lessons start from zero and explain every concept along the way."
+      },
+      {
+        "question": "How long does it take to learn Docker?+",
+        "answer": "You can grasp the core workflow, images, containers, and the essential commands, in a few hours. Working through this full path with the playground takes roughly a weekend."
+      },
+      {
+        "question": "What is the best way to learn Docker?+",
+        "answer": "By doing. Read a concept, then immediately practice the command. This path pairs short lessons with a hands-on browser playground so knowledge sticks."
+      },
+      {
+        "question": "Do I need to install Docker to practice?+",
+        "answer": "Not to start. The interactive playground simulates Docker in your browser, so you can practice real commands before installing anything locally."
+      }
+    ]
+  },
+  "kubernetes": {
+    "title": "Learn Kubernetes",
+    "modules": [
+      {
+        "title": "Kubernetes FundamentalsUnderstand what Kubernetes is, the problems it solves, and how the control plane and nodes fit together.Introduction to KubernetesKubernetes architecture02Installation & SetupSpin up a local cluster with minikube or kind and install the kubectl command-line tool.Installing KubernetesInstall with minikubeInstall with kindInstall kubectl03kubectl EssentialsMaster the everyday commands: get, describe, apply, delete, contexts, namespaces, logs and exec.kubectl basicsget & describeapply & deleteContexts & namespacesexec & logs04PodsThe smallest deployable unit: write manifests, understand the lifecycle, probes and multi-container pods.Kubernetes podsPod manifestsPod lifecycleLiveness & readiness probesMulti-container pods05Deployments & RolloutsRun self-healing apps, scale replicas, ship new versions with rolling updates and roll back safely.Kubernetes deploymentsCreating deploymentsRolling updatesRollbacks06Services & NetworkingGive pods stable addresses and expose them inside and outside the cluster with services and ingress.Kubernetes servicesClusterIPNodePortLoadBalancerIngress07Config, Storage & ScalingInject configuration, persist data with volumes, and scale automatically under load.ConfigMapsSecretsStorage overviewPersistent volumes (PV/PVC)Horizontal Pod AutoscalerWhy learn Kubernetes?The cloud-native standard",
+        "desc": "Kubernetes is the de-facto way to run containers in production, powering everything from startups to the largest tech companies."
+      },
+      {
+        "title": "One of the highest-paid skills",
+        "desc": "Kubernetes consistently ranks among the most in-demand and best-paid skills for DevOps, platform and SRE engineers."
+      },
+      {
+        "title": "Self-healing & scalable by design",
+        "desc": "Declare the desired state once and Kubernetes keeps it true. Restarting failed pods and scaling to meet demand automatically."
+      },
+      {
+        "title": "Cloud-portable",
+        "desc": "The same manifests run on any cluster, local, AWS, GCP or Azure, so your skills and workloads travel with you."
+      }
+    ],
+    "whyLearn": "",
+    "faqs": [
+      {
+        "question": "Is this Kubernetes course really free?+",
+        "answer": "Yes. Every lesson and the interactive kubectl playground are 100% free, with no sign-up, no paywall and no downloads required."
+      },
+      {
+        "question": "Should I learn Docker before Kubernetes?+",
+        "answer": "A little Docker helps because Kubernetes runs containers, but you can start here. Understanding images and containers first makes pods and deployments click faster."
+      },
+      {
+        "question": "How long does it take to learn Kubernetes?+",
+        "answer": "You can grasp the core objects, pods, deployments and services, in a few hours. Working through this full path with the playground takes roughly a weekend."
+      },
+      {
+        "question": "What is the best way to learn Kubernetes?+",
+        "answer": "By doing. Read a concept, then immediately run the kubectl command. This path pairs short lessons with a hands-on browser playground so the knowledge sticks."
+      },
+      {
+        "question": "Do I need to install Kubernetes to practice?+",
+        "answer": "Not to start. The interactive playground simulates a Kubernetes cluster in your browser, so you can practice real kubectl commands before installing minikube or kind locally."
+      }
+    ]
+  },
+  "linux": {
+    "title": "Learn Linux",
+    "modules": [
+      {
+        "title": "Linux FundamentalsUnderstand what Linux is, why it runs the world of servers and DevOps, and how the filesystem is organized.Introduction to LinuxThe Linux filesystem02Navigation & FilesMove around the filesystem with confidence and create, copy, move and delete files and directories.Navigating the filesystemFile operations03Permissions & UsersControl who can read, write and execute files, manage users and groups, and install software.File permissionsUsers & groupsPackage management04Text Processing & ScriptingSlice and transform text with grep, cut, sort, sed and awk, use environment variables, and automate with Bash.Text processingEnvironment variablesBash scripting05Processes & SchedulingSee what is running, manage processes and services, schedule jobs with cron, and read the logs.Process managementCron jobssystemd & servicesLog management06Networking & System AdminRound out your skills with networking, SSH keys, firewalls, disk & storage and performance tuning.NetworkingSSH keysFirewallDisk & storagePerformanceWhy learn Linux?The foundation of DevOps",
+        "desc": "Almost every server, container, CI runner and cloud instance runs Linux. The command line is the one skill that underpins Docker, Kubernetes, Terraform and everything else."
+      },
+      {
+        "title": "Learn once, use everywhere",
+        "desc": "The same commands work on your laptop, on a Raspberry Pi, inside a container and on a fleet of cloud servers. Linux skills transfer to every environment you will ever touch."
+      },
+      {
+        "title": "Automate the boring parts",
+        "desc": "Bash scripting turns repetitive tasks into a single command. Once you can pipe, filter and script, you stop clicking and start automating."
+      },
+      {
+        "title": "Fast to get productive",
+        "desc": "You can learn to navigate, manage files and search text in an afternoon, and start feeling at home in any terminal the same day."
+      }
+    ],
+    "whyLearn": "",
+    "faqs": [
+      {
+        "question": "Is this Linux course really free?+",
+        "answer": "Yes. Every lesson and the interactive terminal playground are 100% free, with no sign-up, no paywall and no downloads required."
+      },
+      {
+        "question": "Do I need any prior experience to learn Linux?+",
+        "answer": "No. The fundamentals lessons start from zero, no prior command-line experience is assumed. You build up gradually from your first command to scripting and system administration."
+      },
+      {
+        "question": "How long does it take to learn Linux?+",
+        "answer": "You can grasp the essentials, navigation, files, permissions and searching, in a few hours. Working through this full path with the playground takes roughly a weekend."
+      },
+      {
+        "question": "What is the best way to learn Linux?+",
+        "answer": "By doing. Read a concept, then immediately type the command yourself. This path pairs short lessons with a hands-on browser terminal so the muscle memory actually sticks."
+      },
+      {
+        "question": "Do I need to install Linux to practice?+",
+        "answer": "Not to start. The interactive playground simulates a Linux shell in your browser, so you can practice real commands before installing anything, setting up a VM or using WSL."
+      }
+    ]
+  },
+  "terraform": {
+    "title": "Learn Terraform",
+    "modules": [
+      {
+        "title": "Terraform FundamentalsUnderstand what Terraform is, why Infrastructure as Code matters, and how the core workflow fits together.Introduction to TerraformThe core workflowInstalling Terraform02The Core WorkflowMaster the everyday loop: initialize providers, preview changes, apply them, and tear them down.terraform initterraform planterraform applyterraform destroy03State & BackendsLearn how Terraform tracks reality in state, and how to store it safely for teams.State overviewState & backendsState commandsRemote backends04Variables & OutputsParameterize your configuration and expose useful values with variables, locals and outputs.Input variablesOutput valuesLocal valuesVariables & outputs05Expressions & Meta-argumentsScale your configuration with count, for_each, dynamic blocks and built-in functions.countfor_eachcount vs. for_eachDynamic blocksExpressions & functions06Modules & Real InfrastructurePackage reusable configuration into modules, then provision real infrastructure on AWS.Modules explainedUsing modulesWriting modulesTerraform with AWSWhy learn Terraform?In demand everywhere",
+        "desc": "Terraform is the de facto standard for Infrastructure as Code and appears in the vast majority of DevOps, cloud and platform-engineering job descriptions."
+      },
+      {
+        "title": "One tool, every cloud",
+        "desc": "The same workflow provisions AWS, Azure, GCP, Kubernetes and hundreds of other providers. Learn it once, use it everywhere."
+      },
+      {
+        "title": "Safe, reviewable changes",
+        "desc": "Plan shows exactly what will change before it happens, and configuration lives in git, so infrastructure gets the same review and history as code."
+      },
+      {
+        "title": "Fast to get productive",
+        "desc": "You can learn the core init → plan → apply loop in an afternoon and start managing real infrastructure the same day."
+      }
+    ],
+    "whyLearn": "",
+    "faqs": [
+      {
+        "question": "Is this Terraform course really free?+",
+        "answer": "Yes. Every lesson and the interactive playground are 100% free, with no sign-up, no paywall and no downloads required."
+      },
+      {
+        "question": "Do I need cloud experience to learn Terraform?+",
+        "answer": "No. Basic comfort with a command line helps, but the fundamentals lessons start from zero and the playground uses simple, account-free resources so you can practice before touching any cloud."
+      },
+      {
+        "question": "How long does it take to learn Terraform?+",
+        "answer": "You can grasp the core workflow, providers, resources, plan and apply, in a few hours. Working through this full path with the playground takes roughly a weekend."
+      },
+      {
+        "question": "What is the best way to learn Terraform?+",
+        "answer": "By doing. Read a concept, then immediately write the HCL and run the command. This path pairs short lessons with a hands-on browser playground so knowledge sticks."
+      },
+      {
+        "question": "Do I need to install Terraform to practice?+",
+        "answer": "Not to start. The interactive playground simulates Terraform in your browser, so you can practice real commands and HCL before installing anything locally."
+      }
+    ]
+  }
+}
