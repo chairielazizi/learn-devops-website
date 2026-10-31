@@ -50,54 +50,54 @@ export interface CertificationProvider {
 
 export const CERTIFICATION_PROVIDERS: CertificationProvider[] = [
   {
-    id: "cncf",
-    name: "Cloud Native Computing Foundation (CNCF / Linux Foundation)",
-    shortName: "Kubernetes & CNCF",
-    description: "Hands-on, terminal-based performance exams for container orchestration, security, and cloud-native architecture.",
-    badgeColor: "from-blue-500 to-indigo-600",
-    accentBorder: "border-blue-500/30 hover:border-blue-500/60",
-    iconBg: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    examCount: 4
+    "id": "cncf",
+    "name": "Cloud Native Computing Foundation (CNCF / Linux Foundation)",
+    "shortName": "Kubernetes & CNCF",
+    "description": "Hands-on, terminal-based performance exams for container orchestration, security, and cloud-native architecture.",
+    "badgeColor": "from-blue-500 to-indigo-600",
+    "accentBorder": "border-blue-500/30 hover:border-blue-500/60",
+    "iconBg": "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    "examCount": 5
   },
   {
-    id: "hashicorp",
-    name: "HashiCorp Certified",
-    shortName: "HashiCorp (Terraform & Vault)",
-    description: "Industry-standard Infrastructure as Code, zero-trust secrets management, and service networking credentials.",
-    badgeColor: "from-purple-500 to-indigo-700",
-    accentBorder: "border-purple-500/30 hover:border-purple-500/60",
-    iconBg: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-    examCount: 2
+    "id": "hashicorp",
+    "name": "HashiCorp Certified",
+    "shortName": "HashiCorp (Terraform & Vault)",
+    "description": "Industry-standard Infrastructure as Code, zero-trust secrets management, and service networking credentials.",
+    "badgeColor": "from-purple-500 to-indigo-700",
+    "accentBorder": "border-purple-500/30 hover:border-purple-500/60",
+    "iconBg": "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    "examCount": 3
   },
   {
-    id: "aws",
-    name: "Amazon Web Services (AWS) Training & Certification",
-    shortName: "Amazon Web Services",
-    description: "World-leading cloud credentials validating multi-tier CI/CD pipelines, automated operations, and resilient cloud architectures.",
-    badgeColor: "from-amber-500 to-orange-600",
-    accentBorder: "border-orange-500/30 hover:border-orange-500/60",
-    iconBg: "bg-orange-500/10 text-orange-400 border-orange-500/20",
-    examCount: 3
+    "id": "aws",
+    "name": "Amazon Web Services (AWS) Training & Certification",
+    "shortName": "Amazon Web Services",
+    "description": "World-leading cloud credentials validating multi-tier CI/CD pipelines, automated operations, and resilient cloud architectures.",
+    "badgeColor": "from-amber-500 to-orange-600",
+    "accentBorder": "border-orange-500/30 hover:border-orange-500/60",
+    "iconBg": "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    "examCount": 4
   },
   {
-    id: "azure",
-    name: "Microsoft Certified (Azure DevOps & Infrastructure)",
-    shortName: "Microsoft Azure",
-    description: "Enterprise DevOps, GitHub Enterprise integration, Azure Pipelines, and cloud administration mastery.",
-    badgeColor: "from-sky-500 to-blue-700",
-    accentBorder: "border-sky-500/30 hover:border-sky-500/60",
-    iconBg: "bg-sky-500/10 text-sky-400 border-sky-500/20",
-    examCount: 2
+    "id": "azure",
+    "name": "Microsoft Certified (Azure DevOps & Infrastructure)",
+    "shortName": "Microsoft Azure",
+    "description": "Enterprise DevOps, GitHub Enterprise integration, Azure Pipelines, and cloud administration mastery.",
+    "badgeColor": "from-sky-500 to-blue-700",
+    "accentBorder": "border-sky-500/30 hover:border-sky-500/60",
+    "iconBg": "bg-sky-500/10 text-sky-400 border-sky-500/20",
+    "examCount": 3
   },
   {
-    id: "gcp",
-    name: "Google Cloud Certified",
-    shortName: "Google Cloud Platform",
-    description: "Premier Site Reliability Engineering (SRE), GKE deployment, delivery pipelines, and cloud architecture expertise.",
-    badgeColor: "from-emerald-500 to-teal-600",
-    accentBorder: "border-emerald-500/30 hover:border-emerald-500/60",
-    iconBg: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-    examCount: 2
+    "id": "gcp",
+    "name": "Google Cloud Certified",
+    "shortName": "Google Cloud Platform",
+    "description": "Premier Site Reliability Engineering (SRE), GKE deployment, delivery pipelines, and cloud architecture expertise.",
+    "badgeColor": "from-emerald-500 to-teal-600",
+    "accentBorder": "border-emerald-500/30 hover:border-emerald-500/60",
+    "iconBg": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    "examCount": 3
   }
 ];
 
@@ -755,7 +755,7 @@ export const CERTIFICATIONS: CertificationGuide[] = [
   {
     "id": "aws-devops-engineer-professional",
     "slug": "aws-devops-engineer-professional",
-    "title": "AWS Certified DevOps Engineer – Professional",
+    "title": "AWS Certified DevOps Engineer - Professional",
     "code": "DOP-C02",
     "providerId": "aws",
     "providerName": "Amazon Web Services",
@@ -884,7 +884,7 @@ export const CERTIFICATIONS: CertificationGuide[] = [
   {
     "id": "aws-solutions-architect-associate",
     "slug": "aws-solutions-architect-associate",
-    "title": "AWS Certified Solutions Architect – Associate",
+    "title": "AWS Certified Solutions Architect - Associate",
     "code": "SAA-C03",
     "providerId": "aws",
     "providerName": "Amazon Web Services",
@@ -968,7 +968,7 @@ export const CERTIFICATIONS: CertificationGuide[] = [
   {
     "id": "aws-sysops-administrator-associate",
     "slug": "aws-sysops-administrator-associate",
-    "title": "AWS Certified SysOps Administrator – Associate",
+    "title": "AWS Certified SysOps Administrator - Associate",
     "code": "SOA-C02",
     "providerId": "aws",
     "providerName": "Amazon Web Services",
@@ -1483,6 +1483,539 @@ export const CERTIFICATIONS: CertificationGuide[] = [
         ],
         "correctIndex": 1,
         "explanation": "Cloud Spanner is Google's fully managed, globally distributed, horizontally scalable database that provides strong consistency, high availability (up to 99.999%), and full ACID transactions across multi-regional deployments."
+      }
+    ]
+  },
+  {
+    "id": "gcp-associate-cloud-engineer",
+    "slug": "gcp-associate-cloud-engineer",
+    "title": "Google Cloud Associate Cloud Engineer",
+    "code": "GCP-ACE",
+    "providerId": "gcp",
+    "providerName": "Google Cloud Platform",
+    "providerBadgeColor": "from-emerald-500 to-teal-600",
+    "level": "Associate",
+    "cost": "$125 USD",
+    "duration": "120 Minutes (2 Hours)",
+    "format": "Multiple Choice & Multiple Select (50-60 Questions)",
+    "passingScore": "70% (Scaled scoring)",
+    "officialUrl": "https://cloud.google.com/learn/certification/associate-cloud-engineer",
+    "documentationUrl": "https://cloud.google.com/docs",
+    "playgroundUrl": "/playground/kubernetes",
+    "tutorialUrl": "/tutorials/cloud",
+    "description": "The fundamental entry point for DevOps and cloud operations on Google Cloud. Validates deploying applications, monitoring operations of multiple projects, managing enterprise solutions using Google Cloud Console and gcloud CLI commands.",
+    "prerequisites": "Six or more months of hands-on experience building and maintaining Google Cloud environments and command-line interfaces.",
+    "domains": [
+      {
+        "name": "Setting Up a Cloud Solution Environment",
+        "weight": 20,
+        "topics": [
+          "Setting up cloud projects and accounts: Resource hierarchy (Organization, Folders, Projects)",
+          "Managing billing configuration and spend alerts",
+          "Installing and configuring the command-line interface: gcloud config set project, gcloud init, gcloud auth login",
+          "Configuring Cloud Identity, Google Cloud IAM roles, and Service Accounts"
+        ],
+        "competencies": [
+          "Switch active gcloud configurations and project contexts from terminal",
+          "Assign predefined IAM roles to service accounts with least privilege"
+        ]
+      },
+      {
+        "name": "Planning and Configuring a Cloud Solution",
+        "weight": 18,
+        "topics": [
+          "Planning and configuring Compute Engine resources (machine types, custom images, persistent disks)",
+          "Planning Google Kubernetes Engine (GKE) clusters (Standard vs Autopilot, VPC-native clusters)",
+          "Planning Cloud Storage classes (Standard, Nearline, Coldline, Archive) and lifecycle rules",
+          "Configuring Cloud SQL instances (High Availability, read replicas, automated backups)"
+        ],
+        "competencies": [
+          "Calculate storage lifecycle policies to transition objects to Coldline after 90 days",
+          "Configure VPC-native GKE clusters with private nodes and authorized master networks"
+        ]
+      },
+      {
+        "name": "Deploying and Implementing a Cloud Solution",
+        "weight": 25,
+        "topics": [
+          "Deploying and managing Compute Engine instances via gcloud compute instances create",
+          "Deploying containerized workloads to GKE using kubectl and Helm",
+          "Deploying serverless microservices to Cloud Run and event triggers to Cloud Functions",
+          "Deploying continuous delivery pipelines with Cloud Build (cloudbuild.yaml)"
+        ],
+        "competencies": [
+          "Deploy stateless microservices to Cloud Run with gcloud run deploy --image ... --allow-unauthenticated",
+          "Build and push container images using gcloud builds submit --tag gcr.io/..."
+        ]
+      },
+      {
+        "name": "Ensuring Successful Operation of a Cloud Solution",
+        "weight": 20,
+        "topics": [
+          "Managing Compute Engine resources: resizing disks, creating machine images, snapshots, instance groups",
+          "Managing GKE resources: resizing node pools, auto-upgrades, pod autoscaling",
+          "Configuring Cloud Monitoring uptime checks, alert policies, and incident notifications",
+          "Querying Cloud Logging logs using the Logs Explorer and exporting to BigQuery sinks"
+        ],
+        "competencies": [
+          "Perform live migration and rolling restarts of managed instance groups (MIGs)",
+          "Write log queries filtering HTTP status codes >= 500 in Cloud Logging"
+        ]
+      },
+      {
+        "name": "Configuring Access and Security",
+        "weight": 17,
+        "topics": [
+          "Managing Cloud IAM users, groups, and service accounts",
+          "Enforcing least privilege: using Predefined roles over Primitive (Owner/Editor/Viewer) roles",
+          "Managing Service Account keys and configuring Workload Identity",
+          "Managing secrets using Secret Manager and Cloud KMS encryption keys"
+        ],
+        "competencies": [
+          "Inspect IAM policy bindings with gcloud projects get-iam-policy",
+          "Inject secrets into Cloud Run and GKE workloads securely via Secret Manager"
+        ]
+      }
+    ],
+    "tips": [
+      "Memorize the syntax of core gcloud commands: gcloud compute instances create, gcloud container clusters create, gcloud run deploy.",
+      "Understand Google Cloud Storage lifecycle transitions: Nearline (30-day min), Coldline (90-day min), Archive (365-day min).",
+      "Avoid Primitive roles (Owner, Editor, Viewer) in exam questions: Google always favors fine-grained Predefined roles.",
+      "Know when to choose Cloud Run (containerized, scale to zero, HTTP) vs Cloud Functions (single event handler) vs GKE (full orchestration)."
+    ],
+    "pitfalls": [
+      "Using static Service Account JSON keys when Workload Identity provides short-lived credentials.",
+      "Assigning broad IAM roles at the Organization level when Project or Resource level scoping is required."
+    ],
+    "sampleQuestions": [
+      {
+        "question": "A team needs to run a lightweight containerized REST API that handles intermittent traffic, scales down to zero instances when idle to save costs, and requires an automatic HTTPS URL. Which compute option involves the least operational overhead?",
+        "options": [
+          "Google Kubernetes Engine (GKE) Standard cluster",
+          "Google Cloud Run",
+          "Compute Engine instance group with an unmanaged instance template",
+          "App Engine Flexible environment"
+        ],
+        "correctIndex": 1,
+        "explanation": "Google Cloud Run is a fully managed serverless container runtime that automatically provisions TLS certificates, routes HTTP traffic, and scales instances up or down to zero based on incoming requests with zero cluster maintenance overhead."
+      }
+    ]
+  },
+  {
+    "id": "aws-developer-associate",
+    "slug": "aws-developer-associate",
+    "title": "AWS Certified Developer - Associate",
+    "code": "DVA-C02",
+    "providerId": "aws",
+    "providerName": "Amazon Web Services",
+    "providerBadgeColor": "from-amber-500 to-orange-600",
+    "level": "Associate",
+    "cost": "$150 USD",
+    "duration": "130 Minutes",
+    "format": "Multiple Choice & Multiple Response (65 Questions)",
+    "passingScore": "720 / 1000",
+    "officialUrl": "https://aws.amazon.com/certification/certified-developer-associate/",
+    "documentationUrl": "https://docs.aws.amazon.com/",
+    "playgroundUrl": "/playground/docker",
+    "tutorialUrl": "/tutorials/aws",
+    "description": "The essential developer credential and key prerequisite pathway before pursuing the AWS DevOps Engineer Professional certification. Validates writing, deploying, and debugging cloud-native microservices with Lambda, API Gateway, DynamoDB, SQS, KMS, and CI/CD pipelines.",
+    "prerequisites": "One or more years of hands-on experience developing and maintaining applications using core AWS services.",
+    "domains": [
+      {
+        "name": "Development with AWS Services",
+        "weight": 32,
+        "topics": [
+          "AWS Lambda: execution context reuse, provisioned concurrency, cold start optimization, environment variables, layers",
+          "Amazon DynamoDB: partition keys, sort keys, Global Secondary Indexes (GSI), Local Secondary Indexes (LSI), Read/Write Capacity calculations",
+          "Amazon API Gateway: REST vs HTTP APIs, stage variables, canary deployments, usage plans, CORS, Cognito authorizers",
+          "Amazon SQS and SNS: standard vs FIFO queues, deduplication IDs, message group IDs, fan-out architecture"
+        ],
+        "competencies": [
+          "Write Lambda handler logic optimizing database connections outside the handler function",
+          "Calculate DynamoDB Read Capacity Units (RCUs) for strongly consistent vs eventually consistent reads"
+        ]
+      },
+      {
+        "name": "Security",
+        "weight": 26,
+        "topics": [
+          "AWS KMS Envelope Encryption: GenerateDataKey API, decrypting payloads, customer managed keys (CMK)",
+          "AWS Secrets Manager and SSM Parameter Store (SecureString hierarchies, automatic rotation)",
+          "IAM application policies, execution roles, and condition blocks (aws:PrincipalTag, aws:SourceIp)",
+          "Amazon Cognito: User Pools (authentication) vs Identity Pools (federated AWS credentials)"
+        ],
+        "competencies": [
+          "Implement client-side envelope encryption with the AWS Encryption SDK",
+          "Inject secrets securely into container tasks and serverless functions without plaintext hardcoding"
+        ]
+      },
+      {
+        "name": "Deployment",
+        "weight": 24,
+        "topics": [
+          "CI/CD delivery with AWS CodeCommit, CodeBuild (buildspec.yml), CodeDeploy (appspec.yml), and CodePipeline",
+          "AWS Serverless Application Model (AWS SAM) and CloudFormation templates",
+          "Elastic Beanstalk deployment policies: All at Once, Rolling, Rolling with Additional Batch, Immutable, Blue/Green",
+          "Amazon ECS and ECR: container image tagging, task definitions, Fargate vs EC2 launch types"
+        ],
+        "competencies": [
+          "Configure buildspec.yml phases (install, pre_build, build, post_build) and artifact caching",
+          "Implement zero-downtime blue/green deployments using CodeDeploy and Route 53"
+        ]
+      },
+      {
+        "name": "Troubleshooting and Optimization",
+        "weight": 18,
+        "topics": [
+          "Distributed tracing with AWS X-Ray: subsegments, annotations, metadata, sampling rules",
+          "Amazon CloudWatch Logs: metric filters, log groups, alarms, retention policies",
+          "Handling asynchronous processing failures with SQS Dead-Letter Queues (DLQ) and Lambda destinations",
+          "Application caching strategies with Amazon ElastiCache (Redis) and DynamoDB Accelerator (DAX)"
+        ],
+        "competencies": [
+          "Trace end-to-end latency across microservices using the X-Ray service graph",
+          "Configure Lambda asynchronous error handling with DLQ redrive policies"
+        ]
+      }
+    ],
+    "tips": [
+      "Master DynamoDB calculations: 1 RCU = 1 strongly consistent read per second for an item up to 4 KB (or 2 eventually consistent reads).",
+      "Understand KMS Envelope Encryption: Never send raw data to KMS; call GenerateDataKey, encrypt locally with the plaintext key, destroy the plaintext key in memory, and store the encrypted ciphertext key alongside data.",
+      "Elastic Beanstalk deployment policies: Immutable deployment creates an entirely new Auto Scaling group and is the safest deployment method with instant rollback.",
+      "For SQS FIFO: Message Deduplication ID ensures exactly-once processing; Message Group ID guarantees strict FIFO ordering per group."
+    ],
+    "pitfalls": [
+      "Assuming Cognito User Pools grant IAM permissions: User Pools handle user sign-up/sign-in; Identity Pools exchange tokens for temporary AWS credentials.",
+      "Forgetting to add the X-Ray daemon or SDK middleware when instrumenting Docker containers."
+    ],
+    "sampleQuestions": [
+      {
+        "question": "A developer needs to store customer credit card records in DynamoDB. The application must encrypt the data before saving it to the table using a unique data key per record, while avoiding transmitting sensitive card numbers across the network to AWS KMS. How should this be implemented?",
+        "options": [
+          "Use the KMS Encrypt API call for every credit card payload.",
+          "Use the AWS Encryption SDK to implement envelope encryption by calling the kms:GenerateDataKey API, encrypting data locally with the plaintext key, and saving the ciphertext data alongside the encrypted data key.",
+          "Enable DynamoDB default encryption at rest.",
+          "Store the credit card records in an S3 bucket with SSE-S3."
+        ],
+        "correctIndex": 1,
+        "explanation": "Envelope encryption uses the kms:GenerateDataKey API to obtain a plaintext Data Encryption Key and an encrypted version of that key. The client encrypts the credit card data locally using the plaintext key, deletes the plaintext key from memory, and stores the encrypted data key with the record, keeping sensitive payloads off KMS network endpoints."
+      }
+    ]
+  },
+  {
+    "id": "az-204-azure-developer",
+    "slug": "az-204-azure-developer",
+    "title": "Microsoft Certified: Azure Developer Associate",
+    "code": "AZ-204",
+    "providerId": "azure",
+    "providerName": "Microsoft Azure",
+    "providerBadgeColor": "from-sky-500 to-blue-700",
+    "level": "Associate",
+    "cost": "$165 USD",
+    "duration": "120 Minutes",
+    "format": "Multiple Choice / Drag-and-Drop / Case Studies (40-60 Questions)",
+    "passingScore": "700 / 1000",
+    "officialUrl": "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/",
+    "documentationUrl": "https://learn.microsoft.com/en-us/azure/",
+    "playgroundUrl": "/playground/docker",
+    "tutorialUrl": "/tutorials/cicd",
+    "description": "The foundational developer credential required for modern cloud developers and an official qualifying prerequisite for the AZ-400 DevOps Engineer Expert certification. Tests building containerized solutions on Azure, Azure App Service, serverless Azure Functions, Cosmos DB, and event-driven architectures with Event Grid and Service Bus.",
+    "prerequisites": "One to two years of professional development experience and proficiency in at least one Azure-supported programming language.",
+    "domains": [
+      {
+        "name": "Develop Azure Compute Solutions",
+        "weight": 28,
+        "topics": [
+          "Azure App Service: deployment slots, configuration settings, custom domains, scaling plans",
+          "Azure Functions: triggers, input/output bindings, execution contexts, durable functions",
+          "Azure Container Apps and Azure Container Registry (ACR): multi-container applications, revisions"
+        ],
+        "competencies": [
+          "Configure deployment slot traffic swapping for zero-downtime releases in App Service",
+          "Implement stateful orchestration workflows using Azure Durable Functions"
+        ]
+      },
+      {
+        "name": "Develop for Azure Storage",
+        "weight": 18,
+        "topics": [
+          "Azure Cosmos DB: partition keys, request units (RU/s), consistency levels (Strong to Eventual)",
+          "Azure Blob Storage: blob tiers (Hot, Cool, Cold, Archive), metadata, lifecycle management rules",
+          "Securing storage access with Shared Access Signatures (SAS) and stored access policies"
+        ],
+        "competencies": [
+          "Select partition keys in Cosmos DB to avoid hot partitions in high-throughput workloads",
+          "Generate time-limited SAS tokens with specific permissions using the Azure SDK"
+        ]
+      },
+      {
+        "name": "Implement Azure Security",
+        "weight": 22,
+        "topics": [
+          "User and application authentication using Microsoft Entra ID and Microsoft Authentication Library (MSAL)",
+          "Managed Identities (System-assigned vs User-assigned) for passwordless resource authentication",
+          "Azure Key Vault: storing, retrieving, and rotating secrets, keys, and certificates"
+        ],
+        "competencies": [
+          "Authenticate web apps against Azure SQL or Key Vault without hardcoded credentials using Managed Identities",
+          "Configure OAuth 2.0 authorization code flow with Entra ID"
+        ]
+      },
+      {
+        "name": "Monitor, Troubleshoot, and Optimize Solutions",
+        "weight": 15,
+        "topics": [
+          "Integrating Application Insights: distributed telemetry, custom events, metrics, exceptions",
+          "Querying Log Analytics with Kusto Query Language (KQL)",
+          "Implementing caching with Azure Cache for Redis (eviction policies, TTL expiration)"
+        ],
+        "competencies": [
+          "Instrument web apps with the Application Insights SDK to trace end-to-end request latency",
+          "Diagnose intermittent HTTP 500 errors using KQL queries"
+        ]
+      },
+      {
+        "name": "Connect to and Consume Azure Services",
+        "weight": 17,
+        "topics": [
+          "Azure Event Grid: event publishing, filtering, Webhook event handlers",
+          "Azure Event Hubs: real-time event streaming, consumer groups, partitions",
+          "Azure Service Bus: queues vs topics/subscriptions, dead-letter queues, session handling",
+          "Azure API Management (APIM): policies (rate limiting, mock responses, JWT validation)"
+        ],
+        "competencies": [
+          "Implement asynchronous pub/sub messaging patterns using Azure Service Bus topics",
+          "Enforce rate limits on APIs using inbound API Management policy XML"
+        ]
+      }
+    ],
+    "tips": [
+      "Know the 5 Cosmos DB consistency levels from strongest to weakest: Strong, Bounded Staleness, Session (default), Consistent Prefix, Eventual.",
+      "Service Bus vs Event Grid vs Event Hubs: Service Bus = financial/order transactions with ordering and delivery guarantees; Event Grid = reactive event routing (e.g. blob created); Event Hubs = massive big-data streaming telemetry.",
+      "Understand Managed Identities: System-assigned identity is tied directly to the resource lifecycle; User-assigned identity is created as a standalone Azure resource and can be assigned to multiple VMs/apps."
+    ],
+    "pitfalls": [
+      "Using hardcoded connection strings in appsettings.json instead of Managed Identity + Azure Key Vault references.",
+      "Choosing Event Grid when message sequencing and duplicate detection are strictly required (use Service Bus)."
+    ],
+    "sampleQuestions": [
+      {
+        "question": "An e-commerce order processing microservice requires reliable, first-in-first-out (FIFO) message processing with duplicate detection and transactional dead-letter handling. Which Azure service should you integrate?",
+        "options": [
+          "Azure Event Grid",
+          "Azure Event Hubs",
+          "Azure Service Bus Queue with Sessions and Duplicate Detection enabled",
+          "Azure Storage Queue"
+        ],
+        "correctIndex": 2,
+        "explanation": "Azure Service Bus is Microsoft's enterprise-grade messaging service. It provides message sessions (guaranteeing FIFO ordering across message groups), duplicate detection, dead-letter queues, and transactional delivery semantics."
+      }
+    ]
+  },
+  {
+    "id": "prometheus-certified-associate",
+    "slug": "prometheus-certified-associate",
+    "title": "Prometheus Certified Associate (PCA)",
+    "code": "PCA",
+    "providerId": "cncf",
+    "providerName": "Linux Foundation / CNCF",
+    "providerBadgeColor": "from-blue-500 to-indigo-600",
+    "level": "Associate",
+    "cost": "$250 USD",
+    "duration": "90 Minutes",
+    "format": "Multiple Choice (60 Questions)",
+    "passingScore": "75%",
+    "officialUrl": "https://www.cncf.io/certification/pca/",
+    "documentationUrl": "https://prometheus.io/docs/",
+    "playgroundUrl": "/playground/kubernetes",
+    "tutorialUrl": "/tutorials/kubernetes",
+    "description": "Validates foundational knowledge of cloud-native observability, Prometheus architecture, PromQL metrics queries, alerting with Alertmanager, pushgateway, node exporter, and Kubernetes monitoring.",
+    "prerequisites": "Basic understanding of metrics, monitoring concepts, and container infrastructure.",
+    "domains": [
+      {
+        "name": "Observability Concepts",
+        "weight": 18,
+        "topics": [
+          "Metrics vs Logs vs Traces (Three Pillars of Observability)",
+          "Push vs Pull metric collection architectures",
+          "The Google Four Golden Signals (Latency, Traffic, Errors, Saturation) and the USE / RED methods"
+        ],
+        "competencies": [
+          "Articulate the performance advantages of pull-based scraping over push-based telemetry agents",
+          "Differentiate RED metrics (Rate, Errors, Duration) from USE metrics (Utilization, Saturation, Errors)"
+        ]
+      },
+      {
+        "name": "Prometheus Fundamentals",
+        "weight": 20,
+        "topics": [
+          "Prometheus server architecture, Time Series Database (TSDB), write-ahead logging (WAL)",
+          "Metric exposition format (text-based exposition format 0.0.4 and OpenMetrics)",
+          "Service Discovery in Kubernetes (kubernetes_sd_configs for pods, services, endpoints, nodes)",
+          "Scrape configurations: scrape_interval, scrape_timeout, metric_relabel_configs"
+        ],
+        "competencies": [
+          "Configure prometheus.yml scrape jobs with relabel_configs to drop high-cardinality labels",
+          "Understand TSDB block compaction and retention policies"
+        ]
+      },
+      {
+        "name": "PromQL (Prometheus Query Language)",
+        "weight": 28,
+        "topics": [
+          "Metric types: Counter (monotonic increase), Gauge, Histogram, Summary",
+          "Selectors and Matchers: label matching (=, !=, =~, !~)",
+          "Range vector functions: rate(), irate(), increase(), deriv()",
+          "Aggregation operators: sum, avg, min, max, topk, quantile by (label)",
+          "Vector matching: one-to-one, many-to-one (group_left, group_right)"
+        ],
+        "competencies": [
+          "Calculate per-second error rates using rate(http_requests_total{status=~'5..'}[5m])",
+          "Compute 99th percentile request latency using histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))"
+        ]
+      },
+      {
+        "name": "Alerting & Dashboarding",
+        "weight": 16,
+        "topics": [
+          "Alerting rules syntax in Prometheus (alert, expr, for, labels, annotations)",
+          "Alertmanager architecture: routing tree, grouping, inhibition, silencing",
+          "Grafana dashboard integration and PromQL datasource optimization"
+        ],
+        "competencies": [
+          "Write Alertmanager route configs grouping alerts by cluster and alertname to reduce alert fatigue",
+          "Configure inhibition rules to silence downstream alerts when the underlying cluster is down"
+        ]
+      },
+      {
+        "name": "Exporters and Integrations",
+        "weight": 18,
+        "topics": [
+          "Node Exporter for host Linux hardware telemetry",
+          "Blackbox Exporter for probing HTTP, HTTPS, TCP, DNS endpoints",
+          "Pushgateway: purpose, limitations, and why it should NOT be used for general batch scraping",
+          "Prometheus Operator and Custom Resource Definitions (ServiceMonitor, PodMonitor, PrometheusRule)"
+        ],
+        "competencies": [
+          "Configure ServiceMonitor CRDs in Kubernetes clusters to automatically scrape microservices",
+          "Monitor external API health using Blackbox Exporter probes"
+        ]
+      }
+    ],
+    "tips": [
+      "rate() vs irate(): Use rate() for alerts and long-term trends because it smooths spikes; use irate() for high-resolution instant rate changes.",
+      "Histogram vs Summary: Histograms allow calculating percentiles (histogram_quantile) across multiple aggregated instances; Summaries compute percentiles client-side and CANNOT be aggregated.",
+      "Always apply rate() before sum(): sum(rate(metric[5m])) is correct; rate(sum(metric[5m])) is WRONG."
+    ],
+    "pitfalls": [
+      "Using Pushgateway as an aggregator or cache: Pushgateway never expires metrics automatically and turns Prometheus into a push system.",
+      "High cardinality labels (e.g. user IDs, email addresses, order IDs) that cause Prometheus TSDB memory explosion."
+    ],
+    "sampleQuestions": [
+      {
+        "question": "Which PromQL expression correctly calculates the 95th percentile request latency across all API pods over a 5-minute sliding window?",
+        "options": [
+          "quantile(0.95, http_request_duration_seconds[5m])",
+          "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))",
+          "rate(http_request_duration_seconds_summary{quantile='0.95'}[5m])",
+          "avg_over_time(http_request_duration_seconds[5m])"
+        ],
+        "correctIndex": 1,
+        "explanation": "To calculate percentiles from a Prometheus Histogram, you must calculate the per-second rate of increase of each bucket over time, sum the rates aggregated by the 'le' (less-than-or-equal) boundary label, and pass the result to histogram_quantile."
+      }
+    ]
+  },
+  {
+    "id": "consul-associate",
+    "slug": "consul-associate",
+    "title": "HashiCorp Certified: Consul Associate (002)",
+    "code": "Consul-002",
+    "providerId": "hashicorp",
+    "providerName": "HashiCorp",
+    "providerBadgeColor": "from-purple-500 to-indigo-700",
+    "level": "Associate",
+    "cost": "$70.50 USD",
+    "duration": "1 Hour (60 Mins)",
+    "format": "Multiple Choice / Multiple Answer (57 Questions)",
+    "passingScore": "70%",
+    "officialUrl": "https://www.hashicorp.com/certification/consul-associate",
+    "documentationUrl": "https://developer.hashicorp.com/consul/docs",
+    "playgroundUrl": "/playground/linux",
+    "tutorialUrl": "/tutorials/linux",
+    "description": "Tests modern microservices service networking automation: dynamic service discovery, service health checking, service mesh with automated mTLS, traffic routing, intentions, and multi-datacenter federation.",
+    "prerequisites": "Familiarity with networking concepts (DNS, TCP, HTTP), microservices architectures, and basic Linux administration.",
+    "domains": [
+      {
+        "name": "Consul Architecture",
+        "weight": 20,
+        "topics": [
+          "Client vs Server agents, Raft consensus protocol, Gossip protocol (Serf LAN/WAN), Datacenter federation"
+        ],
+        "competencies": [
+          "Configure consul.hcl with server = true and bootstrap_expect"
+        ]
+      },
+      {
+        "name": "Service Discovery and Health Checking",
+        "weight": 22,
+        "topics": [
+          "Service definitions (JSON/HCL), DNS interface (.consul), HTTP API, health check types (HTTP, script, TCP, TTL)"
+        ],
+        "competencies": [
+          "Query service records via dig @127.0.0.1 -p 8600 web.service.consul"
+        ]
+      },
+      {
+        "name": "Service Mesh (Consul Connect)",
+        "weight": 22,
+        "topics": [
+          "Sidecar proxies (Envoy), automatic mutual TLS (mTLS), Intentions (allow/deny rules), L7 traffic management"
+        ],
+        "competencies": [
+          "Enforce zero-trust network policies using Service Intentions"
+        ]
+      },
+      {
+        "name": "Key/Value Storage & Configuration",
+        "weight": 18,
+        "topics": [
+          "Consul KV store, dynamic application configuration with Consul-Template and envconsul"
+        ],
+        "competencies": [
+          "Manage KV keys with consul kv put/get/delete"
+        ]
+      },
+      {
+        "name": "Consul Security & Operations",
+        "weight": 18,
+        "topics": [
+          "ACL tokens, policies, TLS agent encryption, backup and restore with consul snapshot"
+        ],
+        "competencies": [
+          "Create and restore cluster state using consul snapshot save/restore"
+        ]
+      }
+    ],
+    "tips": [
+      "Understand Consul port requirements: 8500 (HTTP API), 8600 (DNS), 8300 (Server RPC), 8301 (Serf LAN), 8302 (Serf WAN).",
+      "Consul DNS lookups always append the default '.service.consul' domain suffix (e.g. redis.service.consul).",
+      "Consul Connect uses Envoy sidecar proxies to transparently encrypt service-to-service traffic using mutual TLS."
+    ],
+    "pitfalls": [
+      "Confusing Serf LAN (intra-datacenter gossip) with Serf WAN (inter-datacenter gossip between Consul servers).",
+      "Forgetting to enable ACLs before attempting to enforce fine-grained Service Intentions."
+    ],
+    "sampleQuestions": [
+      {
+        "question": "How do client microservices discover the IP addresses and port numbers of healthy database instances in Consul without modifying application code to make HTTP API calls?",
+        "options": [
+          "By querying the Consul local DNS interface on port 8600 using standard DNS lookups for db.service.consul",
+          "By running a cron job that rewrites /etc/hosts every second",
+          "By opening an SSH tunnel to the Consul server",
+          "By configuring hardcoded static IPs"
+        ],
+        "correctIndex": 0,
+        "explanation": "Consul provides a built-in DNS server (default port 8600). Applications can perform standard RFC-compliant DNS queries (e.g. SRV or A records for db.service.consul), which automatically resolve to only healthy, registered service instances."
       }
     ]
   }
