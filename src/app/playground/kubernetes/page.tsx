@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { K8sEngine, K8sPod, K8sDeployment, K8sNode } from "@/lib/playgrounds/k8sEngine";
 import InteractiveTerminal from "@/components/terminal/InteractiveTerminal";
+import PlaygroundPrimerSection from "@/components/playground/PlaygroundPrimerSection";
 import { ArrowLeft, Server, Activity, CheckCircle2, Circle, ShieldCheck, Box, HardDrive } from "lucide-react";
 
 export default function K8sPlaygroundPage() {
@@ -172,6 +173,9 @@ export default function K8sPlaygroundPage() {
             </div>
           </div>
         </div>
+
+        {/* Conceptual Primer & FAQs */}
+        <PlaygroundPrimerSection tool="kubernetes" />
       </div>
     </div>
   );

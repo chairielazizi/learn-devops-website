@@ -1,0 +1,170 @@
+{
+  "docker": {
+    "ideas": [
+      {
+        "title": "What is Docker?",
+        "desc": "Docker packages an application with everything it needs, code, runtime, libraries and settings, into a single portable unit called a container. It runs the same on your laptop, a teammate's machine, or production, killing the classic \"it works on my machine\" problem."
+      },
+      {
+        "title": "What are containers?",
+        "desc": "A container is a lightweight, isolated process created from a read-only template called an image. Unlike heavy virtual machines, containers share the host OS kernel, so they start in seconds and use far fewer resources. You can run dozens at once."
+      },
+      {
+        "title": "What is this playground?",
+        "desc": "A safe, simulated Docker environment that runs entirely in your browser. You type real Docker commands and see realistic output, but nothing runs on your computer and nothing can break. Guided steps check your work and track your progress automatically."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is this Docker playground free?+",
+        "answer": "Yes. The Docker playground is 100% free with no sign-up, no credit card and no downloads. Just open the page and start typing Docker commands in your browser."
+      },
+      {
+        "question": "Do I need to install Docker to use it?+",
+        "answer": "No. Nothing is installed on your computer. The playground runs a safe, simulated Docker daemon entirely in your browser, so you can practice real docker commands without Docker Desktop or a server."
+      },
+      {
+        "question": "Is this a real Docker environment?+",
+        "answer": "It is a high-fidelity simulation. You type real Docker commands (docker pull, docker run, docker ps, docker logs, volumes and more) and get realistic output, but nothing runs on your machine, so you cannot break anything."
+      },
+      {
+        "question": "Which Docker commands can I practice?+",
+        "answer": "The guided lab covers the full lifecycle: checking the version, pulling images, running containers, publishing ports, reading logs, exec-ing into containers, inspecting, using environment variables and volumes, stopping, starting and removing containers and images."
+      },
+      {
+        "question": "Is the Docker playground good for complete beginners?+",
+        "answer": "Absolutely. The lab starts at the very beginning and grows step by step into intermediate and advanced topics, so it builds your Docker muscle memory gradually, no prior experience required."
+      },
+      {
+        "question": "How long does the lab take?+",
+        "answer": "About 25 minutes for all 18 steps, and your progress is saved automatically so you can pause and come back anytime."
+      }
+    ]
+  },
+  "kubernetes": {
+    "ideas": [
+      {
+        "title": "What is Kubernetes?",
+        "desc": "Kubernetes (K8s) is an open-source system that runs and manages containers across a fleet of machines for you. You declare the desired state, \"run 3 copies of this app\", and Kubernetes continuously makes reality match, self-healing failed containers and scaling on demand."
+      },
+      {
+        "title": "What are pods & deployments?",
+        "desc": "A pod is the smallest unit you deploy. A wrapper around one or more containers that share a network and storage. A deployment keeps a desired number of identical pods alive, recreating any that die and rolling out new versions with zero downtime."
+      },
+      {
+        "title": "What is this playground?",
+        "desc": "A safe, simulated Kubernetes cluster that runs entirely in your browser. You type real kubectl commands and see realistic output, but nothing runs on your computer and nothing can break. Guided steps check your work and track your progress automatically."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is this Kubernetes playground free?+",
+        "answer": "Yes. The Kubernetes playground is 100% free with no sign-up, no credit card and no downloads. Just open the page and start typing kubectl commands in your browser."
+      },
+      {
+        "question": "Do I need to install Kubernetes or minikube to use it?+",
+        "answer": "No. Nothing is installed on your computer. The playground runs a safe, simulated Kubernetes cluster entirely in your browser, so you can practice real kubectl commands without minikube, kind or a cloud cluster."
+      },
+      {
+        "question": "Is this a real Kubernetes cluster?+",
+        "answer": "It is a high-fidelity simulation. You type real kubectl commands (kubectl get pods, run, create deployment, scale, expose, rollout and more) and get realistic output, but nothing runs on your machine, so you cannot break anything."
+      },
+      {
+        "question": "Which kubectl commands can I practice?+",
+        "answer": "The guided lab covers the full workflow: version and cluster-info, listing nodes and namespaces, running pods, describing resources, creating and scaling deployments, exposing services, reading logs, exec-ing into pods, rolling updates, rollbacks and cleanup."
+      },
+      {
+        "question": "Is the Kubernetes playground good for complete beginners?+",
+        "answer": "Absolutely. The lab starts with your very first kubectl command and grows step by step into intermediate and advanced topics like deployments, services and rolling updates, so it builds your Kubernetes muscle memory gradually, no prior experience required."
+      },
+      {
+        "question": "How long does the lab take?+",
+        "answer": "About 30 minutes for all 18 steps, and your progress is saved automatically so you can pause and come back anytime."
+      }
+    ]
+  },
+  "linux": {
+    "ideas": [
+      {
+        "title": "What is the Linux shell?",
+        "desc": "The shell is the program that reads the commands you type and runs them. Bash is the most common one. Almost every server, container and cloud instance is Linux, so the command line is the single most transferable skill in all of DevOps."
+      },
+      {
+        "title": "How does the filesystem work?",
+        "desc": "Everything in Linux lives in one tree that starts at the root, /. You move around it with cd, list it with ls, and refer to locations with absolute paths (/home/devops) or relative ones (../logs). Master this and the rest follows."
+      },
+      {
+        "title": "What is this playground?",
+        "desc": "A safe, simulated Linux shell that runs entirely in your browser, complete with a virtual filesystem. You type real commands and see realistic output, but nothing runs on your computer and nothing can break. Guided steps check your work and track progress automatically."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is this Linux playground free?+",
+        "answer": "Yes. The Linux & Bash playground is 100% free with no sign-up, no credit card and no downloads. Just open the page and start typing commands in your browser."
+      },
+      {
+        "question": "Do I need to install Linux to use it?+",
+        "answer": "No. Nothing is installed on your computer. The playground runs a safe, simulated Linux shell with its own virtual filesystem entirely in your browser, so you can practice real commands without a VM, WSL or a server."
+      },
+      {
+        "question": "Is this a real Linux terminal?+",
+        "answer": "It is a high-fidelity simulation. You type real commands (ls, cd, grep, chmod, find, pipes and redirection) against a virtual filesystem and get realistic output, but nothing runs on your machine, so you cannot break anything."
+      },
+      {
+        "question": "Which Linux commands can I practice?+",
+        "answer": "The guided lab covers the essentials: navigation (pwd, ls, cd), file management (touch, mkdir, cp, mv, rm), viewing (cat, head, wc), searching (grep, find), permissions (chmod), and text processing with pipes, redirection, sort, uniq, cut, sed and awk."
+      },
+      {
+        "question": "Is the Linux playground good for complete beginners?+",
+        "answer": "Absolutely. The lab starts at the very beginning, your first command, and grows step by step into intermediate file management and advanced pipes and text processing, so it builds your command-line muscle memory gradually."
+      },
+      {
+        "question": "How long does the lab take?+",
+        "answer": "About 35 minutes for all 17 steps, and your progress is saved automatically so you can pause and come back anytime."
+      }
+    ]
+  },
+  "terraform": {
+    "ideas": [
+      {
+        "title": "What is Terraform?",
+        "desc": "Terraform is an Infrastructure as Code tool. Instead of clicking through a cloud console, you describe the infrastructure you want in configuration files, and Terraform creates, updates and deletes real resources to match. Repeatably and safely."
+      },
+      {
+        "title": "What is Infrastructure as Code?",
+        "desc": "IaC means managing servers, networks and services through version-controlled files rather than manual steps. You write HCL (HashiCorp Configuration Language), commit it to git, review changes in pull requests, and get consistent, reproducible environments every time."
+      },
+      {
+        "title": "What is this playground?",
+        "desc": "A safe, simulated Terraform environment that runs entirely in your browser. You write real HCL and type real terraform commands, seeing realistic output, but nothing is provisioned and nothing can break. Guided steps check your work and track progress automatically."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is this Terraform playground free?+",
+        "answer": "Yes. The Terraform playground is 100% free with no sign-up, no credit card and no downloads. Just open the page and start writing HCL and running Terraform commands in your browser."
+      },
+      {
+        "question": "Do I need to install Terraform to use it?+",
+        "answer": "No. Nothing is installed on your computer and no cloud account is required. The playground runs a safe, simulated Terraform CLI entirely in your browser, so you can practice real commands without setting anything up."
+      },
+      {
+        "question": "Is this a real Terraform environment?+",
+        "answer": "It is a high-fidelity simulation. You write real HCL and type real Terraform commands (terraform init, validate, plan, apply, state, output, destroy) and get realistic output, but no infrastructure is actually provisioned, so you cannot break anything or incur any cost."
+      },
+      {
+        "question": "Which Terraform commands can I practice?+",
+        "answer": "The guided lab covers the full workflow: checking the version, writing a resource in HCL, initializing providers, formatting and validating, previewing with plan, creating with apply, listing state, exposing outputs, and tearing everything down with destroy."
+      },
+      {
+        "question": "Is the Terraform playground good for complete beginners?+",
+        "answer": "Absolutely. The lab starts at the very beginning and grows step by step into intermediate and advanced topics, so it builds your Terraform muscle memory gradually, no prior experience with cloud or IaC required."
+      },
+      {
+        "question": "How long does the lab take?+",
+        "answer": "About 25 minutes for all 11 steps, and your progress is saved automatically so you can pause and come back anytime."
+      }
+    ]
+  }
+}

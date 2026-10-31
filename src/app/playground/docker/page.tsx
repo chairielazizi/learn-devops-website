@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { DockerEngine, DockerContainer, DockerImage } from "@/lib/playgrounds/dockerEngine";
 import InteractiveTerminal from "@/components/terminal/InteractiveTerminal";
+import PlaygroundPrimerSection from "@/components/playground/PlaygroundPrimerSection";
 import { ArrowLeft, Box, Server, CheckCircle2, Circle, Layers, RefreshCw, Cpu, HardDrive } from "lucide-react";
 
 export default function DockerPlaygroundPage() {
@@ -217,6 +218,9 @@ export default function DockerPlaygroundPage() {
             </div>
           </div>
         </div>
+
+        {/* Conceptual Primer & FAQs */}
+        <PlaygroundPrimerSection tool="docker" />
       </div>
     </div>
   );

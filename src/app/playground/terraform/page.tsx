@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { TerraformEngine, TfResource } from "@/lib/playgrounds/terraformEngine";
 import InteractiveTerminal from "@/components/terminal/InteractiveTerminal";
+import PlaygroundPrimerSection from "@/components/playground/PlaygroundPrimerSection";
 import { ArrowLeft, Globe, Database, CheckCircle2, Circle, FileCode, Check } from "lucide-react";
 
 export default function TerraformPlaygroundPage() {
@@ -168,6 +169,9 @@ export default function TerraformPlaygroundPage() {
             </div>
           </div>
         </div>
+
+        {/* Conceptual Primer & FAQs */}
+        <PlaygroundPrimerSection tool="terraform" />
       </div>
     </div>
   );

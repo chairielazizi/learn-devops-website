@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { LinuxEngine } from "@/lib/playgrounds/linuxEngine";
 import InteractiveTerminal from "@/components/terminal/InteractiveTerminal";
+import PlaygroundPrimerSection from "@/components/playground/PlaygroundPrimerSection";
 import { ArrowLeft, Folder, FileText, CheckCircle2, Circle, Terminal as TermIcon } from "lucide-react";
 
 export default function LinuxPlaygroundPage() {
@@ -130,6 +131,9 @@ export default function LinuxPlaygroundPage() {
             </div>
           </div>
         </div>
+
+        {/* Conceptual Primer & FAQs */}
+        <PlaygroundPrimerSection tool="linux" />
       </div>
     </div>
   );
